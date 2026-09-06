@@ -148,12 +148,40 @@ python3 run.py hf schedule --install                      # launchd: 09:33 and 1
 - `hf trade` is idempotent (a session is processed once). If the machine was
   asleep, launchd runs the job on wake; the fill still uses the session print
   and the log notes how late it ran.
-- **The Mac must be awake at 06:33 and 13:08 Pacific** (09:33 / 16:08 ET;
-  retries at 06:47 / 13:25).
-  A closed lid sleeps it and nothing runs. Either keep it on power with
-  "prevent automatic sleeping" enabled, schedule wakes with
-  `sudo pmset repeat wakeorpoweron MTWRF 06:30:00`, or move the two cron
-  lines printed by `hf schedule` to an always-on machine.
+### Hosting: GitHub Actions (no laptop required)
+
+`.github/workflows/paper.yml` runs `hf trade --session auto` on GitHub's
+servers at ~09:40 and ~16:15 ET (with retries and both DST offsets) and
+commits `paper_state/` back to the repo, so the account history lives in git.
+GitHub's cron can start several minutes late; that is harmless because fills
+are at the official 09:30/16:00 prints and decisions only use data knowable at
+that session - a late run produces identical trades (the same property that
+makes the incident replay below legitimate).
+
+Handoff from the laptop:
+1. push this repo to GitHub (private is fine);
+2. in the repo's Actions tab, trigger `paper-sessions` once by hand and check
+   the log ends with "already processed" or a session line;
+3. on the Mac run `python3 run.py hf schedule --uninstall` so two schedulers
+   never process the same session into diverging copies of the state;
+4. from then on, `git pull` before running `hf status` locally.
+
+Alternative: `deploy/setup_server.sh` sets up cron on any always-on Linux box.
+
+### Incident log
+
+- **2026-09-02 09:30**: Yahoo had no opening print yet for IWM/QLD; the trader
+  skipped them and mis-marked equity. Fix: per-ticker 1m-bar fill, hard abort
+  when a held position has no price.
+- **2026-09-03 -> 09-04**: three data failures - Yahoo's "today" row carried
+  *yesterday's* Open at 09:33 (both accounts exited at stale prices), Yahoo
+  returned no data at the close sessions (laptop-wake runs, throttling), and a
+  cached partial-day row was later used as a close. Original records are in
+  `paper_state/hf/incidents/2026-09-05/`; both accounts were replayed from
+  inception through the unchanged trading code on official prints. Fixes:
+  partial-day rows are never cached; today's prints come only from the 09:30 /
+  15:59 1-minute bars with stale-price and completeness checks; downloads
+  retry with backoff; every account refreshes its own data.
 
 ### How to judge it (`hf status`)
 
