@@ -1,0 +1,78 @@
+# Runs the paper sessions on GitHub's servers so nothing depends on a laptop.
+#
+# Two session windows per trading day (ET). GitHub cron is UTC and can start
+# late by several minutes; that is fine because the trader fills at the
+# official 09:30 / 16:00 prints and only uses data knowable at that session,
+# so a late run produces identical trades. Each window has a retry ~15 min
+# later; `hf trade` is idempotent (a session is processed once per account).
+#
+# US DST: 09:40 ET = 13:40 UTC (EDT, Mar-Nov) or 14:40 UTC (EST). Both are
+# scheduled; the extra run is a harmless "already processed" no-op.
+#
+# State (paper_state/) is committed back to the repo after each run, so the
+# account history lives in git and `hf status` works from any checkout.
+
+name: paper-sessions
+
+on:
+  schedule:
+    - cron: "40 13 * * 1-5"   # 09:40 EDT open session
+    - cron: "55 13 * * 1-5"   # retry
+    - cron: "40 14 * * 1-5"   # 09:40 EST open session (winter) / EDT retry
+    - cron: "15 20 * * 1-5"   # 16:15 EDT close session
+    - cron: "35 20 * * 1-5"   # retry
+    - cron: "15 21 * * 1-5"   # 16:15 EST close session (winter) / EDT retry
+  workflow_dispatch:           # manual run from the Actions tab
+
+concurrency:
+  group: paper-sessions
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Restore market-data cache
+        uses: actions/cache@v4
+        with:
+          path: data_cache/ohlcv_1d.parquet
+          key: ohlcv-1d-${{ github.run_id }}
+          restore-keys: ohlcv-1d-
+
+      - name: Process session for all accounts
+        env:
+          MPLCONFIGDIR: /tmp/mpl
+          TZ: America/New_York
+        run: python run.py hf trade --session auto
+        continue-on-error: true   # a "no data yet" exit is expected on the first attempt; the retry handles it
+
+      - name: Status report (log artifact)
+        env:
+          MPLCONFIGDIR: /tmp/mpl
+        run: |
+          python run.py hf status --no-plot || true
+          python run.py hf status --no-plot --account shadow-wide || true
+
+      - name: Commit paper state
+        run: |
+          git config user.name "quantbot"
+          git config user.email "quantbot@users.noreply.github.com"
+          git add paper_state
+          git diff --cached --quiet && echo "no state change" || git commit -m "paper: $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git pull --rebase --autostash origin ${{ github.ref_name }} || true
+          git push origin HEAD:${{ github.ref_name }}

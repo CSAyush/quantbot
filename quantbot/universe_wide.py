@@ -1,0 +1,36 @@
+"""Wide stock universe: the 300 largest S&P 500 constituents by market cap
+(snapshot early 2026, from data_cache/sp500/market_caps). Generated list;
+today's constituents applied historically => survivorship bias, see README."""
+
+HF_STOCKS_WIDE = [
+    "NVDA", "GOOGL", "GOOG", "AAPL", "MSFT", "AMZN", "META", "AVGO", "TSLA", "BRK-B",
+    "LLY", "WMT", "JPM", "V", "XOM", "JNJ", "ORCL", "MA", "MU", "COST",
+    "AMD", "PLTR", "ABBV", "HD", "BAC", "NFLX", "PG", "CVX", "UNH", "KO",
+    "GE", "CSCO", "CAT", "MS", "GS", "LRCX", "IBM", "WFC", "MRK", "PM",
+    "RTX", "AMAT", "AXP", "TMO", "MCD", "CRM", "INTC", "LIN", "TMUS", "C",
+    "DIS", "KLAC", "PEP", "BA", "ISRG", "ABT", "AMGN", "SCHW", "APH", "BX",
+    "GEV", "APP", "NEE", "TXN", "BLK", "ACN", "ANET", "UBER", "TJX", "T",
+    "GILD", "DHR", "QCOM", "VZ", "BKNG", "SPGI", "INTU", "LOW", "ADI", "HON",
+    "PFE", "NOW", "DE", "COF", "LMT", "BSX", "NEM", "UNP", "SYK", "IBKR",
+    "MDT", "ETN", "WELL", "ADBE", "PANW", "COP", "PGR", "VRTX", "CB", "PLD",
+    "PH", "CMCSA", "CRWD", "KKR", "BMY", "SBUX", "HCA", "CVS", "CEG", "ADP",
+    "MO", "MCK", "CME", "ICE", "GD", "SO", "NOC", "NKE", "HOOD", "SNPS",
+    "MCO", "WM", "UPS", "DUK", "DASH", "PNC", "SHW", "MAR", "FCX",
+    "CDNS", "HWM", "MMM", "USB", "TT", "ORLY", "AMT", "ELV", "EMR",
+    "WDC", "ABNB", "MNST", "GLW", "TDG", "ECL", "REGN", "WMB", "APO", "CMI",
+    "RCL", "EQIX", "CTAS", "DELL", "GM", "MDLZ", "STX", "ITW", "CI", "SLB",
+    "AON", "FDX", "WBD", "HLT", "CL", "PWR", "SPG", "JCI", "COR", "CSX",
+    "RSG", "MSI", "LHX", "TEL", "KMI", "AJG", "NSC", "PCAR", "TFC", "FTNT",
+    "AEP", "TRV", "AZO", "ROST", "EOG", "URI", "NXPI", "COIN", "APD", "VLO",
+    "BDX", "ADSK", "AFL", "PSX", "NDAQ", "SRE", "O", "DLR", "IDXX", "ZTS",
+    "CMG", "VST", "PYPL", "F", "MPC", "BKR", "ALL", "AME", "MPWR",
+    "D", "GWW", "WDAY", "MET", "FAST", "CBRE", "PSA", "CAH", "OKE", "TGT",
+    "EW", "CARR", "AXON", "CTVA", "ROK", "AMP", "DDOG", "MSCI", "TTWO", "FANG",
+    "EXC", "DAL", "XEL", "ROP", "DHI", "OXY", "EBAY", "KR", "YUM", "EL",
+    "ETR", "NUE", "TRGP", "LVS", "CTSH", "XYZ", "MCHP", "CPRT", "IQV", "AIG",
+    "GRMN", "VMC", "WAB", "MLM", "PEG", "HSY", "A", "PAYX", "PRU", "KDP",
+    "CCI", "ED", "CCL", "FICO", "RMD", "FISV", "ODFL", "KEYS", "SYY", "TER",
+    "GEHC", "VTR", "HIG", "OTIS", "WEC", "STT", "UAL", "ACGL", "IR", "EQT",
+    "XYL", "LYV", "KVUE", "KMB", "FITB", "EXPE", "MTB", "RJF", "PCG", "ADM",
+    "FOXA", "DG", "HUM", "FIS", "WTW", "EXR", "EME", "FOX", "ULTA", "VICI",
+]

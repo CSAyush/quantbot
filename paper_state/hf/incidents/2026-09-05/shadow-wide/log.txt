@@ -1,0 +1,10 @@
+[2026-09-02 23:25:47 EDT] 2026-09-02 16:00 | equity $999.90 | cash $333.30 | long 67% short 0% | 2 fills
+[2026-09-02 23:55:53 EDT] ERROR: unhandled OSError: Could not open Parquet input source '<Buffer>': Couldn't deserialize thrift: TProtocolException: Invalid data
+
+[2026-09-02 23:55:53 EDT] ERROR: unhandled OSError: Could not open Parquet input source '<Buffer>': Couldn't deserialize thrift: TProtocolException: Invalid data
+
+[2026-09-03 00:00:23 EDT] 2026-09-02 16:00 | equity $999.90 | cash $333.30 | long 67% short 0% | 2 fills
+[2026-09-03 09:33:50 EDT] 2026-09-03 09:30 | equity $995.03 | cash $995.03 | long 0% short 0% | 2 fills
+[2026-09-03 16:41:59 EDT] 2026-09-03 16:00 | equity $994.95 | cash $331.65 | long 67% short 0% | 2 fills
+[2026-09-04 09:33:58 EDT] 2026-09-04 09:30 | equity $1,001.89 | cash $1,001.89 | long 0% short 0% | 2 fills
+[2026-09-04 16:19:07 EDT] 2026-09-04 16:00 | equity $1,001.79 | cash $0.00 | long 100% short 0% | 3 fills

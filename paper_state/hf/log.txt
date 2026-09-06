@@ -1,0 +1,18 @@
+[2026-09-02 05:13:54 EDT] 2026-09-01 16:00 | equity $999.87 | cash $-0.13 | long 100% short 0% | 3 fills
+[2026-09-02 05:14:26 EDT] 2026-09-01 16:00 | equity $999.87 | cash $0.00 | long 100% short 0% | 3 fills
+[2026-09-02 09:33:15 EDT] 2026-09-02 09:30 | equity $333.12 | cash $333.12 | long nan% short 0% | 1 fills
+[2026-09-02 16:08:16 EDT] 2026-09-02 16:00 | equity $1,005.26 | cash $333.13 | long 67% short 0% | 0 fills
+[2026-09-02 13:55:00 PDT] INCIDENT: at the 09:30 session Yahoo had no open print yet for IWM/QLD; they were not exited (held through the day, +$5.0 vs the designed path) and equity was mis-marked as $333.12. History row corrected to $1,000.28 using the official opens (IWM 291.54, QLD 87.78). Fix: per-ticker 1m-bar fill + hard abort when any held position lacks a price + extra retry run.
+[2026-09-03 09:33:13 EDT] 2026-09-03 09:30 | equity $1,000.22 | cash $1,000.22 | long 0% short 0% | 2 fills
+[2026-09-03 16:34:15 EDT] ERROR: unhandled RuntimeError: Yahoo Finance returned no data
+[2026-09-04 09:33:19 EDT] 2026-09-04 09:30 | equity $1,000.32 | cash $1,000.32 | long 0% short 0% | 0 fills
+[2026-09-04 16:18:30 EDT] ERROR: unhandled RuntimeError: Yahoo Finance returned no data
+[2026-09-04 16:35:16 EDT] ERROR: unhandled RuntimeError: Yahoo Finance returned no data
+[2026-09-06 18:01:46 EDT] 2026-09-01 16:00 | equity $999.87 | cash $0.00 | long 100% short 0% | 3 fills
+[2026-09-06 18:01:46 EDT] 2026-09-02 09:30 | equity $1,000.32 | cash $1,000.32 | long 0% short 0% | 3 fills
+[2026-09-06 18:01:46 EDT] 2026-09-02 16:00 | equity $1,000.25 | cash $333.42 | long 67% short 0% | 2 fills
+[2026-09-06 18:01:46 EDT] 2026-09-03 09:30 | equity $1,003.66 | cash $1,003.66 | long 0% short 0% | 2 fills
+[2026-09-06 18:01:47 EDT] 2026-09-03 16:00 | equity $1,003.59 | cash $334.53 | long 67% short 0% | 2 fills
+[2026-09-06 18:01:47 EDT] 2026-09-04 09:30 | equity $1,009.78 | cash $1,009.78 | long 0% short 0% | 2 fills
+[2026-09-06 18:01:47 EDT] 2026-09-04 16:00 | equity $1,009.67 | cash $0.00 | long 100% short 0% | 3 fills
+[2026-09-06 14:45:00 PDT] INCIDENT: sessions 2026-09-03 09:30 -> 2026-09-04 16:00 were processed on bad data (stale Yahoo daily Open on 09-03; 'no data' failures at the 09-03/09-04 closes; a cached partial-day row used as the close). Original records archived under paper_state/hf/incidents/2026-09-05/. Account replayed from inception through the unchanged trading code using official open/close prints. Fixes: partial-day rows never cached, today's prints sourced from 09:30/15:59 1m bars with stale-price and completeness checks, download retries with backoff, per-account data refresh.

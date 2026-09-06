@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+data_cache/*.parquet
+data_cache/*.tmp
+data_cache/sp500/
+paper_state/hf/launchd.*.log
+paper_state/hf/cron.log
+*.png
+!hf_backtest_growth_daily.png
+.DS_Store

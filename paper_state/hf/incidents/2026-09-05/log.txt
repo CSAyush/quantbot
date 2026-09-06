@@ -1,0 +1,10 @@
+[2026-09-02 05:13:54 EDT] 2026-09-01 16:00 | equity $999.87 | cash $-0.13 | long 100% short 0% | 3 fills
+[2026-09-02 05:14:26 EDT] 2026-09-01 16:00 | equity $999.87 | cash $0.00 | long 100% short 0% | 3 fills
+[2026-09-02 09:33:15 EDT] 2026-09-02 09:30 | equity $333.12 | cash $333.12 | long nan% short 0% | 1 fills
+[2026-09-02 16:08:16 EDT] 2026-09-02 16:00 | equity $1,005.26 | cash $333.13 | long 67% short 0% | 0 fills
+[2026-09-02 13:55:00 PDT] INCIDENT: at the 09:30 session Yahoo had no open print yet for IWM/QLD; they were not exited (held through the day, +$5.0 vs the designed path) and equity was mis-marked as $333.12. History row corrected to $1,000.28 using the official opens (IWM 291.54, QLD 87.78). Fix: per-ticker 1m-bar fill + hard abort when any held position lacks a price + extra retry run.
+[2026-09-03 09:33:13 EDT] 2026-09-03 09:30 | equity $1,000.22 | cash $1,000.22 | long 0% short 0% | 2 fills
+[2026-09-03 16:34:15 EDT] ERROR: unhandled RuntimeError: Yahoo Finance returned no data
+[2026-09-04 09:33:19 EDT] 2026-09-04 09:30 | equity $1,000.32 | cash $1,000.32 | long 0% short 0% | 0 fills
+[2026-09-04 16:18:30 EDT] ERROR: unhandled RuntimeError: Yahoo Finance returned no data
+[2026-09-04 16:35:16 EDT] ERROR: unhandled RuntimeError: Yahoo Finance returned no data
