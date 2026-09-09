@@ -307,8 +307,13 @@ def trade(cfg: HFConfig, session: str = "auto", force: bool = False, refresh: bo
           now: dt.datetime | None = None, account: str = "live") -> None:
     from .strategies.hf_ensemble import EnsembleParams, config_for, hf_ensemble_weights
 
+    from .calendar import is_trading_day
+
     acct = Account(account)
     now = now or dt.datetime.now(tz=TZ)
+    if session == "auto" and not is_trading_day(pd.Timestamp(now).tz_convert(TZ)):
+        print(f"{pd.Timestamp(now).tz_convert(TZ).date()} is not an NYSE trading day; nothing to do.")
+        return
     state = load_state(cfg, acct)
     params = EnsembleParams.from_profile(state.get("profile"))
     if params.universe != "core":
