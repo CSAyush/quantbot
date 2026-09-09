@@ -58,17 +58,25 @@ jobs:
         env:
           MPLCONFIGDIR: /tmp/mpl
           TZ: America/New_York
-        run: python run.py hf trade --session auto
-        continue-on-error: true   # a "no data yet" exit is expected on the first attempt; the retry handles it
+        # Output is appended to a committed log so every run is readable from
+        # the repo. A non-zero exit ("no price yet") marks the run red; the
+        # scheduled retry processes the session once Yahoo has the prints.
+        run: |
+          mkdir -p paper_state/hf
+          echo "===== $(date -u +'%Y-%m-%d %H:%M UTC') run ${{ github.run_id }} (${{ github.event_name }}) =====" >> paper_state/hf/actions.log
+          set -o pipefail
+          python run.py hf trade --session auto 2>&1 | tee -a paper_state/hf/actions.log
 
-      - name: Status report (log artifact)
+      - name: Status report
+        if: always()
         env:
           MPLCONFIGDIR: /tmp/mpl
         run: |
-          python run.py hf status --no-plot || true
-          python run.py hf status --no-plot --account shadow-wide || true
+          python run.py hf status --no-plot 2>&1 | tee -a paper_state/hf/actions.log || true
+          python run.py hf status --no-plot --account shadow-wide 2>&1 | tail -6 | tee -a paper_state/hf/actions.log || true
 
       - name: Commit paper state
+        if: always()
         run: |
           git config user.name "quantbot"
           git config user.email "quantbot@users.noreply.github.com"
