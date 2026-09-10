@@ -1,11 +1,9 @@
 {
-  "cash": 678.270345373641,
+  "cash": 1014.8914077454822,
   "starting_cash": 1000,
   "profile": "growth",
   "inception": "2026-09-01T16:00:00-04:00",
-  "positions": {
-    "IWM": 1.1668163744822238
-  },
-  "last_session": "2026-09-09T16:00:00-04:00",
-  "sessions_processed": 11
+  "positions": {},
+  "last_session": "2026-09-10T09:30:00-04:00",
+  "sessions_processed": 12
 }
