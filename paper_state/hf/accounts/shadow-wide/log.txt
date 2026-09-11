@@ -24,3 +24,15 @@
 [2026-09-09 16:26:48 EDT] 2026-09-09 16:00 | equity $1,017.05 | cash $678.03 | long 33% short 0% | 1 fills
 [2026-09-10 13:13:24 EDT] 2026-09-10 09:30 | equity $1,014.54 | cash $1,014.54 | long 0% short 0% | 1 fills
 [2026-09-10 18:37:48 EDT] 2026-09-10 16:00 | equity $1,014.43 | cash $0.00 | long 100% short 0% | 3 fills
+[2026-09-11 00:54:44 EDT] 2026-09-02 16:00 | equity $999.90 | cash $333.30 | long 67% short 0% | 2 fills
+[2026-09-11 00:54:45 EDT] 2026-09-03 09:30 | equity $1,003.31 | cash $1,003.31 | long 0% short 0% | 2 fills
+[2026-09-11 00:54:45 EDT] 2026-09-03 16:00 | equity $1,003.24 | cash $334.41 | long 67% short 0% | 2 fills
+[2026-09-11 00:54:46 EDT] 2026-09-04 09:30 | equity $1,009.43 | cash $1,009.43 | long 0% short 0% | 2 fills
+[2026-09-11 00:54:46 EDT] 2026-09-04 16:00 | equity $1,009.32 | cash $0.00 | long 100% short 0% | 3 fills
+[2026-09-11 00:54:47 EDT] 2026-09-08 09:30 | equity $1,017.07 | cash $1,017.07 | long 0% short 0% | 3 fills
+[2026-09-11 00:54:47 EDT] 2026-09-08 16:00 | equity $1,017.00 | cash $339.00 | long 67% short 0% | 2 fills
+[2026-09-11 00:54:48 EDT] 2026-09-09 09:30 | equity $1,013.47 | cash $1,013.47 | long 0% short 0% | 2 fills
+[2026-09-11 00:54:49 EDT] 2026-09-09 16:00 | equity $1,013.46 | cash $675.64 | long 33% short 0% | 1 fills
+[2026-09-11 00:54:49 EDT] 2026-09-10 09:30 | equity $1,010.97 | cash $1,010.97 | long 0% short 0% | 1 fills
+[2026-09-11 00:54:50 EDT] 2026-09-10 16:00 | equity $1,010.87 | cash $0.00 | long 100% short 0% | 3 fills
+[2026-09-10 18:45:00 PDT] INCIDENT: 2026-09-08 16:00 was processed by the laptop scheduler at 16:08, before close data was available; signals evaluated as off and the designed IWM+QLD overnight hold was skipped. Records archived under paper_state/hf/incidents/2026-09-10/; account replayed from inception on official prints. Fix: a session is refused unless >=90% of tradables have a price for that stamp.

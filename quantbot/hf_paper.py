@@ -343,6 +343,22 @@ def trade(cfg: HFConfig, session: str = "auto", force: bool = False, refresh: bo
         print(f"[warn] running {late_min:.0f} min after the {ts.strftime('%H:%M')} session; "
               f"fills use the {ts.strftime('%H:%M')} print (mild hindsight).")
 
+    # The price row for this session must be essentially complete before any
+    # signal is evaluated: a missing close makes every overnight signal read
+    # "off" (2026-09-08: a 16:08 run saw no closes and recorded 0 fills when
+    # the design called for IWM+QLD). Checked on the tradables that have
+    # traded recently, so delisted names don't count.
+    row = md.px_daily.loc[ts] if ts in md.px_daily.index else pd.Series(dtype=float)
+    recent = md.close.iloc[-6:].notna().any()
+    recent_names = [t for t in md.tickers if recent.get(t, False)]
+    have = row.reindex(recent_names).notna().mean() if recent_names else 0.0
+    if have < 0.9:
+        msg = (f"ERROR: only {have:.0%} of tradables have a {ts.strftime('%H:%M')} price for session "
+               f"{ts.strftime('%Y-%m-%d %H:%M')}; data not complete yet. Nothing traded; retry shortly.")
+        print(msg)
+        _log(msg, acct)
+        raise SystemExit(2)
+
     _mask_for_session(md, ts)
     weights = hf_ensemble_weights(md, timeline=timeline, params=params)
     if ts not in weights.index:
@@ -464,7 +480,8 @@ def status(cfg: HFConfig, plot: bool = True, account: str = "live") -> None:
     spy = hist.set_index("session")["spy"]
     start = state["starting_cash"]
     pnl = eq.iloc[-1] - start
-    spy_ret = spy.iloc[-1] / spy.iloc[0] - 1.0 if spy.notna().all() and len(spy) > 1 else float("nan")
+    spy_ok = spy.dropna()
+    spy_ret = spy_ok.iloc[-1] / spy_ok.iloc[0] - 1.0 if len(spy_ok) > 1 else float("nan")
 
     print(f"Account:      {acct.name}")
     print(f"Profile:      {state.get('profile')}")
@@ -479,11 +496,14 @@ def status(cfg: HFConfig, plot: bool = True, account: str = "live") -> None:
         # Daily returns from end-of-day equity.
         daily_eq = eq.groupby(eq.index.tz_convert(TZ).normalize()).last()
         live_daily = daily_eq.pct_change().dropna()
-        if len(live_daily) > 5:
-            from .metrics import sharpe, max_drawdown
+        from .metrics import sharpe, max_drawdown
+        if len(live_daily) >= 20:
             print(f"Realized:     Sharpe {sharpe(live_daily, cfg.cash_yield_annual):.2f} | "
                   f"MaxDD {max_drawdown(live_daily):.2%} | days {len(live_daily)} | "
                   f"avg |daily| {live_daily.abs().mean():.2%}")
+        elif len(live_daily) > 1:
+            print(f"Realized:     MaxDD {max_drawdown(live_daily):.2%} | days {len(live_daily)} "
+                  f"(Sharpe shown from 20 days)")
     _expectation_check(cfg, state, live_daily, hist)  # noqa
     if state["positions"]:
         print("\nPositions:")
