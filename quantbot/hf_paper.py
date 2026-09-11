@@ -285,6 +285,11 @@ def portfolio_value(state: dict, prices: pd.Series) -> float:
 def trade_all(cfg: HFConfig, session: str = "auto", force: bool = False, refresh: bool = True) -> None:
     """Process the session for the live account and every shadow account.
     Failures are isolated per account; the exit code is non-zero if any failed."""
+    import os
+    if not os.environ.get("GITHUB_ACTIONS"):
+        sync_from_remote()
+        print("[note] accounts are traded by GitHub Actions; a local run is only needed if GitHub is down, "
+              "and its result must be committed and pushed or the two copies diverge.")
     failures = 0
     for i, acct in enumerate(Account.all()):
         print(f"\n=== account '{acct.name}' ===")
@@ -468,7 +473,37 @@ def trade(cfg: HFConfig, session: str = "auto", force: bool = False, refresh: bo
         print("Flat (100% cash).")
 
 
-def status(cfg: HFConfig, plot: bool = True, account: str = "live") -> None:
+def sync_from_remote() -> None:
+    """The accounts are traded on GitHub Actions and committed to the repo, so
+    a local checkout is only as fresh as its last pull. Fast-forward from
+    origin if this is a git checkout with a remote; never touch local edits."""
+    import subprocess
+    from .config import PROJECT_ROOT
+
+    def git(*args):
+        return subprocess.run(["git", *args], cwd=PROJECT_ROOT, capture_output=True, text=True, timeout=60)
+
+    if git("rev-parse", "--is-inside-work-tree").returncode != 0 or git("remote", "get-url", "origin").returncode != 0:
+        return
+    if git("status", "--porcelain", "--", "paper_state").stdout.strip():
+        print("[sync] local paper_state has uncommitted changes; not pulling")
+        return
+    fetched = git("fetch", "-q", "origin")
+    if fetched.returncode != 0:
+        print("[sync] could not reach GitHub; showing local copy")
+        return
+    behind = git("rev-list", "--count", "HEAD..origin/main").stdout.strip()
+    if behind and behind != "0":
+        res = git("merge", "-q", "--ff-only", "origin/main")
+        if res.returncode == 0:
+            print(f"[sync] pulled {behind} new commit(s) from GitHub")
+        else:
+            print("[sync] local branch has diverged from origin/main; run `git pull --rebase` manually")
+
+
+def status(cfg: HFConfig, plot: bool = True, account: str = "live", sync: bool = True) -> None:
+    if sync:
+        sync_from_remote()
     acct = Account(account)
     state = load_state(cfg, acct)
     if state["inception"] is None or not acct.history_file.exists():
