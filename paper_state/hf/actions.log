@@ -483,3 +483,48 @@ Last fills (32 total):
 2026-09-11T09:30:00-04:00    QLD SELL -3.828167  89.750  -343.58 0.0687    0.0000
 2026-09-11T09:30:00-04:00    SMH SELL -0.601405 568.828  -342.10 0.0342    0.0000
 2026-09-11T09:30:00-04:00    IWM SELL -1.171203 290.710  -340.48 0.0340    0.0000
+===== 2026-09-11 17:21 UTC run 34627171942 (schedule) =====
+
+=== account 'live' ===
+[data] daily OHLCV: 98 tickers, 2010-01-04 -> 2026-09-10
+[paper] today's open set from the 09:30 1m bar for 94/94 names
+Session 2026-09-11 09:30:00-04:00 already processed (last: 2026-09-11T09:30:00-04:00). Use --force to redo.
+
+=== account 'shadow-wide' ===
+[data] daily OHLCV: 341 tickers, 2010-01-04 -> 2026-09-10
+[paper] today's open set from the 09:30 1m bar for 334/337 names
+Session 2026-09-11 09:30:00-04:00 already processed (last: 2026-09-11T09:30:00-04:00). Use --force to redo.
+Account:      live
+Profile:      growth
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     14
+Equity:       $1,026.38  (start $1,000.00)
+P&L:          $26.38 (+2.64%)
+SPY B&H same period: +0.39%
+Costs paid:   $1.48
+Realized:     MaxDD -0.60% | days 7 (Sharpe shown from 20 days)
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.045% | daily sd 0.466% | positive days 67% | Sharpe 1.32 | MaxDD -12.2% | typical exposure 17%
+  after 7 days: live +2.65% vs expected +0.31% +/- 2.46%  (z = +1.90) -> inside the 2-sigma band
+  live positive days 71% (expected 67%) | live daily sd 0.646% (expected 0.466%)
+  days of live data before a Sharpe of 1.32 is distinguishable from 0 at 2 sigma: ~581 (~2.3 years). Judge shape, not sign, before then.
+
+Flat (100% cash).
+
+Last fills (32 total):
+                  session ticker side    shares   price  dollars   cost  target_w
+2026-09-09T16:00:00-04:00    IWM  BUY  1.162743 290.640   337.94 0.0338    0.3333
+2026-09-10T09:30:00-04:00    IWM SELL -1.162743 288.480  -335.43 0.0335    0.0000
+2026-09-10T16:00:00-04:00    IWM  BUY  1.171613 287.700   337.07 0.0337    0.3333
+2026-09-10T16:00:00-04:00    QLD  BUY  3.829506  88.020   337.07 0.0674    0.3333
+2026-09-10T16:00:00-04:00    SMH  BUY  0.601615 560.280   337.07 0.0337    0.3333
+2026-09-11T09:30:00-04:00    QLD SELL -3.829506  89.750  -343.70 0.0687    0.0000
+2026-09-11T09:30:00-04:00    SMH SELL -0.601615 568.828  -342.22 0.0342    0.0000
+2026-09-11T09:30:00-04:00    IWM SELL -1.171613 290.710  -340.60 0.0341    0.0000
+2026-09-10T16:00:00-04:00    IWM  BUY  1.171203 287.700   336.96 0.0337    0.3333
+2026-09-10T16:00:00-04:00    QLD  BUY  3.828167  88.020   336.96 0.0674    0.3333
+2026-09-10T16:00:00-04:00    SMH  BUY  0.601405 560.280   336.96 0.0337    0.3333
+2026-09-11T09:30:00-04:00    QLD SELL -3.828167  89.750  -343.58 0.0687    0.0000
+2026-09-11T09:30:00-04:00    SMH SELL -0.601405 568.828  -342.10 0.0342    0.0000
+2026-09-11T09:30:00-04:00    IWM SELL -1.171203 290.710  -340.48 0.0340    0.0000
