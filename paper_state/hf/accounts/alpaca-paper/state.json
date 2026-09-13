@@ -1,0 +1,12 @@
+{
+  "type": "alpaca",
+  "profile": "growth",
+  "notional": 10000.0,
+  "starting_cash": 10000.0,
+  "cash": 10000.0,
+  "positions": {},
+  "inception": null,
+  "last_session": null,
+  "sessions_processed": 0,
+  "pending": {}
+}

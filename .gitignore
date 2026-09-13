@@ -9,3 +9,6 @@ paper_state/hf/cron.log
 *.png
 !hf_backtest_growth_daily.png
 .DS_Store
+
+# broker credentials (never commit)
+.alpaca.env

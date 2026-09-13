@@ -1,0 +1,71 @@
+# Submits the broker account's auction orders BEFORE each session:
+#   market-on-open  orders must reach Alpaca by 09:28 ET
+#   market-on-close orders must reach Alpaca by 15:50 ET
+# GitHub cron can start late, so several attempts are scheduled inside each
+# submission window (08:45-09:28 and 15:10-15:50 ET); `hf alpaca submit` is
+# idempotent and exits quietly outside the windows. Both EDT and EST offsets
+# are listed; the ones that land outside a window are harmless no-ops.
+#
+# Fills are read and recorded by the regular paper-sessions workflow
+# (`hf trade`) after each session.
+
+name: alpaca-submit
+
+on:
+  schedule:
+    - cron: "0 13 * * 1-5"    # 09:00 EDT (open)          / 08:00 EST no-op
+    - cron: "12 13 * * 1-5"   # 09:12 EDT (open retry)    / 08:12 EST no-op
+    - cron: "0 14 * * 1-5"    # 09:00 EST (open)          / 10:00 EDT no-op
+    - cron: "12 14 * * 1-5"   # 09:12 EST (open retry)    / 10:12 EDT no-op
+    - cron: "20 19 * * 1-5"   # 15:20 EDT (close)         / 14:20 EST no-op
+    - cron: "34 19 * * 1-5"   # 15:34 EDT (close retry)   / 14:34 EST no-op
+    - cron: "20 20 * * 1-5"   # 15:20 EST (close)         / 16:20 EDT no-op
+    - cron: "34 20 * * 1-5"   # 15:34 EST (close retry)   / 16:34 EDT no-op
+  workflow_dispatch:
+
+concurrency:
+  group: paper-sessions      # shared with paper-sessions.yml so pushes never race
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Restore market-data cache
+        uses: actions/cache@v4
+        with:
+          path: data_cache/ohlcv_1d.parquet
+          key: ohlcv-1d-${{ github.run_id }}
+          restore-keys: ohlcv-1d-
+      - name: Submit auction orders
+        env:
+          MPLCONFIGDIR: /tmp/mpl
+          TZ: America/New_York
+          ALPACA_KEY_ID: ${{ secrets.ALPACA_KEY_ID }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          ALPACA_PAPER: ${{ secrets.ALPACA_PAPER || 'true' }}
+        run: |
+          echo "===== $(date -u +'%Y-%m-%d %H:%M UTC') alpaca-submit run ${{ github.run_id }} =====" >> paper_state/hf/actions.log
+          set -o pipefail
+          python run.py hf alpaca submit --session auto 2>&1 | tee -a paper_state/hf/actions.log
+      - name: Commit pending orders
+        if: always()
+        run: |
+          git config user.name "quantbot"
+          git config user.email "quantbot@users.noreply.github.com"
+          git add paper_state
+          git diff --cached --quiet && echo "no state change" || git commit -m "alpaca: submit $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git pull --rebase --autostash origin ${{ github.ref_name }} || true
+          git push origin HEAD:${{ github.ref_name }}

@@ -144,7 +144,18 @@ def cmd_hf(args: argparse.Namespace) -> None:
     elif args.hf_cmd == "status":
         hf_paper.status(cfg, plot=not args.no_plot, account=args.account or "live")
     elif args.hf_cmd == "reset":
-        hf_paper.reset(cfg, capital=args.capital, profile=args.profile, account=args.account or "live")
+        hf_paper.reset(cfg, capital=args.capital, profile=args.profile, account=args.account or "live",
+                       kind=args.type)
+    elif args.hf_cmd == "alpaca":
+        from quantbot import broker_alpaca
+        acct = hf_paper.Account(args.account)
+        if args.alpaca_cmd == "check":
+            broker_alpaca.check_connection()
+        elif args.alpaca_cmd == "submit":
+            session = args.session if args.session != "auto" else broker_alpaca.auto_session()
+            broker_alpaca.submit(acct, cfg, session=session)
+        elif args.alpaca_cmd == "reconcile":
+            broker_alpaca.reconcile_now(acct, cfg)
     elif args.hf_cmd == "schedule":
         from quantbot.schedule import install_launchd, uninstall_launchd, show_schedule
         if args.install:
@@ -180,6 +191,15 @@ def main() -> None:
     hr = hsub.add_parser("reset", help="reset (or create) a paper account")
     hr.add_argument("--capital", type=float, default=None)
     hr.add_argument("--account", default=None, help="omit for the live account; any other name = shadow account")
+    hr.add_argument("--type", choices=["sim", "alpaca"], default="sim",
+                    help="sim = fills at official prints; alpaca = real orders via the Alpaca API")
+    ha = hsub.add_parser("alpaca", help="broker execution account (Alpaca)")
+    asub = ha.add_subparsers(dest="alpaca_cmd", required=True)
+    asub.add_parser("check", help="verify credentials and account status")
+    asm = asub.add_parser("submit", help="send MOO/MOC orders for the coming session")
+    asm.add_argument("--session", choices=["auto", "open", "close"], default="auto")
+    asub.add_parser("reconcile", help="read fills for pending orders and record slippage")
+    ha.add_argument("--account", default="alpaca-paper")
     hr.add_argument("--profile", choices=sorted(PROFILES), default=None)
     hsc = hsub.add_parser("schedule", help="show/install launchd jobs for the three daily sessions")
     hsc.add_argument("--install", action="store_true")

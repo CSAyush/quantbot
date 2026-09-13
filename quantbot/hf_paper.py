@@ -90,11 +90,16 @@ def save_state(state: dict, acct: Account) -> None:
 
 
 def reset(cfg: HFConfig, capital: float | None = None, profile: str | None = None,
-          account: str = "live") -> None:
+          account: str = "live", kind: str = "sim") -> None:
     acct = Account(account)
     if capital:
         cfg.starting_cash = capital
-    state = _blank_state(cfg, profile)
+    if kind == "alpaca":
+        from .broker_alpaca import _blank_state as alpaca_blank
+        from .strategies.hf_ensemble import DEFAULT_PROFILE
+        state = alpaca_blank(cfg.starting_cash, profile or DEFAULT_PROFILE)
+    else:
+        state = _blank_state(cfg, profile)
     save_state(state, acct)
     for f in (acct.trades_file, acct.history_file):
         if f.exists():
@@ -294,6 +299,12 @@ def trade_all(cfg: HFConfig, session: str = "auto", force: bool = False, refresh
     for i, acct in enumerate(Account.all()):
         print(f"\n=== account '{acct.name}' ===")
         try:
+            if load_state(cfg, acct).get("type") == "alpaca":
+                # Broker account: orders were submitted before the auction by
+                # `hf alpaca submit`; here we read the fills and record slippage.
+                from .broker_alpaca import reconcile_now
+                reconcile_now(acct, cfg, refresh=refresh)
+                continue
             # Every account refreshes: partial-day rows are never cached, so a
             # later account must not depend on what an earlier one fetched.
             trade(cfg, session=session, force=force, refresh=refresh, account=acct.name)

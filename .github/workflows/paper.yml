@@ -58,6 +58,9 @@ jobs:
         env:
           MPLCONFIGDIR: /tmp/mpl
           TZ: America/New_York
+          ALPACA_KEY_ID: ${{ secrets.ALPACA_KEY_ID }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          ALPACA_PAPER: ${{ secrets.ALPACA_PAPER || 'true' }}
         # Output is appended to a committed log so every run is readable from
         # the repo. A non-zero exit ("no price yet") marks the run red; the
         # scheduled retry processes the session once Yahoo has the prints.
