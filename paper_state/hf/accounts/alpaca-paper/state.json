@@ -3,38 +3,14 @@
   "profile": "growth",
   "notional": 10000.0,
   "starting_cash": 10000.0,
-  "cash": 10000.0,
-  "positions": {},
-  "inception": null,
-  "last_session": null,
-  "sessions_processed": 0,
-  "pending": {
-    "qb-20260914-1600-IWM": {
-      "symbol": "IWM",
-      "side": "buy",
-      "qty": 12,
-      "est_price": 288.53,
-      "target_w": 0.3333333333333333,
-      "order_id": "6c67f5cd-bc3c-4d67-bcfb-a95590e02edd",
-      "stamp": "2026-09-14T16:00:00-04:00"
-    },
-    "qb-20260914-1600-QLD": {
-      "symbol": "QLD",
-      "side": "buy",
-      "qty": 38,
-      "est_price": 88.7,
-      "target_w": 0.3333333333333333,
-      "order_id": "cd8aec63-d9d2-4cdd-ab0b-0ffbb80e41d8",
-      "stamp": "2026-09-14T16:00:00-04:00"
-    },
-    "qb-20260914-1600-SMH": {
-      "symbol": "SMH",
-      "side": "buy",
-      "qty": 6,
-      "est_price": 544.64,
-      "target_w": 0.3333333333333333,
-      "order_id": "c626500f-4f4a-4036-8af7-27c6c4555793",
-      "stamp": "2026-09-14T16:00:00-04:00"
-    }
-  }
+  "cash": 3794.390000000001,
+  "positions": {
+    "IWM": 7.0,
+    "QLD": 23.0,
+    "SMH": 4.0
+  },
+  "inception": "2026-09-14T16:00:00-04:00",
+  "last_session": "2026-09-14T16:00:00-04:00",
+  "sessions_processed": 1,
+  "pending": {}
 }
