@@ -901,3 +901,5 @@ Last fills (36 total):
 ERROR: 18:32 ET is past the close submission deadline 15:50:00; not submitting
 ===== 2026-09-14 22:39 UTC alpaca-submit run 34905122682 =====
 ERROR: 18:39 ET is past the close submission deadline 15:50:00; not submitting
+===== 2026-09-14 23:08 UTC alpaca-submit run 34907447100 =====
+ERROR: 19:08 ET is past the close submission deadline 15:50:00; not submitting
