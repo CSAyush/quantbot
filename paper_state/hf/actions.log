@@ -899,3 +899,5 @@ Last fills (36 total):
 2026-09-14T09:30:00-04:00    QLD SELL -3.818890  86.635  -330.85 0.0662    0.0000
 ===== 2026-09-14 22:32 UTC alpaca-submit run 34904579546 =====
 ERROR: 18:32 ET is past the close submission deadline 15:50:00; not submitting
+===== 2026-09-14 22:39 UTC alpaca-submit run 34905122682 =====
+ERROR: 18:39 ET is past the close submission deadline 15:50:00; not submitting
