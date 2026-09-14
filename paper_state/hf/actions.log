@@ -839,3 +839,10 @@ Last fills (36 total):
 2026-09-14T09:30:00-04:00    QLD SELL -3.818890  86.635  -330.85 0.0662    0.0000
 ===== 2026-09-14 19:04 UTC alpaca-submit run 34884577652 =====
 15:04 ET is before the close submission window (15:10:00-15:50:00); nothing to do.
+===== 2026-09-14 19:18 UTC alpaca-submit run 34885996474 =====
+[data] daily OHLCV: 98 tickers, 2010-01-04 -> 2026-09-11
+[alpaca] live prices for 94/94 names
+2026-09-14 16:00 SUBMIT close: 3 cls orders (equity est $10,000.00, live px for 94 names)
+   IWM    buy    12 sh @~288.53  target 0.333
+   QLD    buy    38 sh @~88.70  target 0.333
+   SMH    buy     6 sh @~544.64  target 0.333
