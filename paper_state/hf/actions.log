@@ -1197,3 +1197,5 @@ Last fills (42 total):
 2026-09-15T09:30:00-04:00    IWM SELL -1.172878 286.620  -336.17 0.0336    0.0000
 ===== 2026-09-15 22:16 UTC alpaca-submit run 35030108803 =====
 ERROR: 18:16 ET is past the close submission deadline 15:50:00; not submitting
+===== 2026-09-15 22:24 UTC alpaca-submit run 35030754634 =====
+ERROR: 18:24 ET is past the close submission deadline 15:50:00; not submitting
