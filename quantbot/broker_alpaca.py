@@ -41,9 +41,12 @@ from .data import ET, MarketData, daily_session_prices
 TZ = zoneinfo.ZoneInfo(ET)
 ENV_FILE = PROJECT_ROOT / ".alpaca.env"
 CLIENT_ID_PREFIX = "qb"
-# Alpaca accepts MOO until 09:28 ET and MOC until 15:50 ET. Windows start
-# early enough that a late GitHub cron still lands inside them.
-SUBMIT_WINDOWS = {"open": (dt.time(8, 45), dt.time(9, 28)), "close": (dt.time(15, 10), dt.time(15, 50))}
+# Alpaca accepts MOO until 09:28 ET and MOC from the open until 15:50 ET.
+# The close window starts after the open auction so the day's exits are done
+# (Alpaca rejects a buy while a sell is open on the same symbol). A close
+# estimate made before REFINE_FROM is replaced by a later in-window run.
+SUBMIT_WINDOWS = {"open": (dt.time(8, 45), dt.time(9, 28)), "close": (dt.time(9, 40), dt.time(15, 50))}
+REFINE_FROM = dt.time(15, 10)
 
 
 # --------------------------------------------------------------------------- credentials / clients
@@ -179,6 +182,11 @@ def submit(acct, cfg: HFConfig, session: str, now: dt.datetime | None = None) ->
               f"({window_start}-{deadline}); nothing to do.")
         return
     if now_ts.time() >= deadline:
+        late_min = (now_ts - now_ts.replace(hour=deadline.hour, minute=deadline.minute, second=0)).total_seconds() / 60
+        if late_min > 15:
+            # A stray cron (GitHub schedules run hours late); the evening queue covers the next session.
+            print(f"{now_ts.strftime('%H:%M')} ET is well past the {session} window; nothing to do.")
+            return
         msg = f"ERROR: {now_ts.strftime('%H:%M')} ET is past the {session} submission deadline {deadline}; not submitting"
         print(msg); _log(msg, acct)
         raise SystemExit(2)
@@ -187,18 +195,40 @@ def submit(acct, cfg: HFConfig, session: str, now: dt.datetime | None = None) ->
     params = EnsembleParams.from_profile(state["profile"])
     cfg = config_for(params)
     md = MarketData(cfg, refresh=True, intraday=False)
+    if session == "close":
+        # Book this morning's exits first so cash and positions are current.
+        from .hf_paper import _inject_live_prints
+        _inject_live_prints(md, now_ts)
+        earlier = [v for v in state.get("pending", {}).values()
+                   if pd.Timestamp(v["stamp"]) < now_ts.normalize() + pd.Timedelta(hours=16)]
+        if earlier:
+            reconcile(acct, cfg, md, now=now_ts)
+            state = load_state(cfg, acct)
     stamp, target, est = _estimate_session_targets(md, session, now_ts, params)
-    # Idempotent: GitHub may run the submit job more than once per session.
-    if any(p["stamp"] == stamp.isoformat() for p in state.get("pending", {}).values()):
-        print(f"[alpaca] orders for {stamp} already submitted; nothing to do")
-        return
     if state.get("last_session") and pd.Timestamp(state["last_session"]) >= stamp:
         print(f"[alpaca] session {stamp} already reconciled; nothing to do")
         return
-    if state.get("pending"):
-        print(f"[alpaca] warning: {len(state['pending'])} unreconciled orders from a previous session; reconcile first")
-
     client = trading_client()
+    same = {k: v for k, v in state.get("pending", {}).items() if v["stamp"] == stamp.isoformat()}
+    if same:
+        # Idempotent, with one exception: a close estimate made early in the
+        # day is replaced once by a run that lands in the refinement window.
+        est_times = [pd.Timestamp(v["est_time"]).tz_convert(TZ).time() for v in same.values() if v.get("est_time")]
+        refine = (session == "close" and now_ts.time() >= REFINE_FROM
+                  and est_times and all(t < REFINE_FROM for t in est_times))
+        if not refine:
+            print(f"[alpaca] orders for {stamp} already submitted; nothing to do")
+            return
+        for coid, v in same.items():
+            try:
+                client.cancel_order_by_id(v["order_id"])
+            except Exception as exc:  # noqa: BLE001
+                print(f"[alpaca] could not cancel {v['symbol']} order: {exc}")
+            state["pending"].pop(coid, None)
+        print(f"[alpaca] replaced {len(same)} early close estimate(s) with a {now_ts.strftime('%H:%M')} estimate")
+    other = [v for v in state.get("pending", {}).values() if v["stamp"] != stamp.isoformat()]
+    if other:
+        print(f"[alpaca] note: {len(other)} order(s) pending for other sessions")
     # Broker truth for current holdings of the symbols we trade.
     held = {from_alpaca(p.symbol): float(p.qty) for p in client.get_all_positions()}
     equity = state["cash"] + sum(q * float(est.get(s, np.nan)) for s, q in held.items() if not np.isnan(est.get(s, np.nan)))
@@ -225,7 +255,8 @@ def submit(acct, cfg: HFConfig, session: str, now: dt.datetime | None = None) ->
             continue
         orders.append((sym, side.value, abs(delta), px, float(target[sym])))
         pending[coid] = {"symbol": sym, "side": side.value, "qty": abs(delta), "est_price": px,
-                         "target_w": float(target[sym]), "order_id": str(o.id), "stamp": stamp.isoformat()}
+                         "target_w": float(target[sym]), "order_id": str(o.id), "stamp": stamp.isoformat(),
+                         "est_time": now_ts.isoformat()}
 
     state["pending"].update(pending)
     save_state(state, acct)
@@ -325,6 +356,72 @@ def reconcile(acct, cfg: HFConfig, md: MarketData, now: dt.datetime | None = Non
               .to_string(index=False))
 
 
+def queue_next_session(acct, cfg: HFConfig, now: dt.datetime | None = None) -> None:
+    """Evening job (19:00 ET -> 08:30 ET): Alpaca queues MOO/MOC orders
+    submitted after 19:00 ET for the next session, so this is the
+    timing-proof baseline for the exits: queues market-on-open SELLS of every
+    held position (the overnight sleeve always exits at the open). Close
+    entries are placed during the day by `submit("close")` (09:40-15:50 ET),
+    and reversal-sleeve entries by an in-window morning run."""
+    from alpaca.trading.enums import OrderSide, TimeInForce
+    from alpaca.trading.requests import MarketOrderRequest
+    from .calendar import is_trading_day
+    from .hf_paper import _inject_live_prints, _log, load_state, save_state
+    from .strategies.hf_ensemble import EnsembleParams, config_for
+
+    now_ts = pd.Timestamp(now or dt.datetime.now(tz=TZ)).tz_convert(TZ)
+    if not (now_ts.time() >= dt.time(19, 0) or now_ts.time() < dt.time(8, 30)):
+        print(f"{now_ts.strftime('%H:%M')} ET is outside the evening queue window (19:00-08:30); nothing to do.")
+        return
+    # Next trading day.
+    d = now_ts.normalize() + (pd.Timedelta(days=1) if now_ts.time() >= dt.time(19, 0) else pd.Timedelta(0))
+    while not is_trading_day(d):
+        d += pd.Timedelta(days=1)
+    open_stamp = d + pd.Timedelta(hours=9, minutes=30)
+    state = load_state(cfg, acct)
+    params = EnsembleParams.from_profile(state["profile"])
+    cfg = config_for(params)
+    md = MarketData(cfg, refresh=True, intraday=False)
+    _inject_live_prints(md, now_ts)
+    if state.get("pending"):
+        reconcile(acct, cfg, md, now=now_ts)
+        state = load_state(cfg, acct)
+    if any(v["stamp"] == open_stamp.isoformat() for v in state.get("pending", {}).values()):
+        print(f"[alpaca] orders for {d.date()} already queued; nothing to do")
+        return
+
+    client = trading_client()
+    held = {from_alpaca(p.symbol): float(p.qty) for p in client.get_all_positions()}
+    last_close_stamp = md.px_daily.index[md.px_daily.index.hour == 16][-1]
+    close_px = md.px_daily.loc[last_close_stamp]
+    equity = state["cash"] + sum(q * float(close_px.get(s, 0.0)) for s, q in held.items())
+
+    pending, lines = {}, []
+    # (a) exits at the open
+    for sym, q in held.items():
+        if q <= 0:
+            continue
+        coid = f"{CLIENT_ID_PREFIX}-{open_stamp.strftime('%Y%m%d-%H%M')}-{sym}"
+        try:
+            o = client.submit_order(MarketOrderRequest(symbol=to_alpaca(sym), qty=int(q), side=OrderSide.SELL,
+                                                       time_in_force=TimeInForce.OPG, client_order_id=coid))
+        except Exception as exc:  # noqa: BLE001
+            print(f"[alpaca] OPG sell rejected {sym}: {exc}")
+            continue
+        pending[coid] = {"symbol": sym, "side": "sell", "qty": int(q), "est_price": float(close_px.get(sym, np.nan)),
+                         "target_w": 0.0, "order_id": str(o.id), "stamp": open_stamp.isoformat(), "queued_estimate": True}
+        lines.append(f"   {sym:<6} SELL {int(q):>4} sh  MOO {d.date()}")
+    # Close entries cannot be queued alongside the exits (Alpaca rejects a buy
+    # while a sell is open on the same symbol); `submit("close")` places them
+    # any time between 09:40 and 15:50 ET.
+    state.setdefault("pending", {}).update(pending)
+    save_state(state, acct)
+    msg = f"QUEUE for {d.date()}: {len(pending)} orders (equity est ${equity:,.2f})"
+    print(msg); _log(msg, acct)
+    for ln in lines:
+        print(ln)
+
+
 def reconcile_now(acct, cfg: HFConfig, now: dt.datetime | None = None, refresh: bool = True) -> None:
     """Build market data with today's official prints and reconcile."""
     from .hf_paper import _inject_live_prints, load_state
@@ -342,8 +439,21 @@ def reconcile_now(acct, cfg: HFConfig, now: dt.datetime | None = None, refresh: 
 
 
 def auto_session(now: dt.datetime | None = None) -> str:
+    """Which action the wall clock calls for: evening queue, open refinement,
+    or close refinement."""
     now_ts = pd.Timestamp(now or dt.datetime.now(tz=TZ)).tz_convert(TZ)
-    return "open" if now_ts.time() < dt.time(12, 0) else "close"
+    t = now_ts.time()
+    if t >= dt.time(19, 0) or t < dt.time(8, 30):
+        return "queue"
+    return "open" if t < dt.time(12, 0) else "close"
+
+
+def run_auto(acct, cfg: HFConfig, session: str = "auto", now: dt.datetime | None = None) -> None:
+    session = auto_session(now) if session == "auto" else session
+    if session == "queue":
+        queue_next_session(acct, cfg, now=now)
+    else:
+        submit(acct, cfg, session=session, now=now)
 
 
 def check_connection() -> None:

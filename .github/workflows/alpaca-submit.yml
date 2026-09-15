@@ -1,26 +1,37 @@
-# Submits the broker account's auction orders BEFORE each session:
-#   market-on-open  orders must reach Alpaca by 09:28 ET
-#   market-on-close orders must reach Alpaca by 15:50 ET
-# GitHub cron can start late, so several attempts are scheduled inside each
-# submission window (08:45-09:28 and 15:10-15:50 ET); `hf alpaca submit` is
-# idempotent and exits quietly outside the windows. Both EDT and EST offsets
-# are listed; the ones that land outside a window are harmless no-ops.
+# Places the broker account's auction orders. Two mechanisms:
 #
-# Fills are read and recorded by the regular paper-sessions workflow
-# (`hf trade`) after each session.
+# 1. EVENING QUEUE (the reliable baseline). Alpaca queues market-on-open and
+#    market-on-close orders submitted after 19:00 ET for the next session, so
+#    the evening runs queue tomorrow's open exits and close entries. GitHub
+#    cron has been observed 3-6 hours late; anything between 19:00 ET and
+#    08:30 ET works, so several evening/night attempts are scheduled.
+# 2. IN-WINDOW REFINEMENT (opportunistic). If a run lands inside 08:45-09:28
+#    or 15:10-15:50 ET, it replaces the evening's stale-signal estimate with
+#    one from live prices and can add reversal-sleeve entries.
+#
+# `hf alpaca submit --session auto` picks the action from the wall clock and
+# is idempotent; runs outside every window exit quietly. Fills are read and
+# recorded by the paper-sessions workflow (`hf trade`) after each session.
 
 name: alpaca-submit
 
 on:
   schedule:
+    - cron: "15 23 * * 1-5"   # 19:15 EDT / 18:15 EST(no-op)  evening queue
+    - cron: "15 0 * * 2-6"    # 20:15 EDT / 19:15 EST         evening queue
+    - cron: "30 2 * * 2-6"    # 22:30 EDT / 21:30 EST         evening queue retry
+    - cron: "0 6 * * 1-5"     # 02:00 EDT / 01:00 EST         night retry
     - cron: "0 13 * * 1-5"    # 09:00 EDT (open)          / 08:00 EST no-op
     - cron: "12 13 * * 1-5"   # 09:12 EDT (open retry)    / 08:12 EST no-op
     - cron: "0 14 * * 1-5"    # 09:00 EST (open)          / 10:00 EDT no-op
     - cron: "12 14 * * 1-5"   # 09:12 EST (open retry)    / 10:12 EDT no-op
-    - cron: "20 19 * * 1-5"   # 15:20 EDT (close)         / 14:20 EST no-op
-    - cron: "34 19 * * 1-5"   # 15:34 EDT (close retry)   / 14:34 EST no-op
-    - cron: "20 20 * * 1-5"   # 15:20 EST (close)         / 16:20 EDT no-op
-    - cron: "34 20 * * 1-5"   # 15:34 EST (close retry)   / 16:34 EDT no-op
+    - cron: "30 14 * * 1-5"   # 10:30 EDT / 09:30 EST     close entries (early estimate)
+    - cron: "0 16 * * 1-5"    # 12:00 EDT / 11:00 EST     close entries
+    - cron: "30 17 * * 1-5"   # 13:30 EDT / 12:30 EST     close entries
+    - cron: "20 19 * * 1-5"   # 15:20 EDT (close refine)  / 14:20 EST close entries
+    - cron: "34 19 * * 1-5"   # 15:34 EDT (close refine)  / 14:34 EST close entries
+    - cron: "20 20 * * 1-5"   # 15:20 EST (close refine)  / 16:20 EDT no-op
+    - cron: "34 20 * * 1-5"   # 15:34 EST (close refine)  / 16:34 EDT no-op
   workflow_dispatch:
 
 concurrency:

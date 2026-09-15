@@ -148,6 +148,36 @@ python3 run.py hf schedule --install                      # launchd: 09:33 and 1
 - `hf trade` is idempotent (a session is processed once). If the machine was
   asleep, launchd runs the job on wake; the fill still uses the session print
   and the log notes how late it ran.
+### Broker execution account: `alpaca-paper` (`quantbot/broker_alpaca.py`)
+
+Third account, real orders through Alpaca's API against its paper (fake
+money) account, $10,000 notional in whole shares. Unlike the simulated
+accounts it must submit auction orders *before* the auction, so it measures
+the one thing the simulation cannot: the gap between the real fill and the
+official print (`slippage_bps` in its `trades.csv`).
+
+How orders get placed (`hf alpaca submit --session auto`, `.github/workflows/alpaca-submit.yml`):
+- **Evening (19:00 ET onward)**: queue market-on-open SELLS of everything held
+  (the overnight sleeve always exits at the open). Alpaca accepts MOO orders
+  submitted after 19:00 ET for the next open, so this survives any scheduler
+  delay.
+- **Daytime (09:40-15:50 ET)**: submit market-on-close BUYS for tonight's
+  overnight targets, estimated from live prices; a run landing after 15:10
+  replaces an earlier estimate. Alpaca rejects a buy while a sell is open on
+  the same symbol, which is why entries cannot be queued with the exits.
+- **Morning (08:45-09:28 ET), opportunistic**: reversal-sleeve entries need the
+  opening gap, so they are only placed if a run lands in this window.
+- Fills are reconciled by the paper-sessions runs (`hf trade`).
+
+Findings so far: GitHub's cron ran 3-6 hours late every day of the first
+week (hence the evening-queue design); Alpaca's *paper* simulator only
+partially fills market-on-close orders (real closing auctions fill in full);
+first measured slippage vs the official close: -3.2 bp average (favourable).
+
+Credentials: `.alpaca.env` locally (gitignored) and `ALPACA_KEY_ID` /
+`ALPACA_SECRET_KEY` repository secrets for Actions. Switching to a live
+account is the same code with live keys and `ALPACA_PAPER=false`.
+
 ### Hosting: GitHub Actions (no laptop required)
 
 `.github/workflows/paper.yml` runs `hf trade --session auto` on GitHub's

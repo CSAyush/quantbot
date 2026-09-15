@@ -12,5 +12,36 @@
   "inception": "2026-09-14T16:00:00-04:00",
   "last_session": "2026-09-14T16:00:00-04:00",
   "sessions_processed": 1,
-  "pending": {}
+  "pending": {
+    "qb-20260916-0930-IWM": {
+      "symbol": "IWM",
+      "side": "sell",
+      "qty": 7,
+      "est_price": 285.1400146484375,
+      "target_w": 0.0,
+      "order_id": "f7bc3373-60d9-4c35-933b-e9f9d896fe06",
+      "stamp": "2026-09-16T09:30:00-04:00",
+      "queued_estimate": true
+    },
+    "qb-20260916-0930-QLD": {
+      "symbol": "QLD",
+      "side": "sell",
+      "qty": 23,
+      "est_price": 86.95999908447266,
+      "target_w": 0.0,
+      "order_id": "fd4ed6b0-d741-4b18-bd4f-f4561a1a551f",
+      "stamp": "2026-09-16T09:30:00-04:00",
+      "queued_estimate": true
+    },
+    "qb-20260916-0930-SMH": {
+      "symbol": "SMH",
+      "side": "sell",
+      "qty": 4,
+      "est_price": 542.1099853515625,
+      "target_w": 0.0,
+      "order_id": "33642e61-77c3-45d5-bc68-10242324ef70",
+      "stamp": "2026-09-16T09:30:00-04:00",
+      "queued_estimate": true
+    }
+  }
 }

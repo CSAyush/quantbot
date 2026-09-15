@@ -152,8 +152,7 @@ def cmd_hf(args: argparse.Namespace) -> None:
         if args.alpaca_cmd == "check":
             broker_alpaca.check_connection()
         elif args.alpaca_cmd == "submit":
-            session = args.session if args.session != "auto" else broker_alpaca.auto_session()
-            broker_alpaca.submit(acct, cfg, session=session)
+            broker_alpaca.run_auto(acct, cfg, session=args.session)
         elif args.alpaca_cmd == "reconcile":
             broker_alpaca.reconcile_now(acct, cfg)
     elif args.hf_cmd == "schedule":
@@ -197,7 +196,8 @@ def main() -> None:
     asub = ha.add_subparsers(dest="alpaca_cmd", required=True)
     asub.add_parser("check", help="verify credentials and account status")
     asm = asub.add_parser("submit", help="send MOO/MOC orders for the coming session")
-    asm.add_argument("--session", choices=["auto", "open", "close"], default="auto")
+    asm.add_argument("--session", choices=["auto", "queue", "open", "close"], default="auto",
+                     help="auto picks by wall clock: queue (19:00-08:30 ET), open window, close window")
     asub.add_parser("reconcile", help="read fills for pending orders and record slippage")
     ha.add_argument("--account", default="alpaca-paper")
     hr.add_argument("--profile", choices=sorted(PROFILES), default=None)
