@@ -10,38 +10,38 @@
     "SMH": 4.0
   },
   "inception": "2026-09-14T16:00:00-04:00",
-  "last_session": "2026-09-14T16:00:00-04:00",
-  "sessions_processed": 1,
+  "last_session": "2026-09-16T09:30:00-04:00",
+  "sessions_processed": 2,
   "pending": {
-    "qb-20260916-0930-IWM": {
+    "qb-20260916-1600-IWM": {
       "symbol": "IWM",
-      "side": "sell",
-      "qty": 7,
-      "est_price": 285.1400146484375,
-      "target_w": 0.0,
-      "order_id": "f7bc3373-60d9-4c35-933b-e9f9d896fe06",
-      "stamp": "2026-09-16T09:30:00-04:00",
-      "queued_estimate": true
+      "side": "buy",
+      "qty": 5,
+      "est_price": 286.55,
+      "target_w": 0.3333333333333333,
+      "order_id": "ab8ba3da-54d6-43b4-bd40-8e5674195d41",
+      "stamp": "2026-09-16T16:00:00-04:00",
+      "est_time": "2026-09-16T13:23:15.810033-04:00"
     },
-    "qb-20260916-0930-QLD": {
+    "qb-20260916-1600-QLD": {
       "symbol": "QLD",
-      "side": "sell",
-      "qty": 23,
-      "est_price": 86.95999908447266,
-      "target_w": 0.0,
-      "order_id": "fd4ed6b0-d741-4b18-bd4f-f4561a1a551f",
-      "stamp": "2026-09-16T09:30:00-04:00",
-      "queued_estimate": true
+      "side": "buy",
+      "qty": 15,
+      "est_price": 88.15,
+      "target_w": 0.3333333333333333,
+      "order_id": "ad304284-f92c-4cbe-94fe-e254e5bf039a",
+      "stamp": "2026-09-16T16:00:00-04:00",
+      "est_time": "2026-09-16T13:23:15.810033-04:00"
     },
-    "qb-20260916-0930-SMH": {
+    "qb-20260916-1600-SMH": {
       "symbol": "SMH",
-      "side": "sell",
-      "qty": 4,
-      "est_price": 542.1099853515625,
-      "target_w": 0.0,
-      "order_id": "33642e61-77c3-45d5-bc68-10242324ef70",
-      "stamp": "2026-09-16T09:30:00-04:00",
-      "queued_estimate": true
+      "side": "buy",
+      "qty": 2,
+      "est_price": 549.66,
+      "target_w": 0.3333333333333333,
+      "order_id": "3a40f9d6-4b46-4041-9363-3fa86f6bdfea",
+      "stamp": "2026-09-16T16:00:00-04:00",
+      "est_time": "2026-09-16T13:23:15.810033-04:00"
     }
   }
 }
