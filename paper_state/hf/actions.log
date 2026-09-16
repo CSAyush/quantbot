@@ -1600,3 +1600,9 @@ Last fills (48 total):
 18:16 ET is well past the close window; nothing to do.
 ===== 2026-09-16 22:58 UTC alpaca-submit run 35160099830 =====
 18:58 ET is well past the close window; nothing to do.
+===== 2026-09-16 23:10 UTC alpaca-submit run 35161075020 =====
+[data] daily OHLCV: 98 tickers, 2010-01-04 -> 2026-09-16
+QUEUE for 2026-09-17: 3 orders (equity est $9,964.15)
+   IWM    SELL    7 sh  MOO 2026-09-17
+   QLD    SELL   23 sh  MOO 2026-09-17
+   SMH    SELL    4 sh  MOO 2026-09-17
