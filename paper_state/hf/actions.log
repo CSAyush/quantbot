@@ -1592,3 +1592,5 @@ Last fills (48 total):
 [alpaca] order rejected QLD buy 15: {"code":40010001,"message":"client_order_id must be unique"}
 [alpaca] order rejected SMH buy 2: {"code":40010001,"message":"client_order_id must be unique"}
 2026-09-16 16:00 SUBMIT close: 0 cls orders (equity est $9,922.53, live px for 94 names)
+===== 2026-09-16 20:17 UTC alpaca-submit run 35145645593 =====
+16:17 ET is well past the close window; nothing to do.
