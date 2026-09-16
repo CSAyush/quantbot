@@ -1398,3 +1398,8 @@ Last fills (45 total):
    IWM    buy     5 sh @~286.55  target 0.333
    QLD    buy    15 sh @~88.15  target 0.333
    SMH    buy     2 sh @~549.66  target 0.333
+===== 2026-09-16 17:37 UTC alpaca-submit run 35129291542 =====
+[data] daily OHLCV: 98 tickers, 2010-01-04 -> 2026-09-15
+[paper] today's open set from the 09:30 1m bar for 94/94 names
+[alpaca] live prices for 94/94 names
+[alpaca] orders for 2026-09-16 16:00:00-04:00 already submitted; nothing to do
