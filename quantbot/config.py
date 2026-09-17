@@ -54,6 +54,14 @@ from .universe_wide import HF_STOCKS_WIDE  # noqa: E402
 # Additional liquid ETFs used by the cross-asset / sector sleeves research.
 HF_EXTRA_ETFS = ["XLC", "XLRE", "XLB", "IEI", "TIP", "LQD", "USO", "UNG", "DBC", "VNQ", "FXI", "EWJ", "KRE", "XBI", "IBB", "ARKK"]
 
+# Round-3 research ETFs (Sharpe push): inverse funds (long-only implementation
+# of short index exposure in a cash account), single-country / regional funds
+# whose home market is closed during US hours, commodity equities, low-vol
+# factor funds. Opt in via HFConfig.research().
+HF_INVERSE_ETFS = ["SH", "PSQ", "RWM", "SDS", "QID"]
+HF_INTL_ETFS = ["EWZ", "EWG", "EWU", "EWY", "EWT", "INDA", "VGK", "VWO", "EWC", "EWA", "EWH"]
+HF_RESEARCH_ETFS = HF_INVERSE_ETFS + HF_INTL_ETFS + ["GDX", "XOP", "USMV", "SPLV"]
+
 # Non-tradable auxiliary series (regime signals + the 13-week T-bill yield,
 # which is what idle cash actually earned in each year of the backtest).
 HF_AUX = ["^VIX", "^VIX3M", "^VIX9D", "^IRX"]
@@ -64,6 +72,7 @@ HF_AUX = ["^VIX", "^VIX3M", "^VIX9D", "^IRX"]
 # fills pay no spread at all. These defaults are therefore 2-5x conservative.
 COST_BPS_ETF = 1.0
 COST_BPS_LEVERAGED_ETF = 2.0
+COST_BPS_RESEARCH_ETF = 2.0   # inverse / single-country / factor ETFs: 1-4 bp spreads
 COST_BPS_STOCK = 2.5          # the 70 mega-caps in HF_STOCKS
 COST_BPS_STOCK_WIDE = 5.0     # anything outside them (mid-liquidity S&P names)
 
@@ -71,6 +80,8 @@ COST_BPS_STOCK_WIDE = 5.0     # anything outside them (mid-liquidity S&P names)
 def cost_bps_for(ticker: str) -> float:
     if ticker in HF_LEVERAGED_ETFS:
         return COST_BPS_LEVERAGED_ETF
+    if ticker in HF_RESEARCH_ETFS:
+        return COST_BPS_RESEARCH_ETF
     if ticker in HF_ETFS or ticker in HF_EXTRA_ETFS:
         return COST_BPS_ETF
     if ticker in HF_STOCKS:
@@ -160,4 +171,11 @@ class HFConfig:
     def wide(cls) -> "HFConfig":
         """Research config: 300-name stock universe plus extra ETFs."""
         return cls(etfs=list(HF_ETFS) + list(HF_EXTRA_ETFS),
+                   stocks=sorted(set(HF_STOCKS) | set(HF_STOCKS_WIDE)))
+
+    @classmethod
+    def research(cls) -> "HFConfig":
+        """Round-3 research config: wide() plus inverse / international /
+        commodity-equity / low-vol ETFs (HF_RESEARCH_ETFS)."""
+        return cls(etfs=list(HF_ETFS) + list(HF_EXTRA_ETFS) + list(HF_RESEARCH_ETFS),
                    stocks=sorted(set(HF_STOCKS) | set(HF_STOCKS_WIDE)))

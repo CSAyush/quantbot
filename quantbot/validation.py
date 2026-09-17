@@ -130,3 +130,48 @@ def yearly_table(daily: pd.Series, rf_annual=0.0) -> pd.DataFrame:
 
 def rolling_sharpe(daily: pd.Series, window: int = 126) -> pd.Series:
     return daily.rolling(window).mean() / daily.rolling(window).std() * np.sqrt(TRADING_DAYS)
+
+
+def return_forecast(daily: pd.Series, rf_hist=0.0, rf_forward: float = 0.04,
+                    haircuts: tuple = (1.0, 0.7, 0.5), horizon_days: int = TRADING_DAYS,
+                    n_boot: int = 5000, block: int = 10, seed: int = 0) -> pd.DataFrame:
+    """What a year of live trading should look like *if the backtest is right*,
+    and under Sharpe haircuts for the usual backtest-to-live decay.
+
+    daily:      net daily returns of the backtest (incl. the cash carry it credited)
+    rf_hist:    the cash yield the backtest credited (float or daily Series), so the
+                edge is measured in excess of it
+    rf_forward: today's cash yield, added back for the forward-looking total return
+    haircuts:   multipliers applied to the mean excess return (vol unchanged); 1.0 =
+                the backtest is exactly right, 0.5 = half the edge survives live
+
+    One row per haircut: Sharpe, expected total return (rf + Sharpe x vol), the
+    1-year return percentiles from a block bootstrap of daily excess returns
+    (fat tails and clustering preserved), and P(negative year). Expected return
+    scales with the haircut; the width of the distribution does not.
+    """
+    excess = (daily - _rf_for(rf_hist, daily) / TRADING_DAYS).dropna()
+    mu, sd = excess.mean(), excess.std()
+    r = excess.to_numpy()
+    n = len(r)
+    rng = np.random.default_rng(seed)
+    n_blocks = int(np.ceil(horizon_days / block))
+    starts = rng.integers(0, n, size=(n_boot, n_blocks))
+    idx = (starts[:, :, None] + np.arange(block)[None, None, :]).reshape(n_boot, -1)[:, :horizon_days] % n
+    paths = r[idx]                                     # (n_boot, horizon) excess returns
+    rows = []
+    for h in haircuts:
+        adj = paths - mu + h * mu + rf_forward / TRADING_DAYS
+        yearly = np.prod(1.0 + adj, axis=1) - 1.0
+        s = h * mu / sd * np.sqrt(TRADING_DAYS) if sd > 0 else np.nan
+        rows.append({
+            "haircut": h,
+            "sharpe": s,
+            "vol": sd * np.sqrt(TRADING_DAYS),
+            "expected_return": rf_forward + h * mu * TRADING_DAYS,
+            "p05": np.percentile(yearly, 5), "p25": np.percentile(yearly, 25),
+            "median": np.percentile(yearly, 50),
+            "p75": np.percentile(yearly, 75), "p95": np.percentile(yearly, 95),
+            "p_negative_year": float((yearly < 0).mean()),
+        })
+    return pd.DataFrame(rows).set_index("haircut")

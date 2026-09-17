@@ -148,9 +148,11 @@ def _estimate_session_targets(md: MarketData, session: str, now: pd.Timestamp, p
 
     _mask_for_session(md, stamp)
     if session == "close":
-        # The mask blanks nothing at 16:00; make sure aux (VIX) has today's
-        # value if Yahoo has printed it, else yesterday's carries forward.
-        pass
+        # The mask blanks nothing at 16:00. The ts_reversal sleeve gates on
+        # today's VIX close, so estimate it from the latest 1m bar (else
+        # yesterday's value carries forward, logged).
+        from .hf_paper import _fill_today_aux
+        _fill_today_aux(md, today, final=False)
     weights = hf_ensemble_weights(md, timeline="daily", params=params)
     if stamp not in weights.index:
         raise RuntimeError(f"no ensemble weights at {stamp}")

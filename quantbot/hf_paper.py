@@ -107,6 +107,30 @@ def reset(cfg: HFConfig, capital: float | None = None, profile: str | None = Non
     print(f"HF paper account '{acct.name}' reset with ${cfg.starting_cash:,.2f} (profile '{state['profile']}')")
 
 
+def switch_profile(cfg: HFConfig, profile: str, account: str = "live") -> None:
+    """Move an existing account onto another profile, keeping its cash,
+    positions and history. The next session trades the book into the new
+    profile's targets; the switch is recorded in the account log so the
+    equity history can be read in two regimes."""
+    from .strategies.hf_ensemble import PROFILES
+    if profile not in PROFILES:
+        raise ValueError(f"unknown profile {profile!r}; choose from {sorted(PROFILES)}")
+    acct = Account(account)
+    if not acct.exists():
+        raise FileNotFoundError(f"account {account!r} does not exist; use `hf reset --account {account}`")
+    state = load_state(cfg, acct)
+    old = state.get("profile")
+    if old == profile:
+        print(f"account '{account}' already on profile '{profile}'")
+        return
+    state["profile"] = profile
+    save_state(state, acct)
+    msg = (f"PROFILE SWITCH {old} -> {profile} after session {state.get('last_session')} "
+           f"(positions carried: {state.get('positions')})")
+    _log(msg, acct)
+    print(f"account '{account}': {msg}")
+
+
 def _append_csv(path: Path, rows: list[dict]) -> None:
     df = pd.DataFrame(rows)
     df.to_csv(path, mode="a", header=not path.exists(), index=False)
@@ -144,6 +168,56 @@ def _mask_for_session(md: MarketData, ts: pd.Timestamp) -> None:
             md.intraday = {f: df[keep] for f, df in md.intraday.items()}
 
 
+def _fill_today_aux(md: MarketData, today: pd.Timestamp, final: bool = True) -> None:
+    """Today's ^VIX (and other aux) value when Yahoo's official daily row has
+    not arrived yet: from the last 1-minute bar, else yesterday's value carried
+    forward (logged). The ts_reversal sleeve gates on *today's* VIX close at
+    16:00; a missing value would read as "gate off" and silently skip the
+    trade. `final=False` (pre-close estimate for auction orders) accepts the
+    latest bar whatever its time; `final=True` requires a bar at/after 15:59.
+    """
+    if today not in md.aux.index:
+        md.aux.loc[today] = np.nan
+        md.aux = md.aux.sort_index()
+    missing = [a for a in md.aux.columns if pd.isna(md.aux.loc[today, a])]
+    if not missing:
+        return
+    import yfinance as yf
+    raw = None
+    try:
+        raw = yf.download(missing, period="1d", interval="1m", progress=False, group_by="column",
+                          auto_adjust=False, prepost=False)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[paper] aux 1m download error: {exc}")
+    filled = []
+    if raw is not None and not raw.empty:
+        idx = pd.DatetimeIndex(raw.index)
+        idx = idx.tz_localize("UTC") if idx.tz is None else idx
+        raw.index = idx.tz_convert(TZ)
+        raw = raw[raw.index.normalize() == today.tz_localize(TZ)]
+        if not raw.empty:
+            closes = raw["Close"] if isinstance(raw.columns, pd.MultiIndex) else raw[["Close"]].set_axis(missing, axis=1)
+            for a in missing:
+                if a in closes.columns and closes[a].notna().any():
+                    s = closes[a].dropna()
+                    if final and s.index[-1].time() < dt.time(15, 59):
+                        continue
+                    md.aux.loc[today, a] = float(s.iloc[-1])
+                    filled.append(a)
+    if filled:
+        print(f"[paper] today's {', '.join(filled)} set from the last 1m bar")
+    still = [a for a in missing if a not in filled]
+    if still:
+        hist = md.aux.loc[:today]
+        if len(hist) > 1:
+            prev = hist.iloc[-2]
+            for a in still:
+                md.aux.loc[today, a] = prev[a]
+        if "^VIX" in still:
+            print("[paper] WARNING: no live ^VIX print for today; yesterday's VIX carried forward "
+                  "(the ts_reversal gate may differ from the backtest tonight)")
+
+
 def _inject_live_prints(md: MarketData, now: dt.datetime) -> None:
     """Build today's session prints from 1-minute bars.
 
@@ -171,6 +245,8 @@ def _inject_live_prints(md: MarketData, now: dt.datetime) -> None:
             md.daily[f] = md.daily[f].sort_index()
 
     after_close = now_et.time() >= dt.time(16, 10)
+    if after_close:
+        _fill_today_aux(md, today, final=True)
     recent = md.daily["Close"].loc[:today].iloc[-6:-1].notna().any()
     yday_open = md.daily["Open"].loc[:today].iloc[-2]
     today_open = md.daily["Open"].loc[today]

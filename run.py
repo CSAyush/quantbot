@@ -146,6 +146,8 @@ def cmd_hf(args: argparse.Namespace) -> None:
     elif args.hf_cmd == "reset":
         hf_paper.reset(cfg, capital=args.capital, profile=args.profile, account=args.account or "live",
                        kind=args.type)
+    elif args.hf_cmd == "switch":
+        hf_paper.switch_profile(cfg, profile=args.profile, account=args.account or "live")
     elif args.hf_cmd == "alpaca":
         from quantbot import broker_alpaca
         acct = hf_paper.Account(args.account)
@@ -201,6 +203,9 @@ def main() -> None:
     asub.add_parser("reconcile", help="read fills for pending orders and record slippage")
     ha.add_argument("--account", default="alpaca-paper")
     hr.add_argument("--profile", choices=sorted(PROFILES), default=None)
+    hw = hsub.add_parser("switch", help="move an existing account to another profile, keeping its history")
+    hw.add_argument("--profile", choices=sorted(PROFILES), required=True)
+    hw.add_argument("--account", default=None, help="omit for the live account")
     hsc = hsub.add_parser("schedule", help="show/install launchd jobs for the three daily sessions")
     hsc.add_argument("--install", action="store_true")
     hsc.add_argument("--uninstall", action="store_true")

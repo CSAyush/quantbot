@@ -19,9 +19,11 @@ live here:
 
 ## HF system: what it trades
 
-Two sleeves that never hold capital at the same time (zero return correlation),
-plus a risk layer. Everything is causal; the live trader reads the same weight
-matrix the backtest produces, at the current session timestamp.
+Three sleeves plus a risk layer (profile `sharpe`, live since 2026-09-16).
+The first two never hold capital at the same time (zero return correlation);
+the third is a small stress-regime satellite. Everything is causal; the live
+trader reads the same weight matrix the backtest produces, at the current
+session timestamp.
 
 **1. Overnight premium** (`strategies/hf_overnight.py`) - 16:00 -> 09:30.
 Hold 1/3 each of QQQ (via the 2x fund QLD in the default profile), SMH and IWM
@@ -31,9 +33,21 @@ Literature: Lou, Polk & Skouras (2019), Bogousslavsky (2021).
 
 **2. Gap-fade reversal** (`strategies/hf_reversal.py`) - 09:30 -> 16:00.
 At the open, buy the 7 mega-caps (out of 70) with the most negative
-beta-adjusted, volatility-scaled overnight gap; flat at the close. Exposure
-scales with yesterday's VIX: zero at VIX <= 18, full at 28 (reversal is paid
-liquidity provision and only clears costs when volatility is high - Nagel 2012).
+beta-adjusted, volatility-scaled overnight gap, inverse-vol weighted; flat at
+the close. Gated on yesterday's VIX > 18 (reversal is paid liquidity provision
+and only clears costs when volatility is high - Nagel 2012) and sized to a 6%
+vol target on the equal-weight universe's intraday return: the fade's return
+per unit of *variance* is flat in VIX above the gate, so the old dollar ramp
+(full size at VIX 28) over-bet the wildest mornings (kurtosis 30, worst day
+-4.9%; now 14 and -2.6%). `research/notes/risk_allocation.md`.
+
+**3. Index reversal in stress** (`strategies/hf_ts_reversal.py`) - 16:00 ->
+16:00 next day. If QQQ closed down today and VIX > 20, buy QQQ at the close
+and hold one full day, sized 0.20 / realised vol; ~40 active days a year.
+Index-level liquidity provision (Nagel 2012; Hendershott & Menkveld 2014):
+after a down day in high vol the next day averages +25 bp, split evenly
+between the night and the day; after an up day, nothing (so no short leg).
+Allocation 0.25. `research/notes/ts_reversal.md`.
 
 **Risk layer** (`strategies/hf_regime.py`) - the overnight sleeve is scaled by
 `clip((SPY > 200d MA ? 1 : 0.5) x (0.16 / QQQ 20d realised vol)^2, 0.1, 1)`
@@ -47,19 +61,44 @@ orders). Idle cash earns the **historical 13-week T-bill rate** (`^IRX`,
 ~0% in 2010-21, ~5% in 2023-24, mean 1.5%); every Sharpe below is in excess
 of it, so sitting in cash earns no ratio boost.
 
-## Backtest results (Mar 2010 - Sep 2026, daily 09:30/16:00 timeline, net)
+## Backtest results (Feb 2010 - Sep 2026, daily 09:30/16:00 timeline, net)
 
-| profile | CAGR | Vol | Sharpe | MaxDD | OOS 2022+ Sharpe | OOS CAGR |
-|---|---|---|---|---|---|---|
-| balanced (1x, reversal 0.5) | 10.0% | 6.4% | 1.28 | -9.0% | 1.49 | 15.2% |
-| **growth (QLD 2x, reversal 0.5) - default** | **11.5%** | **7.4%** | **1.31** | **-12.2%** | **1.53** | **17.3%** |
-| max (TQQQ 3x, reversal 1.0) | 16.9% | 11.5% | 1.28 | -14.8% | 1.43 | 23.4% |
-| margin2x (balanced book at 2x on margin, T-bill+1.5%) | 17.6% | 12.5% | 1.24 | -14.9% | 1.48 | 26.4% |
-| SPY buy & hold | 14.3% | 17.1% | 0.78 | -33.7% | - | - |
+| profile | CAGR | Vol | Sharpe | MaxDD | OOS 2022+ Sharpe | OOS CAGR | losing years |
+|---|---|---|---|---|---|---|---|
+| balanced (1x, ramp-sized reversal 0.5) | 10.1% | 6.4% | 1.30 | -9.0% | 1.54 | 15.7% | 0 / 17 |
+| growth (QLD 2x, ramp-sized reversal 0.5) - live until 2026-09-16 | 11.6% | 7.4% | 1.32 | -12.2% | 1.56 | 17.7% | 2 / 17 |
+| max (TQQQ 3x, reversal 1.0) | 17.0% | 11.5% | 1.29 | -14.8% | 1.46 | 23.8% | 1 / 17 |
+| **sharpe (growth + vol-targeted reversal 1.0 + index-reversal 0.25) - live, default** | **14.0%** | **8.2%** | **1.46** | **-10.6%** | **1.71** | **20.8%** | **0 / 17** |
+| sharpe-max (same, TQQQ in the overnight slot) | 16.0% | 9.2% | 1.50 | -13.3% | 1.71 | 22.9% | 0 / 17 |
+| sharpe-alt (sharpe + metals overnight 0.25) - shadow only | 15.3% | 8.3% | 1.58 | -9.6% | 1.74 | 21.9% | 0 / 17 |
+| SPY buy & hold | 14.5% | 17.1% | 0.80 | -33.7% | - | - | 2 / 17 |
 
-`margin2x` is not implementable in a cash account; it exists to make the SPY
-comparison volatility-matched. Return is Sharpe x volatility: the cash
-profiles trail SPY in raw return only because they average ~17% invested.
+Sharpe is in excess of the historical T-bill rate. `sharpe`: bootstrap 95% CI
+[0.99, 1.92], deflated-Sharpe probability 0.991 after every variant evaluated
+in three research rounds (~3,000 trials). Return is Sharpe x volatility: the
+cash profiles trail SPY in raw return only because they average ~20%
+invested; `sharpe-max` buys the extra return with a 3x fund's financing and
+a deeper drawdown, at the same Sharpe. Switch the live account with
+`python3 run.py hf switch --profile sharpe-max` if that trade-off is wanted.
+
+### What to expect next year (`hf backtest` prints this card)
+
+Expected 12-month return = today's T-bill yield (3.97%) + Sharpe x vol, with
+the backtest's own fat tails (block bootstrap of daily returns). Rows are how
+much of the backtest edge survives live trading; backtests are upper bounds
+and 30-50% decay is normal.
+
+| edge that survives | Sharpe | expected return | 5th-95th percentile year | P(losing year) |
+|---|---|---|---|---|
+| 100% (backtest exactly right) | 1.46 | **+15.9%** | +2.9% .. +31.6% | 2% |
+| 70% | 1.02 | **+12.3%** | -0.7% .. +27.0% | 6% |
+| 50% | 0.73 | **+9.9%** | -3.1% .. +24.0% | 10% |
+
+For scale, the same card on SPY buy & hold (2010-2026, a historic bull
+market) gives +17.4% expected with a 5th-95th percentile year of -10% .. +49%
+and a 15% chance of a losing year. The honest central forecast for the
+system is the middle row: ~12% a year on a $1,000 account is ~$120, with a
+typical year anywhere from flat to +25%, and a worst drawdown around -10%.
 
 ### Round 2: breadth and diversification (`research/notes/*_wide.md`, `crossasset.md`, `etf_reversal.md`)
 
@@ -82,7 +121,45 @@ sit on the same Sharpe plateau - leverage only moves return and drawdown.
 SPY's raw CAGR is higher over what was a historic bull market; the system
 earns its return with 43% of SPY's volatility and a third of its drawdown.
 
-![growth backtest](hf_backtest_growth_daily.png)
+### Round 3: the Sharpe push (`research/notes/{risk_allocation,ts_reversal,overnight_alt,xs_overnight,intl_intraday}.md`)
+
+Goal: Sharpe 2.0. Arithmetic first: uncorrelated sleeves combine as
+`sqrt(sum Sharpe_i^2)`, and the two live sleeves (1.07 and 0.76, correlation
+0.00) already sat at that bound (1.31), so the only honest route was new
+independent streams - roughly +2.3 of Sharpe^2, i.e. three more sleeves at
+~0.9. Five agents, each with a pre-registered plan, an acceptance gate
+(standalone >= 0.5 and OOS >= 0.4, breakeven >= 2x cost, must raise the
+ensemble Sharpe in-sample *and* OOS, smooth sensitivity) and a trial count:
+
+| candidate | standalone Sharpe (IS / OOS) | corr with live sleeves | ensemble delta at 0.25 (IS / OOS) | verdict |
+|---|---|---|---|---|
+| Re-size the gap-fade sleeve: 6% vol target instead of the VIX dollar ramp, inverse-vol names, allocation 1.0 | sleeve 0.77 -> 0.92 (0.92 / 0.93), kurtosis 30 -> 14 | - | **+0.08 (+0.07 / +0.12)**, MaxDD -12.2% -> -10.9% | **adopted** |
+| Index reversal in stress (long QQQ one day after a down close, VIX > 20) | 0.89 (0.86 / 0.97), breakeven 22 bp | 0.17 overnight, 0.43 reversal | **+0.07 (+0.08 / +0.04)** | **adopted at 0.25** |
+| Metals overnight (GLD/SLV above 200d MA after an up session) | 0.65 (0.83 / 0.44) | 0.04 / 0.00 | +0.13 (+0.18 / +0.03) | shadow `shadow-alt`: zero correlation but half the P&L is 2011, flat 2012-19, post-hoc rule |
+| Cross-sectional stock momentum held overnight | 1.47 (1.74 / 1.01) | **0.50** overnight | +0.28 (+0.41 / +0.01); minus 12 survivorship "risers": 0.69 and ~0 | rejected: the book is NVDA/TSLA/AMD/AVGO/NFLX, i.e. hindsight |
+| International/defensive ETF intraday drift (EWJ, EFA, XLP...) | 0.55 (0.65 / 0.35); basket 0.20 | **0.51** reversal, alpha vs SPY+reversal 0 | -0.02 (-0.02 / -0.11) | rejected: session-relabelled beta |
+| Ensemble vol targeting, drawdown-throttle tuning, regime-multiplier grid, allocation grid | - | - | all <= 0 in IS and OOS | left alone |
+
+Result: `sharpe` profile, Sharpe **1.46** (IS 1.35 / OOS 1.71), CAGR 14.0%,
+MaxDD -10.6%, every calendar year positive. Not 2.0: the two rejected sleeves
+are exactly the kind that reach 2.0 in a backtest and not in an account
+(survivorship and relabelled beta), and the combination tool's five-sleeve
+in-sample optimum of ~2.0 fell to ~1.6 out-of-sample. A retail session book
+on public daily data plateaus around 1.5; the remaining lever is fill
+quality, which the paper accounts measure.
+
+Red-team on the new profile: 40/40 lookahead truncation tests identical
+(weights from data cut at T equal full-history weights at T); the new
+sleeve's Sharpe halves when decided a day late (0.89 -> 0.50: decays, does
+not collapse or improve); Sharpe 1.03 at 2x assumed costs, breakeven ~3.3x;
+leave-one-year-out Sharpe 1.32-1.55; rolling 3-year Sharpe never negative.
+One deployment gap found and fixed before the switch: the trader never
+sourced *today's* ^VIX from live bars (no earlier signal needed it); the new
+sleeve gates on it, so a late Yahoo daily row would have silently turned it
+off. Both the trader and the Alpaca pre-close estimator now fill it from
+1-minute bars (checked against the official close).
+
+![sharpe backtest](hf_backtest_sharpe_daily.png)
 
 Full research trail, including negative results (classic close-to-close
 reversal, first-half-hour intraday momentum, VIX-term-structure timing,
@@ -117,21 +194,29 @@ was done:
 ```bash
 python3 -m pip install --user -r requirements.txt
 
-python3 run.py hf backtest --profile growth --sleeves --plot   # reproduce the table
+python3 run.py hf backtest --profile sharpe --sleeves --plot   # reproduce the table + forecast card
 python3 run.py hf backtest --timeline hourly                   # ~2y, includes hourly data
 
-python3 run.py hf reset --capital 1000 --profile growth   # fresh live paper account
+python3 run.py hf reset --capital 1000 --profile sharpe   # fresh live paper account
 python3 run.py hf trade --session auto                    # process the latest session (all accounts)
 python3 run.py hf status                                  # P&L, positions, expectation card, chart
-python3 run.py hf status --account shadow-wide            # same for a shadow account
+python3 run.py hf status --account shadow-growth          # same for a shadow account
 python3 run.py hf reset --account <name> --profile <p>    # create/reset a shadow account
+python3 run.py hf switch --profile sharpe-max             # move the live account to another profile, keep history
 python3 run.py hf schedule --install                      # launchd: 09:33 and 16:08 ET (+retries), Mon-Fri
 ```
 
 ### Paper accounts (live now)
 
-- **live**: started **2026-09-01 16:00 ET with $1,000**, profile `growth`
-  (`paper_state/hf/`).
+- **live**: started **2026-09-01 16:00 ET with $1,000** on profile `growth`;
+  switched to **`sharpe`** after the 2026-09-16 close (positions and history
+  carried over; the switch is in `paper_state/hf/log.txt`). Equity before
+  the switch: $1,013 (+1.3% in 11 sessions, inside the expectation band).
+- **shadow-growth**: started 2026-09-16 16:00 ET with $1,000 on `growth` -
+  the control: what the old book would have done from the switch date.
+- **shadow-alt**: started 2026-09-16 16:00 ET with $1,000 on `sharpe-alt`
+  (adds the metals overnight sleeve at 0.25). Promotion rule: ~12 months of
+  positive held-night gross P&L outside a metals rally.
 - **shadow-wide**: started 2026-09-02 16:00 ET with $1,000, profile
   `growth-wide` (`paper_state/hf/accounts/shadow-wide/`). Same sessions, same
   schedule; exists to measure whether the 300-name reversal book's edge
@@ -212,6 +297,11 @@ Alternative: `deploy/setup_server.sh` sets up cron on any always-on Linux box.
   partial-day rows are never cached; today's prints come only from the 09:30 /
   15:59 1-minute bars with stale-price and completeness checks; downloads
   retry with backoff; every account refreshes its own data.
+- **2026-09-16 (change, not an incident)**: live account switched `growth` ->
+  `sharpe` after the close (round 3 above); `shadow-growth` and `shadow-alt`
+  created; `alpaca-paper` switched to `sharpe` too. Pre-emptive fix shipped
+  with it: today's ^VIX close is now sourced from 1-minute bars when Yahoo's
+  daily row is late (the new sleeve gates on it).
 
 ### How to judge it (`hf status`)
 
@@ -228,9 +318,11 @@ Checkpoints:
    costs ~1-3 bp per fill, no missed sessions.
 2. **60 trading days** - first performance read: hit rate and daily sd should
    match the card; the Sharpe will still be noise.
-3. **6 months** - go/no-go versus the backtest band. A Sharpe of ~1.2 needs
-   about 2.8 years of live data to be statistically distinguishable from zero;
-   before then judge *shape* (exposure, hit rate, drawdown depth), not sign.
+3. **6 months** - go/no-go versus the backtest band. A Sharpe of ~1.5 needs
+   about 1.9 years of live data to be statistically distinguishable from zero
+   (and ~4 years to be told apart from the old profile's 1.3); before then
+   judge *shape* (exposure, hit rate, drawdown depth), not sign. The
+   `shadow-growth` control account makes the comparison paired, which helps.
 
 Parameters are deliberately **not** re-tuned on live results; that is how
 edges get overfit away. Changes go through a backtest, the validation tools
@@ -264,12 +356,17 @@ quantbot/
   schedule.py                 launchd installer for the daily sessions
   strategies/
     hf_overnight.py           overnight premium sleeve
-    hf_reversal.py            gap-fade reversal sleeve
+    hf_reversal.py            gap-fade reversal sleeve (VIX ramp or vol-targeted sizing)
+    hf_ts_reversal.py         index reversal in stress (round 3, allocation 0.25)
     hf_regime.py              regime multiplier, vol regime, leverage map, drawdown throttle
+    hf_risk.py                sizing / vol-target / max-Sharpe combination tools (round 3 research)
+    hf_overnight_alt.py       metals overnight sleeve, shadow account only
+    hf_xs_overnight.py        stock momentum held overnight, allocation 0 (survivorship)
+    hf_intl_intraday.py       international ETF intraday drift, allocation 0 (negative result)
     hf_intraday_momentum.py   researched, allocation 0 (negative result)
     hf_crossasset.py          TLT/GLD gap continuation, wired at allocation 0 (thin edge)
     hf_etf_reversal.py        researched, not wired (negative result)
-    hf_ensemble.py            profiles, sleeve combination, risk layer, backtest runner
+    hf_ensemble.py            profiles, sleeve combination, risk layer, backtest runner, forecast card
   universe_wide.py            300-name stock universe for the wide profile / shadow account
     momentum.py trend.py mean_reversion.py ensemble.py   legacy daily system
   backtest.py, paper.py       legacy daily system engine and paper trader

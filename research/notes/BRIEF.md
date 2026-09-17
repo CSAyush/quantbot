@@ -131,6 +131,67 @@ speed. Changes since round 1 that you should know:
   with your sleeve added at 0.25 / 0.5 / 1.0 allocation on top of the growth
   profile (`EnsembleParams.from_profile("growth")`, `hf_ensemble_weights`).
 
+## Round 3 addendum (the Sharpe push)
+
+**Goal: raise the ensemble Sharpe from 1.31 toward 2.0 with independent
+return streams.** For uncorrelated sleeves the combined Sharpe is about
+`sqrt(sum S_i^2)` (weights ∝ S_i / vol_i). The two live sleeves are at
+1.07 (overnight) and 0.76 (reversal) with correlation 0.00, which already
+gives ~1.3; reaching 2.0 needs roughly +2.3 of Sharpe^2 from *new*,
+*uncorrelated*, *net-of-cost* streams - e.g. three sleeves at ~0.9 or five at
+~0.7. A 0.6-Sharpe sleeve with correlation 0.0 to both live sleeves is worth
+more than a 1.2-Sharpe sleeve with correlation 0.6. Leverage changes nothing
+here; do not spend time on it.
+
+What is new since round 2:
+- `HFConfig.research()` = `wide()` + `HF_RESEARCH_ETFS`: inverse funds SH PSQ
+  RWM SDS QID (long-only way to hold short index exposure; 2 bp/side),
+  single-country / regional EWZ EWG EWU EWY EWT INDA VGK VWO EWC EWA EWH
+  (2 bp/side), GDX XOP USMV SPLV (2 bp/side). All cached from 2010-01
+  (INDA 2012-02, USMV 2011-10, SPLV 2011-05). `MarketData(HFConfig.research(),
+  refresh=False, intraday=False)` loads in ~40 s. **Never pass refresh=True**;
+  five agents share one cache file.
+- Shared reference series in `/tmp/qb_shared/reference_daily_returns.csv`
+  (columns: `ensemble_growth`, `overnight`, `reversal`, `rf_daily`
+  (annualised, divide by 252), `spy`; index = date). Use them for every
+  correlation you report so all notes are comparable. Compute correlations on
+  *excess* daily returns (subtract rf_daily/252).
+- `/tmp/qb_shared/growth_weights_reference.parquet` = the live profile's
+  weight matrix; `/tmp/qb_shared/regime_multiplier.csv` = the daily regime
+  multiplier.
+
+Acceptance gate for a new sleeve (all four, on the daily timeline, T-bill
+cash, Sharpe in excess of it):
+1. Standalone net Sharpe >= 0.5 full-sample **and** OOS (2022+) Sharpe >= 0.4
+   with the same sign of edge in both halves.
+2. Breakeven cost >= 2x the assumed cost.
+3. Adding it to the growth ensemble (`EnsembleParams.from_profile("growth")`,
+   sleeve summed in via `combine_weights` at your recommended allocation,
+   then the same regime/throttle/leverage-map steps as `hf_ensemble_weights`
+   - simplest: reproduce the pipeline in a scratch script) raises the
+   ensemble Sharpe **both** in-sample and OOS. Report the delta at 0.25 /
+   0.5 / 1.0 allocation.
+4. One-at-a-time sensitivity degrades smoothly (no cliffs).
+A sleeve failing the gate is still a deliverable: write it up as a negative
+result with the numbers, and say what would change your mind.
+
+Do not re-test these (already negative, see the notes): intraday momentum;
+classic close-to-close stock reversal; stock losers held overnight;
+cross-sectional reversal among ETFs at any horizon; TLT/GLD gap
+*continuation* (0.44 net); VIX level / VIX term-structure as a sizing rule;
+month-end and first-days-of-month calendar rules (flipped OOS); Mon/Tue
+day-of-week rules; 50d MA gates; IEF/IEI/TIP/LQD/HYG day trades (edge in bp
+below 2 bp cost).
+
+Extra deliverable for the orchestrator: save your final sleeve's daily net
+returns (engine `res.daily_returns`, default params, full history) to
+`/tmp/qb_shared/<sleeve>_daily.csv` (single column named after the sleeve,
+date index) and its weights to `/tmp/qb_shared/<sleeve>_weights.parquet`.
+Finish with a <= 25-line summary containing: standalone Sharpe (full / IS /
+OOS), CAGR, MaxDD, time in market, cost/yr, breakeven bp, correlation with
+`overnight`, `reversal`, `ensemble_growth`, `spy`, the ensemble delta table,
+`n_trials`, and a one-line verdict (ACCEPT / REJECT / SHADOW).
+
 ## Rules of engagement
 
 - Only create/modify **your** two files. Do not edit `config.py`, `data.py`,
@@ -142,6 +203,10 @@ speed. Changes since round 1 that you should know:
 - Read other sleeves' notes in `research/notes/` as they appear; reuse insights.
 - Be decisive. You have a fixed budget; a well-validated simple sleeve beats an
   unfinished complex one.
+- Never run `git commit`, `git push`, `python3 run.py hf status` or `hf trade`
+  (status pulls from the remote and trade touches the live paper accounts).
+  The live system runs from GitHub Actions; local edits are inert until the
+  orchestrator pushes them.
 
 ## Run Commands
 python3 run.py hf status

@@ -71,6 +71,17 @@ class ReversalParams:
     top_liquidity: int | None = None          # keep only the K most liquid names each day, by
     liq_window: int = 60                      #   trailing median dollar volume (Close*Volume) to d-1
     frac: float | None = None                 # if set, n = max(1, round(frac * names ranked that day))
+    # --- sizing (research/notes/risk_allocation.md); "ramp" = legacy behaviour ---
+    # "ramp":      exposure = clip((VIX[d-1] - vix_floor) / vix_span, 0, 1)
+    # "voltarget": the same ramp x min(1, vol_target / sigma_EW[d-1]), where sigma_EW is
+    #              the trailing `sigma_window`-session annualised vol of the equal-weight
+    #              universe's 09:30 -> 16:00 return through d-1. The fade's return per unit
+    #              of *variance* is flat in VIX above the gate, so the dollar ramp over-bets
+    #              the highest-variance mornings (kurtosis 30); vol targeting is Kelly-
+    #              consistent and cut the sleeve's worst day from -4.9% to -2.6%.
+    sizing: str = "ramp"
+    vol_target: float = 0.06
+    sigma_window: int = 20
 
 
 def _gap_signal(md: MarketData, p: ReversalParams) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
@@ -140,6 +151,17 @@ def reversal_weights(md: MarketData, p: ReversalParams = ReversalParams()) -> pd
     # Nagel (2012): scale with (lagged) VIX; the ramp avoids a cliff at one level.
     vix = md.aux["^VIX"].reindex(w.index).ffill().shift(1)
     scale = ((vix - p.vix_floor) / p.vix_span).clip(lower=0.0, upper=1.0).fillna(0.0)
+    if p.sizing == "voltarget":
+        # sigma_EW[d-1]: equal-weight (1/N, names without a print count 0) universe
+        # open->close return, trailing std over sessions d-sigma_window..d-1.
+        st = list(sig.columns)
+        ew_ret = (md.close[st] / md.open[st] - 1.0).fillna(0.0).sum(axis=1) / len(st)
+        sigma = (ew_ret.rolling(p.sigma_window, min_periods=p.sigma_window).std()
+                 * np.sqrt(252)).shift(1).reindex(w.index)
+        vt = (p.vol_target / sigma).clip(upper=1.0).where(sigma.notna() & (sigma > 0), 0.0)
+        scale = (scale * vt).clip(upper=1.0).fillna(0.0)
+    elif p.sizing != "ramp":
+        raise ValueError(f"unknown sizing {p.sizing!r}")
     w = w.mul(scale, axis=0)
 
     if p.start is not None:

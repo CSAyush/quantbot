@@ -8,6 +8,7 @@ paper_state/hf/launchd.*.log
 paper_state/hf/cron.log
 *.png
 !hf_backtest_growth_daily.png
+!hf_backtest_sharpe_daily.png
 .DS_Store
 
 # broker credentials (never commit)

@@ -25,7 +25,7 @@ from ..engine import SessionResult, combine_weights, run_session_backtest
 from ..research import report
 
 
-DEFAULT_PROFILE = "growth"
+DEFAULT_PROFILE = "sharpe"
 
 # Risk profiles. Backtests 2010-2026 (net of costs, idle cash at the actual
 # T-bill rate, Sharpe in excess of it) put all three on the same Sharpe
@@ -51,11 +51,41 @@ PROFILES = {
     # account until live fill quality in that tail is measured
     # (research/notes/reversal_wide.md).
     "growth-wide": {"reversal_alloc": 0.5, "overnight_leverage": {"QQQ": "QLD"}, "universe": "wide"},
+    # Round 3 (the Sharpe push, research/notes/risk_allocation.md + ts_reversal.md):
+    # growth with (a) the gap-fade sleeve re-sized - short VIX ramp 18->20 times a
+    # 6% vol target on the EW-70 intraday book, inverse-vol names, allocation 1.0
+    # (its return per unit of variance is flat in VIX, so the dollar ramp over-bet
+    # the wildest mornings) and (b) a third sleeve: long QQQ for one day after a
+    # down close when VIX > 20, sized 0.20/RV (time-series index reversal in
+    # stress). Sharpe 1.46 | CAGR 14.0% | MaxDD -10.6% | OOS Sharpe 1.71.
+    # n_trials: every variant evaluated in rounds 1-3 (1355 + 541 + ~900 + combos),
+    # rounded up, for the deflated Sharpe.
+    "sharpe": {"reversal_alloc": 1.0, "overnight_leverage": {"QQQ": "QLD"},
+               "reversal": {"weighting": "ivol", "sizing": "voltarget", "vol_target": 0.06,
+                            "sigma_window": 20, "vix_span": 2.0},
+               "alloc": {"ts_reversal": 0.25}, "n_trials": 3000},
+    # The same book with TQQQ in the overnight slot (3x): more return, same
+    # Sharpe plateau, deeper drawdowns. For the return-vs-drawdown table only.
+    "sharpe-max": {"reversal_alloc": 1.0, "overnight_leverage": {"QQQ": "TQQQ"},
+                   "reversal": {"weighting": "ivol", "sizing": "voltarget", "vol_target": 0.06,
+                                "sigma_window": 20, "vix_span": 2.0},
+                   "alloc": {"ts_reversal": 0.25}, "n_trials": 3000},
+    # sharpe + the metals overnight sleeve (GLD/SLV held 16:00->09:30 above the
+    # 200d MA after an up session) at 0.25. Zero correlation with everything
+    # else but episodic (half its P&L is 2011) and post hoc: SHADOW account only
+    # (research/notes/overnight_alt.md).
+    "sharpe-alt": {"reversal_alloc": 1.0, "overnight_leverage": {"QQQ": "QLD"},
+                   "reversal": {"weighting": "ivol", "sizing": "voltarget", "vol_target": 0.06,
+                                "sigma_window": 20, "vix_span": 2.0},
+                   "alloc": {"ts_reversal": 0.25, "overnight_alt": 0.25}, "n_trials": 3000},
 }
 
 
 def config_for(params: "EnsembleParams") -> HFConfig:
-    """The market-data config a profile needs (core 94 names or wide 340)."""
+    """The market-data config a profile needs (core 94 names, wide 340, or
+    research 361 = wide + inverse/international/commodity-equity ETFs)."""
+    if params.universe == "research":
+        return HFConfig.research()
     return HFConfig.wide() if params.universe == "wide" else HFConfig()
 
 
@@ -78,13 +108,22 @@ class EnsembleParams:
         "reversal": 0.5,
         "regime_timing": 0.0,
         "crossasset": 0.0,
+        # Round-3 candidates (research/notes/BRIEF.md "Round 3 addendum");
+        # funded only by profiles that passed the acceptance gate.
+        "overnight_alt": 0.0,
+        "xs_overnight": 0.0,
+        "intl_intraday": 0.0,
+        "ts_reversal": 0.0,
     })
     # Leveraged-ETF substitution inside the overnight sleeve, e.g. {"QQQ": "QLD"}.
     overnight_leverage: dict = field(default_factory=lambda: {"QQQ": "QLD"})
     # Margin: scale the whole book by this factor and allow gross long up to it.
     gross_scale: float = 1.0
-    # "core" (70 mega-caps + 24 ETFs) or "wide" (300 stocks + 40 ETFs).
+    # "core" (70 mega-caps + 24 ETFs), "wide" (300 stocks + 40 ETFs) or "research".
     universe: str = "core"
+    # Overrides for the reversal sleeve's ReversalParams (e.g. the vol-targeted
+    # sizing from research/notes/risk_allocation.md); {} = the sleeve's defaults.
+    reversal_params: dict = field(default_factory=dict)
     profile: str = DEFAULT_PROFILE
 
     @classmethod
@@ -94,9 +133,13 @@ class EnsembleParams:
         spec = PROFILES[name]
         p = cls(profile=name)
         p.alloc["reversal"] = spec["reversal_alloc"]
+        for name_, a in spec.get("alloc", {}).items():
+            p.alloc[name_] = a
         p.overnight_leverage = dict(spec["overnight_leverage"])
         p.gross_scale = spec.get("gross_scale", 1.0)
         p.universe = spec.get("universe", "core")
+        p.reversal_params = dict(spec.get("reversal", {}))
+        p.n_trials_total = spec.get("n_trials", p.n_trials_total)
         if p.gross_scale > 1.0:
             p.max_gross_long_cash = p.gross_scale
             p.max_exposure = p.gross_scale
@@ -131,14 +174,26 @@ def sleeve_weights(md: MarketData, timeline: str, params: EnsembleParams) -> dic
         sleeves["overnight"] = overnight_weights(
             md, OvernightParams(leverage_map=dict(params.overnight_leverage)))
     if params.alloc.get("reversal", 0) > 0:
-        from .hf_reversal import reversal_weights
-        sleeves["reversal"] = reversal_weights(md)
+        from .hf_reversal import ReversalParams, reversal_weights
+        sleeves["reversal"] = reversal_weights(md, ReversalParams(**params.reversal_params))
     if params.alloc.get("regime_timing", 0) > 0:
         from .hf_regime import regime_timing_weights
         sleeves["regime_timing"] = regime_timing_weights(md)
     if params.alloc.get("crossasset", 0) > 0:
         from .hf_crossasset import crossasset_weights
         sleeves["crossasset"] = crossasset_weights(md)
+    if params.alloc.get("overnight_alt", 0) > 0:
+        from .hf_overnight_alt import overnight_alt_weights
+        sleeves["overnight_alt"] = overnight_alt_weights(md)
+    if params.alloc.get("xs_overnight", 0) > 0:
+        from .hf_xs_overnight import xs_overnight_weights
+        sleeves["xs_overnight"] = xs_overnight_weights(md)
+    if params.alloc.get("intl_intraday", 0) > 0:
+        from .hf_intl_intraday import intl_intraday_weights
+        sleeves["intl_intraday"] = intl_intraday_weights(md)
+    if params.alloc.get("ts_reversal", 0) > 0:
+        from .hf_ts_reversal import ts_reversal_weights
+        sleeves["ts_reversal"] = ts_reversal_weights(md)
     if timeline == "hourly" and md.px_intraday is not None and params.alloc.get("intraday_momentum", 0) > 0:
         from .hf_intraday_momentum import intraday_momentum_weights
         sleeves["intraday_momentum"] = intraday_momentum_weights(md)
@@ -222,6 +277,15 @@ def run_hf_backtest(cfg: HFConfig, timeline: str = "daily", refresh: bool = Fals
     spy_res = run_session_backtest(spy_w, px, label="SPY buy&hold", cost_bps=0.0, cash_yield_annual=rf,
                                    start=res.session_returns.index[0])
     print(spy_res)
+
+    if timeline == "daily":
+        from ..validation import return_forecast
+        rf_now = float(rf.dropna().iloc[-1]) if isinstance(rf, pd.Series) else float(rf)
+        fc = return_forecast(res.daily_returns, rf_hist=res.rf_daily, rf_forward=rf_now)
+        print(f"\nNext-12-month forecast at today's T-bill yield ({rf_now:.2%}); rows = fraction of the "
+              f"backtest edge that survives live (1.0 = backtest exactly right):")
+        print(fc.to_string(float_format=lambda x: f"{x:7.1%}" if abs(x) < 3 else f"{x:7.2f}",
+                           formatters={"sharpe": lambda x: f"{x:5.2f}"}))
 
     if sleeves:
         print("\nStandalone sleeves (same timeline, same costs):")
