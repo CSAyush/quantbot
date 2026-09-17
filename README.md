@@ -366,6 +366,20 @@ Alternative: `deploy/setup_server.sh` sets up cron on any always-on Linux box.
   `shadow-alt` created; `alpaca-paper` switched to `sharpe-lev` too.
   Pre-emptive fix shipped with it: today's ^VIX close is now sourced from
   1-minute bars when Yahoo's daily row is late (the stress sleeve gates on it).
+- **2026-09-17 09:30**: GitHub fired none of the three `paper-sessions` cron
+  slots (the Alpaca workflow, with ~15 slots, ran normally); every simulated
+  account still held the overnight book at 13:30 ET. Processed by hand at the
+  official 09:30 prints (identical trades by design), then two fixes: the
+  schedule now has 18 slots a day including overnight catch-ups, and a run
+  whose session is already processed exits before downloading anything.
+  The hand run also exposed a latent trader bug: positions in tickers the
+  current profile never trades (IWM/SMH carried into `sharpe-lev`, whose
+  overnight slots are UWM/USD/TQQQ) were left untouched instead of sold.
+  Fixed - every held ticker is now a candidate with target 0 - and the live
+  account's session was re-run from its pre-run state. Separately, the
+  `alpaca-paper` MOO exits queued the evening before **expired unfilled** in
+  Alpaca's paper simulator, so that account exits at today's close instead;
+  under investigation (real exchanges fill MOO orders in full).
 
 ### How to judge it (`hf status`)
 

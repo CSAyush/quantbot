@@ -50,3 +50,4 @@
 [2026-09-16 19:40:12 EDT] 2026-09-16 16:00 | equity $1,023.26 | cash $0.00 | long 100% short 0% | 3 fills
 [2026-09-16 23:37:44 EDT] PROFILE SWITCH growth -> sharpe after session 2026-09-16T16:00:00-04:00 (positions carried: {'IWM': 1.2013507442455857, 'QLD': 3.922349620844569, 'SMH': 0.625206248559293})
 [2026-09-17 03:50:50 EDT] PROFILE SWITCH sharpe -> sharpe-lev after session 2026-09-16T16:00:00-04:00 (positions carried: {'IWM': 1.2013507442455857, 'QLD': 3.922349620844569, 'SMH': 0.625206248559293})
+[2026-09-17 13:38:14 EDT] 2026-09-17 09:30 | equity $1,048.22 | cash $1,048.22 | long 0% short 0% | 3 fills

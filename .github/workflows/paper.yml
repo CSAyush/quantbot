@@ -16,12 +16,28 @@ name: paper-sessions
 
 on:
   schedule:
+    # GitHub drops or delays scheduled runs by hours (2026-09-17: none of the
+    # three open-session slots fired). Every run is idempotent and a late run
+    # still fills at the official print, so the schedule is dense: an
+    # already-processed session costs one checkout and no data download.
     - cron: "40 13 * * 1-5"   # 09:40 EDT open session
     - cron: "55 13 * * 1-5"   # retry
+    - cron: "10 14 * * 1-5"
     - cron: "40 14 * * 1-5"   # 09:40 EST open session (winter) / EDT retry
+    - cron: "10 15 * * 1-5"
+    - cron: "10 16 * * 1-5"
+    - cron: "10 17 * * 1-5"
+    - cron: "10 18 * * 1-5"
+    - cron: "10 19 * * 1-5"
     - cron: "15 20 * * 1-5"   # 16:15 EDT close session
     - cron: "35 20 * * 1-5"   # retry
     - cron: "15 21 * * 1-5"   # 16:15 EST close session (winter) / EDT retry
+    - cron: "15 22 * * 1-5"
+    - cron: "15 23 * * 1-5"
+    - cron: "15 1 * * 2-6"    # overnight catch-up runs (still before the next open)
+    - cron: "15 4 * * 2-6"
+    - cron: "15 8 * * 2-6"
+    - cron: "15 12 * * 2-6"
   workflow_dispatch:           # manual run from the Actions tab
 
 concurrency:

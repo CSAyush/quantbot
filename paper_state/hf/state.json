@@ -1,13 +1,9 @@
 {
-  "cash": 1.8193760126905545e-05,
+  "cash": 1048.2200729602998,
   "starting_cash": 1000,
   "profile": "sharpe-lev",
   "inception": "2026-09-01T16:00:00-04:00",
-  "positions": {
-    "IWM": 1.2013507442455857,
-    "QLD": 3.922349620844569,
-    "SMH": 0.625206248559293
-  },
-  "last_session": "2026-09-16T16:00:00-04:00",
-  "sessions_processed": 21
+  "positions": {},
+  "last_session": "2026-09-17T09:30:00-04:00",
+  "sessions_processed": 22
 }

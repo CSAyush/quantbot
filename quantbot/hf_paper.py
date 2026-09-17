@@ -324,16 +324,23 @@ def _inject_live_prints(md: MarketData, now: dt.datetime) -> None:
 
 
 def _expected_session(now: dt.datetime) -> pd.Timestamp | None:
-    """The session stamp that should exist given the wall clock (weekdays):
-    today's 09:30 once the open has printed, today's 16:00 after the close."""
+    """The session stamp that should exist given the wall clock: today's 09:30
+    once the open has printed, today's 16:00 after the close, and otherwise
+    (before the open, weekends, holidays) the last trading day's 16:00."""
+    from .calendar import is_trading_day
+
     now_et = pd.Timestamp(now).tz_convert(TZ)
-    if now_et.weekday() >= 5:
-        return None
     day = now_et.normalize()
-    if now_et.time() >= dt.time(16, 10):
-        return day + pd.Timedelta(hours=16)
-    if now_et.time() >= dt.time(9, 32):
-        return day + pd.Timedelta(hours=9, minutes=30)
+    if is_trading_day(day):
+        if now_et.time() >= dt.time(16, 10):
+            return day + pd.Timedelta(hours=16)
+        if now_et.time() >= dt.time(9, 32):
+            return day + pd.Timedelta(hours=9, minutes=30)
+    prev = day - pd.Timedelta(days=1)
+    for _ in range(10):
+        if is_trading_day(prev):
+            return prev + pd.Timedelta(hours=16)
+        prev -= pd.Timedelta(days=1)
     return None
 
 
@@ -407,6 +414,15 @@ def trade(cfg: HFConfig, session: str = "auto", force: bool = False, refresh: bo
         print(f"{pd.Timestamp(now).tz_convert(TZ).date()} is not an NYSE trading day; nothing to do.")
         return
     state = load_state(cfg, acct)
+    # Cheap no-op: if the session the wall clock says should exist has already
+    # been processed, say so without touching Yahoo. The schedule has many
+    # redundant slots (GitHub's cron drops or delays runs), so most runs land here.
+    expected = _expected_session(now) if session == "auto" else None
+    if (not force and expected is not None and state.get("last_session")
+            and pd.Timestamp(state["last_session"]) >= expected):
+        print(f"Session {expected.strftime('%Y-%m-%d %H:%M')} already processed "
+              f"(last: {state['last_session']}); nothing fetched.")
+        return
     params = EnsembleParams.from_profile(state.get("profile"))
     if params.universe != "core":
         cfg = config_for(params)
@@ -488,9 +504,15 @@ def trade(cfg: HFConfig, session: str = "auto", force: bool = False, refresh: bo
 
     equity_before = portfolio_value(state, prices)
 
+    # Every held ticker is a candidate even if the current profile never
+    # trades it (e.g. positions carried across a profile switch to different
+    # instruments): its target is 0 and it must be liquidated, not orphaned.
+    # (2026-09-17 09:30: IWM/SMH were kept after the switch to sharpe-lev.)
+    universe = list(weights.columns) + [t for t in state["positions"] if t not in weights.columns]
+
     def build_orders(budget: float) -> list[tuple[str, float, float]]:
         out = []
-        for ticker in weights.columns:
+        for ticker in universe:
             price = prices.get(ticker)
             if price is None or pd.isna(price) or price <= 0:
                 if abs(float(target.get(ticker, 0.0))) > 0:

@@ -2,8 +2,8 @@
   "cash": 1000.0,
   "starting_cash": 1000.0,
   "profile": "growth",
-  "inception": null,
+  "inception": "2026-09-17T09:30:00-04:00",
   "positions": {},
-  "last_session": null,
-  "sessions_processed": 0
+  "last_session": "2026-09-17T09:30:00-04:00",
+  "sessions_processed": 1
 }
