@@ -210,13 +210,14 @@ python3 run.py hf schedule --install                      # launchd: 09:33 and 1
 
 - **live**: started **2026-09-01 16:00 ET with $1,000** on profile `growth`;
   switched to **`sharpe`** after the 2026-09-16 close (positions and history
-  carried over; the switch is in `paper_state/hf/log.txt`). Equity before
-  the switch: $1,013 (+1.3% in 11 sessions, inside the expectation band).
-- **shadow-growth**: started 2026-09-16 16:00 ET with $1,000 on `growth` -
-  the control: what the old book would have done from the switch date.
-- **shadow-alt**: started 2026-09-16 16:00 ET with $1,000 on `sharpe-alt`
-  (adds the metals overnight sleeve at 0.25). Promotion rule: ~12 months of
-  positive held-night gross P&L outside a metals rally.
+  carried over; the switch is in `paper_state/hf/log.txt`). Equity at the
+  switch: $1,023 (+2.3% in 11 trading days, inside the expectation band).
+- **shadow-growth**: created after the 2026-09-16 close with $1,000 on
+  `growth`, first session 2026-09-17 09:30 - the control: what the old book
+  does from the switch date on.
+- **shadow-alt**: same start, $1,000 on `sharpe-alt` (adds the metals
+  overnight sleeve at 0.25). Promotion rule: ~12 months of positive
+  held-night gross P&L outside a metals rally.
 - **shadow-wide**: started 2026-09-02 16:00 ET with $1,000, profile
   `growth-wide` (`paper_state/hf/accounts/shadow-wide/`). Same sessions, same
   schedule; exists to measure whether the 300-name reversal book's edge

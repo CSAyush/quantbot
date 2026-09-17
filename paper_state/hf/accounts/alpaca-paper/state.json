@@ -1,6 +1,6 @@
 {
   "type": "alpaca",
-  "profile": "growth",
+  "profile": "sharpe",
   "notional": 10000.0,
   "starting_cash": 10000.0,
   "cash": 3794.390000000001,

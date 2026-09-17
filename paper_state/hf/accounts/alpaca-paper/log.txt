@@ -15,3 +15,4 @@
 [2026-09-16 13:23:32 EDT] 2026-09-16 16:00 SUBMIT close: 3 cls orders (equity est $10,026.33, live px for 94 names)
 [2026-09-16 15:30:35 EDT] 2026-09-16 16:00 SUBMIT close: 0 cls orders (equity est $9,922.53, live px for 94 names)
 [2026-09-16 19:10:50 EDT] QUEUE for 2026-09-17: 3 orders (equity est $9,964.15)
+[2026-09-16 23:37:45 EDT] PROFILE SWITCH growth -> sharpe after session 2026-09-16T09:30:00-04:00 (positions carried: {'IWM': 7.0, 'QLD': 23.0, 'SMH': 4.0})
