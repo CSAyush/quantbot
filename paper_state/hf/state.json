@@ -1,7 +1,7 @@
 {
   "cash": 1.8193760126905545e-05,
   "starting_cash": 1000,
-  "profile": "sharpe",
+  "profile": "sharpe-lev",
   "inception": "2026-09-01T16:00:00-04:00",
   "positions": {
     "IWM": 1.2013507442455857,
