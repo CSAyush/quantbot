@@ -1895,3 +1895,5 @@ Last fills (54 total):
 [alpaca] replaced 3 early close estimate(s) with a 15:40 estimate
 [alpaca] order rejected QLD sell 23: {"code":40010001,"message":"client_order_id must be unique"}
 2026-09-17 16:00 SUBMIT close: 0 cls orders (equity est $10,110.32, live px for 98 names)
+===== 2026-09-17 20:26 UTC alpaca-submit run 35270799039 =====
+16:26 ET is well past the close window; nothing to do.
