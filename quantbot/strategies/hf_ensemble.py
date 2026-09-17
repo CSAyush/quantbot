@@ -25,7 +25,7 @@ from ..engine import SessionResult, combine_weights, run_session_backtest
 from ..research import report
 
 
-DEFAULT_PROFILE = "sharpe"
+DEFAULT_PROFILE = "sharpe-lev"
 
 # Risk profiles. Backtests 2010-2026 (net of costs, idle cash at the actual
 # T-bill rate, Sharpe in excess of it) put all three on the same Sharpe
@@ -70,6 +70,26 @@ PROFILES = {
                    "reversal": {"weighting": "ivol", "sizing": "voltarget", "vol_target": 0.06,
                                 "sigma_window": 20, "vix_span": 2.0},
                    "alloc": {"ts_reversal": 0.25}, "n_trials": 3000},
+    # The sharpe book run at ~12.5% volatility through leveraged funds: 3x in
+    # the QQQ overnight slot, 2x in the SMH (USD) and IWM (UWM) slots, and the
+    # stress sleeve held via QLD. Same signals, same Sharpe plateau (1.49),
+    # 1.5x the return and 1.4x the drawdown of `sharpe`. Return = Sharpe x vol:
+    # this is the sizing dial, not a better edge. Max overnight exposure on a
+    # night all three signals fire: 2.33x of equity.
+    # Sharpe 1.49 | CAGR 21.3% | MaxDD -14.5% | OOS Sharpe 1.76 | 0 losing years.
+    "sharpe-lev": {"reversal_alloc": 1.0, "overnight_leverage": {"QQQ": "TQQQ", "SMH": "USD", "IWM": "UWM"},
+                   "reversal": {"weighting": "ivol", "sizing": "voltarget", "vol_target": 0.06,
+                                "sigma_window": 20, "vix_span": 2.0},
+                   "alloc": {"ts_reversal": 0.25}, "ts_reversal": {"leverage_map": {"QQQ": "QLD"}},
+                   "n_trials": 3000},
+    # Everything 3x (TQQQ / SOXL / TNA, stress sleeve via TQQQ): 3x exposure on
+    # full nights. Sharpe 1.48 | CAGR 26.6% | MaxDD -19.5% | OOS 1.53 (the 3x
+    # funds' financing at today's rates shows up out-of-sample) | 1 losing year.
+    "sharpe-3x": {"reversal_alloc": 1.0, "overnight_leverage": {"QQQ": "TQQQ", "SMH": "SOXL", "IWM": "TNA"},
+                  "reversal": {"weighting": "ivol", "sizing": "voltarget", "vol_target": 0.06,
+                               "sigma_window": 20, "vix_span": 2.0},
+                  "alloc": {"ts_reversal": 0.25}, "ts_reversal": {"leverage_map": {"QQQ": "TQQQ"}},
+                  "n_trials": 3000},
     # sharpe + the metals overnight sleeve (GLD/SLV held 16:00->09:30 above the
     # 200d MA after an up session) at 0.25. Zero correlation with everything
     # else but episodic (half its P&L is 2011) and post hoc: SHADOW account only
@@ -124,6 +144,8 @@ class EnsembleParams:
     # Overrides for the reversal sleeve's ReversalParams (e.g. the vol-targeted
     # sizing from research/notes/risk_allocation.md); {} = the sleeve's defaults.
     reversal_params: dict = field(default_factory=dict)
+    # Overrides for TSReversalParams (e.g. {"leverage_map": {"QQQ": "TQQQ"}}).
+    ts_reversal_params: dict = field(default_factory=dict)
     profile: str = DEFAULT_PROFILE
 
     @classmethod
@@ -139,6 +161,7 @@ class EnsembleParams:
         p.gross_scale = spec.get("gross_scale", 1.0)
         p.universe = spec.get("universe", "core")
         p.reversal_params = dict(spec.get("reversal", {}))
+        p.ts_reversal_params = dict(spec.get("ts_reversal", {}))
         p.n_trials_total = spec.get("n_trials", p.n_trials_total)
         if p.gross_scale > 1.0:
             p.max_gross_long_cash = p.gross_scale
@@ -192,8 +215,8 @@ def sleeve_weights(md: MarketData, timeline: str, params: EnsembleParams) -> dic
         from .hf_intl_intraday import intl_intraday_weights
         sleeves["intl_intraday"] = intl_intraday_weights(md)
     if params.alloc.get("ts_reversal", 0) > 0:
-        from .hf_ts_reversal import ts_reversal_weights
-        sleeves["ts_reversal"] = ts_reversal_weights(md)
+        from .hf_ts_reversal import TSReversalParams, ts_reversal_weights
+        sleeves["ts_reversal"] = ts_reversal_weights(md, TSReversalParams(**params.ts_reversal_params))
     if timeline == "hourly" and md.px_intraday is not None and params.alloc.get("intraday_momentum", 0) > 0:
         from .hf_intraday_momentum import intraday_momentum_weights
         sleeves["intraday_momentum"] = intraday_momentum_weights(md)

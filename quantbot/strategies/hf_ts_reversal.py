@@ -54,7 +54,7 @@ Implementation notes
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 import numpy as np
 import pandas as pd
@@ -95,6 +95,11 @@ class TSReversalParams:
     vol_target: float | None = 0.20   # weight *= min(1, vol_target / RV20 of the asset); None = binary 1.0
     max_gross: float = 1.0            # hard cap on sum |weights| (cash account)
     start: str | None = None          # optional first date of weights
+    # Hold a leveraged fund in an asset's slot, e.g. {"QQQ": "TQQQ"}: the signal,
+    # gate and vol target are all computed on the base asset, the weight is
+    # placed on the fund (3x the exposure per dollar). Same convention as the
+    # overnight sleeve's leverage_map.
+    leverage_map: dict = field(default_factory=dict)
 
 
 def _gate(md: MarketData, p: TSReversalParams, idx: pd.DatetimeIndex) -> pd.Series:
@@ -164,15 +169,23 @@ def ts_reversal_weights(md: MarketData, p: TSReversalParams = TSReversalParams()
     """
     expo = ts_reversal_signal(md, p)
     dates = pd.DatetimeIndex(expo.index)
-    cols = list(p.assets)
+    held = {t: p.leverage_map.get(t, t) for t in p.assets}   # base -> instrument actually held
+    for t, h in held.items():
+        if h not in md.close.columns:
+            raise KeyError(f"{h} not in market data")
+    cols = list(held.values())
     if p.mode == "both_inverse":
         cols += [INVERSE_ETF[t] for t in p.assets if t in INVERSE_ETF]
     w = pd.DataFrame(0.0, index=dates, columns=sorted(set(cols)))
     for t in p.assets:
         pos = expo[t].clip(lower=0.0)
         neg = (-expo[t]).clip(lower=0.0)
-        w[t] = w[t] + pos
+        h = held[t]
+        # Cannot hold the (possibly leveraged) instrument before it has a price.
+        w[h] = w[h] + pos.where(md.close[h].reindex(dates).notna(), 0.0)
         if p.mode == "both_short":
+            if h != t:
+                raise ValueError("leverage_map is only supported in mode='long' / 'both_inverse'")
             w[t] = w[t] - neg
         elif p.mode == "both_inverse":
             inv = INVERSE_ETF.get(t)

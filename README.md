@@ -19,11 +19,12 @@ live here:
 
 ## HF system: what it trades
 
-Three sleeves plus a risk layer (profile `sharpe`, live since 2026-09-16).
-The first two never hold capital at the same time (zero return correlation);
-the third is a small stress-regime satellite. Everything is causal; the live
-trader reads the same weight matrix the backtest produces, at the current
-session timestamp.
+Three sleeves plus a risk layer (profile `sharpe-lev`, live since
+2026-09-16: the `sharpe` signals run at ~12.5% volatility through 2x/3x
+funds). The first two sleeves never hold capital at the same time (zero
+return correlation); the third is a small stress-regime satellite. Everything
+is causal; the live trader reads the same weight matrix the backtest
+produces, at the current session timestamp.
 
 **1. Overnight premium** (`strategies/hf_overnight.py`) - 16:00 -> 09:30.
 Hold 1/3 each of QQQ (via the 2x fund QLD in the default profile), SMH and IWM
@@ -68,37 +69,95 @@ of it, so sitting in cash earns no ratio boost.
 | balanced (1x, ramp-sized reversal 0.5) | 10.1% | 6.4% | 1.30 | -9.0% | 1.54 | 15.7% | 0 / 17 |
 | growth (QLD 2x, ramp-sized reversal 0.5) - live until 2026-09-16 | 11.6% | 7.4% | 1.32 | -12.2% | 1.56 | 17.7% | 2 / 17 |
 | max (TQQQ 3x, reversal 1.0) | 17.0% | 11.5% | 1.29 | -14.8% | 1.46 | 23.8% | 1 / 17 |
-| **sharpe (growth + vol-targeted reversal 1.0 + index-reversal 0.25) - live, default** | **14.0%** | **8.2%** | **1.46** | **-10.6%** | **1.71** | **20.8%** | **0 / 17** |
-| sharpe-max (same, TQQQ in the overnight slot) | 16.0% | 9.2% | 1.50 | -13.3% | 1.71 | 22.9% | 0 / 17 |
+| sharpe (growth + vol-targeted reversal 1.0 + index-reversal 0.25; 2x QQQ slot only) | 14.0% | 8.2% | 1.46 | -10.6% | 1.71 | 20.8% | 0 / 17 |
+| sharpe-max (same, TQQQ in the QQQ slot) | 16.0% | 9.2% | 1.50 | -13.3% | 1.71 | 22.9% | 0 / 17 |
+| **sharpe-lev (same signals; 3x QQQ slot, 2x SMH/IWM slots, stress sleeve via QLD) - live, default** | **21.3%** | **12.5%** | **1.49** | **-14.5%** | **1.76** | **32.4%** | **0 / 17** |
+| sharpe-3x (everything 3x: TQQQ / SOXL / TNA) | 26.6% | 15.8% | 1.48 | -19.5% | 1.53 | 29.6% | 1 / 17 |
 | sharpe-alt (sharpe + metals overnight 0.25) - shadow only | 15.3% | 8.3% | 1.58 | -9.6% | 1.74 | 21.9% | 0 / 17 |
 | SPY buy & hold | 14.5% | 17.1% | 0.80 | -33.7% | - | - | 2 / 17 |
 
-Sharpe is in excess of the historical T-bill rate. `sharpe`: bootstrap 95% CI
-[0.99, 1.92], deflated-Sharpe probability 0.991 after every variant evaluated
-in three research rounds (~3,000 trials). Return is Sharpe x volatility: the
-cash profiles trail SPY in raw return only because they average ~20%
-invested; `sharpe-max` buys the extra return with a 3x fund's financing and
-a deeper drawdown, at the same Sharpe. Switch the live account with
-`python3 run.py hf switch --profile sharpe-max` if that trade-off is wanted.
+Sharpe is in excess of the historical T-bill rate. `sharpe-lev`: bootstrap
+95% CI [1.01, 1.93], deflated-Sharpe probability 0.994 after every variant
+evaluated in three research rounds (~3,000 trials); worst day -6.6%, worst
+year +0.3% (2016); max overnight exposure 2.33x of equity on a night all
+three overnight signals fire. Switch with `python3 run.py hf switch
+--profile <name>` (history is kept).
+
+### Sharpe versus return: two dials, not one
+
+**Return = cash yield + Sharpe x volatility.** Sharpe measures the quality of
+the edge; the return level is a *sizing* choice. The four `sharpe*` rows
+above are the same signals at different volatility and land on the same
+Sharpe (1.46-1.50) - leverage moves return and drawdown together and does
+not create edge. SPY earns 14.5% at 17% volatility (Sharpe 0.80); the same
+edge as this book run at SPY's volatility would earn ~4% + 1.49 x 17% = 29%.
+So "beating the S&P" is not a question of finding a better algorithm; the
+book already beats it by ~11 points a year *per unit of risk*. The question
+is how much volatility you choose to run, and the honest price of each rung
+is the MaxDD column. A $1,000 cash account can only lever through 2x/3x
+funds, which cap the ladder at `sharpe-3x`; real margin (`margin2x`) is the
+same trade with a different financing cost.
 
 ### What to expect next year (`hf backtest` prints this card)
 
 Expected 12-month return = today's T-bill yield (3.97%) + Sharpe x vol, with
 the backtest's own fat tails (block bootstrap of daily returns). Rows are how
 much of the backtest edge survives live trading; backtests are upper bounds
-and 30-50% decay is normal.
+and 30-50% decay is normal. For the live profile `sharpe-lev`:
 
 | edge that survives | Sharpe | expected return | 5th-95th percentile year | P(losing year) |
 |---|---|---|---|---|
-| 100% (backtest exactly right) | 1.46 | **+15.9%** | +2.9% .. +31.6% | 2% |
-| 70% | 1.02 | **+12.3%** | -0.7% .. +27.0% | 6% |
-| 50% | 0.73 | **+9.9%** | -3.1% .. +24.0% | 10% |
+| 100% (backtest exactly right) | 1.49 | **+22.6%** | +2.1% .. +49.7% | 4% |
+| 70% | 1.04 | **+17.0%** | -3.4% .. +41.5% | 8% |
+| 50% | 0.75 | **+13.3%** | -7.0% .. +36.4% | 14% |
 
 For scale, the same card on SPY buy & hold (2010-2026, a historic bull
 market) gives +17.4% expected with a 5th-95th percentile year of -10% .. +49%
-and a 15% chance of a losing year. The honest central forecast for the
-system is the middle row: ~12% a year on a $1,000 account is ~$120, with a
-typical year anywhere from flat to +25%, and a worst drawdown around -10%.
+and a 15% chance of a losing year. The honest central forecast is the
+middle row: ~17% a year on a $1,000 account is ~$170, with a typical year
+anywhere from -3% to +40%, and a worst drawdown around -15%. Only the
+`sharpe-3x` rung keeps 20% expected *after* a 30% edge haircut, and it pays
+for that with a -19.5% drawdown and a weaker out-of-sample Sharpe.
+
+### Why the book is mostly ETFs (and where stocks do and don't earn their keep)
+
+Individual stocks are in the book where they carry an edge that survives
+costs: the gap-fade reversal sleeve buys 7 of 70 mega-caps every active
+morning and now has the largest allocation (1.0), and a 300-name version is
+being measured in `shadow-wide`. The overnight and stress sleeves are in
+index ETFs because the tests say so, not by preference:
+
+- **Cost.** A stock round trip is 5 bp (2.5/side, 10 on the mid-cap tail)
+  against 2 bp for an index ETF; traded every day that is 12.6%/yr versus
+  5%. No daily cross-sectional stock signal found here has more than ~6
+  bp/day of gross edge on calm days (`reversal.md` insight 5), so a stock
+  sleeve only clears costs by trading a minority of days - which the
+  reversal sleeve does (VIX gate) and an overnight-every-night book cannot.
+  The equal-weight 70-stock overnight book is Sharpe -0.1 net.
+- **What survives is index-level.** The overnight premium and the stress
+  reversal are market-wide phenomena; expressing them through 70 names adds
+  idiosyncratic noise (earnings gaps overnight, with no earnings calendar in
+  the data) and 2.5x the cost for the same beta.
+- **The stock edge we did find is hindsight.** Momentum names held overnight
+  backtest at Sharpe 1.47 - the book is NVDA / TSLA / AMD / AVGO / NFLX for
+  most of its life. Remove the 12 names that became mega-caps and it is 0.69
+  and adds nothing to the ensemble (`xs_overnight.md`). Without point-in-time
+  index constituents (not in Yahoo data) a long-only stock winners book
+  cannot be validated, only believed.
+- **What "most trading firms" do differently.** Statistical-arbitrage desks
+  trade thousands of names long *and* short (market-neutral), at costs well
+  under 1 bp with exchange rebates, with survivorship-free data and stock
+  borrow. Breadth is what makes many tiny stock edges add up; every one of
+  those inputs is missing in a $1,000 long-only cash account on daily Yahoo
+  data. The long-short versions tested here (`reversal.md` mode `ls`,
+  `etf_reversal.md`) lost their short leg out-of-sample.
+
+What would change this: measured auction fills on the stock leg well under
+2.5 bp (the `alpaca-paper` account measures exactly that), which would make
+the 300-name reversal book (+0.3 Sharpe in-sample) worth switching to; a
+margin account, which allows market-neutral stock books; and point-in-time
+constituent data, which would let a stock momentum-overnight sleeve be
+tested honestly.
 
 ### Round 2: breadth and diversification (`research/notes/*_wide.md`, `crossasset.md`, `etf_reversal.md`)
 
@@ -159,7 +218,9 @@ sleeve gates on it, so a late Yahoo daily row would have silently turned it
 off. Both the trader and the Alpaca pre-close estimator now fill it from
 1-minute bars (checked against the official close).
 
-![sharpe backtest](hf_backtest_sharpe_daily.png)
+![sharpe-lev backtest](hf_backtest_sharpe-lev_daily.png)
+
+(`sharpe`, the same book at 1x, is in `hf_backtest_sharpe_daily.png`.)
 
 Full research trail, including negative results (classic close-to-close
 reversal, first-half-hour intraday momentum, VIX-term-structure timing,
@@ -194,24 +255,25 @@ was done:
 ```bash
 python3 -m pip install --user -r requirements.txt
 
-python3 run.py hf backtest --profile sharpe --sleeves --plot   # reproduce the table + forecast card
-python3 run.py hf backtest --timeline hourly                   # ~2y, includes hourly data
+python3 run.py hf backtest --profile sharpe-lev --sleeves --plot   # reproduce the table + forecast card
+python3 run.py hf backtest --timeline hourly                       # ~2y, includes hourly data
 
-python3 run.py hf reset --capital 1000 --profile sharpe   # fresh live paper account
+python3 run.py hf reset --capital 1000 --profile sharpe-lev   # fresh live paper account
 python3 run.py hf trade --session auto                    # process the latest session (all accounts)
 python3 run.py hf status                                  # P&L, positions, expectation card, chart
 python3 run.py hf status --account shadow-growth          # same for a shadow account
 python3 run.py hf reset --account <name> --profile <p>    # create/reset a shadow account
-python3 run.py hf switch --profile sharpe-max             # move the live account to another profile, keep history
+python3 run.py hf switch --profile sharpe                 # move the live account to another profile, keep history
 python3 run.py hf schedule --install                      # launchd: 09:33 and 16:08 ET (+retries), Mon-Fri
 ```
 
 ### Paper accounts (live now)
 
 - **live**: started **2026-09-01 16:00 ET with $1,000** on profile `growth`;
-  switched to **`sharpe`** after the 2026-09-16 close (positions and history
-  carried over; the switch is in `paper_state/hf/log.txt`). Equity at the
-  switch: $1,023 (+2.3% in 11 trading days, inside the expectation band).
+  switched to **`sharpe-lev`** after the 2026-09-16 close (positions and
+  history carried over; the switch is in `paper_state/hf/log.txt`). Equity at
+  the switch: $1,023 (+2.3% in 11 trading days, inside the expectation band).
+  Expect roughly 1.5x the daily moves of the first two weeks from here.
 - **shadow-growth**: created after the 2026-09-16 close with $1,000 on
   `growth`, first session 2026-09-17 09:30 - the control: what the old book
   does from the switch date on.
@@ -299,10 +361,11 @@ Alternative: `deploy/setup_server.sh` sets up cron on any always-on Linux box.
   15:59 1-minute bars with stale-price and completeness checks; downloads
   retry with backoff; every account refreshes its own data.
 - **2026-09-16 (change, not an incident)**: live account switched `growth` ->
-  `sharpe` after the close (round 3 above); `shadow-growth` and `shadow-alt`
-  created; `alpaca-paper` switched to `sharpe` too. Pre-emptive fix shipped
-  with it: today's ^VIX close is now sourced from 1-minute bars when Yahoo's
-  daily row is late (the new sleeve gates on it).
+  `sharpe-lev` after the close (round 3 above, run at ~12.5% vol through 2x/3x
+  funds - USD/UWM/SOXL/TNA added to the universe); `shadow-growth` and
+  `shadow-alt` created; `alpaca-paper` switched to `sharpe-lev` too.
+  Pre-emptive fix shipped with it: today's ^VIX close is now sourced from
+  1-minute bars when Yahoo's daily row is late (the stress sleeve gates on it).
 
 ### How to judge it (`hf status`)
 

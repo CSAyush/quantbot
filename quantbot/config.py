@@ -34,7 +34,8 @@ HF_INDEX_ETFS = ["SPY", "QQQ", "IWM", "DIA"]
 HF_SECTOR_ETFS = ["SMH", "XLK", "XLF", "XLE", "XLV", "XLY", "XLP", "XLI", "XLU"]
 HF_OTHER_ETFS = ["TLT", "IEF", "GLD", "SLV", "HYG", "EEM", "EFA"]
 # 2x/3x funds: the only way a $1k cash account gets >1x exposure without margin.
-HF_LEVERAGED_ETFS = ["SSO", "QLD", "UPRO", "TQQQ"]
+# SPY: SSO/UPRO, QQQ: QLD/TQQQ, SMH: USD (2x) / SOXL (3x), IWM: UWM (2x) / TNA (3x).
+HF_LEVERAGED_ETFS = ["SSO", "QLD", "UPRO", "TQQQ", "USD", "SOXL", "UWM", "TNA"]
 HF_ETFS = HF_INDEX_ETFS + HF_SECTOR_ETFS + HF_OTHER_ETFS + HF_LEVERAGED_ETFS
 
 HF_STOCKS = [
