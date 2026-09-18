@@ -11,16 +11,5 @@
   "inception": "2026-09-14T16:00:00-04:00",
   "last_session": "2026-09-18T09:30:00-04:00",
   "sessions_processed": 4,
-  "pending": {
-    "qb-20260918-1600-QLD": {
-      "symbol": "QLD",
-      "side": "sell",
-      "qty": 23,
-      "est_price": 89.76,
-      "target_w": 0.0,
-      "order_id": "3cb40e29-8f28-40a8-9043-c41a8bab341e",
-      "stamp": "2026-09-18T16:00:00-04:00",
-      "est_time": "2026-09-18T12:48:40.714707-04:00"
-    }
-  }
+  "pending": {}
 }
