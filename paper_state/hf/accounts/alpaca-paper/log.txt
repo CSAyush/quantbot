@@ -24,3 +24,6 @@
 [2026-09-17 13:22:42 EDT] 2026-09-17 16:00 SUBMIT close: 3 cls orders (equity est $10,113.82, live px for 94 names)
 [2026-09-17 15:41:02 EDT] 2026-09-17 16:00 SUBMIT close: 0 cls orders (equity est $10,110.32, live px for 98 names)
 [2026-09-17 21:18:45 EDT] QUEUE for 2026-09-18: 3 orders (equity est $10,103.46)
+[2026-09-18 12:28:14 EDT] [alpaca] QLD order qb-20260918-0930-QLD not filled (OrderStatus.EXPIRED)
+[2026-09-18 12:28:14 EDT] [alpaca] SMH order qb-20260918-0930-SMH not filled (OrderStatus.EXPIRED)
+[2026-09-18 12:28:14 EDT] 2026-09-18 09:30 RECONCILE: 1 fills | equity $10,124.08 (broker $100,103.81) | avg slippage vs print -1.4 bp

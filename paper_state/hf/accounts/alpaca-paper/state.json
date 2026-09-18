@@ -3,45 +3,13 @@
   "profile": "sharpe-lev",
   "notional": 10000.0,
   "starting_cash": 10000.0,
-  "cash": 3794.390000000001,
+  "cash": 5789.110000000001,
   "positions": {
-    "IWM": 7.0,
     "QLD": 23.0,
     "SMH": 4.0
   },
   "inception": "2026-09-14T16:00:00-04:00",
-  "last_session": "2026-09-17T09:30:00-04:00",
-  "sessions_processed": 3,
-  "pending": {
-    "qb-20260918-0930-IWM": {
-      "symbol": "IWM",
-      "side": "sell",
-      "qty": 7,
-      "est_price": 285.42999267578125,
-      "target_w": 0.0,
-      "order_id": "4b3d93e0-5e58-452b-b47c-aee247981860",
-      "stamp": "2026-09-18T09:30:00-04:00",
-      "queued_estimate": true
-    },
-    "qb-20260918-0930-QLD": {
-      "symbol": "QLD",
-      "side": "sell",
-      "qty": 23,
-      "est_price": 89.94000244140625,
-      "target_w": 0.0,
-      "order_id": "a2ae219a-5747-43c0-95e7-d6d4eb2dadc6",
-      "stamp": "2026-09-18T09:30:00-04:00",
-      "queued_estimate": true
-    },
-    "qb-20260918-0930-SMH": {
-      "symbol": "SMH",
-      "side": "sell",
-      "qty": 4,
-      "est_price": 560.6099853515625,
-      "target_w": 0.0,
-      "order_id": "a54adde0-bbf6-4a98-8c54-61da597bfdc1",
-      "stamp": "2026-09-18T09:30:00-04:00",
-      "queued_estimate": true
-    }
-  }
+  "last_session": "2026-09-18T09:30:00-04:00",
+  "sessions_processed": 4,
+  "pending": {}
 }
