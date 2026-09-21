@@ -3382,3 +3382,14 @@ Last fills (54 total):
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-09-18
 [alpaca] session 2026-09-21 09:30:00-04:00 not over yet; reconcile later
 [alpaca] orders for 2026-09-21 already queued; nothing to do
+===== 2026-09-21 18:23 UTC alpaca-submit run 35637998035 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-09-18
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] QLD order qb-20260921-0930-QLD not filled (OrderStatus.EXPIRED)
+2026-09-21 09:30 RECONCILE: 1 fills | equity $10,254.02 (broker $100,364.70) | avg slippage vs print +11.2 bp
+ticker side  shares  fill_price  official_print  slippage_bps
+   SMH SELL    -1.0      581.79         582.445         11.25
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+2026-09-21 16:00 SUBMIT close: 1 cls orders (equity est $10,362.49, live px for 98 names)
+   QLD    sell   23 sh @~95.98  target 0.000
