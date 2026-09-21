@@ -1,9 +1,9 @@
 {
-  "cash": 1048.3647883701415,
+  "cash": 1048.6764024196339,
   "starting_cash": 1000,
   "profile": "sharpe-lev",
   "inception": "2026-09-01T16:00:00-04:00",
   "positions": {},
-  "last_session": "2026-09-18T16:00:00-04:00",
-  "sessions_processed": 25
+  "last_session": "2026-09-21T09:30:00-04:00",
+  "sessions_processed": 26
 }
