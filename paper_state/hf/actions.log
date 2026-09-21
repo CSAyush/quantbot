@@ -3919,3 +3919,7 @@ Last fills (54 total):
 QUEUE for 2026-09-22: 2 orders (equity est $10,373.20)
    QLD    SELL   23 sh  MOO 2026-09-22
    SMH    SELL    3 sh  MOO 2026-09-22
+===== 2026-09-21 23:29 UTC alpaca-submit run 35667720688 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-09-21
+[alpaca] session 2026-09-22 09:30:00-04:00 not over yet; reconcile later
+[alpaca] orders for 2026-09-22 already queued; nothing to do
