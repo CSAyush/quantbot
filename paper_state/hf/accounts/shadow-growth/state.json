@@ -1,9 +1,9 @@
 {
-  "cash": 1000.4648768885294,
+  "cash": 1000.5444084843726,
   "starting_cash": 1000.0,
   "profile": "growth",
   "inception": "2026-09-17T09:30:00-04:00",
   "positions": {},
-  "last_session": "2026-09-21T16:00:00-04:00",
-  "sessions_processed": 6
+  "last_session": "2026-09-22T09:30:00-04:00",
+  "sessions_processed": 7
 }
