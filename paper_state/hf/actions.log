@@ -4334,3 +4334,9 @@ Last fills (54 total):
 [paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
 2026-09-22 16:00 SUBMIT close: 1 cls orders (equity est $10,408.72, live px for 98 names)
    QLD    sell   14 sh @~97.22  target 0.000
+===== 2026-09-22 17:38 UTC alpaca-submit run 35761941815 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-09-21
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+[alpaca] orders for 2026-09-22 16:00:00-04:00 already submitted; nothing to do
