@@ -25,7 +25,7 @@ from ..engine import SessionResult, combine_weights, run_session_backtest
 from ..research import report
 
 
-DEFAULT_PROFILE = "sharpe-lev"
+DEFAULT_PROFILE = "sharpe2"
 
 # Risk profiles. Backtests 2010-2026 (net of costs, idle cash at the actual
 # T-bill rate, Sharpe in excess of it) put all three on the same Sharpe
@@ -82,6 +82,19 @@ PROFILES = {
                                 "sigma_window": 20, "vix_span": 2.0},
                    "alloc": {"ts_reversal": 0.25}, "ts_reversal": {"leverage_map": {"QQQ": "QLD"}},
                    "n_trials": 3000},
+    # Round 4: sharpe-lev plus the pre-FOMC overnight sleeve (long QLD from the
+    # 16:00 close before each scheduled FOMC decision day to the 09:30 open of
+    # decision day; ~8 nights a year; Lucca & Moench 2015). Standalone 0.90
+    # (IS 0.77 / OOS 1.22), correlation ~0.05 with the rest of the book.
+    # Sharpe 1.67 | CAGR 24.6% | MaxDD -14.5% | OOS Sharpe 2.01. See
+    # research/notes/macro.md. n_trials: rounds 1-4 (~3,050).
+    "sharpe2": {"reversal_alloc": 1.0, "overnight_leverage": {"QQQ": "TQQQ", "SMH": "USD", "IWM": "UWM"},
+                "reversal": {"weighting": "ivol", "sizing": "voltarget", "vol_target": 0.06,
+                             "sigma_window": 20, "vix_span": 2.0},
+                "alloc": {"ts_reversal": 0.25, "macro": 1.0},
+                "ts_reversal": {"leverage_map": {"QQQ": "QLD"}},
+                "macro": {"leverage_map": {"QQQ": "QLD"}},
+                "n_trials": 3100},
     # Everything 3x (TQQQ / SOXL / TNA, stress sleeve via TQQQ): 3x exposure on
     # full nights. Sharpe 1.48 | CAGR 26.6% | MaxDD -19.5% | OOS 1.53 (the 3x
     # funds' financing at today's rates shows up out-of-sample) | 1 losing year.
@@ -134,6 +147,8 @@ class EnsembleParams:
         "xs_overnight": 0.0,
         "intl_intraday": 0.0,
         "ts_reversal": 0.0,
+        # Round-4 candidate: scheduled-macro-announcement premium (hf_macro.py).
+        "macro": 0.0,
     })
     # Leveraged-ETF substitution inside the overnight sleeve, e.g. {"QQQ": "QLD"}.
     overnight_leverage: dict = field(default_factory=lambda: {"QQQ": "QLD"})
@@ -146,6 +161,10 @@ class EnsembleParams:
     reversal_params: dict = field(default_factory=dict)
     # Overrides for TSReversalParams (e.g. {"leverage_map": {"QQQ": "TQQQ"}}).
     ts_reversal_params: dict = field(default_factory=dict)
+    # Overrides for OvernightParams other than leverage_map (e.g. a breadth gate).
+    overnight_params: dict = field(default_factory=dict)
+    # Overrides for MacroParams (round-4 candidate sleeve).
+    macro_params: dict = field(default_factory=dict)
     profile: str = DEFAULT_PROFILE
 
     @classmethod
@@ -162,6 +181,8 @@ class EnsembleParams:
         p.universe = spec.get("universe", "core")
         p.reversal_params = dict(spec.get("reversal", {}))
         p.ts_reversal_params = dict(spec.get("ts_reversal", {}))
+        p.overnight_params = dict(spec.get("overnight", {}))
+        p.macro_params = dict(spec.get("macro", {}))
         p.n_trials_total = spec.get("n_trials", p.n_trials_total)
         if p.gross_scale > 1.0:
             p.max_gross_long_cash = p.gross_scale
@@ -195,7 +216,7 @@ def sleeve_weights(md: MarketData, timeline: str, params: EnsembleParams) -> dic
     sleeves: dict[str, pd.DataFrame] = {}
     if params.alloc.get("overnight", 0) > 0:
         sleeves["overnight"] = overnight_weights(
-            md, OvernightParams(leverage_map=dict(params.overnight_leverage)))
+            md, OvernightParams(leverage_map=dict(params.overnight_leverage), **params.overnight_params))
     if params.alloc.get("reversal", 0) > 0:
         from .hf_reversal import ReversalParams, reversal_weights
         sleeves["reversal"] = reversal_weights(md, ReversalParams(**params.reversal_params))
@@ -217,6 +238,9 @@ def sleeve_weights(md: MarketData, timeline: str, params: EnsembleParams) -> dic
     if params.alloc.get("ts_reversal", 0) > 0:
         from .hf_ts_reversal import TSReversalParams, ts_reversal_weights
         sleeves["ts_reversal"] = ts_reversal_weights(md, TSReversalParams(**params.ts_reversal_params))
+    if params.alloc.get("macro", 0) > 0:
+        from .hf_macro import MacroParams, macro_weights
+        sleeves["macro"] = macro_weights(md, MacroParams(**params.macro_params))
     if timeline == "hourly" and md.px_intraday is not None and params.alloc.get("intraday_momentum", 0) > 0:
         from .hf_intraday_momentum import intraday_momentum_weights
         sleeves["intraday_momentum"] = intraday_momentum_weights(md)

@@ -192,6 +192,33 @@ OOS), CAGR, MaxDD, time in market, cost/yr, breakeven bp, correlation with
 `overnight`, `reversal`, `ensemble_growth`, `spy`, the ensemble delta table,
 `n_trials`, and a one-line verdict (ACCEPT / REJECT / SHADOW).
 
+## Round 4 addendum (Sharpe 1.5 -> 2: independent bets and true costs)
+
+State after round 3: live profile `sharpe-lev` = overnight sleeve (QQQ->TQQQ,
+SMH->USD, IWM->UWM slots; 1.07 standalone) + vol-targeted gap-fade reversal
+(0.92) + index reversal in stress (0.89, via QLD), Sharpe 1.49 (IS 1.37 /
+OOS 1.76). Correlations: overnight-reversal 0.01, overnight-ts 0.17,
+reversal-ts 0.42. The book is flat on 48% of nights and 61% of days.
+Reference series for this round: `/tmp/qb_shared/reference_daily_returns_v2.csv`
+(columns `ensemble_sharpe_lev`, `overnight`, `reversal_vt`, `ts_reversal`,
+`rf_daily` annualised, `spy`). Overnight sleeve reference weights:
+`/tmp/qb_shared/overnight_weights_reference.parquet` (md5 of
+`pd.util.hash_pandas_object(w.round(10)).values.tobytes()` =
+8e7d15b77df3d2cfbda134e0ac6d7574 on `MarketData(HFConfig())`).
+
+Two facts frame the round. (1) Sharpe of a strategy active a fraction p of
+the time is sqrt(p) x its active-period Sharpe: the live sleeves run at
+Sharpe 1.5-2.3 *on their active sessions* and are diluted by flat sessions,
+so a sleeve that earns on nights/days the book is flat adds its whole
+Sharpe^2. (2) The cost model is worth 0.34 Sharpe: `sharpe-lev` is 1.50 at
+assumed costs, 1.67 at half, 1.84 at zero. Auction orders fill at the
+official print, so the truth is somewhere in that range; measuring it is as
+valuable as any new sleeve.
+
+Same acceptance gate and rules as round 3. Do not re-test the round-3
+rejects (stock momentum overnight, international intraday drift, metals
+beyond the shadow, ensemble vol targeting, throttle/regime/allocation grids).
+
 ## Rules of engagement
 
 - Only create/modify **your** two files. Do not edit `config.py`, `data.py`,

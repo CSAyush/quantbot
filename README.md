@@ -19,12 +19,13 @@ live here:
 
 ## HF system: what it trades
 
-Three sleeves plus a risk layer (profile `sharpe-lev`, live since
-2026-09-16: the `sharpe` signals run at ~12.5% volatility through 2x/3x
-funds). The first two sleeves never hold capital at the same time (zero
-return correlation); the third is a small stress-regime satellite. Everything
-is causal; the live trader reads the same weight matrix the backtest
-produces, at the current session timestamp.
+Four sleeves plus a risk layer (profile `sharpe2`, live since 2026-09-24:
+the `sharpe` signals run at ~12.8% volatility through 2x/3x funds, plus the
+pre-FOMC sleeve). The first two sleeves never hold capital at the same time
+(zero return correlation); the third is a small stress-regime satellite; the
+fourth trades eight nights a year. Everything is causal; the live trader
+reads the same weight matrix the backtest produces, at the current session
+timestamp.
 
 **1. Overnight premium** (`strategies/hf_overnight.py`) - 16:00 -> 09:30.
 Hold 1/3 each of QQQ (via the 2x fund QLD in the default profile), SMH and IWM
@@ -50,6 +51,15 @@ after a down day in high vol the next day averages +25 bp, split evenly
 between the night and the day; after an up day, nothing (so no short leg).
 Allocation 0.25. `research/notes/ts_reversal.md`.
 
+**4. Pre-FOMC overnight** (`strategies/hf_macro.py`) - 16:00 the day before
+each scheduled FOMC decision -> 09:30 on decision day, ~8 nights a year, held
+through QLD. The pre-announcement drift (Lucca & Moench 2015): QQQ averages
++21 bp into decision days in-sample and +34 bp out-of-sample (t 3.1 / 3.2)
+against ~5 bp on ordinary nights, and the neighbouring nights show nothing.
+The other scheduled releases (employment, CPI, PPI) carry no reliable
+premium and are not traded. Decision days come from the Fed's published
+calendar (`quantbot/macro_calendar.py`). `research/notes/macro.md`.
+
 **Risk layer** (`strategies/hf_regime.py`) - the overnight sleeve is scaled by
 `clip((SPY > 200d MA ? 1 : 0.5) x (0.16 / QQQ 20d realised vol)^2, 0.1, 1)`
 (Moreira & Muir 2017 volatility management plus a trend gate), and the whole
@@ -71,17 +81,18 @@ of it, so sitting in cash earns no ratio boost.
 | max (TQQQ 3x, reversal 1.0) | 17.0% | 11.5% | 1.29 | -14.8% | 1.46 | 23.8% | 1 / 17 |
 | sharpe (growth + vol-targeted reversal 1.0 + index-reversal 0.25; 2x QQQ slot only) | 14.0% | 8.2% | 1.46 | -10.6% | 1.71 | 20.8% | 0 / 17 |
 | sharpe-max (same, TQQQ in the QQQ slot) | 16.0% | 9.2% | 1.50 | -13.3% | 1.71 | 22.9% | 0 / 17 |
-| **sharpe-lev (same signals; 3x QQQ slot, 2x SMH/IWM slots, stress sleeve via QLD) - live, default** | **21.3%** | **12.5%** | **1.49** | **-14.5%** | **1.76** | **32.4%** | **0 / 17** |
+| sharpe-lev (same signals; 3x QQQ slot, 2x SMH/IWM slots, stress sleeve via QLD) - live 09-16 to 09-24 | 21.6% | 12.5% | 1.50 | -14.5% | 1.80 | 32.4% | 0 / 17 |
+| **sharpe2 (sharpe-lev + pre-FOMC sleeve via QLD) - live, default** | **24.6%** | **12.8%** | **1.67** | **-14.5%** | **2.01** | **38.9%** | **1 / 17** |
 | sharpe-3x (everything 3x: TQQQ / SOXL / TNA) | 26.6% | 15.8% | 1.48 | -19.5% | 1.53 | 29.6% | 1 / 17 |
 | sharpe-alt (sharpe + metals overnight 0.25) - shadow only | 15.3% | 8.3% | 1.58 | -9.6% | 1.74 | 21.9% | 0 / 17 |
 | SPY buy & hold | 14.5% | 17.1% | 0.80 | -33.7% | - | - | 2 / 17 |
 
-Sharpe is in excess of the historical T-bill rate. `sharpe-lev`: bootstrap
-95% CI [1.01, 1.93], deflated-Sharpe probability 0.994 after every variant
-evaluated in three research rounds (~3,000 trials); worst day -6.6%, worst
-year +0.3% (2016); max overnight exposure 2.33x of equity on a night all
-three overnight signals fire. Switch with `python3 run.py hf switch
---profile <name>` (history is kept).
+Sharpe is in excess of the historical T-bill rate. `sharpe2`: bootstrap 95%
+CI [1.19, 2.12], deflated-Sharpe probability 0.999 after every variant
+evaluated in four research rounds (~3,100 trials); worst day -6.6%, worst
+year -0.2% (2016); max overnight exposure 2.33x of equity on a night all
+three overnight signals fire (~2.2x on an FOMC eve when they also fire).
+Switch with `python3 run.py hf switch --profile <name>` (history is kept).
 
 ### Sharpe versus return: two dials, not one
 
@@ -103,21 +114,19 @@ same trade with a different financing cost.
 Expected 12-month return = today's T-bill yield (3.97%) + Sharpe x vol, with
 the backtest's own fat tails (block bootstrap of daily returns). Rows are how
 much of the backtest edge survives live trading; backtests are upper bounds
-and 30-50% decay is normal. For the live profile `sharpe-lev`:
+and 30-50% decay is normal. For the live profile `sharpe2`:
 
 | edge that survives | Sharpe | expected return | 5th-95th percentile year | P(losing year) |
 |---|---|---|---|---|
-| 100% (backtest exactly right) | 1.49 | **+22.6%** | +2.1% .. +49.7% | 4% |
-| 70% | 1.04 | **+17.0%** | -3.4% .. +41.5% | 8% |
-| 50% | 0.75 | **+13.3%** | -7.0% .. +36.4% | 14% |
+| 100% (backtest exactly right) | 1.67 | **+25.3%** | +3.9% .. +54.7% | 3% |
+| 70% | 1.17 | **+19.0%** | -2.5% .. +45.1% | 7% |
+| 50% | 0.83 | **+14.7%** | -6.6% .. +39.1% | 13% |
 
 For scale, the same card on SPY buy & hold (2010-2026, a historic bull
 market) gives +17.4% expected with a 5th-95th percentile year of -10% .. +49%
 and a 15% chance of a losing year. The honest central forecast is the
-middle row: ~17% a year on a $1,000 account is ~$170, with a typical year
-anywhere from -3% to +40%, and a worst drawdown around -15%. Only the
-`sharpe-3x` rung keeps 20% expected *after* a 30% edge haircut, and it pays
-for that with a -19.5% drawdown and a weaker out-of-sample Sharpe.
+middle row: ~19% a year on a $1,000 account is ~$190, with a typical year
+anywhere from -3% to +45%, and a worst drawdown around -15%.
 
 ### Why the book is mostly ETFs (and where stocks do and don't earn their keep)
 
@@ -218,9 +227,35 @@ sleeve gates on it, so a late Yahoo daily row would have silently turned it
 off. Both the trader and the Alpaca pre-close estimator now fill it from
 1-minute bars (checked against the official close).
 
-![sharpe-lev backtest](hf_backtest_sharpe-lev_daily.png)
+### Round 4: Sharpe 1.5 -> 1.67 (`research/notes/macro.md`, `overnight_breadth` scratch)
 
-(`sharpe`, the same book at 1x, is in `hf_backtest_sharpe_daily.png`.)
+Two facts framed the round. A sleeve active a fraction p of the time has
+Sharpe sqrt(p) x its active-period Sharpe, so a stream that earns on the 48%
+of nights the book is flat adds its whole Sharpe^2. And the cost model is
+worth 0.34 of Sharpe: `sharpe-lev` is 1.50 at assumed costs, 1.67 at half,
+1.76 at a quarter, 1.84 at zero - auction orders fill at the official print,
+so the truth is in that range and the `alpaca-paper` account exists to
+measure it (6 fills so far, mean -3.4 bp i.e. favourable, far too noisy).
+
+| candidate | result | verdict |
+|---|---|---|
+| **Pre-FOMC overnight** (long QQQ 16:00 the day before a scheduled FOMC decision -> 09:30) | standalone 0.90 (IS 0.77 / **OOS 1.22**), 8 nights/yr, breakeven 12 bp, correlation <= 0.10 with every live sleeve; neighbouring nights show nothing (placebo). Ensemble via QLD: **1.50 -> 1.67, OOS 1.80 -> 2.01**, MaxDD unchanged | **adopted** (`sharpe2`) |
+| Employment / CPI / PPI eve-nights (Savor-Wilson announcement premium) | no reliable premium: employment +5 IS / -7 OOS bp, CPI +5 IS (its +23 OOS is the 2022-23 inflation scare), PPI -7 IS; adding them dilutes the FOMC sleeve to 0.33 | rejected |
+| Skip the gap-fade sleeve on release mornings | release mornings are slightly worse for the fade (+4.0 vs +5.5 bp IS) but within noise | not adopted; monitor |
+| Overnight sleeve gated on stock-panel breadth instead of the ETF's own 5-night sum | every breadth variant worse (sleeve 1.09 -> 0.60-0.97); own-series signal wins | rejected |
+
+The round's three research agents all died on infrastructure errors; the
+breadth agent's completed step-2 logs were read directly and the FOMC work
+was done by hand, including pulling every release date from the Fed and BLS
+primary sources (`quantbot/macro_calendar.py`, 2010-2027). The truncation
+test earned its keep again: the first FOMC sleeve computed "the eve" from
+the price panel and would have bought QLD every evening live; fixed to use
+the NYSE calendar (40/40 identical after).
+
+![sharpe2 backtest](hf_backtest_sharpe2_daily.png)
+
+(`sharpe-lev` without the FOMC sleeve is in `hf_backtest_sharpe-lev_daily.png`;
+`sharpe`, the same book at 1x, in `hf_backtest_sharpe_daily.png`.)
 
 Full research trail, including negative results (classic close-to-close
 reversal, first-half-hour intraday momentum, VIX-term-structure timing,
@@ -255,10 +290,10 @@ was done:
 ```bash
 python3 -m pip install --user -r requirements.txt
 
-python3 run.py hf backtest --profile sharpe-lev --sleeves --plot   # reproduce the table + forecast card
+python3 run.py hf backtest --profile sharpe2 --sleeves --plot   # reproduce the table + forecast card
 python3 run.py hf backtest --timeline hourly                       # ~2y, includes hourly data
 
-python3 run.py hf reset --capital 1000 --profile sharpe-lev   # fresh live paper account
+python3 run.py hf reset --capital 1000 --profile sharpe2   # fresh live paper account
 python3 run.py hf trade --session auto                    # process the latest session (all accounts)
 python3 run.py hf status                                  # P&L, positions, expectation card, chart
 python3 run.py hf status --account shadow-growth          # same for a shadow account
@@ -270,10 +305,10 @@ python3 run.py hf schedule --install                      # launchd: 09:33 and 1
 ### Paper accounts (live now)
 
 - **live**: started **2026-09-01 16:00 ET with $1,000** on profile `growth`;
-  switched to **`sharpe-lev`** after the 2026-09-16 close (positions and
-  history carried over; the switch is in `paper_state/hf/log.txt`). Equity at
-  the switch: $1,023 (+2.3% in 11 trading days, inside the expectation band).
-  Expect roughly 1.5x the daily moves of the first two weeks from here.
+  switched to `sharpe-lev` after the 2026-09-16 close ($1,023, +2.3%) and to
+  **`sharpe2`** after the 2026-09-24 close ($1,049, +4.9%); positions and
+  history carried over each time, switches logged in `paper_state/hf/log.txt`.
+  First FOMC-eve trade: 2026-10-27 16:00 (buy QLD), exit 2026-10-28 09:30.
 - **shadow-growth**: created after the 2026-09-16 close with $1,000 on
   `growth`, first session 2026-09-17 09:30 - the control: what the old book
   does from the switch date on.
@@ -380,6 +415,11 @@ Alternative: `deploy/setup_server.sh` sets up cron on any always-on Linux box.
   `alpaca-paper` MOO exits queued the evening before **expired unfilled** in
   Alpaca's paper simulator, so that account exits at today's close instead;
   under investigation (real exchanges fill MOO orders in full).
+- **2026-09-24 (change)**: live and `alpaca-paper` switched `sharpe-lev` ->
+  `sharpe2` (adds the pre-FOMC sleeve, round 4 above). No trader changes
+  needed: the sleeve uses the same MOC-buy / MOO-sell mechanics as the
+  overnight sleeve. The FOMC calendar in `quantbot/macro_calendar.py` must be
+  refreshed each December from the Fed's page (2027 is loaded).
 
 ### How to judge it (`hf status`)
 
@@ -436,6 +476,7 @@ quantbot/
     hf_overnight.py           overnight premium sleeve
     hf_reversal.py            gap-fade reversal sleeve (VIX ramp or vol-targeted sizing)
     hf_ts_reversal.py         index reversal in stress (round 3, allocation 0.25)
+    hf_macro.py               pre-FOMC overnight sleeve (round 4, allocation 1.0 via QLD)
     hf_regime.py              regime multiplier, vol regime, leverage map, drawdown throttle
     hf_risk.py                sizing / vol-target / max-Sharpe combination tools (round 3 research)
     hf_overnight_alt.py       metals overnight sleeve, shadow account only
@@ -446,6 +487,7 @@ quantbot/
     hf_etf_reversal.py        researched, not wired (negative result)
     hf_ensemble.py            profiles, sleeve combination, risk layer, backtest runner, forecast card
   universe_wide.py            300-name stock universe for the wide profile / shadow account
+  macro_calendar.py           FOMC / employment / CPI / PPI release dates 2010-2027 (primary sources)
     momentum.py trend.py mean_reversion.py ensemble.py   legacy daily system
   backtest.py, paper.py       legacy daily system engine and paper trader
 research/notes/               BRIEF.md (research contract), one note per sleeve, REDTEAM.md
