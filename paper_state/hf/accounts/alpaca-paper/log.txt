@@ -51,3 +51,4 @@
 [2026-09-24 15:56:22 EDT] ERROR: 15:56 ET is past the close submission deadline 15:50:00; not submitting
 [2026-09-24 16:26:48 EDT] [alpaca] USD order qb-20260924-1600-USD not filled (OrderStatus.EXPIRED)
 [2026-09-24 16:26:48 EDT] 2026-09-24 16:00 RECONCILE: 1 fills | equity $10,401.16 (broker $100,396.66) | avg slippage vs print -5.2 bp
+[2026-09-24 19:14:07 EDT] QUEUE for 2026-09-25: 1 orders (equity est $10,401.16)
