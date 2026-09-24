@@ -6373,3 +6373,5 @@ Last fills (54 total):
 2026-09-17T09:30:00-04:00    QLD SELL -3.920978  89.77  -351.99 0.0704    0.0000
 2026-09-17T09:30:00-04:00    SMH SELL -0.624988 560.33  -350.20 0.0350    0.0000
 2026-09-17T09:30:00-04:00    IWM SELL -1.200931 287.95  -345.81 0.0346    0.0000
+===== 2026-09-24 19:56 UTC alpaca-submit run 36051449026 =====
+ERROR: 15:56 ET is past the close submission deadline 15:50:00; not submitting
