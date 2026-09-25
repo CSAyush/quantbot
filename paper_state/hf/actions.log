@@ -6903,3 +6903,7 @@ Last fills (55 total):
 2026-09-17T09:30:00-04:00    SMH SELL -0.624988 560.33  -350.20 0.0350    0.0000
 2026-09-17T09:30:00-04:00    IWM SELL -1.200931 287.95  -345.81 0.0346    0.0000
 2026-09-24T16:00:00-04:00    SMH  BUY  0.545698 600.52   327.70 0.0328    0.3125
+===== 2026-09-25 10:59 UTC alpaca-submit run 36126869245 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-09-24
+[alpaca] session 2026-09-25 09:30:00-04:00 not over yet; reconcile later
+[alpaca] orders for 2026-09-25 already queued; nothing to do
