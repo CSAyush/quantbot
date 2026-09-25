@@ -56,3 +56,4 @@
 [2026-09-25 09:50:38 EDT] [alpaca] QLD order qb-20260925-0930-QLD not filled (OrderStatus.EXPIRED)
 [2026-09-25 09:50:38 EDT] 2026-09-25 09:30 RECONCILE: 0 fills | equity $10,404.94
 [2026-09-25 13:38:14 EDT] 2026-09-25 16:00 SUBMIT close: 2 cls orders (equity est $10,409.89, live px for 98 names)
+[2026-09-25 15:57:42 EDT] ERROR: 15:57 ET is past the close submission deadline 15:50:00; not submitting
