@@ -10,5 +10,26 @@
   "inception": "2026-09-14T16:00:00-04:00",
   "last_session": "2026-09-25T09:30:00-04:00",
   "sessions_processed": 10,
-  "pending": {}
+  "pending": {
+    "qb-20260925-1600-QLD": {
+      "symbol": "QLD",
+      "side": "sell",
+      "qty": 9,
+      "est_price": 97.07,
+      "target_w": 0.0,
+      "order_id": "f2afb68b-4bd4-4f34-a3c0-d600eca10343",
+      "stamp": "2026-09-25T16:00:00-04:00",
+      "est_time": "2026-09-25T13:37:57.422254-04:00"
+    },
+    "qb-20260925-1600-USD": {
+      "symbol": "USD",
+      "side": "buy",
+      "qty": 36,
+      "est_price": 95.33,
+      "target_w": 0.3333333333333333,
+      "order_id": "dba34ad8-787b-4340-a738-465bf46a9802",
+      "stamp": "2026-09-25T16:00:00-04:00",
+      "est_time": "2026-09-25T13:37:57.422254-04:00"
+    }
+  }
 }
