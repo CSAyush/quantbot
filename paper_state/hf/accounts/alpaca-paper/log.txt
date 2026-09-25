@@ -52,3 +52,4 @@
 [2026-09-24 16:26:48 EDT] [alpaca] USD order qb-20260924-1600-USD not filled (OrderStatus.EXPIRED)
 [2026-09-24 16:26:48 EDT] 2026-09-24 16:00 RECONCILE: 1 fills | equity $10,401.16 (broker $100,396.66) | avg slippage vs print -5.2 bp
 [2026-09-24 19:14:07 EDT] QUEUE for 2026-09-25: 1 orders (equity est $10,401.16)
+[2026-09-24 20:06:47 EDT] PROFILE SWITCH sharpe-lev -> sharpe2 after session 2026-09-24T16:00:00-04:00 (positions carried: {'QLD': 9.0})

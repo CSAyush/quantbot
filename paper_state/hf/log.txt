@@ -62,3 +62,4 @@
 [2026-09-23 16:17:02 EDT] 2026-09-23 16:00 | equity $1,048.94 | cash $1,048.94 | long 0% short 0% | 0 fills
 [2026-09-24 09:34:51 EDT] 2026-09-24 09:30 | equity $1,049.02 | cash $1,049.02 | long 0% short 0% | 0 fills
 [2026-09-24 16:26:35 EDT] 2026-09-24 16:00 | equity $1,048.99 | cash $721.18 | long 31% short 0% | 1 fills
+[2026-09-24 20:06:46 EDT] PROFILE SWITCH sharpe-lev -> sharpe2 after session 2026-09-24T16:00:00-04:00 (positions carried: {'USD': 3.4659208838437134})
