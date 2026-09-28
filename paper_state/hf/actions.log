@@ -8009,3 +8009,5 @@ Last fills (57 total):
 2026-09-25T16:00:00-04:00    SMH  BUY  0.577619 606.56   350.36 0.0350    0.3333
 ===== 2026-09-28 12:41 UTC alpaca-submit run 36423361253 =====
 08:41 ET is before the open submission window (08:45:00-09:28:00); nothing to do.
+===== 2026-09-28 19:54 UTC alpaca-submit run 36475395817 =====
+ERROR: 15:54 ET is past the close submission deadline 15:50:00; not submitting
