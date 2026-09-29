@@ -9505,3 +9505,10 @@ Last fills (66 total):
 2026-09-29T16:00:00-04:00    SMH  BUY  0.556182 606.900   337.55 0.0338    0.3197
 ===== 2026-09-29 22:59 UTC alpaca-submit run 36642718997 =====
 18:59 ET is well past the close window; nothing to do.
+===== 2026-09-29 23:06 UTC alpaca-submit run 36643346905 =====
+
+1 Failed download:
+['XLP']: OperationalError('database is locked')
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-09-29
+QUEUE for 2026-09-30: 0 orders (equity est $10,408.63)
