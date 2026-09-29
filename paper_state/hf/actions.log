@@ -9116,3 +9116,13 @@ Last fills (63 total):
 [alpaca] live prices for 98/98 names
 [paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
 [alpaca] orders for 2026-09-29 16:00:00-04:00 already submitted; nothing to do
+===== 2026-09-29 19:21 UTC alpaca-submit run 36618574230 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-09-28
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+[alpaca] replaced 3 early close estimate(s) with a 15:21 estimate
+[alpaca] order rejected TQQQ buy 43: {"code":40010001,"message":"client_order_id must be unique"}
+[alpaca] order rejected USD buy 35: {"code":40010001,"message":"client_order_id must be unique"}
+[alpaca] order rejected UWM buy 58: {"code":40010001,"message":"client_order_id must be unique"}
+2026-09-29 16:00 SUBMIT close: 0 cls orders (equity est $10,408.63, live px for 98 names)
