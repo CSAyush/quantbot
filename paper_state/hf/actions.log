@@ -10549,3 +10549,10 @@ QUEUE for 2026-10-01: 0 orders (equity est $10,408.63)
 ===== 2026-09-30 23:08 UTC alpaca-submit run 36789479782 =====
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-09-30
 QUEUE for 2026-10-01: 0 orders (equity est $10,408.63)
+===== 2026-09-30 23:51 UTC alpaca-submit run 36793212238 =====
+
+1 Failed download:
+['V']: OperationalError('database is locked')
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-09-30
+QUEUE for 2026-10-01: 0 orders (equity est $10,408.63)
