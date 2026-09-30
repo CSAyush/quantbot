@@ -10178,3 +10178,12 @@ Last fills (69 total):
 2026-09-30T09:30:00-04:00    QLD SELL -3.544917  95.78  -339.53 0.0679    0.0000
 2026-09-30T09:30:00-04:00    IWM SELL -1.209802 280.17  -338.95 0.0339    0.0000
 2026-09-30T09:30:00-04:00    SMH SELL -0.556182 609.13  -338.79 0.0339    0.0000
+===== 2026-09-30 19:34 UTC alpaca-submit run 36766501927 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-09-29
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+[alpaca] replaced 2 early close estimate(s) with a 15:34 estimate
+[alpaca] order rejected TQQQ buy 44: {"code":40010001,"message":"client_order_id must be unique"}
+[alpaca] order rejected UWM buy 61: {"code":40010001,"message":"client_order_id must be unique"}
+2026-09-30 16:00 SUBMIT close: 0 cls orders (equity est $10,408.63, live px for 98 names)
