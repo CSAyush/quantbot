@@ -1,9 +1,11 @@
 {
-  "cash": 1013.7508362179734,
+  "cash": 675.8313185396676,
   "starting_cash": 1000.0,
   "profile": "sharpe-alt",
   "inception": "2026-09-17T09:30:00-04:00",
-  "positions": {},
-  "last_session": "2026-10-01T09:30:00-04:00",
-  "sessions_processed": 20
+  "positions": {
+    "IWM": 1.2109068360314545
+  },
+  "last_session": "2026-10-01T16:00:00-04:00",
+  "sessions_processed": 21
 }
