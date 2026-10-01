@@ -1,12 +1,9 @@
 {
-  "cash": 357.734699581865,
+  "cash": 1075.4724583778616,
   "starting_cash": 1000,
   "profile": "sharpe2",
   "inception": "2026-09-01T16:00:00-04:00",
-  "positions": {
-    "TQQQ": 4.5845788298929575,
-    "UWM": 6.307028787043865
-  },
-  "last_session": "2026-09-30T16:00:00-04:00",
-  "sessions_processed": 40
+  "positions": {},
+  "last_session": "2026-10-01T09:30:00-04:00",
+  "sessions_processed": 41
 }
