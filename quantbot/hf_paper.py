@@ -432,6 +432,23 @@ def trade(cfg: HFConfig, session: str = "auto", force: bool = False, refresh: bo
     _inject_live_prints(md, now)
     ts = _resolve_session(md, session, now)
 
+    # A session that was never processed (every run in its window skipped or
+    # failed) is processed first, at its own official print, before the
+    # current one. Jumping straight to the latest stamp silently holds the
+    # overnight book through a day session (2026-09-28 09:30).
+    if session == "auto" and not force and state["last_session"]:
+        missed = [s for s in md.px_daily.index if pd.Timestamp(state["last_session"]) < s < ts]
+        if missed:
+            s0 = missed[0]
+            msg = (f"CATCH-UP: session {s0.strftime('%Y-%m-%d %H:%M')} was never processed; "
+                   f"processing it at its own print before {ts.strftime('%Y-%m-%d %H:%M')}")
+            print(msg)
+            _log(msg, acct)
+            trade(cfg, session="auto", refresh=False, now=s0 + pd.Timedelta(minutes=15), account=account)
+            if pd.Timestamp(load_state(cfg, acct)["last_session"]) < s0:
+                raise SystemExit(2)
+            return trade(cfg, session=session, force=force, refresh=False, now=now, account=account)
+
     if state["last_session"] and pd.Timestamp(state["last_session"]) >= ts and not force:
         expected = _expected_session(now)
         if expected is not None and expected > ts and state["positions"]:

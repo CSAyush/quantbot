@@ -420,6 +420,28 @@ Alternative: `deploy/setup_server.sh` sets up cron on any always-on Linux box.
   needed: the sleeve uses the same MOC-buy / MOO-sell mechanics as the
   overnight sleeve. The FOMC calendar in `quantbot/macro_calendar.py` must be
   refreshed each December from the Fed's page (2027 is loaded).
+- **2026-09-28 09:30**: GitHub fired none of the nine daytime `paper-sessions`
+  slots (first run 16:13 ET), so every simulated account jumped from Friday's
+  close to Monday's close and held Friday night's book (live: one 1/3 slot)
+  through Monday's day session - a hold the strategy never makes. Fix: the
+  trader now processes every missed session in order, each at its own
+  official print, before the current one (`CATCH-UP` in the account log).
+  History left as recorded; `hf status` flags the gap.
+- **Round-4 follow-up, pre-holiday premium**: tested and rejected. SPY
+  09:30->close on the day before a market holiday averages +8.7 bp (t 1.6) IS
+  and +11.2 bp (t 1.1) OOS against +2.2 on all days; same sign in both halves
+  but ~9 events a year at t < 2 is a standalone Sharpe of ~0.3.
+- **2026-09-28 09:30**: GitHub fired none of the nine daytime `paper-sessions`
+  slots (first run 16:13 ET), so every simulated account jumped from Friday's
+  close to Monday's close and held Friday night's book (live: one 1/3 slot)
+  through Monday's day session - a hold the strategy never makes. Fix: the
+  trader now processes every missed session in order, each at its own
+  official print, before the current one (`CATCH-UP` in the account log).
+  History left as recorded; `hf status` flags the gap.
+- **Round-4 follow-up, pre-holiday premium**: tested and rejected. SPY
+  09:30->close on the day before a market holiday averages +8.7 bp (t 1.6) IS
+  and +11.2 bp (t 1.1) OOS against +2.2 on all days; same sign in both halves
+  but ~9 events a year at t < 2 is a standalone Sharpe of ~0.3.
 
 ### How to judge it (`hf status`)
 
