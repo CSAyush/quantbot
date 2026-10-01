@@ -10973,3 +10973,10 @@ Last fills (73 total):
 2026-09-30T16:00:00-04:00    QLD  BUY  3.694743  95.65   353.40 0.0707    0.3333
 2026-10-01T09:30:00-04:00    QLD SELL -3.694743  96.41  -356.21 0.0712    0.0000
 2026-10-01T09:30:00-04:00    IWM SELL -1.271734 277.36  -352.73 0.0353    0.0000
+===== 2026-10-01 18:37 UTC alpaca-submit run 36908198302 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-09-30
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+2026-10-01 16:00 SUBMIT close: 1 cls orders (equity est $10,408.63, live px for 98 names)
+   UWM    buy    61 sh @~57.31  target 0.333
