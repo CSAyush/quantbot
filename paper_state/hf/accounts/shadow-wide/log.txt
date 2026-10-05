@@ -67,3 +67,6 @@
 [2026-10-01 16:20:29 EDT] 2026-10-01 16:00 | equity $1,062.26 | cash $708.17 | long 33% short 0% | 1 fills
 [2026-10-02 10:47:04 EDT] 2026-10-02 09:30 | equity $1,066.43 | cash $1,066.43 | long 0% short 0% | 1 fills
 [2026-10-02 16:41:01 EDT] 2026-10-02 16:00 | equity $1,066.46 | cash $1,066.46 | long 0% short 0% | 0 fills
+[2026-10-05 17:37:38 EDT] CATCH-UP: session 2026-10-05 09:30 was never processed; processing it at its own print before 2026-10-05 16:00
+[2026-10-05 17:37:38 EDT] 2026-10-05 09:30 | equity $1,066.78 | cash $1,066.78 | long 0% short 0% | 0 fills
+[2026-10-05 17:37:39 EDT] 2026-10-05 16:00 | equity $1,066.81 | cash $1,066.81 | long 0% short 0% | 0 fills
