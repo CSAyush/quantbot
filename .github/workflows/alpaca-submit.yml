@@ -35,7 +35,10 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: paper-sessions      # shared with paper-sessions.yml so pushes never race
+  # Own group: GitHub keeps only one *pending* run per group and cancels the rest,
+  # so sharing with paper.yml's dense cron produced spurious "cancelled" runs.
+  # Push races are handled by the rebase-retry loop below (disjoint state files).
+  group: alpaca-submit
   cancel-in-progress: false
 
 permissions:
@@ -78,5 +81,10 @@ jobs:
           git config user.email "quantbot@users.noreply.github.com"
           git add paper_state
           git diff --cached --quiet && echo "no state change" || git commit -m "alpaca: submit $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git pull --rebase --autostash origin ${{ github.ref_name }} || true
-          git push origin HEAD:${{ github.ref_name }}
+          ok=0
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash origin ${{ github.ref_name }} || true
+            git push origin HEAD:${{ github.ref_name }} && { ok=1; break; }
+            sleep $((i * 5))
+          done
+          [ $ok = 1 ]
