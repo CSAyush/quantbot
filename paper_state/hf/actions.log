@@ -12829,3 +12829,5 @@ Last fills (75 total):
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-02
 [alpaca] live prices for 98/98 names
 2026-10-05 09:30 SUBMIT open: 0 opg orders (equity est $10,408.63, live px for 98 names)
+===== 2026-10-05 21:18 UTC alpaca-submit run 37373746868 =====
+17:18 ET is well past the close window; nothing to do.
