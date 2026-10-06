@@ -13701,3 +13701,9 @@ Last fills (75 total):
 2026-10-01T09:30:00-04:00    IWM SELL -1.271734 277.36  -352.73 0.0353    0.0000
 2026-10-01T16:00:00-04:00    IWM  BUY  1.268853 279.06   354.09 0.0354    0.3333
 2026-10-02T09:30:00-04:00    IWM SELL -1.268853 282.33  -358.24 0.0358    0.0000
+===== 2026-10-06 19:19 UTC alpaca-submit run 37518061197 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-05
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+2026-10-06 16:00 SUBMIT close: 0 cls orders (equity est $10,408.63, live px for 98 names)
