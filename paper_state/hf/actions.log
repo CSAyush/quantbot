@@ -14675,3 +14675,5 @@ Last fills (75 total):
 2026-10-07 16:00 SUBMIT close: 0 cls orders (equity est $10,408.63, live px for 98 names)
 ===== 2026-10-07 19:56 UTC alpaca-submit run 37678177116 =====
 ERROR: 15:56 ET is past the close submission deadline 15:50:00; not submitting
+===== 2026-10-07 20:03 UTC alpaca-submit run 37679156217 =====
+ERROR: 16:04 ET is past the close submission deadline 15:50:00; not submitting

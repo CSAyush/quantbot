@@ -138,3 +138,4 @@
 [2026-10-07 15:20:07 EDT] 2026-10-07 16:00 SUBMIT close: 0 cls orders (equity est $10,408.63, live px for 98 names)
 [2026-10-07 15:46:35 EDT] 2026-10-07 16:00 SUBMIT close: 0 cls orders (equity est $10,408.63, live px for 98 names)
 [2026-10-07 15:56:06 EDT] ERROR: 15:56 ET is past the close submission deadline 15:50:00; not submitting
+[2026-10-07 16:04:01 EDT] ERROR: 16:04 ET is past the close submission deadline 15:50:00; not submitting
