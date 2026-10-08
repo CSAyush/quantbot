@@ -15481,3 +15481,11 @@ Last fills (75 total):
 [paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
 2026-10-08 16:00 SUBMIT close: 1 cls orders (equity est $10,408.63, live px for 98 names)
    USD    buy    36 sh @~95.69  target 0.333
+===== 2026-10-08 19:16 UTC alpaca-submit run 37830638863 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-07
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+[alpaca] replaced 1 early close estimate(s) with a 15:16 estimate
+[alpaca] order rejected USD buy 36: {"code":40010001,"message":"client_order_id must be unique"}
+2026-10-08 16:00 SUBMIT close: 0 cls orders (equity est $10,408.63, live px for 98 names)

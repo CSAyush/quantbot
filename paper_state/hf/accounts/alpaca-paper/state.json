@@ -8,16 +8,5 @@
   "inception": "2026-09-14T16:00:00-04:00",
   "last_session": "2026-09-25T16:00:00-04:00",
   "sessions_processed": 11,
-  "pending": {
-    "qb-20261008-1600-USD": {
-      "symbol": "USD",
-      "side": "buy",
-      "qty": 36,
-      "est_price": 95.695,
-      "target_w": 0.3333333333333333,
-      "order_id": "852b4498-eb83-4540-b344-ea269f529aee",
-      "stamp": "2026-10-08T16:00:00-04:00",
-      "est_time": "2026-10-08T15:04:29.984565-04:00"
-    }
-  }
+  "pending": {}
 }
