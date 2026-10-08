@@ -47,6 +47,7 @@ CLIENT_ID_PREFIX = "qb"
 # estimate made before REFINE_FROM is replaced by a later in-window run.
 SUBMIT_WINDOWS = {"open": (dt.time(8, 45), dt.time(9, 28)), "close": (dt.time(9, 40), dt.time(15, 50))}
 REFINE_FROM = dt.time(15, 10)
+SESSION_TIMES = {"open": dt.time(9, 30), "close": dt.time(16, 0)}
 
 
 # --------------------------------------------------------------------------- credentials / clients
@@ -189,6 +190,11 @@ def submit(acct, cfg: HFConfig, session: str, now: dt.datetime | None = None) ->
             # A stray cron (GitHub schedules run hours late); the evening queue covers the next session.
             print(f"{now_ts.strftime('%H:%M')} ET is well past the {session} window; nothing to do.")
             return
+        st = load_state(cfg, acct)
+        if st.get("last_submit") and pd.Timestamp(st["last_submit"]).date() == now_ts.date() \
+                and pd.Timestamp(st["last_submit"]).tz_convert(TZ).time() == SESSION_TIMES[session]:
+            print(f"{now_ts.strftime('%H:%M')} ET: {session} orders were already submitted earlier; nothing to do.")
+            return
         msg = f"ERROR: {now_ts.strftime('%H:%M')} ET is past the {session} submission deadline {deadline}; not submitting"
         print(msg); _log(msg, acct)
         raise SystemExit(2)
@@ -248,7 +254,9 @@ def submit(acct, cfg: HFConfig, session: str, now: dt.datetime | None = None) ->
         if delta == 0:
             continue
         side = OrderSide.BUY if delta > 0 else OrderSide.SELL
-        coid = f"{CLIENT_ID_PREFIX}-{stamp.strftime('%Y%m%d-%H%M')}-{sym}"
+        # Alpaca rejects a reused client_order_id even after a cancel, so a refined
+        # estimate needs a distinct id.
+        coid = f"{CLIENT_ID_PREFIX}-{stamp.strftime('%Y%m%d-%H%M')}-{sym}-{now_ts.strftime('%H%M')}"
         try:
             o = client.submit_order(MarketOrderRequest(symbol=to_alpaca(sym), qty=abs(delta), side=side,
                                                        time_in_force=tif, client_order_id=coid))
@@ -261,6 +269,7 @@ def submit(acct, cfg: HFConfig, session: str, now: dt.datetime | None = None) ->
                          "est_time": now_ts.isoformat()}
 
     state["pending"].update(pending)
+    state["last_submit"] = stamp.isoformat()
     save_state(state, acct)
     msg = (f"{stamp.strftime('%Y-%m-%d %H:%M')} SUBMIT {session}: {len(orders)} {tif.value} orders "
            f"(equity est ${equity:,.2f}, live px for {int(est.notna().sum())} names)")
