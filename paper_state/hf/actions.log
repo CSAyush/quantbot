@@ -15600,3 +15600,5 @@ Last fills (75 total):
 [paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
 [alpaca] order rejected USD buy 36: {"code":40010001,"message":"client_order_id must be unique"}
 2026-10-08 16:00 SUBMIT close: 0 cls orders (equity est $10,408.63, live px for 98 names)
+===== 2026-10-08 19:52 UTC alpaca-submit run 37835161455 =====
+ERROR: 15:52 ET is past the close submission deadline 15:50:00; not submitting
