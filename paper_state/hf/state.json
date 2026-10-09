@@ -1,11 +1,9 @@
 {
-  "cash": 722.8747407742687,
+  "cash": 1093.8563006506413,
   "starting_cash": 1000,
   "profile": "sharpe2",
   "inception": "2026-09-01T16:00:00-04:00",
-  "positions": {
-    "USD": 3.7637964445680443
-  },
-  "last_session": "2026-10-08T16:00:00-04:00",
-  "sessions_processed": 52
+  "positions": {},
+  "last_session": "2026-10-09T09:30:00-04:00",
+  "sessions_processed": 53
 }
