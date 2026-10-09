@@ -16499,3 +16499,13 @@ Last fills (77 total):
 2026-10-02T09:30:00-04:00    IWM SELL -1.268853 282.33  -358.24 0.0358    0.0000
 2026-10-08T16:00:00-04:00    SMH  BUY  0.585751 607.27   355.71 0.0356    0.3333
 2026-10-09T09:30:00-04:00    SMH SELL -0.585751 615.14  -360.32 0.0360    0.0000
+===== 2026-10-09 19:17 UTC alpaca-submit run 37979204425 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-08
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+[alpaca] replaced 3 early close estimate(s) with a 15:18 estimate
+2026-10-09 16:00 SUBMIT close: 3 cls orders (equity est $10,408.63, live px for 98 names)
+   TQQQ   buy    43 sh @~81.35  target 0.333
+   USD    buy    37 sh @~94.91  target 0.333
+   UWM    buy    61 sh @~57.31  target 0.333
