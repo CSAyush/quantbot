@@ -168,3 +168,5 @@
 [2026-10-12 17:52:43 EDT] [alpaca] TQQQ order qb-20261012-0930-TQQQ not filled (OrderStatus.EXPIRED)
 [2026-10-12 17:52:43 EDT] 2026-10-12 09:30 RECONCILE: 0 fills | equity $10,404.17
 [2026-10-12 19:41:01 EDT] QUEUE for 2026-10-13: 1 orders (equity est $10,393.78)
+[2026-10-13 12:02:33 EDT] [alpaca] TQQQ order qb-20261013-0930-TQQQ not filled (OrderStatus.EXPIRED)
+[2026-10-13 12:02:33 EDT] 2026-10-13 09:30 RECONCILE: 0 fills | equity $10,374.87
