@@ -3,35 +3,13 @@
   "profile": "sharpe2",
   "notional": 10000.0,
   "starting_cash": 10000.0,
-  "cash": 9621.210000000001,
+  "cash": 10137.44,
   "positions": {
-    "TQQQ": 9.0,
-    "UWM": 1.0
+    "TQQQ": 3.0
   },
   "inception": "2026-09-14T16:00:00-04:00",
-  "last_session": "2026-10-13T16:00:00-04:00",
-  "sessions_processed": 15,
-  "pending": {
-    "qb-20261014-0930-TQQQ": {
-      "symbol": "TQQQ",
-      "side": "sell",
-      "qty": 9,
-      "est_price": 78.80999755859375,
-      "target_w": 0.0,
-      "order_id": "298864a5-5979-49f4-a22f-95441d7fb902",
-      "stamp": "2026-10-14T09:30:00-04:00",
-      "queued_estimate": true
-    },
-    "qb-20261014-0930-UWM": {
-      "symbol": "UWM",
-      "side": "sell",
-      "qty": 1,
-      "est_price": 56.099998474121094,
-      "target_w": 0.0,
-      "order_id": "cbc75d0c-3e55-4396-914f-e3785aa7c1bc",
-      "stamp": "2026-10-14T09:30:00-04:00",
-      "queued_estimate": true
-    }
-  },
+  "last_session": "2026-10-14T09:30:00-04:00",
+  "sessions_processed": 16,
+  "pending": {},
   "last_submit": "2026-10-13T16:00:00-04:00"
 }

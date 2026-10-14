@@ -175,3 +175,4 @@
 [2026-10-13 16:20:40 EDT] [alpaca] USD order qb-20261013-1600-USD-1538 not filled (OrderStatus.EXPIRED)
 [2026-10-13 16:20:40 EDT] 2026-10-13 16:00 RECONCILE: 1 fills | equity $10,386.60 (broker $100,385.72) | avg slippage vs print -3.6 bp
 [2026-10-13 19:18:26 EDT] QUEUE for 2026-10-14: 2 orders (equity est $10,386.60)
+[2026-10-14 09:45:55 EDT] 2026-10-14 09:30 RECONCILE: 2 fills | equity $10,368.44 (broker $100,369.26) | avg slippage vs print -10.2 bp
