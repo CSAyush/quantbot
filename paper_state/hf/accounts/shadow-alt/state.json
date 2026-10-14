@@ -1,9 +1,12 @@
 {
-  "cash": 987.9138445743292,
+  "cash": 423.95412414333106,
   "starting_cash": 1000.0,
   "profile": "sharpe-alt",
   "inception": "2026-09-17T09:30:00-04:00",
-  "positions": {},
-  "last_session": "2026-10-14T09:30:00-04:00",
-  "sessions_processed": 38
+  "positions": {
+    "QLD": 3.0445149292120854,
+    "SMH": 0.49926078253381956
+  },
+  "last_session": "2026-10-14T16:00:00-04:00",
+  "sessions_processed": 39
 }

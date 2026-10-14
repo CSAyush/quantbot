@@ -177,3 +177,6 @@
 [2026-10-13 19:18:26 EDT] QUEUE for 2026-10-14: 2 orders (equity est $10,386.60)
 [2026-10-14 09:45:55 EDT] 2026-10-14 09:30 RECONCILE: 2 fills | equity $10,368.44 (broker $100,369.26) | avg slippage vs print -10.2 bp
 [2026-10-14 13:41:40 EDT] 2026-10-14 16:00 SUBMIT close: 2 cls orders (equity est $10,359.34, live px for 98 names)
+[2026-10-14 16:10:04 EDT] [alpaca] TQQQ order qb-20261014-1600-TQQQ-1341 not filled (OrderStatus.EXPIRED)
+[2026-10-14 16:10:04 EDT] [alpaca] USD order qb-20261014-1600-USD-1341 not filled (OrderStatus.EXPIRED)
+[2026-10-14 16:10:04 EDT] 2026-10-14 16:00 RECONCILE: 0 fills | equity $10,137.44
