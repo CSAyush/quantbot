@@ -20675,3 +20675,12 @@ Last fills (99 total):
 2026-10-14T16:00:00-04:00    SMH  BUY  0.523152 564.74   295.44 0.0295    0.2854
 2026-10-15T09:30:00-04:00    QLD SELL -3.190205  89.96  -286.99 0.0574    0.0000
 2026-10-15T09:30:00-04:00    SMH SELL -0.523152 546.38  -285.84 0.0286    0.0000
+===== 2026-10-15 19:49 UTC alpaca-submit run 38796893576 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-14
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+[alpaca] replaced 2 early close estimate(s) with a 15:49 estimate
+2026-10-15 16:00 SUBMIT close: 2 cls orders (equity est $10,359.88, live px for 98 names)
+   TQQQ   buy    42 sh @~74.14  target 0.321
+   USD    buy    40 sh @~82.67  target 0.321
