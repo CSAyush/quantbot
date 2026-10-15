@@ -39,3 +39,4 @@
 [2026-10-13 16:20:52 EDT] 2026-10-13 16:00 | equity $1,003.97 | cash $0.00 | long 100% short 0% | 3 fills
 [2026-10-14 09:46:10 EDT] 2026-10-14 09:30 | equity $987.91 | cash $987.91 | long 0% short 0% | 3 fills
 [2026-10-14 16:10:21 EDT] 2026-10-14 16:00 | equity $987.86 | cash $423.95 | long 57% short 0% | 2 fills
+[2026-10-15 13:05:40 EDT] 2026-10-15 09:30 | equity $970.58 | cash $970.58 | long 0% short 0% | 2 fills
