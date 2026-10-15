@@ -20738,3 +20738,89 @@ Last fills (99 total):
 2026-10-14T16:00:00-04:00    SMH  BUY  0.523152 564.74   295.44 0.0295    0.2854
 2026-10-15T09:30:00-04:00    QLD SELL -3.190205  89.96  -286.99 0.0574    0.0000
 2026-10-15T09:30:00-04:00    SMH SELL -0.523152 546.38  -285.84 0.0286    0.0000
+===== 2026-10-15 20:18 UTC run 38800809581 (schedule) =====
+
+=== account 'live' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-15
+2026-10-15 16:00 | equity $997.65 | cash $357.66 | long 64% short 0% | 2 fills
+ticker side   shares  price  dollars  cost  target_w
+  TQQQ  BUY 4.334825  73.82    320.0 0.064    0.3208
+   USD  BUY 3.887230  82.32    320.0 0.064    0.3208
+ticker  shares  value  weight
+  TQQQ  4.3348  320.0  0.3208
+   USD  3.8872  320.0  0.3208
+
+=== account 'alpaca-paper' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-15
+[alpaca] USD order qb-20261015-1600-USD-1549 not filled (OrderStatus.EXPIRED)
+2026-10-15 16:00 RECONCILE: 1 fills | equity $10,358.41 (broker $100,356.66) | avg slippage vs print +9.5 bp
+ticker side  shares  fill_price  official_print  slippage_bps
+  TQQQ  BUY     7.0       73.89           73.82          9.48
+
+=== account 'shadow-alt' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-15
+2026-10-15 16:00 | equity $970.51 | cash $347.93 | long 64% short 0% | 2 fills
+ticker side   shares  price  dollars   cost  target_w
+   QLD  BUY 3.370064  92.37   311.29 0.0623    0.3208
+   SMH  BUY 0.557034 558.84   311.29 0.0311    0.3208
+ticker  shares  value  weight
+   QLD  3.3701 311.29  0.3208
+   SMH  0.5570 311.29  0.3208
+
+=== account 'shadow-growth' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-15
+2026-10-15 16:00 | equity $970.51 | cash $347.93 | long 64% short 0% | 2 fills
+ticker side   shares  price  dollars   cost  target_w
+   QLD  BUY 3.370064  92.37   311.29 0.0623    0.3208
+   SMH  BUY 0.557034 558.84   311.29 0.0311    0.3208
+ticker  shares  value  weight
+   QLD  3.3701 311.29  0.3208
+   SMH  0.5570 311.29  0.3208
+
+=== account 'shadow-wide' ===
+[data] daily OHLCV: 345 tickers, 2010-01-04 -> 2026-10-15
+2026-10-15 16:00 | equity $1,016.96 | cash $364.58 | long 64% short 0% | 2 fills
+ticker side   shares  price  dollars   cost  target_w
+   QLD  BUY 3.531333  92.37   326.19 0.0652    0.3208
+   SMH  BUY 0.583690 558.84   326.19 0.0326    0.3208
+ticker  shares  value  weight
+   QLD  3.5313 326.19  0.3208
+   SMH  0.5837 326.19  0.3208
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     62
+Equity:       $997.65  (start $1,000.00)
+P&L:          $-2.35 (-0.24%)
+SPY B&H same period: +1.31%
+Costs paid:   $5.67
+Realized:     Sharpe -0.23 | MaxDD -8.78% | days 31 | avg |daily| 0.72%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.089% | daily sd 0.809% | positive days 65% | Sharpe 1.63 | MaxDD -14.5% | typical exposure 22%
+  after 31 days: live -0.22% vs expected +2.76% +/- 9.01%  (z = -0.66) -> inside the 2-sigma band
+  live positive days 74% (expected 65%) | live daily sd 1.149% (expected 0.809%)
+  days of live data before a Sharpe of 1.63 is distinguishable from 0 at 2 sigma: ~378 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  TQQQ       4.3348 sh
+  USD        3.8872 sh
+
+Last fills (101 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-10-14T09:30:00-04:00    UWM SELL -6.299963 54.700  -344.61 0.0689    0.0000
+2026-10-14T09:30:00-04:00    USD SELL -3.872758 87.890  -340.38 0.0681    0.0000
+2026-10-14T16:00:00-04:00   TQQQ  BUY  3.966287 74.120   293.98 0.0588    0.2854
+2026-10-14T16:00:00-04:00    USD  BUY  3.476187 84.570   293.98 0.0588    0.2854
+2026-10-15T09:30:00-04:00   TQQQ SELL -3.966287 70.932  -281.34 0.0563    0.0000
+2026-10-15T09:30:00-04:00    USD SELL -3.476187 78.950  -274.44 0.0549    0.0000
+2026-10-15T16:00:00-04:00   TQQQ  BUY  4.334825 73.820   320.00 0.0640    0.3208
+2026-10-15T16:00:00-04:00    USD  BUY  3.887230 82.320   320.00 0.0640    0.3208
+2026-10-14T16:00:00-04:00    QLD  BUY  3.190205  92.61   295.44 0.0591    0.2854
+2026-10-14T16:00:00-04:00    SMH  BUY  0.523152 564.74   295.44 0.0295    0.2854
+2026-10-15T09:30:00-04:00    QLD SELL -3.190205  89.96  -286.99 0.0574    0.0000
+2026-10-15T09:30:00-04:00    SMH SELL -0.523152 546.38  -285.84 0.0286    0.0000
+2026-10-15T16:00:00-04:00    QLD  BUY  3.531333  92.37   326.19 0.0652    0.3208
+2026-10-15T16:00:00-04:00    SMH  BUY  0.583690 558.84   326.19 0.0326    0.3208

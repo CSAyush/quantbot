@@ -185,3 +185,5 @@
 [2026-10-15 13:05:27 EDT] 2026-10-15 09:30 RECONCILE: 0 fills | equity $10,350.24
 [2026-10-15 13:29:33 EDT] 2026-10-15 16:00 SUBMIT close: 2 cls orders (equity est $10,354.58, live px for 98 names)
 [2026-10-15 15:49:38 EDT] 2026-10-15 16:00 SUBMIT close: 2 cls orders (equity est $10,359.88, live px for 98 names)
+[2026-10-15 16:19:06 EDT] [alpaca] USD order qb-20261015-1600-USD-1549 not filled (OrderStatus.EXPIRED)
+[2026-10-15 16:19:06 EDT] 2026-10-15 16:00 RECONCILE: 1 fills | equity $10,358.41 (broker $100,356.66) | avg slippage vs print +9.5 bp
