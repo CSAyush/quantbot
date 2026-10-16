@@ -21682,3 +21682,57 @@ Last fills (103 total):
    QLD    buy    29 sh @~87.95  target 0.250
    TQQQ   buy    28 sh @~68.43  target 0.252
    USD    buy    33 sh @~77.70  target 0.252
+===== 2026-10-16 19:31 UTC run 38955483692 (schedule) =====
+
+=== account 'live' ===
+Session 2026-10-16 09:30 already processed (last: 2026-10-16T09:30:00-04:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-15
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] session 2026-10-16 16:00:00-04:00 not over yet; reconcile later
+
+=== account 'shadow-alt' ===
+Session 2026-10-16 09:30 already processed (last: 2026-10-16T09:30:00-04:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-10-16 09:30 already processed (last: 2026-10-16T09:30:00-04:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-10-16 09:30 already processed (last: 2026-10-16T09:30:00-04:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     63
+Equity:       $986.31  (start $1,000.00)
+P&L:          $-13.69 (-1.37%)
+SPY B&H same period: +1.50%
+Costs paid:   $5.80
+Realized:     Sharpe -0.72 | MaxDD -9.82% | days 32 | avg |daily| 0.74%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.089% | daily sd 0.809% | positive days 65% | Sharpe 1.63 | MaxDD -14.5% | typical exposure 22%
+  after 32 days: live -1.36% vs expected +2.85% +/- 9.15%  (z = -0.92) -> inside the 2-sigma band
+  live positive days 72% (expected 65%) | live daily sd 1.148% (expected 0.809%)
+  days of live data before a Sharpe of 1.63 is distinguishable from 0 at 2 sigma: ~378 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Flat (100% cash).
+
+Last fills (103 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-10-14T16:00:00-04:00   TQQQ  BUY  3.966287 74.120   293.98 0.0588    0.2854
+2026-10-14T16:00:00-04:00    USD  BUY  3.476187 84.570   293.98 0.0588    0.2854
+2026-10-15T09:30:00-04:00   TQQQ SELL -3.966287 70.932  -281.34 0.0563    0.0000
+2026-10-15T09:30:00-04:00    USD SELL -3.476187 78.950  -274.44 0.0549    0.0000
+2026-10-15T16:00:00-04:00   TQQQ  BUY  4.334825 73.820   320.00 0.0640    0.3208
+2026-10-15T16:00:00-04:00    USD  BUY  3.887230 82.320   320.00 0.0640    0.3208
+2026-10-16T09:30:00-04:00   TQQQ SELL -4.334825 72.985  -316.38 0.0633    0.0000
+2026-10-16T09:30:00-04:00    USD SELL -3.887230 80.360  -312.38 0.0625    0.0000
+2026-10-15T09:30:00-04:00    QLD SELL -3.190205  89.96  -286.99 0.0574    0.0000
+2026-10-15T09:30:00-04:00    SMH SELL -0.523152 546.38  -285.84 0.0286    0.0000
+2026-10-15T16:00:00-04:00    QLD  BUY  3.531333  92.37   326.19 0.0652    0.3208
+2026-10-15T16:00:00-04:00    SMH  BUY  0.583690 558.84   326.19 0.0326    0.3208
+2026-10-16T09:30:00-04:00    QLD SELL -3.531333  91.65  -323.65 0.0647    0.0000
+2026-10-16T09:30:00-04:00    SMH SELL -0.583690 551.00  -321.61 0.0322    0.0000
