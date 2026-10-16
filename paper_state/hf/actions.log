@@ -21282,3 +21282,7 @@ Last fills (101 total):
 2026-10-15T09:30:00-04:00    SMH SELL -0.523152 546.38  -285.84 0.0286    0.0000
 2026-10-15T16:00:00-04:00    QLD  BUY  3.531333  92.37   326.19 0.0652    0.3208
 2026-10-15T16:00:00-04:00    SMH  BUY  0.583690 558.84   326.19 0.0326    0.3208
+===== 2026-10-16 10:31 UTC alpaca-submit run 38887746882 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-15
+[alpaca] OPG sell rejected TQQQ: {"code":40010001,"message":"client_order_id must be unique"}
+QUEUE for 2026-10-16: 0 orders (equity est $10,358.41)
