@@ -1,9 +1,12 @@
 {
-  "cash": 963.6556621853479,
+  "cash": 486.0389060208922,
   "starting_cash": 1000.0,
   "profile": "growth",
   "inception": "2026-09-17T09:30:00-04:00",
-  "positions": {},
-  "last_session": "2026-10-16T09:30:00-04:00",
-  "sessions_processed": 42
+  "positions": {
+    "QLD": 2.7221511380021033,
+    "SMH": 0.4423703863882905
+  },
+  "last_session": "2026-10-16T16:00:00-04:00",
+  "sessions_processed": 43
 }
