@@ -21162,3 +21162,11 @@ Last fills (101 total):
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-15
 [alpaca] OPG sell rejected TQQQ: {"code":40010001,"message":"client_order_id must be unique"}
 QUEUE for 2026-10-16: 0 orders (equity est $10,358.41)
+===== 2026-10-16 04:29 UTC alpaca-submit run 38850864290 =====
+
+1 Failed download:
+['SOXL']: OperationalError('database is locked')
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-15
+[alpaca] OPG sell rejected TQQQ: {"code":40010001,"message":"client_order_id must be unique"}
+QUEUE for 2026-10-16: 0 orders (equity est $10,358.41)
