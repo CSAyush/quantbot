@@ -10,6 +10,17 @@
   "inception": "2026-09-14T16:00:00-04:00",
   "last_session": "2026-10-16T16:00:00-04:00",
   "sessions_processed": 20,
-  "pending": {},
+  "pending": {
+    "qb-20261019-0930-TQQQ": {
+      "symbol": "TQQQ",
+      "side": "sell",
+      "qty": 10,
+      "est_price": 68.20999908447266,
+      "target_w": 0.0,
+      "order_id": "32c4648b-9d9c-4d92-aa61-30db011c0edd",
+      "stamp": "2026-10-19T09:30:00-04:00",
+      "queued_estimate": true
+    }
+  },
   "last_submit": "2026-10-16T16:00:00-04:00"
 }
