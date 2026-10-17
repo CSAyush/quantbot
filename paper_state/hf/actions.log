@@ -22110,3 +22110,7 @@ Last fills (105 total):
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-16
 QUEUE for 2026-10-19: 1 orders (equity est $10,302.31)
    TQQQ   SELL   10 sh  MOO 2026-10-19
+===== 2026-10-17 04:23 UTC alpaca-submit run 39002335896 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-16
+[alpaca] session 2026-10-19 09:30:00-04:00 not over yet; reconcile later
+[alpaca] orders for 2026-10-19 already queued; nothing to do
