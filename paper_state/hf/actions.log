@@ -22581,3 +22581,5 @@ Last fills (114 total):
 [alpaca] live prices for 98/98 names
 [paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
 [alpaca] orders for 2026-10-19 16:00:00-04:00 already submitted; nothing to do
+===== 2026-10-19 19:50 UTC alpaca-submit run 39314218760 =====
+15:50 ET: close orders were already submitted earlier; nothing to do.
