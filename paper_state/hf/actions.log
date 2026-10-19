@@ -22342,3 +22342,13 @@ Last fills (105 total):
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-16
 [alpaca] session 2026-10-19 09:30:00-04:00 not over yet; reconcile later
 [alpaca] orders for 2026-10-19 already queued; nothing to do
+===== 2026-10-19 18:54 UTC alpaca-submit run 39306347932 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-16
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] TQQQ order qb-20261019-0930-TQQQ not filled (OrderStatus.EXPIRED)
+2026-10-19 09:30 RECONCILE: 0 fills | equity $10,330.21
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+2026-10-19 16:00 SUBMIT close: 2 cls orders (equity est $10,329.11, live px for 98 names)
+   TQQQ   buy    39 sh @~70.89  target 0.333
+   USD    buy    43 sh @~79.87  target 0.333
