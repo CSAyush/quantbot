@@ -22878,3 +22878,57 @@ Last fills (123 total):
 2026-10-19T16:00:00-04:00    SMH  BUY  0.622937 548.46   341.66 0.0342    0.3333
 ===== 2026-10-19 21:38 UTC alpaca-submit run 39328960208 =====
 17:38 ET is well past the close window; nothing to do.
+===== 2026-10-19 22:16 UTC run 39333736286 (schedule) =====
+
+=== account 'live' ===
+Session 2026-10-19 16:00 already processed (last: 2026-10-19T16:00:00-04:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] nothing pending to reconcile
+
+=== account 'shadow-alt' ===
+Session 2026-10-19 16:00 already processed (last: 2026-10-19T16:00:00-04:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-10-19 16:00 already processed (last: 2026-10-19T16:00:00-04:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-10-19 16:00 already processed (last: 2026-10-19T16:00:00-04:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     66
+Equity:       $1,014.84  (start $1,000.00)
+P&L:          $14.84 (+1.48%)
+SPY B&H same period: +0.62%
+Costs paid:   $6.52
+Realized:     Sharpe 0.47 | MaxDD -9.82% | days 33 | avg |daily| 0.80%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.089% | daily sd 0.810% | positive days 65% | Sharpe 1.64 | MaxDD -14.5% | typical exposure 22%
+  after 33 days: live +1.50% vs expected +2.95% +/- 9.31%  (z = -0.31) -> inside the 2-sigma band
+  live positive days 73% (expected 65%) | live daily sd 1.241% (expected 0.810%)
+  days of live data before a Sharpe of 1.64 is distinguishable from 0 at 2 sigma: ~376 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  TQQQ       4.7888 sh
+  USD        4.2605 sh
+
+Last fills (123 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-10-19T16:00:00-04:00     KO SELL -1.311464  93.42  -122.52 0.0306    0.0000
+2026-10-19T16:00:00-04:00     PG SELL -0.726683 157.69  -114.59 0.0286    0.0000
+2026-10-19T16:00:00-04:00    DIS SELL -1.011925 109.59  -110.90 0.0277    0.0000
+2026-10-19T16:00:00-04:00     MA SELL -0.176937 616.40  -109.06 0.0273    0.0000
+2026-10-19T16:00:00-04:00   SPGI SELL -0.235248 427.83  -100.65 0.0252    0.0000
+2026-10-19T16:00:00-04:00  CMCSA SELL -4.494146  21.90   -98.42 0.0246    0.0000
+2026-10-19T16:00:00-04:00   TQQQ  BUY  4.788798  70.64   338.28 0.0677    0.3333
+2026-10-19T16:00:00-04:00    USD  BUY  4.260462  79.40   338.28 0.0677    0.3333
+2026-10-19T16:00:00-04:00   SPGI SELL -0.034405 427.83   -14.72 0.0037    0.0000
+2026-10-19T16:00:00-04:00     KO SELL -0.156946  93.42   -14.66 0.0037    0.0000
+2026-10-19T16:00:00-04:00    LHX SELL -0.059393 243.84   -14.48 0.0072    0.0000
+2026-10-19T16:00:00-04:00    AMP SELL -0.029850 480.41   -14.34 0.0072    0.0000
+2026-10-19T16:00:00-04:00    QLD  BUY  3.805054  89.79   341.66 0.0683    0.3333
+2026-10-19T16:00:00-04:00    SMH  BUY  0.622937 548.46   341.66 0.0342    0.3333
