@@ -22361,3 +22361,156 @@ Last fills (105 total):
 2026-10-19 16:00 SUBMIT close: 2 cls orders (equity est $10,331.51, live px for 98 names)
    TQQQ   buy    38 sh @~71.13  target 0.330
    USD    buy    43 sh @~79.87  target 0.330
+===== 2026-10-19 19:28 UTC run 39311200361 (schedule) =====
+
+1 Failed download:
+['LOW']: OperationalError('database is locked')
+$WBD: possibly delisted; no price data found  (period=1d)
+
+1 Failed download:
+['WBD']: possibly delisted; no price data found  (period=1d)
+
+=== account 'live' ===
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-16
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[warn] running 358 min after the 09:30 session; fills use the 09:30 print (mild hindsight).
+2026-10-19 09:30 | equity $1,010.26 | cash $235.54 | long 77% short 0% | 9 fills
+ticker side    shares   price  dollars   cost  target_w
+   USD SELL -3.175620  81.420  -258.56 0.0517    0.0000
+  TQQQ SELL -3.582990  71.000  -254.39 0.0509    0.0000
+ CMCSA  BUY  4.494146  21.630    97.21 0.0243    0.0962
+  SPGI  BUY  0.235248 423.220    99.56 0.0249    0.0986
+    MA  BUY  0.176937 610.000   107.93 0.0270    0.1068
+   DIS  BUY  1.011925 109.400   110.70 0.0277    0.1096
+    PG  BUY  0.726683 157.870   114.72 0.0287    0.1136
+    KO  BUY  1.311464  92.775   121.67 0.0304    0.1204
+   PFE  BUY  4.194766  29.305   122.93 0.0307    0.1217
+ticker  shares  value  weight
+ CMCSA  4.4941  97.21  0.0962
+   DIS  1.0119 110.70  0.1096
+    KO  1.3115 121.67  0.1204
+    MA  0.1769 107.93  0.1068
+   PFE  4.1948 122.93  0.1217
+    PG  0.7267 114.72  0.1136
+  SPGI  0.2352  99.56  0.0986
+
+=== account 'alpaca-paper' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-16
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] session 2026-10-19 16:00:00-04:00 not over yet; reconcile later
+
+=== account 'shadow-alt' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-16
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[warn] running 359 min after the 09:30 session; fills use the 09:30 print (mild hindsight).
+2026-10-19 09:30 | equity $977.44 | cash $227.88 | long 77% short 0% | 9 fills
+ticker side    shares   price  dollars   cost  target_w
+   SMH SELL -0.442370 556.605  -246.23 0.0246    0.0000
+   QLD SELL -2.722151  90.110  -245.29 0.0491    0.0000
+ CMCSA  BUY  4.348159  21.630    94.05 0.0235    0.0962
+  SPGI  BUY  0.227606 423.220    96.33 0.0241    0.0986
+    MA  BUY  0.171189 610.000   104.43 0.0261    0.1068
+   DIS  BUY  0.979054 109.400   107.11 0.0268    0.1096
+    PG  BUY  0.703078 157.870   110.99 0.0277    0.1136
+    KO  BUY  1.268863  92.775   117.72 0.0294    0.1204
+   PFE  BUY  4.058505  29.305   118.93 0.0297    0.1217
+ticker  shares  value  weight
+ CMCSA  4.3482  94.05  0.0962
+   DIS  0.9791 107.11  0.1096
+    KO  1.2689 117.72  0.1204
+    MA  0.1712 104.43  0.1068
+   PFE  4.0585 118.93  0.1217
+    PG  0.7031 110.99  0.1136
+  SPGI  0.2276  96.33  0.0986
+
+=== account 'shadow-growth' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-16
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[warn] running 359 min after the 09:30 session; fills use the 09:30 print (mild hindsight).
+2026-10-19 09:30 | equity $977.61 | cash $880.34 | long 10% short 0% | 9 fills
+ticker side    shares   price  dollars   cost  target_w
+   SMH SELL -0.442370 556.605  -246.23 0.0246    0.0000
+   QLD SELL -2.722151  90.110  -245.29 0.0491    0.0000
+ CMCSA  BUY  0.642441  21.630    13.90 0.0035    0.0142
+   DIS  BUY  0.127020 109.400    13.90 0.0035    0.0142
+    KO  BUY  0.149782  92.775    13.90 0.0035    0.0142
+    MA  BUY  0.022780 610.000    13.90 0.0035    0.0142
+   PFE  BUY  0.474185  29.305    13.90 0.0035    0.0142
+    PG  BUY  0.088022 157.870    13.90 0.0035    0.0142
+  SPGI  BUY  0.032834 423.220    13.90 0.0035    0.0142
+ticker  shares  value  weight
+ CMCSA  0.6424   13.9  0.0142
+   DIS  0.1270   13.9  0.0142
+    KO  0.1498   13.9  0.0142
+    MA  0.0228   13.9  0.0142
+   PFE  0.4742   13.9  0.0142
+    PG  0.0880   13.9  0.0142
+  SPGI  0.0328   13.9  0.0142
+
+=== account 'shadow-wide' ===
+[data] daily OHLCV: 345 tickers, 2010-01-04 -> 2026-10-16
+[paper] today's open set from the 09:30 1m bar for 340/340 names
+[warn] running 360 min after the 09:30 session; fills use the 09:30 print (mild hindsight).
+2026-10-19 09:30 | equity $1,024.37 | cash $922.45 | long 10% short 0% | 9 fills
+ticker side    shares   price  dollars   cost  target_w
+   SMH SELL -0.463539 556.605  -258.01 0.0258    0.0000
+   QLD SELL -2.852415  90.110  -257.03 0.0514    0.0000
+   AMP  BUY  0.029850 487.790    14.56 0.0073    0.0142
+    KO  BUY  0.156946  92.775    14.56 0.0036    0.0142
+   LHX  BUY  0.059393 245.160    14.56 0.0073    0.0142
+   LMT  BUY  0.026916 540.970    14.56 0.0073    0.0142
+  PYPL  BUY  0.262876  55.390    14.56 0.0073    0.0142
+   RMD  BUY  0.061829 235.500    14.56 0.0073    0.0142
+  SPGI  BUY  0.034405 423.220    14.56 0.0036    0.0142
+ticker  shares  value  weight
+   AMP  0.0299  14.56  0.0142
+    KO  0.1569  14.56  0.0142
+   LHX  0.0594  14.56  0.0142
+   LMT  0.0269  14.56  0.0142
+  PYPL  0.2629  14.56  0.0142
+   RMD  0.0618  14.56  0.0142
+  SPGI  0.0344  14.56  0.0142
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     65
+Equity:       $1,010.26  (start $1,000.00)
+P&L:          $10.26 (+1.03%)
+SPY B&H same period: +0.72%
+Costs paid:   $6.19
+Realized:     Sharpe 0.30 | MaxDD -9.82% | days 33 | avg |daily| 0.79%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.089% | daily sd 0.809% | positive days 65% | Sharpe 1.63 | MaxDD -14.5% | typical exposure 22%
+  after 33 days: live +1.04% vs expected +2.93% +/- 9.30%  (z = -0.41) -> inside the 2-sigma band
+  live positive days 73% (expected 65%) | live daily sd 1.210% (expected 0.809%)
+  days of live data before a Sharpe of 1.63 is distinguishable from 0 at 2 sigma: ~381 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  CMCSA      4.4941 sh
+  DIS        1.0119 sh
+  KO         1.3115 sh
+  MA         0.1769 sh
+  PFE        4.1948 sh
+  PG         0.7267 sh
+  SPGI       0.2352 sh
+
+Last fills (114 total):
+                  session ticker side    shares   price  dollars   cost  target_w
+2026-10-19T09:30:00-04:00   TQQQ SELL -3.582990  71.000  -254.39 0.0509    0.0000
+2026-10-19T09:30:00-04:00  CMCSA  BUY  4.494146  21.630    97.21 0.0243    0.0962
+2026-10-19T09:30:00-04:00   SPGI  BUY  0.235248 423.220    99.56 0.0249    0.0986
+2026-10-19T09:30:00-04:00     MA  BUY  0.176937 610.000   107.93 0.0270    0.1068
+2026-10-19T09:30:00-04:00    DIS  BUY  1.011925 109.400   110.70 0.0277    0.1096
+2026-10-19T09:30:00-04:00     PG  BUY  0.726683 157.870   114.72 0.0287    0.1136
+2026-10-19T09:30:00-04:00     KO  BUY  1.311464  92.775   121.67 0.0304    0.1204
+2026-10-19T09:30:00-04:00    PFE  BUY  4.194766  29.305   122.93 0.0307    0.1217
+2026-10-19T09:30:00-04:00     KO  BUY  0.156946  92.775    14.56 0.0036    0.0142
+2026-10-19T09:30:00-04:00    LHX  BUY  0.059393 245.160    14.56 0.0073    0.0142
+2026-10-19T09:30:00-04:00    LMT  BUY  0.026916 540.970    14.56 0.0073    0.0142
+2026-10-19T09:30:00-04:00   PYPL  BUY  0.262876  55.390    14.56 0.0073    0.0142
+2026-10-19T09:30:00-04:00    RMD  BUY  0.061829 235.500    14.56 0.0073    0.0142
+2026-10-19T09:30:00-04:00   SPGI  BUY  0.034405 423.220    14.56 0.0036    0.0142
