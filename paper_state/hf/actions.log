@@ -23544,3 +23544,64 @@ Last fills (132 total):
 2026-10-19T16:00:00-04:00    SMH  BUY  0.622937 548.460   341.66 0.0342    0.3333
 2026-10-20T09:30:00-04:00    QLD SELL -3.805054  89.010  -338.69 0.0677    0.0000
 2026-10-20T09:30:00-04:00    SMH SELL -0.622937 541.248  -337.16 0.0337    0.0000
+===== 2026-10-20 18:08 UTC run 39472046951 (schedule) =====
+
+=== account 'live' ===
+Session 2026-10-20 09:30 already processed (last: 2026-10-20T09:30:00-04:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-19
+[paper] today's open set from the 09:30 1m bar for 97/98 names
+[alpaca] session 2026-10-20 16:00:00-04:00 not over yet; reconcile later
+
+=== account 'shadow-alt' ===
+Session 2026-10-20 09:30 already processed (last: 2026-10-20T09:30:00-04:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-10-20 09:30 already processed (last: 2026-10-20T09:30:00-04:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-10-20 09:30 already processed (last: 2026-10-20T09:30:00-04:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     67
+Equity:       $1,004.97  (start $1,000.00)
+P&L:          $4.97 (+0.50%)
+SPY B&H same period: +0.54%
+Costs paid:   $6.70
+Realized:     Sharpe 0.08 | MaxDD -9.82% | days 34 | avg |daily| 0.81%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.089% | daily sd 0.810% | positive days 65% | Sharpe 1.64 | MaxDD -14.5% | typical exposure 22%
+  after 34 days: live +0.51% vs expected +3.04% +/- 9.45%  (z = -0.54) -> inside the 2-sigma band
+  live positive days 71% (expected 65%) | live daily sd 1.234% (expected 0.810%)
+  days of live data before a Sharpe of 1.64 is distinguishable from 0 at 2 sigma: ~376 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  AAPL       0.1094 sh
+  AMD        0.0266 sh
+  CAT        0.0258 sh
+  CRM        0.0785 sh
+  GE         0.1058 sh
+  GS         0.0408 sh
+  TXN        0.0819 sh
+
+Last fills (132 total):
+                  session ticker side    shares   price  dollars   cost  target_w
+2026-10-20T09:30:00-04:00    USD SELL -4.260462  78.150  -332.96 0.0666    0.0000
+2026-10-20T09:30:00-04:00    AMD  BUY  0.026561 530.020    14.08 0.0035    0.0140
+2026-10-20T09:30:00-04:00    CAT  BUY  0.025814 710.500    18.34 0.0046    0.0182
+2026-10-20T09:30:00-04:00    CRM  BUY  0.078504 235.750    18.51 0.0046    0.0184
+2026-10-20T09:30:00-04:00    TXN  BUY  0.081903 272.690    22.33 0.0056    0.0222
+2026-10-20T09:30:00-04:00     GE  BUY  0.105844 299.400    31.69 0.0079    0.0315
+2026-10-20T09:30:00-04:00     GS  BUY  0.040752 870.310    35.47 0.0089    0.0353
+2026-10-20T09:30:00-04:00   AAPL  BUY  0.109431 339.579    37.16 0.0093    0.0370
+2026-10-19T16:00:00-04:00    LHX SELL -0.059393 243.840   -14.48 0.0072    0.0000
+2026-10-19T16:00:00-04:00    AMP SELL -0.029850 480.410   -14.34 0.0072    0.0000
+2026-10-19T16:00:00-04:00    QLD  BUY  3.805054  89.790   341.66 0.0683    0.3333
+2026-10-19T16:00:00-04:00    SMH  BUY  0.622937 548.460   341.66 0.0342    0.3333
+2026-10-20T09:30:00-04:00    QLD SELL -3.805054  89.010  -338.69 0.0677    0.0000
+2026-10-20T09:30:00-04:00    SMH SELL -0.622937 541.248  -337.16 0.0337    0.0000
