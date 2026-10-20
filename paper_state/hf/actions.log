@@ -23913,3 +23913,57 @@ Last fills (141 total):
 2026-10-20T16:00:00-04:00    SMH  BUY  0.620691 546.360   339.12 0.0339    0.3333
 ===== 2026-10-20 20:45 UTC alpaca-submit run 39494594259 =====
 16:45 ET is well past the close window; nothing to do.
+===== 2026-10-20 21:32 UTC run 39501092314 (schedule) =====
+
+=== account 'live' ===
+Session 2026-10-20 16:00 already processed (last: 2026-10-20T16:00:00-04:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] nothing pending to reconcile
+
+=== account 'shadow-alt' ===
+Session 2026-10-20 16:00 already processed (last: 2026-10-20T16:00:00-04:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-10-20 16:00 already processed (last: 2026-10-20T16:00:00-04:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-10-20 16:00 already processed (last: 2026-10-20T16:00:00-04:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     68
+Equity:       $1,006.90  (start $1,000.00)
+P&L:          $6.90 (+0.69%)
+SPY B&H same period: +0.95%
+Costs paid:   $6.88
+Realized:     Sharpe 0.16 | MaxDD -9.82% | days 34 | avg |daily| 0.80%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.089% | daily sd 0.810% | positive days 65% | Sharpe 1.63 | MaxDD -14.5% | typical exposure 22%
+  after 34 days: live +0.70% vs expected +3.03% +/- 9.45%  (z = -0.49) -> inside the 2-sigma band
+  live positive days 71% (expected 65%) | live daily sd 1.230% (expected 0.810%)
+  days of live data before a Sharpe of 1.63 is distinguishable from 0 at 2 sigma: ~378 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  TQQQ       4.7668 sh
+  USD        4.2566 sh
+
+Last fills (141 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-10-20T16:00:00-04:00     GS SELL -0.040752 884.81   -36.06 0.0090    0.0000
+2026-10-20T16:00:00-04:00     GE SELL -0.105844 299.87   -31.74 0.0079    0.0000
+2026-10-20T16:00:00-04:00    TXN SELL -0.081903 277.78   -22.75 0.0057    0.0000
+2026-10-20T16:00:00-04:00    CRM SELL -0.078504 242.43   -19.03 0.0048    0.0000
+2026-10-20T16:00:00-04:00    CAT SELL -0.025814 725.24   -18.72 0.0047    0.0000
+2026-10-20T16:00:00-04:00    AMD SELL -0.026561 534.74   -14.20 0.0036    0.0000
+2026-10-20T16:00:00-04:00   TQQQ  BUY  4.766819  70.41   335.63 0.0671    0.3333
+2026-10-20T16:00:00-04:00    USD  BUY  4.256585  78.85   335.63 0.0671    0.3333
+2026-10-19T16:00:00-04:00    QLD  BUY  3.805054  89.790   341.66 0.0683    0.3333
+2026-10-19T16:00:00-04:00    SMH  BUY  0.622937 548.460   341.66 0.0342    0.3333
+2026-10-20T09:30:00-04:00    QLD SELL -3.805054  89.010  -338.69 0.0677    0.0000
+2026-10-20T09:30:00-04:00    SMH SELL -0.622937 541.248  -337.16 0.0337    0.0000
+2026-10-20T16:00:00-04:00    QLD  BUY  3.787366  89.540   339.12 0.0678    0.3333
+2026-10-20T16:00:00-04:00    SMH  BUY  0.620691 546.360   339.12 0.0339    0.3333
