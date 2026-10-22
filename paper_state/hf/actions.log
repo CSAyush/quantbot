@@ -25208,3 +25208,7 @@ Last fills (145 total):
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-21
 [alpaca] session 2026-10-22 09:30:00-04:00 not over yet; reconcile later
 [alpaca] orders for 2026-10-22 already queued; nothing to do
+===== 2026-10-22 04:41 UTC alpaca-submit run 39723718385 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-21
+[alpaca] session 2026-10-22 09:30:00-04:00 not over yet; reconcile later
+[alpaca] orders for 2026-10-22 already queued; nothing to do
