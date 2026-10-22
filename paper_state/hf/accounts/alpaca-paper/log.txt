@@ -224,3 +224,4 @@
 [2026-10-22 13:44:54 EDT] 2026-10-22 16:00 SUBMIT close: 2 cls orders (equity est $10,249.30, live px for 98 names)
 [2026-10-22 16:32:34 EDT] [alpaca] TQQQ order qb-20261022-1600-TQQQ-1344 not filled (OrderStatus.EXPIRED)
 [2026-10-22 16:32:34 EDT] 2026-10-22 16:00 RECONCILE: 1 fills | equity $10,238.19 (broker $100,251.76) | avg slippage vs print +6.9 bp
+[2026-10-22 19:23:53 EDT] QUEUE for 2026-10-23: 2 orders (equity est $10,238.19)

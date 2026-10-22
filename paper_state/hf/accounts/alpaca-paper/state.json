@@ -11,6 +11,27 @@
   "inception": "2026-09-14T16:00:00-04:00",
   "last_session": "2026-10-22T16:00:00-04:00",
   "sessions_processed": 28,
-  "pending": {},
+  "pending": {
+    "qb-20261023-0930-TQQQ": {
+      "symbol": "TQQQ",
+      "side": "sell",
+      "qty": 8,
+      "est_price": 66.41999816894531,
+      "target_w": 0.0,
+      "order_id": "de82475b-4438-44e4-b256-f1ace7c4f998",
+      "stamp": "2026-10-23T09:30:00-04:00",
+      "queued_estimate": true
+    },
+    "qb-20261023-0930-USD": {
+      "symbol": "USD",
+      "side": "sell",
+      "qty": 34,
+      "est_price": 72.91000366210938,
+      "target_w": 0.0,
+      "order_id": "7c5489bb-65e0-483a-8cdf-98f0dfddd3c1",
+      "stamp": "2026-10-23T09:30:00-04:00",
+      "queued_estimate": true
+    }
+  },
   "last_submit": "2026-10-22T16:00:00-04:00"
 }
