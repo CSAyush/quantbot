@@ -25149,3 +25149,58 @@ Last fills (145 total):
 2026-10-21T09:30:00-04:00    QLD SELL -3.787366  90.750  -343.70 0.0687    0.0000
 2026-10-21T16:00:00-04:00    QLD  BUY  3.747074  91.460   342.71 0.0685    0.3333
 2026-10-21T16:00:00-04:00    SMH  BUY  0.615605 556.700   342.71 0.0343    0.3333
+===== 2026-10-22 01:29 UTC run 39705910304 (schedule) =====
+
+=== account 'live' ===
+Session 2026-10-21 16:00 already processed (last: 2026-10-21T16:00:00-04:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-21
+[alpaca] session 2026-10-22 09:30:00-04:00 not over yet; reconcile later
+
+=== account 'shadow-alt' ===
+Session 2026-10-21 16:00 already processed (last: 2026-10-21T16:00:00-04:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-10-21 16:00 already processed (last: 2026-10-21T16:00:00-04:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-10-21 16:00 already processed (last: 2026-10-21T16:00:00-04:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     70
+Equity:       $1,024.90  (start $1,000.00)
+P&L:          $24.90 (+2.49%)
+SPY B&H same period: +1.48%
+Costs paid:   $7.15
+Realized:     Sharpe 0.79 | MaxDD -9.82% | days 35 | avg |daily| 0.83%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.090% | daily sd 0.811% | positive days 65% | Sharpe 1.64 | MaxDD -14.5% | typical exposure 22%
+  after 35 days: live +2.50% vs expected +3.14% +/- 9.59%  (z = -0.13) -> inside the 2-sigma band
+  live positive days 71% (expected 65%) | live daily sd 1.248% (expected 0.811%)
+  days of live data before a Sharpe of 1.64 is distinguishable from 0 at 2 sigma: ~374 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  TQQQ       4.7050 sh
+  USD        4.1658 sh
+
+Last fills (145 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-10-20T16:00:00-04:00    CAT SELL -0.025814 725.24   -18.72 0.0047    0.0000
+2026-10-20T16:00:00-04:00    AMD SELL -0.026561 534.74   -14.20 0.0036    0.0000
+2026-10-20T16:00:00-04:00   TQQQ  BUY  4.766819  70.41   335.63 0.0671    0.3333
+2026-10-20T16:00:00-04:00    USD  BUY  4.256585  78.85   335.63 0.0671    0.3333
+2026-10-21T09:30:00-04:00    USD SELL -4.256585  81.63  -347.47 0.0695    0.0000
+2026-10-21T09:30:00-04:00   TQQQ SELL -4.766819  71.75  -342.02 0.0684    0.0000
+2026-10-21T16:00:00-04:00   TQQQ  BUY  4.705044  72.61   341.63 0.0683    0.3333
+2026-10-21T16:00:00-04:00    USD  BUY  4.165751  82.01   341.63 0.0683    0.3333
+2026-10-20T16:00:00-04:00    QLD  BUY  3.787366  89.540   339.12 0.0678    0.3333
+2026-10-20T16:00:00-04:00    SMH  BUY  0.620691 546.360   339.12 0.0339    0.3333
+2026-10-21T09:30:00-04:00    SMH SELL -0.620691 556.550  -345.45 0.0345    0.0000
+2026-10-21T09:30:00-04:00    QLD SELL -3.787366  90.750  -343.70 0.0687    0.0000
+2026-10-21T16:00:00-04:00    QLD  BUY  3.747074  91.460   342.71 0.0685    0.3333
+2026-10-21T16:00:00-04:00    SMH  BUY  0.615605 556.700   342.71 0.0343    0.3333
