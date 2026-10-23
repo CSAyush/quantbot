@@ -225,3 +225,5 @@
 [2026-10-22 16:32:34 EDT] [alpaca] TQQQ order qb-20261022-1600-TQQQ-1344 not filled (OrderStatus.EXPIRED)
 [2026-10-22 16:32:34 EDT] 2026-10-22 16:00 RECONCILE: 1 fills | equity $10,238.19 (broker $100,251.76) | avg slippage vs print +6.9 bp
 [2026-10-22 19:23:53 EDT] QUEUE for 2026-10-23: 2 orders (equity est $10,238.19)
+[2026-10-23 13:12:45 EDT] [alpaca] TQQQ order qb-20261023-0930-TQQQ not filled (OrderStatus.EXPIRED)
+[2026-10-23 13:12:45 EDT] 2026-10-23 09:30 RECONCILE: 1 fills | equity $10,202.53 (broker $100,211.02) | avg slippage vs print +42.8 bp
