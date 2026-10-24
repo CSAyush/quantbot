@@ -111367,3 +111367,56 @@ See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace 
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-10-23
 [alpaca] OPG sell rejected TQQQ: {"code":40010001,"message":"client_order_id must be unique"}
 QUEUE for 2026-10-26: 0 orders (equity est $10,208.25)
+===== 2026-10-24 08:54 UTC run 40079819198 (schedule) =====
+
+=== account 'live' ===
+2026-10-24 is not an NYSE trading day; nothing to do.
+
+=== account 'alpaca-paper' ===
+[alpaca] nothing pending to reconcile
+
+=== account 'shadow-alt' ===
+2026-10-24 is not an NYSE trading day; nothing to do.
+
+=== account 'shadow-growth' ===
+2026-10-24 is not an NYSE trading day; nothing to do.
+
+=== account 'shadow-wide' ===
+2026-10-24 is not an NYSE trading day; nothing to do.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     74
+Equity:       $979.24  (start $1,000.00)
+P&L:          $-20.76 (-2.08%)
+SPY B&H same period: -0.24%
+Costs paid:   $7.69
+Realized:     Sharpe -0.73 | MaxDD -10.46% | days 37 | avg |daily| 0.91%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.089% | daily sd 0.813% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 37 days: live -2.06% vs expected +3.28% +/- 9.89%  (z = -1.08) -> inside the 2-sigma band
+  live positive days 68% (expected 65%) | live daily sd 1.377% (expected 0.813%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~387 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  TQQQ       1.8648 sh
+
+Last fills (166 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-10-23T16:00:00-04:00    AXP SELL -0.290225 313.22   -90.90 0.0227    0.0000
+2026-10-23T16:00:00-04:00    MCD SELL -0.284446 248.46   -70.67 0.0177    0.0000
+2026-10-23T16:00:00-04:00    RTX SELL -0.293717 191.01   -56.10 0.0140    0.0000
+2026-10-23T16:00:00-04:00     GE SELL -0.191267 285.64   -54.63 0.0137    0.0000
+2026-10-23T16:00:00-04:00  CMCSA SELL -2.299786  22.69   -52.18 0.0130    0.0000
+2026-10-23T16:00:00-04:00     VZ SELL -0.718032  44.66   -32.07 0.0080    0.0000
+2026-10-23T16:00:00-04:00      T SELL -1.206474  20.93   -25.25 0.0063    0.0000
+2026-10-23T16:00:00-04:00   TQQQ  BUY  1.864846  66.29   123.62 0.0247    0.1262
+2026-10-23T16:00:00-04:00    AXP SELL -0.023409  313.22    -7.33 0.0018    0.0000
+2026-10-23T16:00:00-04:00    NEM SELL -0.066866  108.87    -7.28 0.0036    0.0000
+2026-10-23T16:00:00-04:00    TDG SELL -0.006556 1104.84    -7.24 0.0036    0.0000
+2026-10-23T16:00:00-04:00   TMUS SELL -0.048964  146.54    -7.18 0.0036    0.0000
+2026-10-23T16:00:00-04:00      T SELL -0.339189   20.93    -7.10 0.0018    0.0000
+2026-10-23T16:00:00-04:00    QLD  BUY  2.935730   86.15   252.91 0.0506    0.2525
