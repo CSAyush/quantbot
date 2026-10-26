@@ -128817,3 +128817,5 @@ See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace 
 [alpaca] live prices for 98/98 names
 [paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
 [alpaca] orders for 2026-10-26 16:00:00-04:00 already submitted; nothing to do
+===== 2026-10-26 19:52 UTC alpaca-submit run 40390583630 =====
+15:52 ET: close orders were already submitted earlier; nothing to do.
