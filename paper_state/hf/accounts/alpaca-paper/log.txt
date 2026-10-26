@@ -237,3 +237,6 @@
 [2026-10-26 08:06:33 EDT] QUEUE for 2026-10-26: 0 orders (equity est $10,208.25)
 [2026-10-26 14:56:28 EDT] 2026-10-26 16:00 SUBMIT close: 2 cls orders (equity est $10,226.97, live px for 98 names)
 [2026-10-26 15:16:53 EDT] 2026-10-26 16:00 SUBMIT close: 2 cls orders (equity est $10,228.81, live px for 98 names)
+[2026-10-26 16:06:58 EDT] [alpaca] TQQQ order qb-20261026-1600-TQQQ-1516 not filled (OrderStatus.EXPIRED)
+[2026-10-26 16:06:58 EDT] [alpaca] USD order qb-20261026-1600-USD-1516 not filled (OrderStatus.EXPIRED)
+[2026-10-26 16:06:58 EDT] 2026-10-26 16:00 RECONCILE: 0 fills | equity $9,677.93

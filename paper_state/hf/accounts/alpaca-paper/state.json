@@ -8,29 +8,8 @@
     "TQQQ": 8.0
   },
   "inception": "2026-09-14T16:00:00-04:00",
-  "last_session": "2026-10-23T16:00:00-04:00",
-  "sessions_processed": 30,
-  "pending": {
-    "qb-20261026-1600-TQQQ-1516": {
-      "symbol": "TQQQ",
-      "side": "buy",
-      "qty": 27,
-      "est_price": 68.86,
-      "target_w": 0.2381101446270393,
-      "order_id": "17c74281-c410-4abe-8e6b-54f83da12c70",
-      "stamp": "2026-10-26T16:00:00-04:00",
-      "est_time": "2026-10-26T15:16:32.194610-04:00"
-    },
-    "qb-20261026-1600-USD-1516": {
-      "symbol": "USD",
-      "side": "buy",
-      "qty": 31,
-      "est_price": 77.36,
-      "target_w": 0.2381101446270393,
-      "order_id": "b79c2b43-805e-4e9f-94d8-68455352f7cd",
-      "stamp": "2026-10-26T16:00:00-04:00",
-      "est_time": "2026-10-26T15:16:32.194610-04:00"
-    }
-  },
+  "last_session": "2026-10-26T16:00:00-04:00",
+  "sessions_processed": 31,
+  "pending": {},
   "last_submit": "2026-10-26T16:00:00-04:00"
 }
