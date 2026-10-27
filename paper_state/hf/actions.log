@@ -184016,3 +184016,58 @@ Last fills (202 total):
 2026-10-27T16:00:00-04:00    QLD  BUY  2.533236  90.29   228.73 0.0457    0.2268
 ===== 2026-10-27 21:25 UTC alpaca-submit run 40586551023 =====
 17:25 ET is well past the close window; nothing to do.
+===== 2026-10-27 22:06 UTC run 40592143183 (schedule) =====
+
+=== account 'live' ===
+Session 2026-10-27 16:00 already processed (last: 2026-10-27T16:00:00-04:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] nothing pending to reconcile
+
+=== account 'shadow-alt' ===
+Session 2026-10-27 16:00 already processed (last: 2026-10-27T16:00:00-04:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-10-27 16:00 already processed (last: 2026-10-27T16:00:00-04:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-10-27 16:00 already processed (last: 2026-10-27T16:00:00-04:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     78
+Equity:       $989.85  (start $1,000.00)
+P&L:          $-10.15 (-1.01%)
+SPY B&H same period: +1.03%
+Costs paid:   $8.28
+Realized:     Sharpe -0.38 | MaxDD -10.46% | days 39 | avg |daily| 0.89%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.089% | daily sd 0.813% | positive days 65% | Sharpe 1.62 | MaxDD -14.5% | typical exposure 22%
+  after 39 days: live -1.00% vs expected +3.46% +/- 10.15%  (z = -0.88) -> inside the 2-sigma band
+  live positive days 69% (expected 65%) | live daily sd 1.350% (expected 0.813%)
+  days of live data before a Sharpe of 1.62 is distinguishable from 0 at 2 sigma: ~385 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  QLD        7.5422 sh
+  TQQQ       2.1739 sh
+  UWM        2.6966 sh
+
+Last fills (202 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-10-27T16:00:00-04:00     KO SELL -0.115330  91.18   -10.52 0.0026     0.000
+2026-10-27T16:00:00-04:00   ABBV SELL -0.036243 286.39   -10.38 0.0026     0.000
+2026-10-27T16:00:00-04:00     BA SELL -0.054774 168.18    -9.21 0.0023     0.000
+2026-10-27T16:00:00-04:00    ABT SELL -0.088706 103.10    -9.15 0.0023     0.000
+2026-10-27T16:00:00-04:00   GILD SELL -0.049519 159.08    -7.88 0.0020     0.000
+2026-10-27T16:00:00-04:00   TQQQ  BUY  2.173934  71.04   154.44 0.0309     0.156
+2026-10-27T16:00:00-04:00    UWM  BUY  2.696634  57.27   154.44 0.0309     0.156
+2026-10-27T16:00:00-04:00    QLD  BUY  7.542163  90.29   680.98 0.1362     0.688
+2026-10-26T16:00:00-04:00    QLD  BUY  2.766122  88.07   243.61 0.0487    0.2428
+2026-10-26T16:00:00-04:00    SMH  BUY  0.449785 541.62   243.61 0.0244    0.2428
+2026-10-27T09:30:00-04:00    SMH SELL -0.449785 548.76  -246.82 0.0247    0.0000
+2026-10-27T09:30:00-04:00    QLD SELL -2.766122  88.78  -245.58 0.0491    0.0000
+2026-10-27T16:00:00-04:00    IWM  BUY  0.816353 280.18   228.73 0.0229    0.2268
+2026-10-27T16:00:00-04:00    QLD  BUY  2.533236  90.29   228.73 0.0457    0.2268
