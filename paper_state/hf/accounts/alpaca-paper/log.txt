@@ -251,3 +251,4 @@
 [2026-10-28 11:08:00 EDT] [alpaca] QLD order qb-20261028-0930-QLD not filled (OrderStatus.EXPIRED)
 [2026-10-28 11:08:00 EDT] [alpaca] TQQQ order qb-20261028-0930-TQQQ not filled (OrderStatus.EXPIRED)
 [2026-10-28 11:08:00 EDT] 2026-10-28 09:30 RECONCILE: 0 fills | equity $10,289.42
+[2026-10-28 14:35:00 EDT] 2026-10-28 16:00 SUBMIT close: 4 cls orders (equity est $10,272.30, live px for 98 names)
