@@ -253,3 +253,7 @@
 [2026-10-28 11:08:00 EDT] 2026-10-28 09:30 RECONCILE: 0 fills | equity $10,289.42
 [2026-10-28 14:35:00 EDT] 2026-10-28 16:00 SUBMIT close: 4 cls orders (equity est $10,272.30, live px for 98 names)
 [2026-10-28 15:21:51 EDT] 2026-10-28 16:00 SUBMIT close: 4 cls orders (equity est $10,275.21, live px for 98 names)
+[2026-10-28 16:13:58 EDT] [alpaca] QLD order qb-20261028-1600-QLD-1521 not filled (OrderStatus.EXPIRED)
+[2026-10-28 16:13:58 EDT] [alpaca] TQQQ order qb-20261028-1600-TQQQ-1521 not filled (OrderStatus.EXPIRED)
+[2026-10-28 16:13:58 EDT] [alpaca] USD order qb-20261028-1600-USD-1521 not filled (OrderStatus.EXPIRED)
+[2026-10-28 16:13:58 EDT] 2026-10-28 16:00 RECONCILE: 1 fills | equity $10,313.50 (broker $100,284.50) | avg slippage vs print +0.0 bp
