@@ -248,3 +248,6 @@
 [2026-10-27 16:37:23 EDT] [alpaca] UWM order qb-20261027-1600-UWM-1514 not filled (OrderStatus.EXPIRED)
 [2026-10-27 16:37:23 EDT] 2026-10-27 16:00 RECONCILE: 2 fills | equity $10,244.74 (broker $100,233.58) | avg slippage vs print +2.4 bp
 [2026-10-27 19:04:18 EDT] QUEUE for 2026-10-28: 2 orders (equity est $10,244.74)
+[2026-10-28 11:08:00 EDT] [alpaca] QLD order qb-20261028-0930-QLD not filled (OrderStatus.EXPIRED)
+[2026-10-28 11:08:00 EDT] [alpaca] TQQQ order qb-20261028-0930-TQQQ not filled (OrderStatus.EXPIRED)
+[2026-10-28 11:08:00 EDT] 2026-10-28 09:30 RECONCILE: 0 fills | equity $10,289.42

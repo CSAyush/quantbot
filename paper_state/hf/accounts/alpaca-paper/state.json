@@ -9,29 +9,8 @@
     "QLD": 49.0
   },
   "inception": "2026-09-14T16:00:00-04:00",
-  "last_session": "2026-10-27T16:00:00-04:00",
-  "sessions_processed": 33,
-  "pending": {
-    "qb-20261028-0930-QLD": {
-      "symbol": "QLD",
-      "side": "sell",
-      "qty": 49,
-      "est_price": 90.29000091552734,
-      "target_w": 0.0,
-      "order_id": "9ea00ac8-e07d-467d-aed4-5f6dcf597ea5",
-      "stamp": "2026-10-28T09:30:00-04:00",
-      "queued_estimate": true
-    },
-    "qb-20261028-0930-TQQQ": {
-      "symbol": "TQQQ",
-      "side": "sell",
-      "qty": 12,
-      "est_price": 71.04000091552734,
-      "target_w": 0.0,
-      "order_id": "2b688f40-268e-4c9b-b700-af8c61390c29",
-      "stamp": "2026-10-28T09:30:00-04:00",
-      "queued_estimate": true
-    }
-  },
+  "last_session": "2026-10-28T09:30:00-04:00",
+  "sessions_processed": 34,
+  "pending": {},
   "last_submit": "2026-10-27T16:00:00-04:00"
 }
