@@ -262,3 +262,4 @@
 [2026-10-29 11:15:45 EDT] 2026-10-29 09:30 RECONCILE: 2 fills | equity $10,175.68 (broker $100,215.30) | avg slippage vs print +13.5 bp
 [2026-10-29 14:44:12 EDT] 2026-10-29 16:00 SUBMIT close: 3 cls orders (equity est $10,170.24, live px for 98 names)
 [2026-10-29 15:26:51 EDT] 2026-10-29 16:00 SUBMIT close: 3 cls orders (equity est $10,177.13, live px for 98 names)
+[2026-10-29 16:13:35 EDT] 2026-10-29 16:00 RECONCILE: 3 fills | equity $10,199.65 (broker $100,109.89) | avg slippage vs print -0.6 bp
