@@ -319647,3 +319647,57 @@ Last fills (215 total):
 2026-10-30T16:00:00-04:00    SMH  BUY  0.315818 522.490   165.01 0.0165    0.1665
 ===== 2026-10-30 21:38 UTC alpaca-submit run 41132451022 =====
 17:38 ET is well past the close window; nothing to do.
+===== 2026-10-30 22:13 UTC run 41136624048 (schedule) =====
+
+=== account 'live' ===
+Session 2026-10-30 16:00 already processed (last: 2026-10-30T16:00:00-04:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] nothing pending to reconcile
+
+=== account 'shadow-alt' ===
+Session 2026-10-30 16:00 already processed (last: 2026-10-30T16:00:00-04:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-10-30 16:00 already processed (last: 2026-10-30T16:00:00-04:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-10-30 16:00 already processed (last: 2026-10-30T16:00:00-04:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     84
+Equity:       $966.95  (start $1,000.00)
+P&L:          $-33.05 (-3.30%)
+SPY B&H same period: -0.80%
+Costs paid:   $8.86
+Realized:     Sharpe -1.02 | MaxDD -11.59% | days 42 | avg |daily| 0.91%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.813% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 42 days: live -3.29% vs expected +3.70% +/- 10.54%  (z = -1.33) -> inside the 2-sigma band
+  live positive days 67% (expected 65%) | live daily sd 1.345% (expected 0.813%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~391 (~1.6 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  TQQQ       1.2980 sh
+  USD        1.1520 sh
+
+Last fills (215 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-10-28T16:00:00-04:00    UWM  BUY  3.863670 57.760   223.17 0.0446    0.2238
+2026-10-29T09:30:00-04:00    UWM SELL -3.863670 58.160  -224.71 0.0449    0.0000
+2026-10-29T09:30:00-04:00    USD SELL -2.702090 80.100  -216.44 0.0433    0.0000
+2026-10-29T09:30:00-04:00   TQQQ SELL -3.084101 69.610  -214.68 0.0429    0.0000
+2026-10-29T16:00:00-04:00   TQQQ  BUY  3.024562 69.260   209.48 0.0419    0.2131
+2026-10-30T09:30:00-04:00   TQQQ SELL -3.024562 63.882  -193.22 0.0386    0.0000
+2026-10-30T16:00:00-04:00   TQQQ  BUY  1.298022 62.010    80.49 0.0161    0.0832
+2026-10-30T16:00:00-04:00    USD  BUY  1.152001 69.870    80.49 0.0161    0.0832
+2026-10-29T09:30:00-04:00    SMH SELL -0.398412 559.091  -222.75 0.0223    0.0000
+2026-10-29T09:30:00-04:00    QLD SELL -2.475282  89.070  -220.47 0.0441    0.0000
+2026-10-29T16:00:00-04:00    QLD  BUY  2.404104  88.810   213.51 0.0427    0.2131
+2026-10-30T09:30:00-04:00    QLD SELL -2.404104  84.260  -202.57 0.0405    0.0000
+2026-10-30T16:00:00-04:00    QLD  BUY  1.997961  82.590   165.01 0.0330    0.1665
+2026-10-30T16:00:00-04:00    SMH  BUY  0.315818 522.490   165.01 0.0165    0.1665
