@@ -349365,3 +349365,5 @@ AttributeError: 'Index' object has no attribute 'tz_convert'
     daily_eq = eq.groupby(eq.index.tz_convert(TZ).normalize()).last()
                           ^^^^^^^^^^^^^^^^^^^
 AttributeError: 'Index' object has no attribute 'tz_convert'
+===== 2026-11-02 22:51 UTC alpaca-submit run 41540649533 =====
+17:51 ET is well past the close window; nothing to do.
