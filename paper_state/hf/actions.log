@@ -384098,3 +384098,11 @@ ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-02
 [paper] today's open set from the 09:30 1m bar for 97/98 names
 ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
+===== 2026-11-03 20:34 UTC alpaca-submit run 41713680728 =====
+
+1 Failed download:
+['TLT']: OperationalError('database is locked')
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-02
+[paper] today's open set from the 09:30 1m bar for 97/98 names
+ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
