@@ -384094,3 +384094,7 @@ AttributeError: 'Index' object has no attribute 'tz_convert'
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-02
 [paper] today's open set from the 09:30 1m bar for 97/98 names
 ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
+===== 2026-11-03 20:29 UTC alpaca-submit run 41712906329 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-02
+[paper] today's open set from the 09:30 1m bar for 97/98 names
+ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
