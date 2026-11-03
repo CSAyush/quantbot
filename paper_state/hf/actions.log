@@ -384200,3 +384200,108 @@ AttributeError: 'Index' object has no attribute 'tz_convert'
 AttributeError: 'Index' object has no attribute 'tz_convert'
 ===== 2026-11-03 21:40 UTC alpaca-submit run 41723756892 =====
 16:40 ET is well past the close window; nothing to do.
+===== 2026-11-03 21:42 UTC run 41724052228 (schedule) =====
+$KVUE: possibly delisted; no price data found  (period=1d)
+$WBD: possibly delisted; no price data found  (period=1d)
+
+4 Failed downloads:
+['KVUE', 'WBD']: possibly delisted; no price data found  (period=1d)
+['WFC', 'FTNT']: YFRateLimitError('Too Many Requests. Rate limited. Try after a while.')
+
+=== account 'live' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-03
+[warn] running 42 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-03 16:00 | equity $970.45 | cash $888.30 | long 8% short 0% | 9 fills
+ticker side    shares   price  dollars   cost  target_w
+   QLD SELL -1.347274   81.28  -109.51 0.0219    0.0000
+  AAPL SELL -0.234517  331.90   -77.84 0.0195    0.0000
+  COST SELL -0.061144 1019.26   -62.32 0.0156    0.0000
+   MCD SELL -0.225258  263.04   -59.25 0.0148    0.0000
+    KO SELL -0.574936   94.80   -54.50 0.0136    0.0000
+   CVX SELL -0.215252  225.27   -48.49 0.0121    0.0000
+   CRM SELL -0.163476  222.20   -36.32 0.0091    0.0000
+   ACN SELL -0.102352  254.56   -26.05 0.0065    0.0000
+  TQQQ  BUY  1.356762   60.55    82.15 0.0164    0.0847
+ticker  shares  value  weight
+  TQQQ  1.3568  82.15  0.0847
+
+=== account 'alpaca-paper' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-03
+ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
+
+=== account 'shadow-alt' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-03
+[warn] running 43 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-03 16:00 | equity $951.35 | cash $790.28 | long 17% short 0% | 9 fills
+ticker side    shares   price  dollars   cost  target_w
+   QQQ SELL -0.311109  685.28  -213.20 0.0213    0.0000
+  AAPL SELL -0.459457  331.90  -152.49 0.0381    0.0000
+  COST SELL -0.119791 1019.26  -122.10 0.0305    0.0000
+   MCD SELL -0.441316  263.04  -116.08 0.0290    0.0000
+    KO SELL -1.126392   94.80  -106.78 0.0267    0.0000
+   CVX SELL -0.421714  225.27   -95.00 0.0237    0.0000
+   CRM SELL -0.320276  222.20   -71.17 0.0178    0.0000
+   ACN SELL -0.200524  254.56   -51.05 0.0128    0.0000
+   QLD  BUY  1.981660   81.28   161.07 0.0322    0.1693
+ticker  shares  value  weight
+   QLD  1.9817 161.07  0.1693
+
+=== account 'shadow-growth' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-03
+[warn] running 43 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-03 16:00 | equity $951.10 | cash $790.07 | long 17% short 0% | 8 fills
+ticker side    shares   price  dollars   cost  target_w
+  AAPL SELL -0.065725  331.90   -21.81 0.0055    0.0000
+   CVX SELL -0.095217  225.27   -21.45 0.0054    0.0000
+   MCD SELL -0.081419  263.04   -21.42 0.0054    0.0000
+   ACN SELL -0.084051  254.56   -21.40 0.0053    0.0000
+    KO SELL -0.225507   94.80   -21.38 0.0053    0.0000
+   CRM SELL -0.096206  222.20   -21.38 0.0053    0.0000
+  COST SELL -0.020749 1019.26   -21.15 0.0053    0.0000
+   QLD  BUY  1.981148   81.28   161.03 0.0322    0.1693
+ticker  shares  value  weight
+   QLD  1.9811 161.03  0.1693
+
+=== account 'shadow-wide' ===
+[data] daily OHLCV: 345 tickers, 2010-01-04 -> 2026-11-03
+[paper] today's open set from the 09:30 1m bar for 0/1 names
+[paper] today's close set from the 15:59 1m bar for 0/1 names
+[warn] running 43 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-03 16:00 | equity $996.02 | cash $827.39 | long 17% short 0% | 8 fills
+ticker side    shares  price  dollars   cost  target_w
+   WMB SELL -0.323619  72.47   -23.45 0.0117    0.0000
+  PLTR SELL -0.133494 175.40   -23.41 0.0117    0.0000
+  AAPL SELL -0.068851 331.90   -22.85 0.0057    0.0000
+   ETR SELL -0.206162 108.92   -22.46 0.0112    0.0000
+   KDP SELL -0.632000  34.74   -21.96 0.0110    0.0000
+   SYY SELL -0.288801  74.11   -21.40 0.0107    0.0000
+   ADM SELL -0.301627  70.60   -21.29 0.0106    0.0000
+   QLD  BUY  2.074720  81.28   168.63 0.0337    0.1693
+ticker  shares  value  weight
+   QLD  2.0747 168.63  0.1693
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     88
+Equity:       $970.45  (start $1,000.00)
+P&L:          $-29.55 (-2.95%)
+SPY B&H same period: -0.98%
+Costs paid:   $9.29
+Traceback (most recent call last):
+  File "/home/runner/work/quantbot/quantbot/run.py", line 237, in <module>
+    main()
+  File "/home/runner/work/quantbot/quantbot/run.py", line 233, in main
+    args.func(args)
+  File "/home/runner/work/quantbot/quantbot/run.py", line 145, in cmd_hf
+    hf_paper.status(cfg, plot=not args.no_plot, account=args.account or "live")
+  File "/home/runner/work/quantbot/quantbot/quantbot/hf_paper.py", line 658, in status
+    daily_eq = eq.groupby(eq.index.tz_convert(TZ).normalize()).last()
+                          ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Index' object has no attribute 'tz_convert'
+  File "/home/runner/work/quantbot/quantbot/run.py", line 145, in cmd_hf
+    hf_paper.status(cfg, plot=not args.no_plot, account=args.account or "live")
+  File "/home/runner/work/quantbot/quantbot/quantbot/hf_paper.py", line 658, in status
+    daily_eq = eq.groupby(eq.index.tz_convert(TZ).normalize()).last()
+                          ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Index' object has no attribute 'tz_convert'
