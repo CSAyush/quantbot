@@ -384436,3 +384436,6 @@ AttributeError: 'Index' object has no attribute 'tz_convert'
     daily_eq = eq.groupby(eq.index.tz_convert(TZ).normalize()).last()
                           ^^^^^^^^^^^^^^^^^^^
 AttributeError: 'Index' object has no attribute 'tz_convert'
+===== 2026-11-04 00:00 UTC alpaca-submit run 41743431763 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-03
+ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
