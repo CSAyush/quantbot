@@ -384442,3 +384442,10 @@ ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
 ===== 2026-11-04 00:07 UTC alpaca-submit run 41744264546 =====
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-03
 ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
+===== 2026-11-04 00:37 UTC alpaca-submit run 41748139139 =====
+
+1 Failed download:
+['XOM']: OperationalError('database is locked')
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-03
+ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
