@@ -384449,3 +384449,6 @@ ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
 [data] 1 tickers returned no data; retrying in small batches (attempt 1)
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-03
 ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
+===== 2026-11-04 00:47 UTC alpaca-submit run 41749327220 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-03
+ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
