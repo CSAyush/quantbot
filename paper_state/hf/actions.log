@@ -384617,3 +384617,10 @@ Last fills (250 total):
 QUEUE for 2026-11-04: 2 orders (equity est $9,241.00)
    QLD    SELL    3 sh  MOO 2026-11-04
    TQQQ   SELL   20 sh  MOO 2026-11-04
+===== 2026-11-04 06:16 UTC alpaca-submit run 41784318004 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-03
+[alpaca] QLD order qb-20261103-0930-QLD not filled (OrderStatus.EXPIRED)
+2026-11-03 09:30 RECONCILE: 1 fills | equity $9,896.86 (broker $99,883.93) | avg slippage vs print +16.6 bp
+ticker side  shares  fill_price  official_print  slippage_bps
+  TQQQ SELL   -11.0       60.18           60.28         16.59
+[alpaca] orders for 2026-11-04 already queued; nothing to do
