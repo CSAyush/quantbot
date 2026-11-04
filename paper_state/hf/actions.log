@@ -385018,3 +385018,62 @@ Last fills (258 total):
 2026-11-04T09:30:00-05:00   PLTR  BUY  0.122138 165.080    20.16 0.0101    0.0202
 2026-11-04T09:30:00-05:00   TSLA  BUY  0.053087 379.800    20.16 0.0050    0.0202
 2026-11-04T09:30:00-05:00    VST  BUY  0.158467 127.235    20.16 0.0101    0.0202
+===== 2026-11-04 20:34 UTC run 41907824141 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-04 09:30 already processed (last: 2026-11-04T09:30:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-04 09:30 already processed (last: 2026-11-04T09:30:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-04 09:30 already processed (last: 2026-11-04T09:30:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-04 09:30 already processed (last: 2026-11-04T09:30:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     89
+Equity:       $971.45  (start $1,000.00)
+P&L:          $-28.55 (-2.86%)
+SPY B&H same period: +0.16%
+Costs paid:   $9.40
+Realized:     Sharpe -0.87 | MaxDD -11.59% | days 45 | avg |daily| 0.86%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.813% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 45 days: live -2.84% vs expected +3.97% +/- 10.91%  (z = -1.25) -> inside the 2-sigma band
+  live positive days 69% (expected 65%) | live daily sd 1.300% (expected 0.813%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~391 (~1.6 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  AMD        0.0759 sh
+  AVGO       0.1847 sh
+  CAT        0.0929 sh
+  INTC       0.3953 sh
+  NVDA       0.4007 sh
+  ORCL       0.2701 sh
+  TSLA       0.1882 sh
+
+Last fills (258 total):
+                  session ticker side    shares   price  dollars   cost  target_w
+2026-11-04T09:30:00-05:00   TQQQ SELL -1.356762  61.312   -83.19 0.0166    0.0000
+2026-11-04T09:30:00-05:00   INTC  BUY  0.395286  58.740    23.22 0.0058    0.0239
+2026-11-04T09:30:00-05:00   ORCL  BUY  0.270076 121.780    32.89 0.0082    0.0339
+2026-11-04T09:30:00-05:00    AMD  BUY  0.075892 485.430    36.84 0.0092    0.0379
+2026-11-04T09:30:00-05:00    CAT  BUY  0.092896 609.450    56.62 0.0142    0.0583
+2026-11-04T09:30:00-05:00   AVGO  BUY  0.184689 327.150    60.42 0.0151    0.0622
+2026-11-04T09:30:00-05:00   TSLA  BUY  0.188167 379.800    71.47 0.0179    0.0736
+2026-11-04T09:30:00-05:00   NVDA  BUY  0.400666 203.580    81.57 0.0204    0.0840
+2026-11-04T09:30:00-05:00   DDOG  BUY  0.100944 199.740    20.16 0.0101    0.0202
+2026-11-04T09:30:00-05:00    EME  BUY  0.030093 670.000    20.16 0.0101    0.0202
+2026-11-04T09:30:00-05:00    FIS  BUY  0.659338  30.580    20.16 0.0101    0.0202
+2026-11-04T09:30:00-05:00   PLTR  BUY  0.122138 165.080    20.16 0.0101    0.0202
+2026-11-04T09:30:00-05:00   TSLA  BUY  0.053087 379.800    20.16 0.0050    0.0202
+2026-11-04T09:30:00-05:00    VST  BUY  0.158467 127.235    20.16 0.0101    0.0202
