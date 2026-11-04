@@ -48,6 +48,9 @@ jobs:
   submit:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    # Experiment only: errors are recorded in the account log, and a failed run
+    # must never mark the workflow failed (which emails).
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
         with:

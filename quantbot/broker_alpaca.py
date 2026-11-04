@@ -384,11 +384,12 @@ def queue_next_session(acct, cfg: HFConfig, now: dt.datetime | None = None) -> N
     if not (now_ts.time() >= dt.time(19, 0) or now_ts.time() < dt.time(8, 30)):
         print(f"{now_ts.strftime('%H:%M')} ET is outside the evening queue window (19:00-08:30); nothing to do.")
         return
-    # Next trading day.
-    d = now_ts.normalize() + (pd.Timedelta(days=1) if now_ts.time() >= dt.time(19, 0) else pd.Timedelta(0))
+    # Next trading day, stepped in naive calendar days: on tz-aware stamps
+    # Timedelta(days=1) is 24 h and lands an hour off across a DST change.
+    d = now_ts.tz_localize(None).normalize() + (pd.Timedelta(days=1) if now_ts.time() >= dt.time(19, 0) else pd.Timedelta(0))
     while not is_trading_day(d):
         d += pd.Timedelta(days=1)
-    open_stamp = d + pd.Timedelta(hours=9, minutes=30)
+    open_stamp = (d + pd.Timedelta(hours=9, minutes=30)).tz_localize(ET)
     state = load_state(cfg, acct)
     params = EnsembleParams.from_profile(state["profile"])
     cfg = config_for(params)

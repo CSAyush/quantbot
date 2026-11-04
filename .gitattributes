@@ -1,0 +1,4 @@
+# Append-only logs written by both workflows: a rebase keeps both sides' lines
+# instead of stopping on a conflict.
+paper_state/**/*.log merge=union
+paper_state/**/log.txt merge=union

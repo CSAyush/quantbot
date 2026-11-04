@@ -330,16 +330,16 @@ def _expected_session(now: dt.datetime) -> pd.Timestamp | None:
     from .calendar import is_trading_day
 
     now_et = pd.Timestamp(now).tz_convert(TZ)
-    day = now_et.normalize()
+    day = now_et.tz_localize(None).normalize()     # naive: day steps must not shift across DST
     if is_trading_day(day):
         if now_et.time() >= dt.time(16, 10):
-            return day + pd.Timedelta(hours=16)
+            return (day + pd.Timedelta(hours=16)).tz_localize(TZ)
         if now_et.time() >= dt.time(9, 32):
-            return day + pd.Timedelta(hours=9, minutes=30)
+            return (day + pd.Timedelta(hours=9, minutes=30)).tz_localize(TZ)
     prev = day - pd.Timedelta(days=1)
     for _ in range(10):
         if is_trading_day(prev):
-            return prev + pd.Timedelta(hours=16)
+            return (prev + pd.Timedelta(hours=16)).tz_localize(TZ)
         prev -= pd.Timedelta(days=1)
     return None
 
@@ -383,10 +383,9 @@ def trade_all(cfg: HFConfig, session: str = "auto", force: bool = False, refresh
         print(f"\n=== account '{acct.name}' ===")
         try:
             if load_state(cfg, acct).get("type") == "alpaca":
-                # Broker account: orders were submitted before the auction by
-                # `hf alpaca submit`; here we read the fills and record slippage.
-                from .broker_alpaca import reconcile_now
-                reconcile_now(acct, cfg, refresh=refresh)
+                # Submitted and reconciled only by `hf alpaca submit` (its own
+                # workflow), so it never writes state or fails this run.
+                print("[alpaca] handled by the alpaca-submit workflow; skipping")
                 continue
             # Every account refreshes: partial-day rows are never cached, so a
             # later account must not depend on what an earlier one fetched.
@@ -635,7 +634,9 @@ def status(cfg: HFConfig, plot: bool = True, account: str = "live", sync: bool =
     if state["inception"] is None or not acct.history_file.exists():
         print(f"No paper history for account '{acct.name}'. Run: python3 run.py hf trade")
         return
-    hist = pd.read_csv(acct.history_file, parse_dates=["session"])
+    hist = pd.read_csv(acct.history_file)
+    # utc=True: rows span DST changes (-04:00 and -05:00), which otherwise parse to an object Index.
+    hist["session"] = pd.to_datetime(hist["session"], utc=True).dt.tz_convert(TZ)
     hist = hist.drop_duplicates("session", keep="last").sort_values("session")
     eq = hist.set_index("session")["equity"]
     spy = hist.set_index("session")["spy"]
