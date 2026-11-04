@@ -384605,3 +384605,15 @@ Last fills (250 total):
 2026-11-03T16:00:00-05:00    SYY SELL -0.288801  74.11   -21.40 0.0107    0.0000
 2026-11-03T16:00:00-05:00    ADM SELL -0.301627  70.60   -21.29 0.0106    0.0000
 2026-11-03T16:00:00-05:00    QLD  BUY  2.074720  81.28   168.63 0.0337    0.1693
+===== 2026-11-04 03:02 UTC alpaca-submit run 41764470945 =====
+
+1 Failed download:
+['LLY']: OperationalError('database is locked')
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-03
+[alpaca] QLD order qb-20261103-0830-QLD not filled (OrderStatus.EXPIRED)
+[alpaca] TQQQ order qb-20261103-0830-TQQQ not filled (OrderStatus.EXPIRED)
+2026-11-02 09:30 RECONCILE: 0 fills | equity $9,998.01
+QUEUE for 2026-11-04: 2 orders (equity est $9,241.00)
+   QLD    SELL    3 sh  MOO 2026-11-04
+   TQQQ   SELL   20 sh  MOO 2026-11-04
