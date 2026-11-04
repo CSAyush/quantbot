@@ -385209,3 +385209,111 @@ Last fills (258 total):
 2026-11-04T09:30:00-05:00   PLTR  BUY  0.122138 165.080    20.16 0.0101    0.0202
 2026-11-04T09:30:00-05:00   TSLA  BUY  0.053087 379.800    20.16 0.0050    0.0202
 2026-11-04T09:30:00-05:00    VST  BUY  0.158467 127.235    20.16 0.0101    0.0202
+===== 2026-11-04 21:15 UTC run 41914264080 (schedule) =====
+$WBD: possibly delisted; no price data found  (period=1d)
+$KVUE: possibly delisted; no price data found  (period=1d)
+
+2 Failed downloads:
+['WBD', 'KVUE']: possibly delisted; no price data found  (period=1d)
+
+=== account 'live' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-04
+2026-11-04 16:00 | equity $969.59 | cash $891.71 | long 8% short 0% | 8 fills
+ticker side    shares  price  dollars   cost  target_w
+  NVDA SELL -0.400666 200.13   -80.19 0.0200    0.0000
+  TSLA SELL -0.188167 385.19   -72.48 0.0181    0.0000
+  AVGO SELL -0.184689 325.48   -60.11 0.0150    0.0000
+   CAT SELL -0.092896 591.30   -54.93 0.0137    0.0000
+   AMD SELL -0.075892 488.78   -37.09 0.0093    0.0000
+  ORCL SELL -0.270076 123.73   -33.42 0.0084    0.0000
+  INTC SELL -0.395286  58.27   -23.03 0.0058    0.0000
+  TQQQ  BUY  1.251399  62.24    77.89 0.0156    0.0803
+ticker  shares  value  weight
+  TQQQ  1.2514  77.89  0.0803
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-04
+2026-11-04 16:00 | equity $948.92 | cash $796.47 | long 16% short 0% | 8 fills
+ticker side    shares  price  dollars   cost  target_w
+  NVDA SELL -0.785773 200.13  -157.26 0.0393    0.0000
+  TSLA SELL -0.369027 385.19  -142.15 0.0355    0.0000
+  AVGO SELL -0.362206 325.48  -117.89 0.0295    0.0000
+   CAT SELL -0.182184 591.30  -107.73 0.0269    0.0000
+   AMD SELL -0.148837 488.78   -72.75 0.0182    0.0000
+  ORCL SELL -0.529664 123.73   -65.54 0.0164    0.0000
+  INTC SELL -0.775221  58.27   -45.17 0.0113    0.0000
+   QLD  BUY  1.840994  82.81   152.45 0.0305    0.1607
+ticker  shares  value  weight
+   QLD   1.841 152.45  0.1607
+
+=== account 'shadow-growth' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-04
+2026-11-04 16:00 | equity $952.01 | cash $799.06 | long 16% short 0% | 8 fills
+ticker side    shares  price  dollars   cost  target_w
+  ORCL SELL -0.158103 123.73   -19.56 0.0049    0.0000
+  TSLA SELL -0.050695 385.19   -19.53 0.0049    0.0000
+   AMD SELL -0.039663 488.78   -19.39 0.0048    0.0000
+  AVGO SELL -0.058853 325.48   -19.16 0.0048    0.0000
+  INTC SELL -0.327780  58.27   -19.10 0.0048    0.0000
+  NVDA SELL -0.094576 200.13   -18.93 0.0047    0.0000
+   CAT SELL -0.031592 591.30   -18.68 0.0047    0.0000
+   QLD  BUY  1.846985  82.81   152.95 0.0306    0.1607
+ticker  shares  value  weight
+   QLD   1.847 152.95  0.1607
+
+=== account 'shadow-wide' ===
+[data] daily OHLCV: 345 tickers, 2010-01-04 -> 2026-11-04
+[paper] today's open set from the 09:30 1m bar for 0/1 names
+[paper] today's close set from the 15:59 1m bar for 0/1 names
+2026-11-04 16:00 | equity $993.52 | cash $833.91 | long 16% short 0% | 8 fills
+ticker side    shares  price  dollars   cost  target_w
+  PLTR SELL -0.122138 171.70   -20.97 0.0105    0.0000
+  TSLA SELL -0.053087 385.19   -20.45 0.0051    0.0000
+   FIS SELL -0.659338  29.76   -19.62 0.0098    0.0000
+   EME SELL -0.030093 639.25   -19.24 0.0096    0.0000
+   VST SELL -0.158467 120.29   -19.06 0.0095    0.0000
+  DDOG SELL -0.100944 188.72   -19.05 0.0095    0.0000
+   CVS SELL -0.236372  79.96   -18.90 0.0095    0.0000
+   QLD  BUY  1.927533  82.81   159.62 0.0319    0.1607
+ticker  shares  value  weight
+   QLD  1.9275 159.62  0.1607
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     90
+Equity:       $969.59  (start $1,000.00)
+P&L:          $-30.41 (-3.04%)
+SPY B&H same period: +0.66%
+Costs paid:   $9.51
+Realized:     Sharpe -0.93 | MaxDD -11.59% | days 45 | avg |daily| 0.86%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.813% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 45 days: live -3.03% vs expected +3.97% +/- 10.91%  (z = -1.28) -> inside the 2-sigma band
+  live positive days 67% (expected 65%) | live daily sd 1.300% (expected 0.813%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~391 (~1.6 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  TQQQ       1.2514 sh
+
+Last fills (266 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-11-04T16:00:00-05:00   NVDA SELL -0.400666 200.13   -80.19 0.0200    0.0000
+2026-11-04T16:00:00-05:00   TSLA SELL -0.188167 385.19   -72.48 0.0181    0.0000
+2026-11-04T16:00:00-05:00   AVGO SELL -0.184689 325.48   -60.11 0.0150    0.0000
+2026-11-04T16:00:00-05:00    CAT SELL -0.092896 591.30   -54.93 0.0137    0.0000
+2026-11-04T16:00:00-05:00    AMD SELL -0.075892 488.78   -37.09 0.0093    0.0000
+2026-11-04T16:00:00-05:00   ORCL SELL -0.270076 123.73   -33.42 0.0084    0.0000
+2026-11-04T16:00:00-05:00   INTC SELL -0.395286  58.27   -23.03 0.0058    0.0000
+2026-11-04T16:00:00-05:00   TQQQ  BUY  1.251399  62.24    77.89 0.0156    0.0803
+2026-11-04T16:00:00-05:00    FIS SELL -0.659338  29.76   -19.62 0.0098    0.0000
+2026-11-04T16:00:00-05:00    EME SELL -0.030093 639.25   -19.24 0.0096    0.0000
+2026-11-04T16:00:00-05:00    VST SELL -0.158467 120.29   -19.06 0.0095    0.0000
+2026-11-04T16:00:00-05:00   DDOG SELL -0.100944 188.72   -19.05 0.0095    0.0000
+2026-11-04T16:00:00-05:00    CVS SELL -0.236372  79.96   -18.90 0.0095    0.0000
+2026-11-04T16:00:00-05:00    QLD  BUY  1.927533  82.81   159.62 0.0319    0.1607
