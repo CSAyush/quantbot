@@ -384452,3 +384452,50 @@ ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
 ===== 2026-11-04 00:47 UTC alpaca-submit run 41749327220 =====
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-03
 ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
+===== 2026-11-04 01:24 UTC run 41753819996 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-03 16:00 already processed (last: 2026-11-03T16:00:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-03
+[paper] today's ^VIX, ^VIX3M, ^VIX9D set from the last 1m bar
+[paper] official close present for only 0/98 names; using 1m bars for the rest
+[paper] today's open set from the 09:30 1m bar for 97/98 names
+[paper] today's close set from the 15:59 1m bar for 98/98 names
+ERROR: official 08:30 prints not available yet for 2026-11-03; retry shortly
+
+=== account 'shadow-alt' ===
+Session 2026-11-03 16:00 already processed (last: 2026-11-03T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-03 16:00 already processed (last: 2026-11-03T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-03 16:00 already processed (last: 2026-11-03T16:00:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     88
+Equity:       $970.45  (start $1,000.00)
+P&L:          $-29.55 (-2.95%)
+SPY B&H same period: -0.98%
+Costs paid:   $9.29
+Traceback (most recent call last):
+  File "/home/runner/work/quantbot/quantbot/run.py", line 237, in <module>
+    main()
+  File "/home/runner/work/quantbot/quantbot/run.py", line 233, in main
+    args.func(args)
+  File "/home/runner/work/quantbot/quantbot/run.py", line 145, in cmd_hf
+    hf_paper.status(cfg, plot=not args.no_plot, account=args.account or "live")
+  File "/home/runner/work/quantbot/quantbot/quantbot/hf_paper.py", line 658, in status
+    daily_eq = eq.groupby(eq.index.tz_convert(TZ).normalize()).last()
+                          ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Index' object has no attribute 'tz_convert'
+  File "/home/runner/work/quantbot/quantbot/run.py", line 145, in cmd_hf
+    hf_paper.status(cfg, plot=not args.no_plot, account=args.account or "live")
+  File "/home/runner/work/quantbot/quantbot/quantbot/hf_paper.py", line 658, in status
+    daily_eq = eq.groupby(eq.index.tz_convert(TZ).normalize()).last()
+                          ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Index' object has no attribute 'tz_convert'
