@@ -300,3 +300,7 @@
 [2026-11-03 22:02:23 EST] QUEUE for 2026-11-04: 2 orders (equity est $9,241.00)
 [2026-11-04 01:16:15 EST] [alpaca] QLD order qb-20261103-0930-QLD not filled (OrderStatus.EXPIRED)
 [2026-11-04 01:16:15 EST] 2026-11-03 09:30 RECONCILE: 1 fills | equity $9,896.86 (broker $99,883.93) | avg slippage vs print +16.6 bp
+[2026-11-04 15:09:28 EST] [alpaca] QLD order qb-20261104-0930-QLD not filled (OrderStatus.EXPIRED)
+[2026-11-04 15:09:28 EST] [alpaca] TQQQ order qb-20261104-0930-TQQQ not filled (OrderStatus.EXPIRED)
+[2026-11-04 15:09:29 EST] 2026-11-04 09:30 RECONCILE: 0 fills | equity $9,920.32
+[2026-11-04 15:09:30 EST] 2026-11-04 16:00 SUBMIT close: 2 cls orders (equity est $9,945.03, live px for 98 names)
