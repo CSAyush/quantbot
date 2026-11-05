@@ -385770,3 +385770,56 @@ Last fills (266 total):
 2026-11-04T16:00:00-05:00   DDOG SELL -0.100944 188.72   -19.05 0.0095    0.0000
 2026-11-04T16:00:00-05:00    CVS SELL -0.236372  79.96   -18.90 0.0095    0.0000
 2026-11-04T16:00:00-05:00    QLD  BUY  1.927533  82.81   159.62 0.0319    0.1607
+===== 2026-11-05 03:29 UTC run 41961784804 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-04 16:00 already processed (last: 2026-11-04T16:00:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-04 16:00 already processed (last: 2026-11-04T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-04 16:00 already processed (last: 2026-11-04T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-04 16:00 already processed (last: 2026-11-04T16:00:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     90
+Equity:       $969.59  (start $1,000.00)
+P&L:          $-30.41 (-3.04%)
+SPY B&H same period: +0.66%
+Costs paid:   $9.51
+Realized:     Sharpe -0.93 | MaxDD -11.59% | days 45 | avg |daily| 0.86%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.813% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 45 days: live -3.03% vs expected +3.97% +/- 10.91%  (z = -1.28) -> inside the 2-sigma band
+  live positive days 67% (expected 65%) | live daily sd 1.300% (expected 0.813%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~391 (~1.6 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  TQQQ       1.2514 sh
+
+Last fills (266 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-11-04T16:00:00-05:00   NVDA SELL -0.400666 200.13   -80.19 0.0200    0.0000
+2026-11-04T16:00:00-05:00   TSLA SELL -0.188167 385.19   -72.48 0.0181    0.0000
+2026-11-04T16:00:00-05:00   AVGO SELL -0.184689 325.48   -60.11 0.0150    0.0000
+2026-11-04T16:00:00-05:00    CAT SELL -0.092896 591.30   -54.93 0.0137    0.0000
+2026-11-04T16:00:00-05:00    AMD SELL -0.075892 488.78   -37.09 0.0093    0.0000
+2026-11-04T16:00:00-05:00   ORCL SELL -0.270076 123.73   -33.42 0.0084    0.0000
+2026-11-04T16:00:00-05:00   INTC SELL -0.395286  58.27   -23.03 0.0058    0.0000
+2026-11-04T16:00:00-05:00   TQQQ  BUY  1.251399  62.24    77.89 0.0156    0.0803
+2026-11-04T16:00:00-05:00    FIS SELL -0.659338  29.76   -19.62 0.0098    0.0000
+2026-11-04T16:00:00-05:00    EME SELL -0.030093 639.25   -19.24 0.0096    0.0000
+2026-11-04T16:00:00-05:00    VST SELL -0.158467 120.29   -19.06 0.0095    0.0000
+2026-11-04T16:00:00-05:00   DDOG SELL -0.100944 188.72   -19.05 0.0095    0.0000
+2026-11-04T16:00:00-05:00    CVS SELL -0.236372  79.96   -18.90 0.0095    0.0000
+2026-11-04T16:00:00-05:00    QLD  BUY  1.927533  82.81   159.62 0.0319    0.1607
