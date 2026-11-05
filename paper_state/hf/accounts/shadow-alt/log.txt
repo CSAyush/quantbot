@@ -71,3 +71,4 @@
 [2026-11-04 11:21:31 EST] 2026-11-04 09:30 | equity $952.59 | cash $240.65 | long 75% short 0% | 8 fills
 [2026-11-04 16:15:52 EST] 2026-11-04 16:00 | equity $948.92 | cash $796.47 | long 16% short 0% | 8 fills
 [2026-11-05 11:29:52 EST] 2026-11-05 09:30 | equity $945.09 | cash $945.09 | long 0% short 0% | 1 fills
+[2026-11-05 16:12:28 EST] 2026-11-05 16:00 | equity $945.10 | cash $794.74 | long 16% short 0% | 1 fills
