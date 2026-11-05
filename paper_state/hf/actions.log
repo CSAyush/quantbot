@@ -385533,3 +385533,16 @@ Last fills (266 total):
 2026-11-04T16:00:00-05:00   DDOG SELL -0.100944 188.72   -19.05 0.0095    0.0000
 2026-11-04T16:00:00-05:00    CVS SELL -0.236372  79.96   -18.90 0.0095    0.0000
 2026-11-04T16:00:00-05:00    QLD  BUY  1.927533  82.81   159.62 0.0319    0.1607
+===== 2026-11-05 00:24 UTC alpaca-submit run 41941026197 =====
+
+1 Failed download:
+['KO']: OperationalError('database is locked')
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-04
+[alpaca] TQQQ order qb-20261104-1600-TQQQ-1525 not filled (OrderStatus.EXPIRED)
+2026-11-04 16:00 RECONCILE: 1 fills | equity $9,941.32 (broker $99,935.73) | avg slippage vs print +6.0 bp
+ticker side  shares  fill_price  official_print  slippage_bps
+   QLD SELL    -1.0       82.76           82.81          6.04
+QUEUE for 2026-11-05: 2 orders (equity est $9,941.32)
+   QLD    SELL    2 sh  MOO 2026-11-05
+   TQQQ   SELL   20 sh  MOO 2026-11-05
