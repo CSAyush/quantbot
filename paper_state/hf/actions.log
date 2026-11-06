@@ -387459,3 +387459,63 @@ Last fills (275 total):
 [alpaca] live prices for 98/98 names
 [paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
 [alpaca] orders for 2026-11-06 16:00:00-05:00 already submitted; nothing to do
+===== 2026-11-06 20:31 UTC run 42289009633 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-06 09:30 already processed (last: 2026-11-06T09:30:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-06 09:30 already processed (last: 2026-11-06T09:30:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-06 09:30 already processed (last: 2026-11-06T09:30:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-06 09:30 already processed (last: 2026-11-06T09:30:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     93
+Equity:       $969.18  (start $1,000.00)
+P&L:          $-30.82 (-3.08%)
+SPY B&H same period: -3.54%
+Costs paid:   $9.58
+Realized:     Sharpe -0.93 | MaxDD -11.61% | days 47 | avg |daily| 0.84%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.813% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 47 days: live -3.07% vs expected +4.14% +/- 11.15%  (z = -1.29) -> inside the 2-sigma band
+  live positive days 66% (expected 65%) | live daily sd 1.273% (expected 0.813%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~391 (~1.6 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  DIS        0.2442 sh
+  KO         0.3019 sh
+  LIN        0.0723 sh
+  PEP        0.1616 sh
+  PFE        0.8273 sh
+  PG         0.1364 sh
+  QLD        1.0640 sh
+  WMT        0.1859 sh
+
+Last fills (275 total):
+                  session ticker side   shares   price  dollars   cost  target_w
+2026-11-05T16:00:00-05:00    QLD  BUY 1.064007  72.270    76.90 0.0154    0.0795
+2026-11-06T09:30:00-05:00     PG  BUY 0.136423 162.360    22.15 0.0055    0.0229
+2026-11-06T09:30:00-05:00    PEP  BUY 0.161591 138.305    22.35 0.0056    0.0231
+2026-11-06T09:30:00-05:00    WMT  BUY 0.185907 123.742    23.00 0.0058    0.0237
+2026-11-06T09:30:00-05:00    PFE  BUY 0.827347  29.070    24.05 0.0060    0.0248
+2026-11-06T09:30:00-05:00    DIS  BUY 0.244160 114.440    27.94 0.0070    0.0288
+2026-11-06T09:30:00-05:00     KO  BUY 0.301884  93.210    28.14 0.0070    0.0290
+2026-11-06T09:30:00-05:00    LIN  BUY 0.072337 510.860    36.95 0.0092    0.0381
+2026-11-06T09:30:00-05:00   AXON  BUY  0.210986 334.955    70.67 0.0353    0.0714
+2026-11-06T09:30:00-05:00     KO  BUY  0.758189  93.210    70.67 0.0177    0.0714
+2026-11-06T09:30:00-05:00    LYV  BUY  0.412821 171.190    70.67 0.0353    0.0714
+2026-11-06T09:30:00-05:00   MNST  BUY  1.606155  44.000    70.67 0.0353    0.0714
+2026-11-06T09:30:00-05:00     MO  BUY  0.940271  75.160    70.67 0.0353    0.0714
+2026-11-06T09:30:00-05:00    WTW  BUY  0.217155 325.440    70.67 0.0353    0.0714
