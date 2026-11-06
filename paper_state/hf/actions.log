@@ -387453,3 +387453,9 @@ Last fills (275 total):
 2026-11-06T09:30:00-05:00   MNST  BUY  1.606155  44.000    70.67 0.0353    0.0714
 2026-11-06T09:30:00-05:00     MO  BUY  0.940271  75.160    70.67 0.0353    0.0714
 2026-11-06T09:30:00-05:00    WTW  BUY  0.217155 325.440    70.67 0.0353    0.0714
+===== 2026-11-06 20:30 UTC alpaca-submit run 42288788768 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-05
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+[alpaca] orders for 2026-11-06 16:00:00-05:00 already submitted; nothing to do
