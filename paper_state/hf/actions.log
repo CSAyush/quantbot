@@ -389707,3 +389707,62 @@ Last fills (304 total):
 [alpaca] live prices for 98/98 names
 [paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
 [alpaca] orders for 2026-11-10 16:00:00-05:00 already submitted; nothing to do
+===== 2026-11-10 20:47 UTC run 42898552897 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-10 09:30 already processed (last: 2026-11-10T09:30:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-10 09:30 already processed (last: 2026-11-10T09:30:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-10 09:30 already processed (last: 2026-11-10T09:30:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-10 09:30 already processed (last: 2026-11-10T09:30:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     97
+Equity:       $978.41  (start $1,000.00)
+P&L:          $-21.59 (-2.16%)
+SPY B&H same period: -1.82%
+Costs paid:   $9.92
+Realized:     Sharpe -0.66 | MaxDD -11.61% | days 49 | avg |daily| 0.82%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.813% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 49 days: live -2.15% vs expected +4.33% +/- 11.38%  (z = -1.14) -> inside the 2-sigma band
+  live positive days 65% (expected 65%) | live daily sd 1.253% (expected 0.813%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~389 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  CAT        0.0597 sh
+  CVX        0.3405 sh
+  LOW        0.2089 sh
+  NKE        1.3508 sh
+  NVDA       0.2383 sh
+  TXN        0.1216 sh
+  XOM        0.3830 sh
+
+Last fills (304 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-11-09T16:00:00-05:00   QCOM SELL -0.194892 171.47   -33.42 0.0084    0.0000
+2026-11-10T09:30:00-05:00    CAT  BUY  0.059750 569.75    34.04 0.0085    0.0348
+2026-11-10T09:30:00-05:00    TXN  BUY  0.121642 288.90    35.14 0.0088    0.0359
+2026-11-10T09:30:00-05:00   NVDA  BUY  0.238294 173.98    41.46 0.0104    0.0424
+2026-11-10T09:30:00-05:00    LOW  BUY  0.208870 228.50    47.73 0.0119    0.0488
+2026-11-10T09:30:00-05:00    NKE  BUY  1.350840  39.40    53.22 0.0133    0.0544
+2026-11-10T09:30:00-05:00    XOM  BUY  0.382988 161.86    61.99 0.0155    0.0634
+2026-11-10T09:30:00-05:00    CVX  BUY  0.340495 208.07    70.85 0.0177    0.0724
+2026-11-10T09:30:00-05:00    CAT  BUY  0.024198 569.750    13.79 0.0034    0.0137
+2026-11-10T09:30:00-05:00    EXR  BUY  0.087325 157.880    13.79 0.0069    0.0137
+2026-11-10T09:30:00-05:00    GEV  BUY  0.018248 755.530    13.79 0.0069    0.0137
+2026-11-10T09:30:00-05:00    NEM  BUY  0.114485 120.425    13.79 0.0069    0.0137
+2026-11-10T09:30:00-05:00    TGT  BUY  0.085670 160.930    13.79 0.0069    0.0137
+2026-11-10T09:30:00-05:00    XOM  BUY  0.085178 161.860    13.79 0.0034    0.0137
