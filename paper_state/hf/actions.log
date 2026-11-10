@@ -389568,3 +389568,12 @@ Last fills (304 total):
 2026-11-10 16:00 SUBMIT close: 2 cls orders (equity est $9,846.63, live px for 98 names)
    QLD    sell   11 sh @~77.47  target 0.000
    TQQQ   sell   20 sh @~55.74  target 0.000
+===== 2026-11-10 20:28 UTC alpaca-submit run 42895451529 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-09
+[paper] today's open set from the 09:30 1m bar for 97/98 names
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+[alpaca] replaced 2 early close estimate(s) with a 15:28 estimate
+2026-11-10 16:00 SUBMIT close: 2 cls orders (equity est $9,866.78, live px for 98 names)
+   QLD    sell   11 sh @~78.12  target 0.000
+   TQQQ   sell   20 sh @~56.39  target 0.000
