@@ -388973,3 +388973,55 @@ Last fills (297 total):
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-09
 [alpaca] session 2026-11-10 09:30:00-05:00 not over yet; reconcile later
 [alpaca] orders for 2026-11-10 already queued; nothing to do
+===== 2026-11-10 02:45 UTC run 42744845673 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-09 16:00 already processed (last: 2026-11-09T16:00:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-09 16:00 already processed (last: 2026-11-09T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-09 16:00 already processed (last: 2026-11-09T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-09 16:00 already processed (last: 2026-11-09T16:00:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     96
+Equity:       $978.42  (start $1,000.00)
+P&L:          $-21.58 (-2.16%)
+SPY B&H same period: -1.19%
+Costs paid:   $9.83
+Realized:     Sharpe -0.67 | MaxDD -11.61% | days 48 | avg |daily| 0.84%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.813% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 48 days: live -2.15% vs expected +4.24% +/- 11.26%  (z = -1.13) -> inside the 2-sigma band
+  live positive days 67% (expected 65%) | live daily sd 1.266% (expected 0.813%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~389 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Flat (100% cash).
+
+Last fills (297 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-11-09T09:30:00-05:00    WMT  BUY  0.607154 124.52    75.60 0.0189    0.0778
+2026-11-09T16:00:00-05:00    WMT SELL -0.607154 125.66   -76.30 0.0191    0.0000
+2026-11-09T16:00:00-05:00    XOM SELL -0.398662 164.73   -65.67 0.0164    0.0000
+2026-11-09T16:00:00-05:00  CMCSA SELL -2.505659  24.51   -61.41 0.0154    0.0000
+2026-11-09T16:00:00-05:00   ADBE SELL -0.218335 237.32   -51.82 0.0130    0.0000
+2026-11-09T16:00:00-05:00   NVDA SELL -0.266562 178.67   -47.63 0.0119    0.0000
+2026-11-09T16:00:00-05:00   TSLA SELL -0.105215 378.05   -39.78 0.0099    0.0000
+2026-11-09T16:00:00-05:00   QCOM SELL -0.194892 171.47   -33.42 0.0084    0.0000
+2026-11-09T16:00:00-05:00   COIN SELL -0.413055 136.10   -56.22 0.0281    0.0000
+2026-11-09T16:00:00-05:00   NVDA SELL -0.313563 178.67   -56.02 0.0140    0.0000
+2026-11-09T16:00:00-05:00   NXPI SELL -0.218346 256.42   -55.99 0.0280    0.0000
+2026-11-09T16:00:00-05:00   HOOD SELL -0.671105  83.32   -55.92 0.0280    0.0000
+2026-11-09T16:00:00-05:00   ACGL SELL -0.514448 108.12   -55.62 0.0278    0.0000
+2026-11-09T16:00:00-05:00    WMT SELL -0.435744 125.66   -54.76 0.0137    0.0000
