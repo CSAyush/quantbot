@@ -9,27 +9,27 @@
     "QLD": 11.0
   },
   "inception": "2026-09-14T16:00:00-04:00",
-  "last_session": "2026-11-06T16:00:00-05:00",
-  "sessions_processed": 47,
+  "last_session": "2026-11-09T09:30:00-05:00",
+  "sessions_processed": 48,
   "pending": {
-    "qb-20261109-0930-QLD": {
+    "qb-20261110-0930-QLD": {
       "symbol": "QLD",
       "side": "sell",
       "qty": 11,
-      "est_price": 74.11000061035156,
+      "est_price": 79.1500015258789,
       "target_w": 0.0,
-      "order_id": "ff60a999-76ea-4ab9-baef-c83291d56f09",
-      "stamp": "2026-11-09T09:30:00-05:00",
+      "order_id": "86fa4407-0dbf-40f0-aa47-452dbe914304",
+      "stamp": "2026-11-10T09:30:00-05:00",
       "queued_estimate": true
     },
-    "qb-20261109-0930-TQQQ": {
+    "qb-20261110-0930-TQQQ": {
       "symbol": "TQQQ",
       "side": "sell",
       "qty": 20,
-      "est_price": 52.25,
+      "est_price": 57.58000183105469,
       "target_w": 0.0,
-      "order_id": "85d6f3c2-3c0a-461b-bd5c-aef3961a11c3",
-      "stamp": "2026-11-09T09:30:00-05:00",
+      "order_id": "953dd019-7c18-4921-bf9a-fbd6978e06c5",
+      "stamp": "2026-11-10T09:30:00-05:00",
       "queued_estimate": true
     }
   },
