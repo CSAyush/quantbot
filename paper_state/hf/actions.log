@@ -389695,3 +389695,9 @@ Last fills (304 total):
 2026-11-10T09:30:00-05:00    NEM  BUY  0.114485 120.425    13.79 0.0069    0.0137
 2026-11-10T09:30:00-05:00    TGT  BUY  0.085670 160.930    13.79 0.0069    0.0137
 2026-11-10T09:30:00-05:00    XOM  BUY  0.085178 161.860    13.79 0.0034    0.0137
+===== 2026-11-10 20:43 UTC alpaca-submit run 42897910122 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-09
+[paper] today's open set from the 09:30 1m bar for 97/98 names
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+[alpaca] orders for 2026-11-10 16:00:00-05:00 already submitted; nothing to do
