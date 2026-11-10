@@ -389557,3 +389557,14 @@ Last fills (304 total):
 2026-11-10T09:30:00-05:00    NEM  BUY  0.114485 120.425    13.79 0.0069    0.0137
 2026-11-10T09:30:00-05:00    TGT  BUY  0.085670 160.930    13.79 0.0069    0.0137
 2026-11-10T09:30:00-05:00    XOM  BUY  0.085178 161.860    13.79 0.0034    0.0137
+===== 2026-11-10 20:06 UTC alpaca-submit run 42891762847 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-09
+[paper] today's open set from the 09:30 1m bar for 97/98 names
+[alpaca] QLD order qb-20261110-0930-QLD not filled (OrderStatus.EXPIRED)
+[alpaca] TQQQ order qb-20261110-0930-TQQQ not filled (OrderStatus.EXPIRED)
+2026-11-10 09:30 RECONCILE: 0 fills | equity $9,854.07
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+2026-11-10 16:00 SUBMIT close: 2 cls orders (equity est $9,846.63, live px for 98 names)
+   QLD    sell   11 sh @~77.47  target 0.000
+   TQQQ   sell   20 sh @~55.74  target 0.000
