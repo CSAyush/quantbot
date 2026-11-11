@@ -390131,3 +390131,16 @@ Last fills (311 total):
 2026-11-10T16:00:00-05:00    EXR SELL -0.087325 158.99   -13.88 0.0069    0.0000
 2026-11-10T16:00:00-05:00    TGT SELL -0.085670 161.78   -13.86 0.0069    0.0000
 2026-11-10T16:00:00-05:00    NEM SELL -0.114485 119.96   -13.73 0.0069    0.0000
+===== 2026-11-11 00:05 UTC alpaca-submit run 42928395649 =====
+
+1 Failed download:
+['EEM']: OperationalError('database is locked')
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-10
+[alpaca] TQQQ order qb-20261110-1600-TQQQ-1528 not filled (OrderStatus.EXPIRED)
+2026-11-10 16:00 RECONCILE: 1 fills | equity $9,870.91 (broker $99,891.22) | avg slippage vs print +3.8 bp
+ticker side  shares  fill_price  official_print  slippage_bps
+   QLD SELL    -5.0       78.17            78.2          3.84
+QUEUE for 2026-11-11: 2 orders (equity est $9,870.91)
+   QLD    SELL    6 sh  MOO 2026-11-11
+   TQQQ   SELL   20 sh  MOO 2026-11-11
