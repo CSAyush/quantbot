@@ -390751,3 +390751,18 @@ Last fills (318 total):
 2026-11-11T09:30:00-05:00    MAR  BUY  0.024850 422.5900    10.50 0.0053    0.0104
 2026-11-11T09:30:00-05:00   ULTA  BUY  0.016072 653.4000    10.50 0.0053    0.0104
 2026-11-11T09:30:00-05:00      V  BUY  0.025168 417.2525    10.50 0.0026    0.0104
+===== 2026-11-11 19:55 UTC alpaca-submit run 43091630866 =====
+
+1 Failed download:
+['CMCSA']: OperationalError('database is locked')
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-10
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] QLD order qb-20261111-0930-QLD not filled (OrderStatus.EXPIRED)
+2026-11-11 09:30 RECONCILE: 1 fills | equity $9,951.17 (broker $99,957.88) | avg slippage vs print -2.5 bp
+ticker side  shares  fill_price  official_print  slippage_bps
+  TQQQ SELL   -20.0        59.7          59.685         -2.51
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+2026-11-11 16:00 SUBMIT close: 1 cls orders (equity est $9,958.46, live px for 98 names)
+   QLD    sell    6 sh @~82.33  target 0.000
