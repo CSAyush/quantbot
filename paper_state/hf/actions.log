@@ -390692,3 +390692,62 @@ Last fills (318 total):
 2026-11-11T09:30:00-05:00    MAR  BUY  0.024850 422.5900    10.50 0.0053    0.0104
 2026-11-11T09:30:00-05:00   ULTA  BUY  0.016072 653.4000    10.50 0.0053    0.0104
 2026-11-11T09:30:00-05:00      V  BUY  0.025168 417.2525    10.50 0.0026    0.0104
+===== 2026-11-11 19:39 UTC run 43089060165 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-11 09:30 already processed (last: 2026-11-11T09:30:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-11 09:30 already processed (last: 2026-11-11T09:30:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-11 09:30 already processed (last: 2026-11-11T09:30:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-11 09:30 already processed (last: 2026-11-11T09:30:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     99
+Equity:       $981.24  (start $1,000.00)
+P&L:          $-18.76 (-1.88%)
+SPY B&H same period: -0.65%
+Costs paid:   $10.07
+Realized:     Sharpe -0.59 | MaxDD -11.61% | days 50 | avg |daily| 0.81%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.813% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 50 days: live -1.86% vs expected +4.42% +/- 11.49%  (z = -1.09) -> inside the 2-sigma band
+  live positive days 68% (expected 65%) | live daily sd 1.241% (expected 0.813%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~389 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  BRK-B      0.0843 sh
+  JNJ        0.1321 sh
+  MA         0.0519 sh
+  PEP        0.2515 sh
+  PFE        1.2979 sh
+  PG         0.2019 sh
+  V          0.0876 sh
+
+Last fills (318 total):
+                  session ticker side    shares    price  dollars   cost  target_w
+2026-11-10T16:00:00-05:00    CAT SELL -0.059750 584.5700   -34.93 0.0087    0.0000
+2026-11-11T09:30:00-05:00     PG  BUY  0.201900 166.1900    33.55 0.0084    0.0342
+2026-11-11T09:30:00-05:00     MA  BUY  0.051857 649.0600    33.66 0.0084    0.0343
+2026-11-11T09:30:00-05:00    PEP  BUY  0.251494 141.8200    35.67 0.0089    0.0363
+2026-11-11T09:30:00-05:00      V  BUY  0.087616 417.2525    36.56 0.0091    0.0373
+2026-11-11T09:30:00-05:00    JNJ  BUY  0.132053 277.9600    36.71 0.0092    0.0374
+2026-11-11T09:30:00-05:00    PFE  BUY  1.297931  29.0600    37.72 0.0094    0.0384
+2026-11-11T09:30:00-05:00  BRK-B  BUY  0.084338 577.0200    48.66 0.0122    0.0496
+2026-11-11T09:30:00-05:00    AJG  BUY  0.037956 276.6700    10.50 0.0053    0.0104
+2026-11-11T09:30:00-05:00  BRK-B  BUY  0.018199 577.0200    10.50 0.0026    0.0104
+2026-11-11T09:30:00-05:00     MA  BUY  0.016179 649.0600    10.50 0.0026    0.0104
+2026-11-11T09:30:00-05:00    MAR  BUY  0.024850 422.5900    10.50 0.0053    0.0104
+2026-11-11T09:30:00-05:00   ULTA  BUY  0.016072 653.4000    10.50 0.0053    0.0104
+2026-11-11T09:30:00-05:00      V  BUY  0.025168 417.2525    10.50 0.0026    0.0104
