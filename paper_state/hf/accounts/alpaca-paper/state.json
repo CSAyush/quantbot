@@ -11,15 +11,15 @@
   "last_session": "2026-11-11T09:30:00-05:00",
   "sessions_processed": 51,
   "pending": {
-    "qb-20261111-1600-QLD-1456": {
+    "qb-20261111-1600-QLD-1511": {
       "symbol": "QLD",
       "side": "sell",
       "qty": 6,
-      "est_price": 82.325,
+      "est_price": 82.07,
       "target_w": 0.0,
-      "order_id": "54aeeaed-1a50-45dc-afe5-3c7b2696ff65",
+      "order_id": "a8d2fd0b-846d-4e58-aab3-4256611b66d9",
       "stamp": "2026-11-11T16:00:00-05:00",
-      "est_time": "2026-11-11T14:56:01.127458-05:00"
+      "est_time": "2026-11-11T15:11:26.399157-05:00"
     }
   },
   "last_submit": "2026-11-11T16:00:00-05:00"

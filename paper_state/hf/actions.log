@@ -390766,3 +390766,11 @@ ticker side  shares  fill_price  official_print  slippage_bps
 [paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
 2026-11-11 16:00 SUBMIT close: 1 cls orders (equity est $9,958.46, live px for 98 names)
    QLD    sell    6 sh @~82.33  target 0.000
+===== 2026-11-11 20:11 UTC alpaca-submit run 43094003500 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-10
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+[alpaca] replaced 1 early close estimate(s) with a 15:11 estimate
+2026-11-11 16:00 SUBMIT close: 1 cls orders (equity est $9,956.93, live px for 98 names)
+   QLD    sell    6 sh @~82.07  target 0.000
