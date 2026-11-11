@@ -390544,3 +390544,7 @@ Last fills (311 total):
 2026-11-10T16:00:00-05:00    EXR SELL -0.087325 158.99   -13.88 0.0069    0.0000
 2026-11-10T16:00:00-05:00    TGT SELL -0.085670 161.78   -13.86 0.0069    0.0000
 2026-11-10T16:00:00-05:00    NEM SELL -0.114485 119.96   -13.73 0.0069    0.0000
+===== 2026-11-11 13:25 UTC alpaca-submit run 43028943224 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-10
+[alpaca] session 2026-11-11 09:30:00-05:00 not over yet; reconcile later
+[alpaca] orders for 2026-11-11 already queued; nothing to do
