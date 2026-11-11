@@ -390144,3 +390144,7 @@ ticker side  shares  fill_price  official_print  slippage_bps
 QUEUE for 2026-11-11: 2 orders (equity est $9,870.91)
    QLD    SELL    6 sh  MOO 2026-11-11
    TQQQ   SELL   20 sh  MOO 2026-11-11
+===== 2026-11-11 00:11 UTC alpaca-submit run 42929305060 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-10
+[alpaca] session 2026-11-11 09:30:00-05:00 not over yet; reconcile later
+[alpaca] orders for 2026-11-11 already queued; nothing to do
