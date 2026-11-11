@@ -390774,3 +390774,5 @@ ticker side  shares  fill_price  official_print  slippage_bps
 [alpaca] replaced 1 early close estimate(s) with a 15:11 estimate
 2026-11-11 16:00 SUBMIT close: 1 cls orders (equity est $9,956.93, live px for 98 names)
    QLD    sell    6 sh @~82.07  target 0.000
+===== 2026-11-11 21:05 UTC alpaca-submit run 43099966066 =====
+16:05 ET is well past the close window; nothing to do.
