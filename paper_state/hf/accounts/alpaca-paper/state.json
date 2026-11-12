@@ -3,24 +3,11 @@
   "profile": "sharpe2",
   "notional": 10000.0,
   "starting_cash": 10000.0,
-  "cash": 9464.51,
-  "positions": {
-    "QLD": 6.0
-  },
+  "cash": 9941.09,
+  "positions": {},
   "inception": "2026-09-14T16:00:00-04:00",
-  "last_session": "2026-11-11T16:00:00-05:00",
-  "sessions_processed": 52,
-  "pending": {
-    "qb-20261112-0930-QLD": {
-      "symbol": "QLD",
-      "side": "sell",
-      "qty": 6,
-      "est_price": 81.83000183105469,
-      "target_w": 0.0,
-      "order_id": "236f2557-3dd2-447d-b5db-94b9762ec663",
-      "stamp": "2026-11-12T09:30:00-05:00",
-      "queued_estimate": true
-    }
-  },
-  "last_submit": "2026-11-11T16:00:00-05:00"
+  "last_session": "2026-11-12T09:30:00-05:00",
+  "sessions_processed": 53,
+  "pending": {},
+  "last_submit": "2026-11-12T16:00:00-05:00"
 }
