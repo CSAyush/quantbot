@@ -340,3 +340,6 @@
 [2026-11-11 14:56:12 EST] 2026-11-11 09:30 RECONCILE: 1 fills | equity $9,951.17 (broker $99,957.88) | avg slippage vs print -2.5 bp
 [2026-11-11 14:56:13 EST] 2026-11-11 16:00 SUBMIT close: 1 cls orders (equity est $9,958.46, live px for 98 names)
 [2026-11-11 15:11:50 EST] 2026-11-11 16:00 SUBMIT close: 1 cls orders (equity est $9,956.93, live px for 98 names)
+[2026-11-11 20:34:15 EST] [alpaca] QLD order qb-20261111-1600-QLD-1511 not filled (OrderStatus.EXPIRED)
+[2026-11-11 20:34:15 EST] 2026-11-11 16:00 RECONCILE: 0 fills | equity $9,955.49
+[2026-11-11 20:34:15 EST] QUEUE for 2026-11-12: 1 orders (equity est $9,955.49)
