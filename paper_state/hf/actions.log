@@ -391198,3 +391198,11 @@ Last fills (325 total):
 2026-11-11 16:00 RECONCILE: 0 fills | equity $9,955.49
 QUEUE for 2026-11-12: 1 orders (equity est $9,955.49)
    QLD    SELL    6 sh  MOO 2026-11-12
+===== 2026-11-12 01:37 UTC alpaca-submit run 43135751944 =====
+
+1 Failed download:
+['ABBV']: OperationalError('database is locked')
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-11
+[alpaca] session 2026-11-12 09:30:00-05:00 not over yet; reconcile later
+[alpaca] orders for 2026-11-12 already queued; nothing to do
