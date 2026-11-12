@@ -343,3 +343,4 @@
 [2026-11-11 20:34:15 EST] [alpaca] QLD order qb-20261111-1600-QLD-1511 not filled (OrderStatus.EXPIRED)
 [2026-11-11 20:34:15 EST] 2026-11-11 16:00 RECONCILE: 0 fills | equity $9,955.49
 [2026-11-11 20:34:15 EST] QUEUE for 2026-11-12: 1 orders (equity est $9,955.49)
+[2026-11-12 09:30:42 EST] ERROR: 09:30 ET is past the open submission deadline 09:28:00; not submitting
