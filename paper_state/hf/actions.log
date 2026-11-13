@@ -392828,3 +392828,9 @@ ticker side  shares  fill_price  official_print  slippage_bps
 [paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
 2026-11-13 16:00 SUBMIT close: 1 cls orders (equity est $9,939.91, live px for 98 names)
    JPM    sell    1 sh @~345.10  target 0.000
+===== 2026-11-13 20:29 UTC alpaca-submit run 43501874306 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-12
+[paper] today's open set from the 09:30 1m bar for 97/98 names
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+[alpaca] orders for 2026-11-13 16:00:00-05:00 already submitted; nothing to do
