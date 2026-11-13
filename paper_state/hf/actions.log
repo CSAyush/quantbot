@@ -392834,3 +392834,62 @@ ticker side  shares  fill_price  official_print  slippage_bps
 [alpaca] live prices for 98/98 names
 [paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
 [alpaca] orders for 2026-11-13 16:00:00-05:00 already submitted; nothing to do
+===== 2026-11-13 20:39 UTC run 43503430411 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-13 09:30 already processed (last: 2026-11-13T09:30:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-13 09:30 already processed (last: 2026-11-13T09:30:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-13 09:30 already processed (last: 2026-11-13T09:30:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-13 09:30 already processed (last: 2026-11-13T09:30:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     103
+Equity:       $985.30  (start $1,000.00)
+P&L:          $-14.70 (-1.47%)
+SPY B&H same period: -0.37%
+Costs paid:   $10.17
+Realized:     Sharpe -0.48 | MaxDD -11.61% | days 52 | avg |daily| 0.79%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.089% | daily sd 0.813% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 52 days: live -1.46% vs expected +4.60% +/- 11.72%  (z = -1.03) -> inside the 2-sigma band
+  live positive days 69% (expected 65%) | live daily sd 1.218% (expected 0.813%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~388 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  AMD        0.0123 sh
+  AVGO       0.0329 sh
+  CSCO       0.1840 sh
+  HD         0.0627 sh
+  LOW        0.0874 sh
+  MSFT       0.0420 sh
+  SBUX       0.2475 sh
+
+Last fills (332 total):
+                  session ticker side    shares   price  dollars   cost  target_w
+2026-11-11T16:00:00-05:00     PG SELL -0.201900 167.670   -33.85 0.0085    0.0000
+2026-11-13T09:30:00-05:00    AMD  BUY  0.012301 566.670     6.97 0.0017    0.0071
+2026-11-13T09:30:00-05:00   AVGO  BUY  0.032943 356.540    11.75 0.0029    0.0119
+2026-11-13T09:30:00-05:00   CSCO  BUY  0.183994 100.295    18.45 0.0046    0.0187
+2026-11-13T09:30:00-05:00    LOW  BUY  0.087407 225.000    19.67 0.0049    0.0200
+2026-11-13T09:30:00-05:00     HD  BUY  0.062729 344.000    21.58 0.0054    0.0219
+2026-11-13T09:30:00-05:00   MSFT  BUY  0.042018 519.910    21.85 0.0055    0.0222
+2026-11-13T09:30:00-05:00   SBUX  BUY  0.247456 106.610    26.38 0.0066    0.0268
+2026-11-13T09:30:00-05:00   AVGO  BUY  0.014138 356.5400     5.04 0.0013     0.005
+2026-11-13T09:30:00-05:00   COIN  BUY  0.039603 127.2825     5.04 0.0025     0.005
+2026-11-13T09:30:00-05:00   CSCO  BUY  0.050259 100.2950     5.04 0.0013     0.005
+2026-11-13T09:30:00-05:00     HD  BUY  0.014653 344.0000     5.04 0.0013     0.005
+2026-11-13T09:30:00-05:00   HOOD  BUY  0.063171  79.7950     5.04 0.0025     0.005
+2026-11-13T09:30:00-05:00    TJX  BUY  0.037606 134.0400     5.04 0.0025     0.005
