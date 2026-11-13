@@ -392615,3 +392615,11 @@ Last fills (325 total):
 2026-11-11T16:00:00-05:00    MAR SELL -0.024850 429.1800   -10.67 0.0053    0.0000
 2026-11-11T16:00:00-05:00   ULTA SELL -0.016072 659.0800   -10.59 0.0053    0.0000
 2026-11-11T16:00:00-05:00   ABNB SELL -0.057631 181.1300   -10.44 0.0052    0.0000
+===== 2026-11-13 13:48 UTC alpaca-submit run 43436730435 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-12
+[alpaca] live prices for 98/98 names
+2026-11-13 09:30 SUBMIT open: 4 opg orders (equity est $9,941.09, live px for 98 names)
+   CSCO   buy     2 sh @~98.30  target 0.018
+   INTC   buy     1 sh @~61.01  target 0.006
+   JPM    buy     1 sh @~342.75  target 0.028
+   KO     buy     4 sh @~97.42  target 0.037
