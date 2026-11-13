@@ -392346,3 +392346,55 @@ Last fills (325 total):
 2026-11-11T16:00:00-05:00    MAR SELL -0.024850 429.1800   -10.67 0.0053    0.0000
 2026-11-11T16:00:00-05:00   ULTA SELL -0.016072 659.0800   -10.59 0.0053    0.0000
 2026-11-11T16:00:00-05:00   ABNB SELL -0.057631 181.1300   -10.44 0.0052    0.0000
+===== 2026-11-13 01:51 UTC run 43347840285 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-12 16:00 already processed (last: 2026-11-12T16:00:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-12 16:00 already processed (last: 2026-11-12T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-12 16:00 already processed (last: 2026-11-12T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-12 16:00 already processed (last: 2026-11-12T16:00:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     102
+Equity:       $985.25  (start $1,000.00)
+P&L:          $-14.75 (-1.48%)
+SPY B&H same period: -0.59%
+Costs paid:   $10.14
+Realized:     Sharpe -0.48 | MaxDD -11.61% | days 51 | avg |daily| 0.80%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.813% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 51 days: live -1.46% vs expected +4.51% +/- 11.61%  (z = -1.03) -> inside the 2-sigma band
+  live positive days 69% (expected 65%) | live daily sd 1.230% (expected 0.813%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~388 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Flat (100% cash).
+
+Last fills (325 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-11-11T09:30:00-05:00  BRK-B  BUY  0.084338 577.02    48.66 0.0122    0.0496
+2026-11-11T16:00:00-05:00  BRK-B SELL -0.084338 588.24   -49.61 0.0124    0.0000
+2026-11-11T16:00:00-05:00    PFE SELL -1.297931  29.45   -38.22 0.0096    0.0000
+2026-11-11T16:00:00-05:00      V SELL -0.087616 425.55   -37.28 0.0093    0.0000
+2026-11-11T16:00:00-05:00    JNJ SELL -0.132053 280.41   -37.03 0.0093    0.0000
+2026-11-11T16:00:00-05:00    PEP SELL -0.251494 143.94   -36.20 0.0091    0.0000
+2026-11-11T16:00:00-05:00     MA SELL -0.051857 660.73   -34.26 0.0086    0.0000
+2026-11-11T16:00:00-05:00     PG SELL -0.201900 167.67   -33.85 0.0085    0.0000
+2026-11-11T16:00:00-05:00  BRK-B SELL -0.018199 588.2400   -10.71 0.0027    0.0000
+2026-11-11T16:00:00-05:00    AJG SELL -0.037956 282.0100   -10.70 0.0054    0.0000
+2026-11-11T16:00:00-05:00     MA SELL -0.016179 660.7300   -10.69 0.0027    0.0000
+2026-11-11T16:00:00-05:00    MAR SELL -0.024850 429.1800   -10.67 0.0053    0.0000
+2026-11-11T16:00:00-05:00   ULTA SELL -0.016072 659.0800   -10.59 0.0053    0.0000
+2026-11-11T16:00:00-05:00   ABNB SELL -0.057631 181.1300   -10.44 0.0052    0.0000
