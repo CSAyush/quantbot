@@ -3,52 +3,24 @@
   "profile": "sharpe2",
   "notional": 10000.0,
   "starting_cash": 10000.0,
-  "cash": 9941.09,
-  "positions": {},
+  "cash": 9594.82,
+  "positions": {
+    "JPM": 1.0
+  },
   "inception": "2026-09-14T16:00:00-04:00",
-  "last_session": "2026-11-12T09:30:00-05:00",
-  "sessions_processed": 53,
+  "last_session": "2026-11-13T09:30:00-05:00",
+  "sessions_processed": 54,
   "pending": {
-    "qb-20261113-0930-CSCO-0848": {
-      "symbol": "CSCO",
-      "side": "buy",
-      "qty": 2,
-      "est_price": 98.3,
-      "target_w": 0.01754934372544044,
-      "order_id": "4171ac52-89bb-47d0-b04d-013bc0bbe1a5",
-      "stamp": "2026-11-13T09:30:00-05:00",
-      "est_time": "2026-11-13T08:48:24.381302-05:00"
-    },
-    "qb-20261113-0930-INTC-0848": {
-      "symbol": "INTC",
-      "side": "buy",
-      "qty": 1,
-      "est_price": 61.01,
-      "target_w": 0.006030160421537397,
-      "order_id": "76a455ba-94df-48fb-997e-d9769cf73e41",
-      "stamp": "2026-11-13T09:30:00-05:00",
-      "est_time": "2026-11-13T08:48:24.381302-05:00"
-    },
-    "qb-20261113-0930-JPM-0848": {
+    "qb-20261113-1600-JPM-1510": {
       "symbol": "JPM",
-      "side": "buy",
+      "side": "sell",
       "qty": 1,
-      "est_price": 342.755,
-      "target_w": 0.028306825214315687,
-      "order_id": "f26cb742-1bab-4e5a-b82d-e387d50876d5",
-      "stamp": "2026-11-13T09:30:00-05:00",
-      "est_time": "2026-11-13T08:48:24.381302-05:00"
-    },
-    "qb-20261113-0930-KO-0848": {
-      "symbol": "KO",
-      "side": "buy",
-      "qty": 4,
-      "est_price": 97.42,
-      "target_w": 0.03730507165567653,
-      "order_id": "61507fcf-5fa6-4435-8833-073f00b8fd7d",
-      "stamp": "2026-11-13T09:30:00-05:00",
-      "est_time": "2026-11-13T08:48:24.381302-05:00"
+      "est_price": 345.095,
+      "target_w": 0.0,
+      "order_id": "eeba0f63-aa16-40c7-ba0a-a1998352f8b6",
+      "stamp": "2026-11-13T16:00:00-05:00",
+      "est_time": "2026-11-13T15:10:20.725333-05:00"
     }
   },
-  "last_submit": "2026-11-13T09:30:00-05:00"
+  "last_submit": "2026-11-13T16:00:00-05:00"
 }

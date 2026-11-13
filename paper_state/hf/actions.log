@@ -392811,3 +392811,20 @@ Last fills (332 total):
 2026-11-13T09:30:00-05:00     HD  BUY  0.014653 344.0000     5.04 0.0013     0.005
 2026-11-13T09:30:00-05:00   HOOD  BUY  0.063171  79.7950     5.04 0.0025     0.005
 2026-11-13T09:30:00-05:00    TJX  BUY  0.037606 134.0400     5.04 0.0025     0.005
+===== 2026-11-13 20:10 UTC alpaca-submit run 43498908816 =====
+
+1 Failed download:
+['UNP']: OperationalError('database is locked')
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-12
+[paper] today's open set from the 09:30 1m bar for 97/98 names
+[alpaca] CSCO order qb-20261113-0930-CSCO-0848 not filled (OrderStatus.EXPIRED)
+[alpaca] INTC order qb-20261113-0930-INTC-0848 not filled (OrderStatus.EXPIRED)
+[alpaca] KO order qb-20261113-0930-KO-0848 not filled (OrderStatus.EXPIRED)
+2026-11-13 09:30 RECONCILE: 1 fills | equity $9,941.23 (broker $99,939.43) | avg slippage vs print -4.0 bp
+ticker side  shares  fill_price  official_print  slippage_bps
+   JPM  BUY     1.0      346.27          346.41         -4.04
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+2026-11-13 16:00 SUBMIT close: 1 cls orders (equity est $9,939.91, live px for 98 names)
+   JPM    sell    1 sh @~345.10  target 0.000
