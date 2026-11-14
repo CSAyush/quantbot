@@ -360,3 +360,6 @@
 [2026-11-13 15:10:34 EST] [alpaca] KO order qb-20261113-0930-KO-0848 not filled (OrderStatus.EXPIRED)
 [2026-11-13 15:10:34 EST] 2026-11-13 09:30 RECONCILE: 1 fills | equity $9,941.23 (broker $99,939.43) | avg slippage vs print -4.0 bp
 [2026-11-13 15:10:35 EST] 2026-11-13 16:00 SUBMIT close: 1 cls orders (equity est $9,939.91, live px for 98 names)
+[2026-11-13 19:22:28 EST] [alpaca] JPM order qb-20261113-1600-JPM-1510 not filled (OrderStatus.EXPIRED)
+[2026-11-13 19:22:28 EST] 2026-11-13 16:00 RECONCILE: 0 fills | equity $9,941.01
+[2026-11-13 19:22:28 EST] QUEUE for 2026-11-16: 1 orders (equity est $9,941.01)
