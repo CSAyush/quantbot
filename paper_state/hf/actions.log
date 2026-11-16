@@ -393888,3 +393888,5 @@ Last fills (339 total):
 2026-11-13T16:00:00-05:00    TJX SELL -0.037606 134.3700    -5.05 0.0025     0.000
 ===== 2026-11-16 14:33 UTC alpaca-submit run 43886795522 =====
 ERROR: 09:33 ET is past the open submission deadline 09:28:00; not submitting
+===== 2026-11-16 22:39 UTC alpaca-submit run 43971957783 =====
+17:39 ET is well past the close window; nothing to do.
