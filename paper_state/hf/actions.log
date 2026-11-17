@@ -395127,3 +395127,110 @@ Last fills (361 total):
 16:26 ET is well past the close window; nothing to do.
 ===== 2026-11-17 21:45 UTC alpaca-submit run 44182966805 =====
 16:45 ET is well past the close window; nothing to do.
+===== 2026-11-17 21:54 UTC run 44184518268 (schedule) =====
+
+1 Failed download:
+['MDT']: OperationalError('database is locked')
+
+=== account 'live' ===
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-17
+[warn] running 54 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-17 16:00 | equity $974.75 | cash $840.48 | long 14% short 0% | 7 fills
+ticker side    shares  price  dollars   cost  target_w
+  SPGI SELL -0.123802 452.35   -56.00 0.0140       0.0
+   PFE SELL -1.959232  28.47   -55.78 0.0139       0.0
+   UNH SELL -0.142420 389.68   -55.50 0.0139       0.0
+  AMGN SELL -0.113304 457.93   -51.89 0.0130       0.0
+   PEP SELL -0.357716 142.02   -50.80 0.0127       0.0
+   CRM SELL -0.211367 194.52   -41.12 0.0103       0.0
+    HD SELL -0.107374 339.01   -36.40 0.0091       0.0
+ticker  shares  value  weight
+   QLD  1.8148 134.26  0.1377
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-17
+[warn] running 55 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-17 16:00 | equity $957.15 | cash $824.46 | long 14% short 0% | 7 fills
+ticker side    shares  price  dollars   cost  target_w
+  SPGI SELL -0.121419 452.35   -54.92 0.0137       0.0
+   PFE SELL -1.921513  28.47   -54.71 0.0137       0.0
+   UNH SELL -0.139678 389.68   -54.43 0.0136       0.0
+  AMGN SELL -0.111123 457.93   -50.89 0.0127       0.0
+   PEP SELL -0.350829 142.02   -49.82 0.0125       0.0
+   CRM SELL -0.207298 194.52   -40.32 0.0101       0.0
+    HD SELL -0.105307 339.01   -35.70 0.0089       0.0
+ticker  shares  value  weight
+   QQQ   0.202 132.69  0.1386
+
+=== account 'shadow-growth' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-17
+[warn] running 55 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-17 16:00 | equity $962.71 | cash $962.71 | long 0% short 0% | 7 fills
+ticker side    shares  price  dollars   cost  target_w
+    HD SELL -0.101127 339.01   -34.28 0.0086       0.0
+  AMGN SELL -0.074795 457.93   -34.25 0.0086       0.0
+   PFE SELL -1.189767  28.47   -33.87 0.0085       0.0
+   PEP SELL -0.236822 142.02   -33.63 0.0084       0.0
+   UNH SELL -0.085167 389.68   -33.19 0.0083       0.0
+  SPGI SELL -0.072985 452.35   -33.01 0.0083       0.0
+   CRM SELL -0.162119 194.52   -31.54 0.0079       0.0
+Flat (100% cash).
+
+=== account 'shadow-wide' ===
+[data] daily OHLCV: 345 tickers, 2010-01-04 -> 2026-11-17
+[warn] running 55 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-17 16:00 | equity $1,003.18 | cash $984.73 | long 2% short 0% | 7 fills
+ticker side    shares  price  dollars   cost  target_w
+    HD SELL -0.105381 339.01   -35.73 0.0089       0.0
+  CPRT SELL -1.129198  31.45   -35.51 0.0178       0.0
+    ED SELL -0.294348 119.23   -35.10 0.0175       0.0
+   PEP SELL -0.246785 142.02   -35.05 0.0088       0.0
+   HUM SELL -0.078993 443.34   -35.02 0.0175       0.0
+   UNH SELL -0.088750 389.68   -34.58 0.0086       0.0
+   CRM SELL -0.168939 194.52   -32.86 0.0082       0.0
+ticker  shares  value  weight
+   AMD  0.0089   4.48  0.0045
+  AVGO  0.0141   4.83  0.0048
+  CSCO  0.0503   4.78  0.0048
+  HOOD  0.0632   4.37  0.0044
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     108
+Equity:       $974.75  (start $1,000.00)
+P&L:          $-25.25 (-2.53%)
+SPY B&H same period: -3.85%
+Costs paid:   $10.52
+Realized:     Sharpe -0.74 | MaxDD -11.61% | days 54 | avg |daily| 0.78%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.812% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 54 days: live -2.51% vs expected +4.76% +/- 11.94%  (z = -1.22) -> inside the 2-sigma band
+  live positive days 65% (expected 65%) | live daily sd 1.199% (expected 0.812%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~391 (~1.6 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  QLD        1.8148 sh
+
+Last fills (368 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-11-17T09:30:00-05:00   SPGI  BUY  0.123802 464.27    57.48 0.0144    0.0585
+2026-11-17T16:00:00-05:00   SPGI SELL -0.123802 452.35   -56.00 0.0140    0.0000
+2026-11-17T16:00:00-05:00    PFE SELL -1.959232  28.47   -55.78 0.0139    0.0000
+2026-11-17T16:00:00-05:00    UNH SELL -0.142420 389.68   -55.50 0.0139    0.0000
+2026-11-17T16:00:00-05:00   AMGN SELL -0.113304 457.93   -51.89 0.0130    0.0000
+2026-11-17T16:00:00-05:00    PEP SELL -0.357716 142.02   -50.80 0.0127    0.0000
+2026-11-17T16:00:00-05:00    CRM SELL -0.211367 194.52   -41.12 0.0103    0.0000
+2026-11-17T16:00:00-05:00     HD SELL -0.107374 339.01   -36.40 0.0091    0.0000
+2026-11-17T16:00:00-05:00   CPRT SELL -1.129198  31.45   -35.51 0.0178    0.0000
+2026-11-17T16:00:00-05:00     ED SELL -0.294348 119.23   -35.10 0.0175    0.0000
+2026-11-17T16:00:00-05:00    PEP SELL -0.246785 142.02   -35.05 0.0088    0.0000
+2026-11-17T16:00:00-05:00    HUM SELL -0.078993 443.34   -35.02 0.0175    0.0000
+2026-11-17T16:00:00-05:00    UNH SELL -0.088750 389.68   -34.58 0.0086    0.0000
+2026-11-17T16:00:00-05:00    CRM SELL -0.168939 194.52   -32.86 0.0082    0.0000
