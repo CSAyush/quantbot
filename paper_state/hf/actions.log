@@ -395063,3 +395063,63 @@ Last fills (361 total):
 2026-11-17T09:30:00-05:00    HUM  BUY  0.078993 447.00    35.31 0.0177    0.0351
 2026-11-17T09:30:00-05:00    PEP  BUY  0.246785 143.08    35.31 0.0088    0.0351
 2026-11-17T09:30:00-05:00    UNH  BUY  0.088750 397.86    35.31 0.0088    0.0351
+===== 2026-11-17 20:58 UTC run 44174835169 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-17 09:30 already processed (last: 2026-11-17T09:30:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-17 09:30 already processed (last: 2026-11-17T09:30:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-17 09:30 already processed (last: 2026-11-17T09:30:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-17 09:30 already processed (last: 2026-11-17T09:30:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     107
+Equity:       $982.39  (start $1,000.00)
+P&L:          $-17.61 (-1.76%)
+SPY B&H same period: -3.07%
+Costs paid:   $10.44
+Realized:     Sharpe -0.55 | MaxDD -11.61% | days 54 | avg |daily| 0.77%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.812% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 54 days: live -1.75% vs expected +4.77% +/- 11.94%  (z = -1.09) -> inside the 2-sigma band
+  live positive days 67% (expected 65%) | live daily sd 1.195% (expected 0.812%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~389 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  AMGN       0.1133 sh
+  CRM        0.2114 sh
+  HD         0.1074 sh
+  PEP        0.3577 sh
+  PFE        1.9592 sh
+  QLD        1.8148 sh
+  SPGI       0.1238 sh
+  UNH        0.1424 sh
+
+Last fills (361 total):
+                  session ticker side   shares   price  dollars   cost  target_w
+2026-11-16T16:00:00-05:00    QLD  BUY 1.814821  75.080   136.26 0.0273    0.1388
+2026-11-17T09:30:00-05:00     HD  BUY 0.107374 335.070    35.98 0.0090    0.0366
+2026-11-17T09:30:00-05:00    CRM  BUY 0.211367 209.010    44.18 0.0110    0.0450
+2026-11-17T09:30:00-05:00    PEP  BUY 0.357716 143.080    51.18 0.0128    0.0521
+2026-11-17T09:30:00-05:00   AMGN  BUY 0.113304 453.032    51.33 0.0128    0.0523
+2026-11-17T09:30:00-05:00    PFE  BUY 1.959232  28.480    55.80 0.0139    0.0568
+2026-11-17T09:30:00-05:00    UNH  BUY 0.142420 397.860    56.66 0.0142    0.0577
+2026-11-17T09:30:00-05:00   SPGI  BUY 0.123802 464.270    57.48 0.0144    0.0585
+2026-11-17T09:30:00-05:00    CRM  BUY  0.168939 209.01    35.31 0.0088    0.0351
+2026-11-17T09:30:00-05:00     ED  BUY  0.294348 119.96    35.31 0.0177    0.0351
+2026-11-17T09:30:00-05:00     HD  BUY  0.105381 335.07    35.31 0.0088    0.0351
+2026-11-17T09:30:00-05:00    HUM  BUY  0.078993 447.00    35.31 0.0177    0.0351
+2026-11-17T09:30:00-05:00    PEP  BUY  0.246785 143.08    35.31 0.0088    0.0351
+2026-11-17T09:30:00-05:00    UNH  BUY  0.088750 397.86    35.31 0.0088    0.0351
