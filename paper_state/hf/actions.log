@@ -394285,3 +394285,13 @@ Last fills (354 total):
 2026-11-16T16:00:00-05:00   KEYS SELL -0.032828 285.6300    -9.38 0.0047    0.0000
 2026-11-16T16:00:00-05:00    LHX SELL -0.035382 261.7500    -9.26 0.0046    0.0000
 2026-11-16T16:00:00-05:00    FCX SELL -0.164046  55.1900    -9.05 0.0045    0.0000
+===== 2026-11-17 00:08 UTC alpaca-submit run 43985064394 =====
+
+1 Failed download:
+['ISRG']: OperationalError('database is locked')
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-16
+[alpaca] JPM order qb-20261116-0930-JPM not filled (OrderStatus.EXPIRED)
+2026-11-16 09:30 RECONCILE: 0 fills | equity $9,940.39
+QUEUE for 2026-11-17: 1 orders (equity est $9,933.03)
+   JPM    SELL    1 sh  MOO 2026-11-17
