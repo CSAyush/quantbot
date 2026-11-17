@@ -141,3 +141,4 @@
 [2026-11-16 18:02:14 EST] CATCH-UP: session 2026-11-16 09:30 was never processed; processing it at its own print before 2026-11-16 16:00
 [2026-11-16 18:02:14 EST] 2026-11-16 09:30 | equity $984.62 | cash $744.86 | long 24% short 0% | 7 fills
 [2026-11-16 18:02:14 EST] 2026-11-16 16:00 | equity $981.96 | cash $845.70 | long 14% short 0% | 8 fills
+[2026-11-17 12:39:41 EST] 2026-11-17 09:30 | equity $982.39 | cash $493.07 | long 50% short 0% | 7 fills
