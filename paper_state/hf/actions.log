@@ -395131,11 +395131,16 @@ Last fills (361 total):
 
 1 Failed download:
 ['MDT']: OperationalError('database is locked')
+===== 2026-11-17 21:56 UTC run 44184801032 (schedule) =====
+
+1 Failed download:
+['SBUX']: OperationalError('database is locked')
 
 === account 'live' ===
 [data] 1 tickers returned no data; retrying in small batches (attempt 1)
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-17
 [warn] running 54 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+[warn] running 57 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
 2026-11-17 16:00 | equity $974.75 | cash $840.48 | long 14% short 0% | 7 fills
 ticker side    shares  price  dollars   cost  target_w
   SPGI SELL -0.123802 452.35   -56.00 0.0140       0.0
@@ -395154,6 +395159,7 @@ ticker  shares  value  weight
 === account 'shadow-alt' ===
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-17
 [warn] running 55 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+[warn] running 57 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
 2026-11-17 16:00 | equity $957.15 | cash $824.46 | long 14% short 0% | 7 fills
 ticker side    shares  price  dollars   cost  target_w
   SPGI SELL -0.121419 452.35   -54.92 0.0137       0.0
@@ -395169,6 +395175,7 @@ ticker  shares  value  weight
 === account 'shadow-growth' ===
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-17
 [warn] running 55 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+[warn] running 57 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
 2026-11-17 16:00 | equity $962.71 | cash $962.71 | long 0% short 0% | 7 fills
 ticker side    shares  price  dollars   cost  target_w
     HD SELL -0.101127 339.01   -34.28 0.0086       0.0
@@ -395183,6 +395190,7 @@ Flat (100% cash).
 === account 'shadow-wide' ===
 [data] daily OHLCV: 345 tickers, 2010-01-04 -> 2026-11-17
 [warn] running 55 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+[warn] running 57 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
 2026-11-17 16:00 | equity $1,003.18 | cash $984.73 | long 2% short 0% | 7 fills
 ticker side    shares  price  dollars   cost  target_w
     HD SELL -0.105381 339.01   -35.73 0.0089       0.0
@@ -395213,6 +395221,7 @@ Expectation card (backtest 2010->now, same profile, net of costs):
   after 54 days: live -2.51% vs expected +4.76% +/- 11.94%  (z = -1.22) -> inside the 2-sigma band
   live positive days 65% (expected 65%) | live daily sd 1.199% (expected 0.812%)
   days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~391 (~1.6 years). Judge shape, not sign, before then.
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~392 (~1.6 years). Judge shape, not sign, before then.
   [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
 
 Positions:
