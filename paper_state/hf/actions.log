@@ -394690,3 +394690,56 @@ Last fills (354 total):
 2026-11-16T16:00:00-05:00   KEYS SELL -0.032828 285.6300    -9.38 0.0047    0.0000
 2026-11-16T16:00:00-05:00    LHX SELL -0.035382 261.7500    -9.26 0.0046    0.0000
 2026-11-16T16:00:00-05:00    FCX SELL -0.164046  55.1900    -9.05 0.0045    0.0000
+===== 2026-11-17 04:33 UTC run 44017938469 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-16 16:00 already processed (last: 2026-11-16T16:00:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-16 16:00 already processed (last: 2026-11-16T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-16 16:00 already processed (last: 2026-11-16T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-16 16:00 already processed (last: 2026-11-16T16:00:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     106
+Equity:       $981.96  (start $1,000.00)
+P&L:          $-18.04 (-1.80%)
+SPY B&H same period: -2.87%
+Costs paid:   $10.35
+Realized:     Sharpe -0.56 | MaxDD -11.61% | days 53 | avg |daily| 0.78%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.812% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 53 days: live -1.79% vs expected +4.69% +/- 11.83%  (z = -1.10) -> inside the 2-sigma band
+  live positive days 66% (expected 65%) | live daily sd 1.206% (expected 0.812%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~389 (~1.5 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  QLD        1.8148 sh
+
+Last fills (354 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-11-16T16:00:00-05:00     MS SELL -0.288414 185.57   -53.52 0.0134    0.0000
+2026-11-16T16:00:00-05:00   AMZN SELL -0.185599 257.75   -47.84 0.0120    0.0000
+2026-11-16T16:00:00-05:00   NVDA SELL -0.243848 156.14   -38.07 0.0095    0.0000
+2026-11-16T16:00:00-05:00    TXN SELL -0.121470 294.21   -35.74 0.0089    0.0000
+2026-11-16T16:00:00-05:00   AVGO SELL -0.087898 333.40   -29.31 0.0073    0.0000
+2026-11-16T16:00:00-05:00    AMD SELL -0.033884 504.28   -17.09 0.0043    0.0000
+2026-11-16T16:00:00-05:00   INTC SELL -0.281195  55.47   -15.60 0.0039    0.0000
+2026-11-16T16:00:00-05:00    QLD  BUY  1.814821  75.08   136.26 0.0273    0.1388
+2026-11-16T09:30:00-05:00    LHX  BUY  0.035382 264.2800     9.35 0.0047    0.0093
+2026-11-16T16:00:00-05:00   AMAT SELL -0.026823 350.2500    -9.39 0.0047    0.0000
+2026-11-16T16:00:00-05:00   COIN SELL -0.078373 119.8400    -9.39 0.0047    0.0000
+2026-11-16T16:00:00-05:00   KEYS SELL -0.032828 285.6300    -9.38 0.0047    0.0000
+2026-11-16T16:00:00-05:00    LHX SELL -0.035382 261.7500    -9.26 0.0046    0.0000
+2026-11-16T16:00:00-05:00    FCX SELL -0.164046  55.1900    -9.05 0.0045    0.0000
