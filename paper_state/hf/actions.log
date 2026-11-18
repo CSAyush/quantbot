@@ -396244,3 +396244,5 @@ Last fills (375 total):
 2026-11-18T09:30:00-05:00     VZ  BUY  1.183827  45.16    53.46 0.0134    0.0533
 ===== 2026-11-18 20:59 UTC alpaca-submit run 44396614733 =====
 ERROR: 15:59 ET is past the close submission deadline 15:50:00; not submitting
+===== 2026-11-18 21:25 UTC alpaca-submit run 44401163439 =====
+16:25 ET is well past the close window; nothing to do.
