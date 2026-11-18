@@ -370,3 +370,4 @@
 [2026-11-17 20:38:31 EST] [alpaca] JPM order qb-20261117-0930-JPM not filled (OrderStatus.EXPIRED)
 [2026-11-17 20:38:31 EST] 2026-11-17 09:30 RECONCILE: 0 fills | equity $9,928.39
 [2026-11-17 20:38:31 EST] QUEUE for 2026-11-18: 1 orders (equity est $9,924.78)
+[2026-11-18 15:59:45 EST] ERROR: 15:59 ET is past the close submission deadline 15:50:00; not submitting
