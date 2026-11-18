@@ -395571,3 +395571,56 @@ Last fills (368 total):
 2026-11-17T16:00:00-05:00    HUM SELL -0.078993 443.34   -35.02 0.0175    0.0000
 2026-11-17T16:00:00-05:00    UNH SELL -0.088750 389.68   -34.58 0.0086    0.0000
 2026-11-17T16:00:00-05:00    CRM SELL -0.168939 194.52   -32.86 0.0082    0.0000
+===== 2026-11-18 01:36 UTC run 44216957678 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-17 16:00 already processed (last: 2026-11-17T16:00:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-17 16:00 already processed (last: 2026-11-17T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-17 16:00 already processed (last: 2026-11-17T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-17 16:00 already processed (last: 2026-11-17T16:00:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     108
+Equity:       $974.75  (start $1,000.00)
+P&L:          $-25.25 (-2.53%)
+SPY B&H same period: -3.85%
+Costs paid:   $10.52
+Realized:     Sharpe -0.74 | MaxDD -11.61% | days 54 | avg |daily| 0.78%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.812% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 54 days: live -2.51% vs expected +4.76% +/- 11.94%  (z = -1.22) -> inside the 2-sigma band
+  live positive days 65% (expected 65%) | live daily sd 1.199% (expected 0.812%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~392 (~1.6 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  QLD        1.8148 sh
+
+Last fills (368 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-11-17T09:30:00-05:00   SPGI  BUY  0.123802 464.27    57.48 0.0144    0.0585
+2026-11-17T16:00:00-05:00   SPGI SELL -0.123802 452.35   -56.00 0.0140    0.0000
+2026-11-17T16:00:00-05:00    PFE SELL -1.959232  28.47   -55.78 0.0139    0.0000
+2026-11-17T16:00:00-05:00    UNH SELL -0.142420 389.68   -55.50 0.0139    0.0000
+2026-11-17T16:00:00-05:00   AMGN SELL -0.113304 457.93   -51.89 0.0130    0.0000
+2026-11-17T16:00:00-05:00    PEP SELL -0.357716 142.02   -50.80 0.0127    0.0000
+2026-11-17T16:00:00-05:00    CRM SELL -0.211367 194.52   -41.12 0.0103    0.0000
+2026-11-17T16:00:00-05:00     HD SELL -0.107374 339.01   -36.40 0.0091    0.0000
+2026-11-17T16:00:00-05:00   CPRT SELL -1.129198  31.45   -35.51 0.0178    0.0000
+2026-11-17T16:00:00-05:00     ED SELL -0.294348 119.23   -35.10 0.0175    0.0000
+2026-11-17T16:00:00-05:00    PEP SELL -0.246785 142.02   -35.05 0.0088    0.0000
+2026-11-17T16:00:00-05:00    HUM SELL -0.078993 443.34   -35.02 0.0175    0.0000
+2026-11-17T16:00:00-05:00    UNH SELL -0.088750 389.68   -34.58 0.0086    0.0000
+2026-11-17T16:00:00-05:00    CRM SELL -0.168939 194.52   -32.86 0.0082    0.0000
