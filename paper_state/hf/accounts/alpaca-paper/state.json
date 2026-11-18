@@ -8,17 +8,17 @@
     "JPM": 1.0
   },
   "inception": "2026-09-14T16:00:00-04:00",
-  "last_session": "2026-11-16T09:30:00-05:00",
-  "sessions_processed": 56,
+  "last_session": "2026-11-17T09:30:00-05:00",
+  "sessions_processed": 57,
   "pending": {
-    "qb-20261117-0930-JPM": {
+    "qb-20261118-0930-JPM": {
       "symbol": "JPM",
       "side": "sell",
       "qty": 1,
-      "est_price": 338.2099914550781,
+      "est_price": 329.9599914550781,
       "target_w": 0.0,
-      "order_id": "f8c0c864-333c-4956-8504-758a5c43e897",
-      "stamp": "2026-11-17T09:30:00-05:00",
+      "order_id": "d5783948-45d2-435d-8f5b-051e62a1a2c5",
+      "stamp": "2026-11-18T09:30:00-05:00",
       "queued_estimate": true
     }
   },

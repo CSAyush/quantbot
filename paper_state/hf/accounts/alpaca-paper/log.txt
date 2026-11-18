@@ -367,3 +367,6 @@
 [2026-11-16 19:08:33 EST] [alpaca] JPM order qb-20261116-0930-JPM not filled (OrderStatus.EXPIRED)
 [2026-11-16 19:08:33 EST] 2026-11-16 09:30 RECONCILE: 0 fills | equity $9,940.39
 [2026-11-16 19:08:34 EST] QUEUE for 2026-11-17: 1 orders (equity est $9,933.03)
+[2026-11-17 20:38:31 EST] [alpaca] JPM order qb-20261117-0930-JPM not filled (OrderStatus.EXPIRED)
+[2026-11-17 20:38:31 EST] 2026-11-17 09:30 RECONCILE: 0 fills | equity $9,928.39
+[2026-11-17 20:38:31 EST] QUEUE for 2026-11-18: 1 orders (equity est $9,924.78)
