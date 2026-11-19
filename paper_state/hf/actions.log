@@ -397378,3 +397378,107 @@ Last fills (390 total):
 16:05 ET is well past the close window; nothing to do.
 ===== 2026-11-19 21:30 UTC alpaca-submit run 44619195546 =====
 16:30 ET is well past the close window; nothing to do.
+===== 2026-11-19 21:48 UTC run 44622219034 (schedule) =====
+
+=== account 'live' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-19
+[warn] running 48 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-19 16:00 | equity $973.93 | cash $835.71 | long 14% short 0% | 8 fills
+ticker side    shares  price  dollars   cost  target_w
+    KO SELL -0.694993  96.09   -66.78 0.0167    0.0000
+   WMT SELL -0.433213 126.04   -54.60 0.0137    0.0000
+   JNJ SELL -0.186561 267.14   -49.84 0.0125    0.0000
+    PG SELL -0.295407 167.85   -49.58 0.0124    0.0000
+     V SELL -0.122930 402.25   -49.45 0.0124    0.0000
+   MCD SELL -0.160088 272.35   -43.60 0.0109    0.0000
+   NKE SELL -0.908705  34.33   -31.20 0.0078    0.0000
+   QLD  BUY  1.939572  71.26   138.21 0.0276    0.1419
+ticker  shares  value  weight
+   QLD  1.9396 138.21  0.1419
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-19
+[warn] running 48 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-19 16:00 | equity $955.94 | cash $820.28 | long 14% short 0% | 8 fills
+ticker side    shares  price  dollars   cost  target_w
+    KO SELL -0.682150  96.09   -65.55 0.0164    0.0000
+   WMT SELL -0.425207 126.04   -53.59 0.0134    0.0000
+   JNJ SELL -0.183114 267.14   -48.92 0.0122    0.0000
+    PG SELL -0.289948 167.85   -48.67 0.0122    0.0000
+     V SELL -0.120658 402.25   -48.53 0.0121    0.0000
+   MCD SELL -0.157130 272.35   -42.79 0.0107    0.0000
+   NKE SELL -0.891913  34.33   -30.62 0.0077    0.0000
+   QQQ  BUY  0.210315 645.04   135.66 0.0136    0.1419
+ticker  shares  value  weight
+   QQQ  0.2103 135.66  0.1419
+
+=== account 'shadow-growth' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-19
+[warn] running 48 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-19 16:00 | equity $961.79 | cash $961.79 | long 0% short 0% | 7 fills
+ticker side    shares  price  dollars   cost  target_w
+   WMT SELL -0.365123 126.04   -46.02 0.0115       0.0
+   MCD SELL -0.167848 272.35   -45.71 0.0114       0.0
+    PG SELL -0.268900 167.85   -45.13 0.0113       0.0
+    KO SELL -0.469297  96.09   -45.09 0.0113       0.0
+   JNJ SELL -0.167468 267.14   -44.74 0.0112       0.0
+     V SELL -0.110025 402.25   -44.26 0.0111       0.0
+   NKE SELL -1.262967  34.33   -43.36 0.0108       0.0
+Flat (100% cash).
+
+=== account 'shadow-wide' ===
+[data] daily OHLCV: 345 tickers, 2010-01-04 -> 2026-11-19
+[warn] running 49 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-19 16:00 | equity $1,001.96 | cash $988.51 | long 1% short 0% | 7 fills
+ticker side    shares  price  dollars   cost  target_w
+   WMT SELL -0.380316 126.04   -47.94 0.0120       0.0
+   MCD SELL -0.174832 272.35   -47.62 0.0119       0.0
+    PG SELL -0.280090 167.85   -47.01 0.0118       0.0
+    KO SELL -0.488826  96.09   -46.97 0.0117       0.0
+    CL SELL -0.483102  96.88   -46.80 0.0234       0.0
+     V SELL -0.114604 402.25   -46.10 0.0115       0.0
+    PM SELL -0.247188 186.43   -46.08 0.0230       0.0
+ticker  shares  value  weight
+   AMD  0.0089   4.35  0.0043
+  CSCO  0.0503   4.76  0.0048
+  HOOD  0.0632   4.34  0.0043
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     112
+Equity:       $973.93  (start $1,000.00)
+P&L:          $-26.07 (-2.61%)
+SPY B&H same period: -6.03%
+Costs paid:   $10.92
+Realized:     Sharpe -0.75 | MaxDD -11.61% | days 56 | avg |daily| 0.76%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.812% | positive days 65% | Sharpe 1.60 | MaxDD -14.5% | typical exposure 22%
+  after 56 days: live -2.59% vs expected +4.93% +/- 12.16%  (z = -1.24) -> inside the 2-sigma band
+  live positive days 64% (expected 65%) | live daily sd 1.177% (expected 0.812%)
+  days of live data before a Sharpe of 1.60 is distinguishable from 0 at 2 sigma: ~392 (~1.6 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  QLD        1.9396 sh
+
+Last fills (398 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-11-19T16:00:00-05:00     KO SELL -0.694993  96.09   -66.78 0.0167    0.0000
+2026-11-19T16:00:00-05:00    WMT SELL -0.433213 126.04   -54.60 0.0137    0.0000
+2026-11-19T16:00:00-05:00    JNJ SELL -0.186561 267.14   -49.84 0.0125    0.0000
+2026-11-19T16:00:00-05:00     PG SELL -0.295407 167.85   -49.58 0.0124    0.0000
+2026-11-19T16:00:00-05:00      V SELL -0.122930 402.25   -49.45 0.0124    0.0000
+2026-11-19T16:00:00-05:00    MCD SELL -0.160088 272.35   -43.60 0.0109    0.0000
+2026-11-19T16:00:00-05:00    NKE SELL -0.908705  34.33   -31.20 0.0078    0.0000
+2026-11-19T16:00:00-05:00    QLD  BUY  1.939572  71.26   138.21 0.0276    0.1419
+2026-11-19T16:00:00-05:00    MCD SELL -0.174832 272.35   -47.62 0.0119    0.0000
+2026-11-19T16:00:00-05:00     PG SELL -0.280090 167.85   -47.01 0.0118    0.0000
+2026-11-19T16:00:00-05:00     KO SELL -0.488826  96.09   -46.97 0.0117    0.0000
+2026-11-19T16:00:00-05:00     CL SELL -0.483102  96.88   -46.80 0.0234    0.0000
+2026-11-19T16:00:00-05:00      V SELL -0.114604 402.25   -46.10 0.0115    0.0000
+2026-11-19T16:00:00-05:00     PM SELL -0.247188 186.43   -46.08 0.0230    0.0000
