@@ -397059,3 +397059,55 @@ QUEUE for 2026-11-19: 0 orders (equity est $9,921.59)
 [data] 1 tickers returned no data; retrying in small batches (attempt 1)
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-18
 QUEUE for 2026-11-19: 0 orders (equity est $9,921.59)
+===== 2026-11-19 08:51 UTC run 44491002914 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-18 16:00 already processed (last: 2026-11-18T16:00:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-18 16:00 already processed (last: 2026-11-18T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-18 16:00 already processed (last: 2026-11-18T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-18 16:00 already processed (last: 2026-11-18T16:00:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     110
+Equity:       $975.31  (start $1,000.00)
+P&L:          $-24.69 (-2.47%)
+SPY B&H same period: -4.15%
+Costs paid:   $10.72
+Realized:     Sharpe -0.72 | MaxDD -11.61% | days 55 | avg |daily| 0.77%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.812% | positive days 65% | Sharpe 1.61 | MaxDD -14.5% | typical exposure 22%
+  after 55 days: live -2.46% vs expected +4.85% +/- 12.05%  (z = -1.21) -> inside the 2-sigma band
+  live positive days 65% (expected 65%) | live daily sd 1.188% (expected 0.812%)
+  days of live data before a Sharpe of 1.61 is distinguishable from 0 at 2 sigma: ~391 (~1.6 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Flat (100% cash).
+
+Last fills (383 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-11-18T16:00:00-05:00    QLD SELL -1.814821  74.51  -135.22 0.0270       0.0
+2026-11-18T16:00:00-05:00    PFE SELL -2.196663  28.06   -61.64 0.0154       0.0
+2026-11-18T16:00:00-05:00   AMGN SELL -0.128539 443.89   -57.06 0.0143       0.0
+2026-11-18T16:00:00-05:00     VZ SELL -1.194641  46.13   -55.11 0.0138       0.0
+2026-11-18T16:00:00-05:00    CVX SELL -0.258164 205.88   -53.15 0.0133       0.0
+2026-11-18T16:00:00-05:00    MRK SELL -0.330726 137.78   -45.57 0.0114       0.0
+2026-11-18T16:00:00-05:00     HD SELL -0.110808 337.64   -37.41 0.0094       0.0
+2026-11-18T16:00:00-05:00    LOW SELL -0.158259 222.78   -35.26 0.0088       0.0
+2026-11-18T16:00:00-05:00    PGR SELL -0.233865 228.47   -53.43 0.0267       0.0
+2026-11-18T16:00:00-05:00    AFL SELL -0.423023 125.27   -52.99 0.0265       0.0
+2026-11-18T16:00:00-05:00    FCX SELL -1.024561  51.45   -52.71 0.0264       0.0
+2026-11-18T16:00:00-05:00    NEM SELL -0.500577 104.53   -52.33 0.0262       0.0
+2026-11-18T16:00:00-05:00    CVX SELL -0.251466 205.88   -51.77 0.0129       0.0
+2026-11-18T16:00:00-05:00   AVGO SELL -0.014138 354.05    -5.01 0.0013       0.0
