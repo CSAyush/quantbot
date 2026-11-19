@@ -371,3 +371,5 @@
 [2026-11-17 20:38:31 EST] 2026-11-17 09:30 RECONCILE: 0 fills | equity $9,928.39
 [2026-11-17 20:38:31 EST] QUEUE for 2026-11-18: 1 orders (equity est $9,924.78)
 [2026-11-18 15:59:45 EST] ERROR: 15:59 ET is past the close submission deadline 15:50:00; not submitting
+[2026-11-18 20:16:25 EST] 2026-11-18 09:30 RECONCILE: 1 fills | equity $9,921.59 (broker $99,921.09) | avg slippage vs print +22.9 bp
+[2026-11-18 20:16:25 EST] QUEUE for 2026-11-19: 0 orders (equity est $9,921.59)

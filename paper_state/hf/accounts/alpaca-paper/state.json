@@ -3,24 +3,11 @@
   "profile": "sharpe2",
   "notional": 10000.0,
   "starting_cash": 10000.0,
-  "cash": 9594.82,
-  "positions": {
-    "JPM": 1.0
-  },
+  "cash": 9921.59,
+  "positions": {},
   "inception": "2026-09-14T16:00:00-04:00",
-  "last_session": "2026-11-17T09:30:00-05:00",
-  "sessions_processed": 57,
-  "pending": {
-    "qb-20261118-0930-JPM": {
-      "symbol": "JPM",
-      "side": "sell",
-      "qty": 1,
-      "est_price": 329.9599914550781,
-      "target_w": 0.0,
-      "order_id": "d5783948-45d2-435d-8f5b-051e62a1a2c5",
-      "stamp": "2026-11-18T09:30:00-05:00",
-      "queued_estimate": true
-    }
-  },
+  "last_session": "2026-11-18T09:30:00-05:00",
+  "sessions_processed": 58,
+  "pending": {},
   "last_submit": "2026-11-13T16:00:00-05:00"
 }

@@ -396774,3 +396774,9 @@ Last fills (383 total):
 2026-11-18T16:00:00-05:00    NEM SELL -0.500577 104.53   -52.33 0.0262       0.0
 2026-11-18T16:00:00-05:00    CVX SELL -0.251466 205.88   -51.77 0.0129       0.0
 2026-11-18T16:00:00-05:00   AVGO SELL -0.014138 354.05    -5.01 0.0013       0.0
+===== 2026-11-19 01:16 UTC alpaca-submit run 44435450053 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-18
+2026-11-18 09:30 RECONCILE: 1 fills | equity $9,921.59 (broker $99,921.09) | avg slippage vs print +22.9 bp
+ticker side  shares  fill_price  official_print  slippage_bps
+   JPM SELL    -1.0      326.77          327.52          22.9
+QUEUE for 2026-11-19: 0 orders (equity est $9,921.59)
