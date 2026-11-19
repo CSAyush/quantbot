@@ -396780,3 +396780,6 @@ Last fills (383 total):
 ticker side  shares  fill_price  official_print  slippage_bps
    JPM SELL    -1.0      326.77          327.52          22.9
 QUEUE for 2026-11-19: 0 orders (equity est $9,921.59)
+===== 2026-11-19 01:21 UTC alpaca-submit run 44436188005 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-18
+QUEUE for 2026-11-19: 0 orders (equity est $9,921.59)
