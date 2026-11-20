@@ -386,3 +386,4 @@
 [2026-11-19 23:01:11 EST] QUEUE for 2026-11-20: 0 orders (equity est $9,921.59)
 [2026-11-20 02:11:34 EST] QUEUE for 2026-11-20: 0 orders (equity est $9,921.59)
 [2026-11-20 05:23:41 EST] QUEUE for 2026-11-20: 0 orders (equity est $9,921.59)
+[2026-11-20 15:51:45 EST] ERROR: 15:51 ET is past the close submission deadline 15:50:00; not submitting

@@ -398524,3 +398524,5 @@ Last fills (405 total):
 2026-11-20T09:30:00-05:00   PLTR  BUY  0.479582 149.180    71.54 0.0358    0.0714
 2026-11-20T09:30:00-05:00   PYPL  BUY  1.337522  53.490    71.54 0.0358    0.0714
 2026-11-20T09:30:00-05:00   ROST  BUY  0.336797 212.425    71.54 0.0358    0.0714
+===== 2026-11-20 20:51 UTC alpaca-submit run 44814989418 =====
+ERROR: 15:51 ET is past the close submission deadline 15:50:00; not submitting
