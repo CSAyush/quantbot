@@ -398743,3 +398743,56 @@ Last fills (412 total):
 16:46 ET is well past the close window; nothing to do.
 ===== 2026-11-20 21:55 UTC alpaca-submit run 44824427560 =====
 16:55 ET is well past the close window; nothing to do.
+===== 2026-11-20 21:57 UTC run 44824657167 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-20 16:00 already processed (last: 2026-11-20T16:00:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-20 16:00 already processed (last: 2026-11-20T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-20 16:00 already processed (last: 2026-11-20T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-20 16:00 already processed (last: 2026-11-20T16:00:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     114
+Equity:       $941.85  (start $1,000.00)
+P&L:          $-58.15 (-5.81%)
+SPY B&H same period: -9.45%
+Costs paid:   $11.08
+Realized:     Sharpe -1.44 | MaxDD -13.88% | days 57 | avg |daily| 0.80%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.087% | daily sd 0.814% | positive days 65% | Sharpe 1.59 | MaxDD -14.5% | typical exposure 22%
+  after 57 days: live -5.80% vs expected +4.97% +/- 12.29%  (z = -1.75) -> inside the 2-sigma band
+  live positive days 63% (expected 65%) | live daily sd 1.243% (expected 0.814%)
+  days of live data before a Sharpe of 1.59 is distinguishable from 0 at 2 sigma: ~401 (~1.6 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  QLD        1.9396 sh
+
+Last fills (412 total):
+                  session ticker side    shares   price  dollars   cost  target_w
+2026-11-20T09:30:00-05:00   META  BUY  0.106597 582.935    62.14 0.0155     0.064
+2026-11-20T16:00:00-05:00   META SELL -0.106597 560.840   -59.78 0.0149     0.000
+2026-11-20T16:00:00-05:00   AMZN SELL -0.209327 246.820   -51.67 0.0129     0.000
+2026-11-20T16:00:00-05:00     GS SELL -0.065228 790.690   -51.58 0.0129     0.000
+2026-11-20T16:00:00-05:00   INTU SELL -0.188557 270.440   -50.99 0.0127     0.000
+2026-11-20T16:00:00-05:00   NVDA SELL -0.309915 125.530   -38.90 0.0097     0.000
+2026-11-20T16:00:00-05:00    CAT SELL -0.069794 510.450   -35.63 0.0089     0.000
+2026-11-20T16:00:00-05:00    AMD SELL -0.038174 424.390   -16.20 0.0041     0.000
+2026-11-20T16:00:00-05:00   PYPL SELL -1.337522  53.290   -71.28 0.0356    0.0000
+2026-11-20T16:00:00-05:00   META SELL -0.122731 560.840   -68.83 0.0172    0.0000
+2026-11-20T16:00:00-05:00   PLTR SELL -0.479582 143.490   -68.82 0.0344    0.0000
+2026-11-20T16:00:00-05:00     GS SELL -0.086428 790.690   -68.34 0.0171    0.0000
+2026-11-20T16:00:00-05:00   INTU SELL -0.251862 270.440   -68.11 0.0170    0.0000
+2026-11-20T16:00:00-05:00   NVDA SELL -0.502469 125.530   -63.07 0.0158    0.0000
