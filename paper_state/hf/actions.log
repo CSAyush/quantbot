@@ -399567,3 +399567,9 @@ Last fills (412 total):
 2026-11-20T16:00:00-05:00     GS SELL -0.086428 790.690   -68.34 0.0171    0.0000
 2026-11-20T16:00:00-05:00   INTU SELL -0.251862 270.440   -68.11 0.0170    0.0000
 2026-11-20T16:00:00-05:00   NVDA SELL -0.502469 125.530   -63.07 0.0158    0.0000
+===== 2026-11-23 17:09 UTC alpaca-submit run 45224258435 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-20
+[paper] today's open set from the 09:30 1m bar for 98/98 names
+[alpaca] live prices for 98/98 names
+[paper] today's ^VIX, ^VIX3M, ^VIX9D, ^IRX set from the last 1m bar
+2026-11-23 16:00 SUBMIT close: 0 cls orders (equity est $9,921.59, live px for 98 names)
