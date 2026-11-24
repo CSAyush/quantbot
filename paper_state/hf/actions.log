@@ -400292,3 +400292,55 @@ Last fills (428 total):
 ===== 2026-11-24 04:55 UTC alpaca-submit run 45329569109 =====
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-23
 QUEUE for 2026-11-24: 0 orders (equity est $9,921.59)
+===== 2026-11-24 04:55 UTC run 45329620200 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-23 16:00 already processed (last: 2026-11-23T16:00:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-23 16:00 already processed (last: 2026-11-23T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-23 16:00 already processed (last: 2026-11-23T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-23 16:00 already processed (last: 2026-11-23T16:00:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     116
+Equity:       $961.86  (start $1,000.00)
+P&L:          $-38.14 (-3.81%)
+SPY B&H same period: -5.18%
+Costs paid:   $11.18
+Realized:     Sharpe -0.94 | MaxDD -13.88% | days 58 | avg |daily| 0.82%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.814% | positive days 65% | Sharpe 1.59 | MaxDD -14.5% | typical exposure 22%
+  after 58 days: live -3.80% vs expected +5.09% +/- 12.40%  (z = -1.43) -> inside the 2-sigma band
+  live positive days 64% (expected 65%) | live daily sd 1.266% (expected 0.814%)
+  days of live data before a Sharpe of 1.59 is distinguishable from 0 at 2 sigma: ~397 (~1.6 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Flat (100% cash).
+
+Last fills (428 total):
+                  session ticker side    shares   price  dollars   cost  target_w
+2026-11-23T16:00:00-05:00    QLD SELL -0.826146   71.91   -59.41 0.0119       0.0
+2026-11-23T16:00:00-05:00     KO SELL -0.335087   95.88   -32.13 0.0080       0.0
+2026-11-23T16:00:00-05:00     PG SELL -0.165979  169.60   -28.15 0.0070       0.0
+2026-11-23T16:00:00-05:00    WMT SELL -0.174017  129.58   -22.55 0.0056       0.0
+2026-11-23T16:00:00-05:00    JNJ SELL -0.080021  270.05   -21.61 0.0054       0.0
+2026-11-23T16:00:00-05:00    DIS SELL -0.153500  120.27   -18.46 0.0046       0.0
+2026-11-23T16:00:00-05:00    LLY SELL -0.010870 1364.60   -14.83 0.0037       0.0
+2026-11-23T16:00:00-05:00    UNH SELL -0.034208  336.08   -11.50 0.0029       0.0
+2026-11-23T16:00:00-05:00     CL SELL -0.736315  97.940   -72.11 0.0361    0.0000
+2026-11-23T16:00:00-05:00    HUM SELL -0.185413 383.660   -71.14 0.0356    0.0000
+2026-11-23T16:00:00-05:00     KO SELL -0.740985  95.880   -71.05 0.0178    0.0000
+2026-11-23T16:00:00-05:00     KR SELL -1.045602  67.155   -70.22 0.0351    0.0000
+2026-11-23T16:00:00-05:00    COR SELL -0.207548 338.070   -70.17 0.0351    0.0000
+2026-11-23T16:00:00-05:00   CRWD SELL -0.321561 208.960   -67.19 0.0336    0.0000
