@@ -399579,3 +399579,205 @@ QUEUE for 2026-11-24: 0 orders (equity est $9,921.59)
 ===== 2026-11-24 00:49 UTC alpaca-submit run 45300113934 =====
 [data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-23
 QUEUE for 2026-11-24: 0 orders (equity est $9,921.59)
+===== 2026-11-24 01:12 UTC run 45303153994 (schedule) =====
+$KVUE: possibly delisted; no price data found  (period=1d)
+$WBD: possibly delisted; no price data found  (period=1d)
+
+2 Failed downloads:
+['KVUE', 'WBD']: possibly delisted; no price data found  (period=1d)
+$KVUE: possibly delisted; no price data found  (period=1d)
+$WBD: possibly delisted; no price data found  (period=1d)
+
+2 Failed downloads:
+['KVUE', 'WBD']: possibly delisted; no price data found  (period=1d)
+$KVUE: possibly delisted; no price data found  (period=1d)
+$WBD: possibly delisted; no price data found  (period=1d)
+
+2 Failed downloads:
+['KVUE', 'WBD']: possibly delisted; no price data found  (period=1d)
+
+=== account 'live' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-23
+CATCH-UP: session 2026-11-23 09:30 was never processed; processing it at its own print before 2026-11-23 16:00
+2026-11-23 09:30 | equity $960.48 | cash $753.25 | long 22% short 0% | 8 fills
+ticker side    shares   price  dollars   cost  target_w
+   QLD SELL -1.113426   73.02   -81.30 0.0163    0.0628
+   UNH  BUY  0.034208  322.30    11.03 0.0028    0.0115
+   LLY  BUY  0.010870 1345.11    14.62 0.0037    0.0152
+   DIS  BUY  0.153500  118.07    18.12 0.0045    0.0189
+   JNJ  BUY  0.080021  269.85    21.59 0.0054    0.0225
+   WMT  BUY  0.174017  126.63    22.04 0.0055    0.0229
+    PG  BUY  0.165979  167.52    27.80 0.0070    0.0289
+    KO  BUY  0.335087   94.60    31.70 0.0079    0.0330
+ticker  shares  value  weight
+   DIS  0.1535  18.12  0.0189
+   JNJ  0.0800  21.59  0.0225
+    KO  0.3351  31.70  0.0330
+   LLY  0.0109  14.62  0.0152
+    PG  0.1660  27.80  0.0289
+   QLD  0.8261  60.33  0.0628
+   UNH  0.0342  11.03  0.0115
+   WMT  0.1740  22.04  0.0229
+[warn] running 253 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-23 16:00 | equity $961.86 | cash $961.86 | long 0% short 0% | 8 fills
+ticker side    shares   price  dollars   cost  target_w
+   QLD SELL -0.826146   71.91   -59.41 0.0119       0.0
+    KO SELL -0.335087   95.88   -32.13 0.0080       0.0
+    PG SELL -0.165979  169.60   -28.15 0.0070       0.0
+   WMT SELL -0.174017  129.58   -22.55 0.0056       0.0
+   JNJ SELL -0.080021  270.05   -21.61 0.0054       0.0
+   DIS SELL -0.153500  120.27   -18.46 0.0046       0.0
+   LLY SELL -0.010870 1364.60   -14.83 0.0037       0.0
+   UNH SELL -0.034208  336.08   -11.50 0.0029       0.0
+Flat (100% cash).
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-23
+CATCH-UP: session 2026-11-23 09:30 was never processed; processing it at its own print before 2026-11-23 16:00
+2026-11-23 09:30 | equity $940.79 | cash $534.83 | long 43% short 0% | 8 fills
+ticker side    shares   price  dollars   cost  target_w
+   QQQ SELL -0.012149  655.98    -7.97 0.0008    0.1256
+   UNH  BUY  0.067014  322.30    21.60 0.0054    0.0230
+   LLY  BUY  0.021295 1345.11    28.64 0.0072    0.0304
+   DIS  BUY  0.300708  118.07    35.50 0.0089    0.0377
+   JNJ  BUY  0.156762  269.85    42.30 0.0106    0.0450
+   WMT  BUY  0.340901  126.63    43.17 0.0108    0.0459
+    PG  BUY  0.325155  167.52    54.47 0.0136    0.0579
+    KO  BUY  0.656438   94.60    62.10 0.0155    0.0660
+ticker  shares  value  weight
+   DIS  0.3007  35.50  0.0377
+   JNJ  0.1568  42.30  0.0450
+    KO  0.6564  62.10  0.0660
+   LLY  0.0213  28.64  0.0304
+    PG  0.3252  54.47  0.0579
+   QQQ  0.1802 118.18  0.1256
+   UNH  0.0670  21.60  0.0230
+   WMT  0.3409  43.17  0.0459
+[warn] running 253 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-23 16:00 | equity $944.39 | cash $944.39 | long 0% short 0% | 8 fills
+ticker side    shares   price  dollars   cost  target_w
+   QQQ SELL -0.180154  651.03  -117.29 0.0117       0.0
+    KO SELL -0.656438   95.88   -62.94 0.0157       0.0
+    PG SELL -0.325155  169.60   -55.15 0.0138       0.0
+   WMT SELL -0.340901  129.58   -44.17 0.0110       0.0
+   JNJ SELL -0.156762  270.05   -42.33 0.0106       0.0
+   DIS SELL -0.300708  120.27   -36.17 0.0090       0.0
+   LLY SELL -0.021295 1364.60   -29.06 0.0073       0.0
+   UNH SELL -0.067014  336.08   -22.52 0.0056       0.0
+Flat (100% cash).
+
+=== account 'shadow-growth' ===
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-23
+CATCH-UP: session 2026-11-23 09:30 was never processed; processing it at its own print before 2026-11-23 16:00
+2026-11-23 09:30 | equity $933.72 | cash $466.86 | long 50% short 0% | 7 fills
+ticker side   shares   price  dollars   cost  target_w
+   DIS  BUY 0.564868  118.07    66.69 0.0167    0.0714
+   JNJ  BUY 0.247152  269.85    66.69 0.0167    0.0714
+    KO  BUY 0.705010   94.60    66.69 0.0167    0.0714
+   LLY  BUY 0.049583 1345.11    66.69 0.0167    0.0714
+    PG  BUY 0.398125  167.52    66.69 0.0167    0.0714
+   UNH  BUY 0.206931  322.30    66.69 0.0167    0.0714
+   WMT  BUY 0.526683  126.63    66.69 0.0167    0.0714
+ticker  shares  value  weight
+   DIS  0.5649  66.69  0.0714
+   JNJ  0.2472  66.69  0.0714
+    KO  0.7050  66.69  0.0714
+   LLY  0.0496  66.69  0.0714
+    PG  0.3981  66.69  0.0714
+   UNH  0.2069  66.69  0.0714
+   WMT  0.5267  66.69  0.0714
+[warn] running 253 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-23 16:00 | equity $942.00 | cash $942.00 | long 0% short 0% | 7 fills
+ticker side    shares   price  dollars   cost  target_w
+   UNH SELL -0.206931  336.08   -69.55 0.0174       0.0
+   WMT SELL -0.526683  129.58   -68.25 0.0171       0.0
+   DIS SELL -0.564868  120.27   -67.94 0.0170       0.0
+   LLY SELL -0.049583 1364.60   -67.66 0.0169       0.0
+    KO SELL -0.705010   95.88   -67.60 0.0169       0.0
+    PG SELL -0.398125  169.60   -67.52 0.0169       0.0
+   JNJ SELL -0.247152  270.05   -66.74 0.0167       0.0
+Flat (100% cash).
+
+=== account 'shadow-wide' ===
+[data] daily OHLCV: 345 tickers, 2010-01-04 -> 2026-11-23
+[paper] official close present for only 98/339 names; using 1m bars for the rest
+[paper] today's open set from the 09:30 1m bar for 239/241 names
+[paper] today's close set from the 15:59 1m bar for 241/241 names
+CATCH-UP: session 2026-11-23 09:30 was never processed; processing it at its own print before 2026-11-23 16:00
+[paper] today's open set from the 09:30 1m bar for 239/241 names
+2026-11-23 09:30 | equity $981.36 | cash $477.20 | long 51% short 0% | 7 fills
+ticker side   shares  price  dollars   cost  target_w
+    CL  BUY 0.736315  95.20     70.1 0.0350    0.0714
+   COR  BUY 0.207548 337.74     70.1 0.0350    0.0714
+  CRWD  BUY 0.321561 217.99     70.1 0.0350    0.0714
+   HUM  BUY 0.185413 378.06     70.1 0.0350    0.0714
+    KO  BUY 0.740985  94.60     70.1 0.0175    0.0714
+    KR  BUY 1.045602  67.04     70.1 0.0350    0.0714
+   UNH  BUY 0.217490 322.30     70.1 0.0175    0.0714
+ticker  shares  value  weight
+   AMD  0.0089   4.24  0.0043
+    CL  0.7363  70.10  0.0714
+   COR  0.2075  70.10  0.0714
+  CRWD  0.3216  70.10  0.0714
+  CSCO  0.0503   4.85  0.0049
+  HOOD  0.0632   4.39  0.0045
+   HUM  0.1854  70.10  0.0714
+    KO  0.7410  70.10  0.0714
+    KR  1.0456  70.10  0.0714
+   UNH  0.2175  70.10  0.0714
+[paper] official close present for only 98/339 names; using 1m bars for the rest
+[paper] today's open set from the 09:30 1m bar for 239/241 names
+[paper] today's close set from the 15:59 1m bar for 241/241 names
+[warn] running 253 min after the 16:00 session; fills use the 16:00 print (mild hindsight).
+2026-11-23 16:00 | equity $985.13 | cash $971.97 | long 1% short 0% | 7 fills
+ticker side    shares   price  dollars   cost  target_w
+   UNH SELL -0.217490 336.080   -73.09 0.0183       0.0
+    CL SELL -0.736315  97.940   -72.11 0.0361       0.0
+   HUM SELL -0.185413 383.660   -71.14 0.0356       0.0
+    KO SELL -0.740985  95.880   -71.05 0.0178       0.0
+    KR SELL -1.045602  67.155   -70.22 0.0351       0.0
+   COR SELL -0.207548 338.070   -70.17 0.0351       0.0
+  CRWD SELL -0.321561 208.960   -67.19 0.0336       0.0
+ticker  shares  value  weight
+   AMD  0.0089   4.03  0.0041
+  CSCO  0.0503   4.87  0.0049
+  HOOD  0.0632   4.26  0.0043
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     116
+Equity:       $961.86  (start $1,000.00)
+P&L:          $-38.14 (-3.81%)
+SPY B&H same period: -5.18%
+Costs paid:   $11.18
+Realized:     Sharpe -0.94 | MaxDD -13.88% | days 58 | avg |daily| 0.82%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.814% | positive days 65% | Sharpe 1.59 | MaxDD -14.5% | typical exposure 22%
+  after 58 days: live -3.80% vs expected +5.09% +/- 12.40%  (z = -1.43) -> inside the 2-sigma band
+  live positive days 64% (expected 65%) | live daily sd 1.266% (expected 0.814%)
+  days of live data before a Sharpe of 1.59 is distinguishable from 0 at 2 sigma: ~398 (~1.6 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Flat (100% cash).
+
+Last fills (428 total):
+                  session ticker side    shares   price  dollars   cost  target_w
+2026-11-23T16:00:00-05:00    QLD SELL -0.826146   71.91   -59.41 0.0119       0.0
+2026-11-23T16:00:00-05:00     KO SELL -0.335087   95.88   -32.13 0.0080       0.0
+2026-11-23T16:00:00-05:00     PG SELL -0.165979  169.60   -28.15 0.0070       0.0
+2026-11-23T16:00:00-05:00    WMT SELL -0.174017  129.58   -22.55 0.0056       0.0
+2026-11-23T16:00:00-05:00    JNJ SELL -0.080021  270.05   -21.61 0.0054       0.0
+2026-11-23T16:00:00-05:00    DIS SELL -0.153500  120.27   -18.46 0.0046       0.0
+2026-11-23T16:00:00-05:00    LLY SELL -0.010870 1364.60   -14.83 0.0037       0.0
+2026-11-23T16:00:00-05:00    UNH SELL -0.034208  336.08   -11.50 0.0029       0.0
+2026-11-23T16:00:00-05:00     CL SELL -0.736315  97.940   -72.11 0.0361    0.0000
+2026-11-23T16:00:00-05:00    HUM SELL -0.185413 383.660   -71.14 0.0356    0.0000
+2026-11-23T16:00:00-05:00     KO SELL -0.740985  95.880   -71.05 0.0178    0.0000
+2026-11-23T16:00:00-05:00     KR SELL -1.045602  67.155   -70.22 0.0351    0.0000
+2026-11-23T16:00:00-05:00    COR SELL -0.207548 338.070   -70.17 0.0351    0.0000
+2026-11-23T16:00:00-05:00   CRWD SELL -0.321561 208.960   -67.19 0.0336    0.0000

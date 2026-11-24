@@ -1,5 +1,5 @@
 {
-  "cash": 967.7930140650658,
+  "cash": 971.9703603434857,
   "starting_cash": 1000,
   "profile": "growth-wide",
   "inception": "2026-09-02T16:00:00-04:00",
@@ -8,6 +8,6 @@
     "CSCO": 0.050259365897560755,
     "HOOD": 0.06317141583230185
   },
-  "last_session": "2026-11-20T16:00:00-05:00",
-  "sessions_processed": 112
+  "last_session": "2026-11-23T16:00:00-05:00",
+  "sessions_processed": 114
 }
