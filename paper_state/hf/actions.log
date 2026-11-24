@@ -400002,3 +400002,10 @@ Last fills (428 total):
 2026-11-23T16:00:00-05:00     KR SELL -1.045602  67.155   -70.22 0.0351    0.0000
 2026-11-23T16:00:00-05:00    COR SELL -0.207548 338.070   -70.17 0.0351    0.0000
 2026-11-23T16:00:00-05:00   CRWD SELL -0.321561 208.960   -67.19 0.0336    0.0000
+===== 2026-11-24 02:51 UTC alpaca-submit run 45315274438 =====
+
+1 Failed download:
+['PEP']: OperationalError('database is locked')
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-23
+QUEUE for 2026-11-24: 0 orders (equity est $9,921.59)
