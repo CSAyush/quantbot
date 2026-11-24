@@ -400706,3 +400706,62 @@ Last fills (435 total):
 2026-11-24T09:30:00-05:00    TXN  BUY  0.218594  277.340    60.62 0.0152    0.0616
 ===== 2026-11-24 16:52 UTC alpaca-submit run 45442053833 =====
 11:52 ET is well past the open window; nothing to do.
+===== 2026-11-24 19:32 UTC run 45470999547 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-24 09:30 already processed (last: 2026-11-24T09:30:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-24 09:30 already processed (last: 2026-11-24T09:30:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-24 09:30 already processed (last: 2026-11-24T09:30:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-24 09:30 already processed (last: 2026-11-24T09:30:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     117
+Equity:       $961.90  (start $1,000.00)
+P&L:          $-38.10 (-3.81%)
+SPY B&H same period: -6.12%
+Costs paid:   $11.22
+Realized:     Sharpe -0.93 | MaxDD -13.88% | days 59 | avg |daily| 0.81%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.814% | positive days 65% | Sharpe 1.60 | MaxDD -14.5% | typical exposure 22%
+  after 59 days: live -3.80% vs expected +5.18% +/- 12.51%  (z = -1.43) -> inside the 2-sigma band
+  live positive days 64% (expected 65%) | live daily sd 1.255% (expected 0.814%)
+  days of live data before a Sharpe of 1.60 is distinguishable from 0 at 2 sigma: ~397 (~1.6 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  ABT        0.2828 sh
+  AMD        0.0169 sh
+  AVGO       0.0374 sh
+  COST       0.0402 sh
+  MDT        0.3220 sh
+  QCOM       0.0735 sh
+  TXN        0.0473 sh
+
+Last fills (435 total):
+                  session ticker side    shares    price  dollars   cost  target_w
+2026-11-23T16:00:00-05:00    UNH SELL -0.034208  336.080   -11.50 0.0029    0.0000
+2026-11-24T09:30:00-05:00    AMD  BUY  0.016941  425.125     7.20 0.0018    0.0075
+2026-11-24T09:30:00-05:00   AVGO  BUY  0.037407  302.580    11.32 0.0028    0.0118
+2026-11-24T09:30:00-05:00   QCOM  BUY  0.073499  160.590    11.80 0.0030    0.0123
+2026-11-24T09:30:00-05:00    TXN  BUY  0.047322  277.340    13.12 0.0033    0.0136
+2026-11-24T09:30:00-05:00    ABT  BUY  0.282810  102.260    28.92 0.0072    0.0301
+2026-11-24T09:30:00-05:00    MDT  BUY  0.321955   97.400    31.36 0.0078    0.0326
+2026-11-24T09:30:00-05:00   COST  BUY  0.040223 1071.380    43.09 0.0108    0.0448
+2026-11-24T09:30:00-05:00   COST  BUY  0.056586 1071.380    60.62 0.0152    0.0616
+2026-11-24T09:30:00-05:00    FCX  BUY  1.283611   47.230    60.62 0.0303    0.0616
+2026-11-24T09:30:00-05:00   MCHP  BUY  1.041576   58.205    60.62 0.0303    0.0616
+2026-11-24T09:30:00-05:00    MDT  BUY  0.622433   97.400    60.62 0.0152    0.0616
+2026-11-24T09:30:00-05:00   NXPI  BUY  0.246143  246.300    60.62 0.0303    0.0616
+2026-11-24T09:30:00-05:00    TXN  BUY  0.218594  277.340    60.62 0.0152    0.0616
