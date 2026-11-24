@@ -400981,3 +400981,56 @@ Last fills (443 total):
 2026-11-24T16:00:00-05:00    TXN SELL -0.218594  258.44   -56.49 0.0141    0.0000
 ===== 2026-11-24 23:26 UTC alpaca-submit run 45509790598 =====
 18:26 ET is well past the close window; nothing to do.
+===== 2026-11-24 23:28 UTC run 45510106716 (schedule) =====
+
+=== account 'live' ===
+Session 2026-11-24 16:00 already processed (last: 2026-11-24T16:00:00-05:00); nothing fetched.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+Session 2026-11-24 16:00 already processed (last: 2026-11-24T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-growth' ===
+Session 2026-11-24 16:00 already processed (last: 2026-11-24T16:00:00-05:00); nothing fetched.
+
+=== account 'shadow-wide' ===
+Session 2026-11-24 16:00 already processed (last: 2026-11-24T16:00:00-05:00); nothing fetched.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     118
+Equity:       $962.34  (start $1,000.00)
+P&L:          $-37.66 (-3.77%)
+SPY B&H same period: -5.64%
+Costs paid:   $11.27
+Realized:     Sharpe -0.92 | MaxDD -13.88% | days 59 | avg |daily| 0.81%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.814% | positive days 65% | Sharpe 1.60 | MaxDD -14.5% | typical exposure 22%
+  after 59 days: live -3.75% vs expected +5.18% +/- 12.51%  (z = -1.43) -> inside the 2-sigma band
+  live positive days 64% (expected 65%) | live daily sd 1.256% (expected 0.814%)
+  days of live data before a Sharpe of 1.60 is distinguishable from 0 at 2 sigma: ~397 (~1.6 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  QLD        0.7274 sh
+
+Last fills (443 total):
+                  session ticker side    shares   price  dollars   cost  target_w
+2026-11-24T16:00:00-05:00   COST SELL -0.040223 1091.71   -43.91 0.0110    0.0000
+2026-11-24T16:00:00-05:00    MDT SELL -0.321955   96.13   -30.95 0.0077    0.0000
+2026-11-24T16:00:00-05:00    ABT SELL -0.282810  105.39   -29.81 0.0075    0.0000
+2026-11-24T16:00:00-05:00    TXN SELL -0.047322  258.44   -12.23 0.0031    0.0000
+2026-11-24T16:00:00-05:00   QCOM SELL -0.073499  164.96   -12.12 0.0030    0.0000
+2026-11-24T16:00:00-05:00   AVGO SELL -0.037407  301.08   -11.26 0.0028    0.0000
+2026-11-24T16:00:00-05:00    AMD SELL -0.016941  413.27    -7.00 0.0018    0.0000
+2026-11-24T16:00:00-05:00    QLD  BUY  0.727442   69.07    50.24 0.0100    0.0522
+2026-11-24T16:00:00-05:00    FCX SELL -1.283611   47.73   -61.27 0.0306    0.0000
+2026-11-24T16:00:00-05:00    MDT SELL -0.622433   96.13   -59.83 0.0150    0.0000
+2026-11-24T16:00:00-05:00   NXPI SELL -0.246143  239.40   -58.93 0.0295    0.0000
+2026-11-24T16:00:00-05:00   MCHP SELL -1.041576   56.36   -58.70 0.0294    0.0000
+2026-11-24T16:00:00-05:00    ADI SELL -0.184832  312.95   -57.84 0.0289    0.0000
+2026-11-24T16:00:00-05:00    TXN SELL -0.218594  258.44   -56.49 0.0141    0.0000
