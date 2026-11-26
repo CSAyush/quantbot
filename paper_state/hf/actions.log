@@ -402392,3 +402392,10 @@ Last fills (457 total):
 2026-11-25T16:00:00-05:00    COF SELL -0.327073 182.520   -59.70 0.0298    0.0000
 2026-11-25T16:00:00-05:00   ADSK SELL -0.237755 246.785   -58.67 0.0293    0.0000
 2026-11-25T16:00:00-05:00    MPC SELL -0.168594 346.270   -58.38 0.0292    0.0000
+===== 2026-11-26 01:04 UTC alpaca-submit run 45733088367 =====
+
+1 Failed download:
+['CMCSA']: OperationalError('database is locked')
+[data] 1 tickers returned no data; retrying in small batches (attempt 1)
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-25
+QUEUE for 2026-11-27: 0 orders (equity est $9,921.59)
