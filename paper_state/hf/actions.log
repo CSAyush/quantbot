@@ -403186,3 +403186,56 @@ Last fills (457 total):
 2026-11-25T16:00:00-05:00    MPC SELL -0.168594 346.270   -58.38 0.0292    0.0000
 ===== 2026-11-26 23:12 UTC alpaca-submit run 45909367297 =====
 2026-11-26 is not a trading day; nothing to submit.
+===== 2026-11-26 23:15 UTC run 45909741232 (schedule) =====
+
+=== account 'live' ===
+2026-11-26 is not an NYSE trading day; nothing to do.
+
+=== account 'alpaca-paper' ===
+[alpaca] handled by the alpaca-submit workflow; skipping
+
+=== account 'shadow-alt' ===
+2026-11-26 is not an NYSE trading day; nothing to do.
+
+=== account 'shadow-growth' ===
+2026-11-26 is not an NYSE trading day; nothing to do.
+
+=== account 'shadow-wide' ===
+2026-11-26 is not an NYSE trading day; nothing to do.
+[sync] local paper_state has uncommitted changes; not pulling
+Account:      live
+Profile:      sharpe2
+Inception:    2026-09-01T16:00:00-04:00
+Sessions:     120
+Equity:       $964.78  (start $1,000.00)
+P&L:          $-35.22 (-3.52%)
+SPY B&H same period: -5.92%
+Costs paid:   $11.34
+Realized:     Sharpe -0.86 | MaxDD -13.88% | days 60 | avg |daily| 0.80%
+
+Expectation card (backtest 2010->now, same profile, net of costs):
+  daily mean +0.088% | daily sd 0.814% | positive days 65% | Sharpe 1.60 | MaxDD -14.5% | typical exposure 22%
+  after 60 days: live -3.51% vs expected +5.27% +/- 12.61%  (z = -1.39) -> inside the 2-sigma band
+  live positive days 65% (expected 65%) | live daily sd 1.245% (expected 0.814%)
+  days of live data before a Sharpe of 1.60 is distinguishable from 0 at 2 sigma: ~396 (~1.6 years). Judge shape, not sign, before then.
+  [warn] 1 scheduled session(s) not processed since inception, latest: 2026-09-28 09:30
+
+Positions:
+  QLD        0.7274 sh
+
+Last fills (457 total):
+                  session ticker side    shares  price  dollars   cost  target_w
+2026-11-25T09:30:00-05:00    WFC  BUY  0.372736  79.64    29.68 0.0074     0.031
+2026-11-25T16:00:00-05:00    WFC SELL -0.372736  80.94   -30.17 0.0075     0.000
+2026-11-25T16:00:00-05:00    BAC SELL -0.596835  48.54   -28.97 0.0072     0.000
+2026-11-25T16:00:00-05:00    TMO SELL -0.036549 685.52   -25.05 0.0063     0.000
+2026-11-25T16:00:00-05:00   AMZN SELL -0.073854 244.43   -18.05 0.0045     0.000
+2026-11-25T16:00:00-05:00   GOOG SELL -0.055269 270.98   -14.98 0.0037     0.000
+2026-11-25T16:00:00-05:00  GOOGL SELL -0.052506 273.10   -14.34 0.0036     0.000
+2026-11-25T16:00:00-05:00   PANW SELL -0.034792 356.14   -12.39 0.0031     0.000
+2026-11-25T16:00:00-05:00  GOOGL SELL -0.219290 273.100   -59.89 0.0150    0.0000
+2026-11-25T16:00:00-05:00   GOOG SELL -0.220956 270.980   -59.87 0.0150    0.0000
+2026-11-25T16:00:00-05:00    BAC SELL -1.233129  48.540   -59.86 0.0150    0.0000
+2026-11-25T16:00:00-05:00    COF SELL -0.327073 182.520   -59.70 0.0298    0.0000
+2026-11-25T16:00:00-05:00   ADSK SELL -0.237755 246.785   -58.67 0.0293    0.0000
+2026-11-25T16:00:00-05:00    MPC SELL -0.168594 346.270   -58.38 0.0292    0.0000
