@@ -403526,3 +403526,9 @@ Last fills (457 total):
 [paper] official close present for only 0/98 names; using 1m bars for the rest
 [paper] 1m bars returned are not from today; today's prints stay missing
 QUEUE for 2026-11-27: 0 orders (equity est $9,921.59)
+===== 2026-11-27 02:22 UTC alpaca-submit run 45927785060 =====
+[data] daily OHLCV: 102 tickers, 2010-01-04 -> 2026-11-26
+[paper] WARNING: no live ^VIX print for today; yesterday's VIX carried forward (the ts_reversal gate may differ from the backtest tonight)
+[paper] official close present for only 0/98 names; using 1m bars for the rest
+[paper] 1m bars returned are not from today; today's prints stay missing
+QUEUE for 2026-11-27: 0 orders (equity est $9,921.59)
